@@ -279,7 +279,7 @@ export class Preferences extends React.Component<
     return (
       <Dialog
         id="preferences"
-        title={__DARWIN__ ? 'Settings' : 'Options'}
+        title="設定"
         onDismissed={this.onCancel}
         onSubmit={this.onSave}
       >
@@ -324,11 +324,6 @@ export class Preferences extends React.Component<
                 アクセシビリティ
               </span>
             )}
-            <span id={this.getTabId(PreferencesTab.Language)}>
-              <Octicon className="icon" symbol={octicons.gear} />
-              言語
-            </span>
-
           </TabBar>
 
           {this.renderActiveTab()}
@@ -364,9 +359,6 @@ export class Preferences extends React.Component<
         break
       case PreferencesTab.Accessibility:
         suffix = 'accessibility'
-        break
-      case PreferencesTab.Language:
-        suffix = 'language'
         break
       default:
         return assertNever(tab, `Unknown tab type: ${tab}`)
@@ -550,16 +542,6 @@ export class Preferences extends React.Component<
           />
         )
         break
-      case PreferencesTab.Language:
-        View = (
-          <Accessibility
-            underlineLinks={this.state.underlineLinks}
-            showDiffCheckMarks={this.state.showDiffCheckMarks}
-            onShowDiffCheckMarksChanged={this.onShowDiffCheckMarksChanged}
-            onUnderlineLinksChanged={this.onUnderlineLinksChanged}
-          />
-        )
-      break
       default:
         return assertNever(index, `Unknown tab index: ${index}`)
     }

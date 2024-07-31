@@ -52,7 +52,7 @@ export class Git extends React.Component<IGitProps> {
     return (
       <div className="default-branch-component">
         <h2 id="default-branch-heading">
-          Default branch name for new repositories
+          新規レポジトリのデフォルトブランチ名
         </h2>
 
         <RefNameTextBox
@@ -65,8 +65,8 @@ export class Git extends React.Component<IGitProps> {
 
         <p id="default-branch-description" className="git-settings-description">
           GitHub のデフォルトブランチ名は <Ref>main</Ref> です。
-          デフォルトブランチ名は変更できます。
-          従来の <Ref>master</Ref> にも変更できます。
+          デフォルトブランチ名は変更できます。 従来の <Ref>master</Ref>{' '}
+          にも変更できます。
         </p>
 
         <p className="git-settings-description">

@@ -132,7 +132,7 @@ export class Advanced extends React.Component<
         {enableExternalCredentialHelper() && (
           <div className="advanced-section">
             <Checkbox
-              label={'Use Git Credential Manager'}
+              label={'Git クレデンシャルマネージャーを使う'}
               value={
                 this.state.useExternalCredentialHelper
                   ? CheckboxValue.On
@@ -150,7 +150,7 @@ export class Advanced extends React.Component<
                   Git クレデンシャルマネージャー{' '}
                 </LinkButton>{' '}
                 を GitHub.com 以外のレポジトリに使用します。
-                この機能は、試験的なもので、変更される可能性があります。
+                この機能は試験運用のため、変更される可能性があります。
               </p>
             </div>
           </div>
@@ -167,7 +167,7 @@ export class Advanced extends React.Component<
     return (
       <div className="advanced-section">
         <Checkbox
-          label="Use system OpenSSH (recommended)"
+          label="システム OpenSSH を使う (推奨)"
           value={
             this.props.useWindowsOpenSSH ? CheckboxValue.On : CheckboxValue.Off
           }

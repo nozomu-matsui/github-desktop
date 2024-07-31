@@ -233,10 +233,8 @@ export class CommitMessageAvatar extends React.Component<
     const location = isGitConfigLocal ? 'local' : 'global'
     const locationDesc = isGitConfigLocal ? 'for your repository' : ''
     const settingsName = __DARWIN__ ? 'settings' : 'options'
-    const settings = isGitConfigLocal
-      ? 'repository settings'
-      : `git ${settingsName}`
-    const buttonText = __DARWIN__ ? 'Open Git Settings' : 'Open git settings'
+    const settings = isGitConfigLocal ? 'レポジトリ設定' : `git ${settingsName}`
+    const buttonText = 'Git 設定を開く'
 
     return (
       <>
@@ -249,11 +247,11 @@ export class CommitMessageAvatar extends React.Component<
 
         {!isGitConfigLocal && (
           <p className="secondary-text">
-            You can also set an email local to this repository from the{' '}
+            メールアドレス設定はレポジトリごとに{' '}
             <LinkButton onClick={this.onRepositorySettingsClick}>
-              repository settings
+              レポジトリ設定
             </LinkButton>
-            .
+            で変更できます。
           </p>
         )}
         <Row className="button-row">
@@ -270,7 +268,7 @@ export class CommitMessageAvatar extends React.Component<
   private renderWarningPopover() {
     const { warningType, emailRuleFailures } = this.props
 
-    const updateEmailTitle = __DARWIN__ ? 'Update Email' : 'Update email'
+    const updateEmailTitle = 'メールアドレスを変更'
 
     const sharedHeader = (
       <>
@@ -296,16 +294,16 @@ export class CommitMessageAvatar extends React.Component<
         </Row>
         <Row>
           <div className="secondary-text">
-            You can also choose an email local to this repository from the{' '}
+            メールアドレス設定はレポジトリごとに{' '}
             <LinkButton onClick={this.onRepositorySettingsClick}>
-              repository settings
+              レポジトリ設定
             </LinkButton>
-            .
+            で変更できます。
           </div>
         </Row>
         <Row className="button-row">
           <Button onClick={this.onIgnoreClick} type="button">
-            Ignore
+            無視
           </Button>
           <Button onClick={this.onUpdateEmailClick} type="submit">
             {updateEmailTitle}
@@ -328,14 +326,15 @@ export class CommitMessageAvatar extends React.Component<
         <>
           <Row>
             <div>
-              {sharedHeader} doesn't match your GitHub{accountTypeSuffix}{' '}
-              account{userName}.{' '}
+              {sharedHeader} が GitHub{accountTypeSuffix} アカウント {userName}{' '}
+              と一致しません。{' '}
               <LinkButton
                 ariaLabel="Learn more about commit attribution"
                 uri="https://docs.github.com/en/github/committing-changes-to-your-project/why-are-my-commits-linked-to-the-wrong-user"
               >
-                Learn more
+                さらに詳しく
               </LinkButton>
+              。
             </div>
           </Row>
           {sharedFooter}

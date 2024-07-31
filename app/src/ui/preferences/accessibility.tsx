@@ -24,7 +24,7 @@ export class Accessibility extends React.Component<
         <div className="advanced-section">
           <h2>アクセシビリティ</h2>
           <Checkbox
-            label="Underline links"
+            label="リンクに下線を表示する"
             value={
               this.props.underlineLinks ? CheckboxValue.On : CheckboxValue.Off
             }
@@ -35,13 +35,13 @@ export class Accessibility extends React.Component<
             id="underline-setting-description"
             className="git-settings-description"
           >
-            この設定を有効にすると、コミットメッセージやコメント、その他のテキストフィールド中の URL に下線が付きます。
-            URL が見つけやすくなります。
+            この設定を有効にすると、コミットメッセージやコメント、その他のテキストフィールド中の
+            URL に下線が付きます。 URL が見つけやすくなります。
             {this.renderExampleLink()}
           </p>
 
           <Checkbox
-            label="Show check marks in the diff"
+            label="Diffにチェックマークを表示する"
             value={
               this.props.showDiffCheckMarks
                 ? CheckboxValue.On
@@ -55,7 +55,6 @@ export class Accessibility extends React.Component<
             className="git-settings-description"
           >
             この設定を有効にすると、コミットする際の変更箇所にチェックマーク（行番号の横）が表示されます。
-            無効にすると行番号による管理は目立たなくなります。
           </p>
         </div>
       </DialogContent>

@@ -82,7 +82,7 @@ export class DiffOptions extends React.Component<
   }
 
   public render() {
-    const buttonLabel = `Diff ${__DARWIN__ ? 'Settings' : 'Options'}`
+    const buttonLabel = `Diff 設定`
     return (
       <div className="diff-options-component" ref={this.diffOptionsRef}>
         <button
@@ -109,7 +109,7 @@ export class DiffOptions extends React.Component<
   }
 
   private renderPopover() {
-    const header = `Diff ${__DARWIN__ ? 'Settings' : 'Options'}`
+    const header = `Diff 設定`
     return (
       <Popover
         ariaLabelledby="diff-options-popover-header"

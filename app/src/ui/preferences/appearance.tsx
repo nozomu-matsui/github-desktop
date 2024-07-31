@@ -149,7 +149,7 @@ export class Appearance extends React.Component<
 
     return (
       <div className="appearance-section">
-        <h2 id="diff-heading">{'タブサイズ表示'}</h2>
+        <h2 id="diff-heading">{'Diff'}</h2>
 
         <Select
           value={this.state.selectedTabSize.toString()}

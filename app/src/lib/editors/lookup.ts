@@ -57,8 +57,8 @@ export async function findEditorOrDefault(
   if (name) {
     const match = editors.find(p => p.editor === name) || null
     if (!match) {
-      const menuItemName = __DARWIN__ ? 'Settings' : 'Options'
-      const message = `The editor '${name}' could not be found. Please open ${menuItemName} and choose an available editor.`
+      const menuItemName = '設定'
+      const message = `外部エディター '${name}' が見つかりません。 ${menuItemName} から、有効なエディターを選んでください。`
 
       throw new ExternalEditorError(message, { openPreferences: true })
     }

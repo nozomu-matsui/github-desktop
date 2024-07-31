@@ -629,7 +629,7 @@ export function buildDefaultMenu({
     })
   } else {
     template.push({
-      label: '&Help',
+      label: 'ヘルプ',
       submenu: [
         ...helpItems,
         separator,

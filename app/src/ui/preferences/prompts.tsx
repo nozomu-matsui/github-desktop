@@ -138,11 +138,11 @@ export class Prompts extends React.Component<
   private renderSwitchBranchOptionLabel = (key: UncommittedChangesStrategy) => {
     switch (key) {
       case UncommittedChangesStrategy.AskForConfirmation:
-        return 'Ask me where I want the changes to go'
+        return '変更を移動するか確認する'
       case UncommittedChangesStrategy.MoveToNewBranch:
-        return 'Always bring my changes to my new branch'
+        return '変更を切り替え先ブランチに移動する'
       case UncommittedChangesStrategy.StashOnCurrentBranch:
-        return 'Always stash and leave my changes on the current branch'
+        return 'スタッシュして、変更は切り替え前のブランチに残す'
       default:
         return assertNever(key, `Unknown uncommitted changes strategy: ${key}`)
     }
@@ -162,7 +162,7 @@ export class Prompts extends React.Component<
     return (
       <div className="advanced-section">
         <h2 id="switch-branch-heading">
-          If I have changes and I switch branches...
+          もし変更がある際にブランチを切り替えたら...
         </h2>
 
         <RadioGroup<UncommittedChangesStrategy>
@@ -180,9 +180,7 @@ export class Prompts extends React.Component<
     return (
       <DialogContent>
         <div className="advanced-section">
-          <h2 id="show-confirm-dialog-heading">
-            確認ダイアログを表示する
-          </h2>
+          <h2 id="show-confirm-dialog-heading">確認ダイアログを表示する</h2>
           <div role="group" aria-labelledby="show-confirm-dialog-heading">
             <Checkbox
               label="レポジトリの削除"

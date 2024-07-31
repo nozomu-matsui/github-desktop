@@ -150,12 +150,11 @@ export class TutorialPanel extends React.Component<
               </>
             ) : (
               <p className="description">
-                Your default editor is{' '}
-                <strong>{this.props.resolvedExternalEditor}</strong>. You can
-                change your preferred editor in{' '}
-                <LinkButton onClick={this.onPreferencesClick}>
-                  {__DARWIN__ ? 'Settings' : 'options'}
-                </LinkButton>
+                デフォルトエディターは{' '}
+                <strong>{this.props.resolvedExternalEditor}</strong>
+                に設定されています。{' '}
+                <LinkButton onClick={this.onPreferencesClick}>設定</LinkButton>{' '}
+                から変更できます。
               </p>
             )}
           </TutorialStepInstructions>

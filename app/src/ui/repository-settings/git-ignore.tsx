@@ -16,11 +16,11 @@ export class GitIgnore extends React.Component<IGitIgnoreProps, {}> {
     return (
       <DialogContent>
         <p>
-          Editing <Ref>.gitignore</Ref>. This file specifies intentionally
-          untracked files that Git should ignore. Files already tracked by Git
-          are not affected.{' '}
+          <Ref>.gitignore</Ref> を編集しています。 このファイルでは、Git
+          が無視して追跡しないファイルを指定できます。 すでに Git
+          で追跡済みのファイルには影響しません。{' '}
           <LinkButton onClick={this.props.onShowExamples}>
-            Learn more about gitignore files
+            gitignore ファイルについて、さらに詳しく
           </LinkButton>
         </p>
 
