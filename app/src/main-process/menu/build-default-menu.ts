@@ -305,7 +305,7 @@ export function buildDefaultMenu({
         click: emit('view-repository-on-github'),
       },
       {
-        label: `${selectedShell ?? 'Shell'} で開く`,
+        label: `${selectedShell ?? 'シェル'} で開く`,
         id: 'open-in-shell',
         accelerator: 'Ctrl+`',
         click: emit('open-in-shell'),
@@ -566,11 +566,11 @@ export function buildDefaultMenu({
         label: 'コマンドラインツール',
         submenu: [
           {
-            label: 'Install',
+            label: 'インストール',
             click: emit('install-windows-cli'),
           },
           {
-            label: 'Uninstall',
+            label: 'アンインストール',
             click: emit('uninstall-windows-cli'),
           },
         ],
@@ -583,7 +583,7 @@ export function buildDefaultMenu({
         click: emit('test-show-notification'),
       },
       {
-        label: 'Show banner',
+        label: 'バナーを表示',
         submenu: [
           {
             label: 'Update banner',
@@ -610,11 +610,11 @@ export function buildDefaultMenu({
             click: emit('show-test-undone-banner'),
           },
           {
-            label: 'Cherry Pick Conflicts',
+            label: 'コンフリクトしたチェリーピック',
             click: emit('show-test-cherry-pick-conflicts-banner'),
           },
           {
-            label: 'Merge Successful',
+            label: '成功したマージ',
             click: emit('show-test-merge-successful-banner'),
           },
         ],

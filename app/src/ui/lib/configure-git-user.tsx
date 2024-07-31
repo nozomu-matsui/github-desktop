@@ -361,7 +361,7 @@ export class ConfigureGitUser extends React.Component<
             : this.renderGitConfigForm()}
         </div>
         <Row>
-          <Button type="submit">{this.props.saveLabel || 'Save'}</Button>
+          <Button type="submit">{this.props.saveLabel || '保存'}</Button>
           {this.props.children}
         </Row>
       </Form>

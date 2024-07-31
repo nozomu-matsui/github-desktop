@@ -37,7 +37,7 @@ export class MergeCallToAction extends React.Component<
           disabled={count <= 0}
           onClick={this.onMergeClicked}
         >
-          Merge into <strong>{this.props.currentBranch.name}</strong>
+          <strong>{this.props.currentBranch.name}</strong> へマージ
         </Button>
       </div>
     )
@@ -48,19 +48,17 @@ export class MergeCallToAction extends React.Component<
     const count = formState.aheadBehind.behind
 
     if (count > 0) {
-      const pluralized = count === 1 ? 'commit' : 'commits'
       return (
         <div className="merge-message merge-message-legacy">
-          This will merge
-          <strong>{` ${count} ${pluralized}`}</strong>
-          {` `}
-          from
+          この操作によって
+          <strong>{` ${count} `}コミットが</strong>
           {` `}
           <strong>{branch.name}</strong>
           {` `}
-          into
+          から
           {` `}
           <strong>{currentBranch.name}</strong>
+          へマージされます。
         </div>
       )
     }

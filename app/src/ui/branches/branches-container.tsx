@@ -173,7 +173,7 @@ export class BranchesContainer extends React.Component<
           tooltip={`Choose a branch to merge into ${currentBranch.name}`}
         >
           <Octicon className="icon" symbol={octicons.gitMerge} />
-          Choose a branch to merge into <strong>{currentBranch.name}</strong>
+          <strong>{currentBranch.name}</strong> にマージするブランチを選択
         </Button>
       </Row>
     )

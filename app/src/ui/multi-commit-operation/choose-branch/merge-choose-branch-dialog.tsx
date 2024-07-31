@@ -214,7 +214,7 @@ export class MergeChooseBranchDialog extends React.Component<
     return (
       <React.Fragment>
         There will be
-        <strong>{` ${count} conflicted ${pluralized}`}</strong>
+        <strong>{` ${count} ファイルがコンフリクトconflicted ${pluralized}`}</strong>
         {` when merging `}
         <strong>{branch.name}</strong>
         {` into `}
