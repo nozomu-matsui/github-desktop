@@ -178,11 +178,8 @@ export class Diff extends React.Component<IDiffProps, IDiffState> {
       <div className="panel empty large-diff">
         <img src={NoDiffImage} className="blankslate-image" alt="" />
         <div className="description">
-          <p>The diff is too large to be displayed by default.</p>
-          <p>
-            You can try to show it anyway, but performance may be negatively
-            impacted.
-          </p>
+          <p>デフォルトで表示するには、差分が大きすぎます。</p>
+          <p>表示を試みることはできますが、パフォーマンスに影響が出る場合があります。</p>
         </div>
         <Button onClick={this.showLargeDiff}>
           {__DARWIN__ ? 'Show Diff' : 'Show diff'}
@@ -195,7 +192,7 @@ export class Diff extends React.Component<IDiffProps, IDiffState> {
     return (
       <div className="panel empty large-diff">
         <img src={NoDiffImage} alt="" />
-        <p>The diff is too large to be displayed.</p>
+        <p>差分が大きいため、表示できません。</p>
       </div>
     )
   }
@@ -226,7 +223,7 @@ export class Diff extends React.Component<IDiffProps, IDiffState> {
       if (this.props.file.status.kind === AppFileStatusKind.Renamed) {
         return (
           <div className="panel renamed">
-            The file was renamed but not changed
+            ファイル名は変更されましたが、内容に変更ありません。
           </div>
         )
       }
@@ -237,7 +234,7 @@ export class Diff extends React.Component<IDiffProps, IDiffState> {
       ) {
         return (
           <div className="panel empty">
-            The file is in conflict and must be resolved via the command line.
+            ファイルがコンフリクトしています。コマンドラインから解消してください。
           </div>
         )
       }

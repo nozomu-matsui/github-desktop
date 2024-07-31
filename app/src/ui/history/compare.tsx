@@ -727,10 +727,8 @@ function getPlaceholderText(state: ICompareState) {
   if (!branches.some(b => !b.isDesktopForkRemoteBranch)) {
     return __DARWIN__ ? 'No Branches to Compare' : 'No branches to compare'
   } else if (formState.kind === HistoryTabMode.History) {
-    return __DARWIN__
-      ? 'Select Branch to Compare…'
-      : 'Select branch to compare…'
-  } else {
+    return '比較するブランチを選択'
+ } else {
     return undefined
   }
 }

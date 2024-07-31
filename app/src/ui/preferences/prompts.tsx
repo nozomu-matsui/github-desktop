@@ -181,11 +181,11 @@ export class Prompts extends React.Component<
       <DialogContent>
         <div className="advanced-section">
           <h2 id="show-confirm-dialog-heading">
-            Show a confirmation dialog before...
+            確認ダイアログを表示する
           </h2>
           <div role="group" aria-labelledby="show-confirm-dialog-heading">
             <Checkbox
-              label="Removing repositories"
+              label="レポジトリの削除"
               value={
                 this.state.confirmRepositoryRemoval
                   ? CheckboxValue.On
@@ -194,7 +194,7 @@ export class Prompts extends React.Component<
               onChange={this.onConfirmRepositoryRemovalChanged}
             />
             <Checkbox
-              label="Discarding changes"
+              label="変更の破棄"
               value={
                 this.state.confirmDiscardChanges
                   ? CheckboxValue.On
@@ -203,7 +203,7 @@ export class Prompts extends React.Component<
               onChange={this.onConfirmDiscardChangesChanged}
             />
             <Checkbox
-              label="Discarding changes permanently"
+              label="変更の永久破棄"
               value={
                 this.state.confirmDiscardChangesPermanently
                   ? CheckboxValue.On
@@ -212,7 +212,7 @@ export class Prompts extends React.Component<
               onChange={this.onConfirmDiscardChangesPermanentlyChanged}
             />
             <Checkbox
-              label="Discarding stash"
+              label="スタッシュの破棄"
               value={
                 this.state.confirmDiscardStash
                   ? CheckboxValue.On
@@ -221,7 +221,7 @@ export class Prompts extends React.Component<
               onChange={this.onConfirmDiscardStashChanged}
             />
             <Checkbox
-              label="Checking out a commit"
+              label="コミットのチェックアウト"
               value={
                 this.state.confirmCheckoutCommit
                   ? CheckboxValue.On
@@ -230,7 +230,7 @@ export class Prompts extends React.Component<
               onChange={this.onConfirmCheckoutCommitChanged}
             />
             <Checkbox
-              label="Force pushing"
+              label="強制プッシュ"
               value={
                 this.state.confirmForcePush
                   ? CheckboxValue.On
@@ -239,7 +239,7 @@ export class Prompts extends React.Component<
               onChange={this.onConfirmForcePushChanged}
             />
             <Checkbox
-              label="Undo commit"
+              label="コミットのアンドゥ"
               value={
                 this.state.confirmUndoCommit
                   ? CheckboxValue.On
@@ -251,9 +251,9 @@ export class Prompts extends React.Component<
         </div>
         {this.renderSwitchBranchOptions()}
         <div className="advanced-section">
-          <h2>Commit Length</h2>
+          <h2>コミット長</h2>
           <Checkbox
-            label="Show commit length warning"
+            label="コミット長警告の表示"
             value={
               this.props.showCommitLengthWarning
                 ? CheckboxValue.On

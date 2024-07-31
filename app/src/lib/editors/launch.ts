@@ -18,7 +18,7 @@ export async function launchExternalEditor(
 ): Promise<void> {
   const editorPath = editor.path
   const exists = await pathExists(editorPath)
-  const label = __DARWIN__ ? 'Settings' : 'Options'
+  const label = '設定'
   if (!exists) {
     throw new ExternalEditorError(
       `Could not find executable for '${editor.editor}' at path '${editor.path}'.  Please open ${label} and select an available editor.`,
@@ -71,7 +71,7 @@ export async function launchCustomExternalEditor(
 ): Promise<void> {
   const editorPath = customEditor.path
   const exists = await pathExists(editorPath)
-  const label = __DARWIN__ ? 'Settings' : 'Options'
+  const label = '設定'
   if (!exists) {
     throw new ExternalEditorError(
       `Could not find executable for custom editor at path '${customEditor.path}'.  Please open ${label} and select an available editor.`,

@@ -95,7 +95,7 @@ export async function launchShell(
   // platform-specific build targets.
   const exists = await pathExists(shell.path)
   if (!exists) {
-    const label = __DARWIN__ ? 'Settings' : 'Options'
+    const label = '設定'
     throw new ShellError(
       `Could not find executable for '${shell.shell}' at path '${shell.path}'.  Please open ${label} and select an available shell.`
     )
@@ -132,7 +132,7 @@ export async function launchCustomShell(
   // platform-specific build targets.
   const exists = await pathExists(customShell.path)
   if (!exists) {
-    const label = __DARWIN__ ? 'Settings' : 'Options'
+    const label = '設定'
     throw new ShellError(
       `Could not find executable for custom shell at path '${customShell.path}'.  Please open ${label} and select an available shell.`
     )

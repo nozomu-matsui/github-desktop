@@ -114,7 +114,7 @@ export async function checkoutBranch(
     branch.name,
     currentRemote,
     progressCallback,
-    `Switching to ${__DARWIN__ ? 'Branch' : 'branch'}`
+    `ブランチを変更'}`
   )
 
   const baseArgs = getCheckoutArgs(progressCallback)
@@ -148,7 +148,7 @@ export async function checkoutCommit(
   currentRemote: IRemote | null,
   progressCallback?: ProgressCallback
 ): Promise<true> {
-  const title = `Checking out ${__DARWIN__ ? 'Commit' : 'commit'}`
+  const title = `コミットをチェックアウト中`
   const opts = await getCheckoutOpts(
     repository,
     title,

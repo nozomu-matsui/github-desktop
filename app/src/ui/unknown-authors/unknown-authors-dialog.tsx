@@ -36,7 +36,7 @@ export class UnknownAuthors extends React.Component<IUnknownAuthorsProps> {
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText={__DARWIN__ ? 'Commit Anyway' : 'Commit anyway'}
+            okButtonText="構わずコミットする"
           />
         </DialogFooter>
       </Dialog>

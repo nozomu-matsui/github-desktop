@@ -292,11 +292,11 @@ export class Preferences extends React.Component<
           >
             <span id={this.getTabId(PreferencesTab.Accounts)}>
               <Octicon className="icon" symbol={octicons.home} />
-              Accounts
+              アカウント
             </span>
             <span id={this.getTabId(PreferencesTab.Integrations)}>
               <Octicon className="icon" symbol={octicons.person} />
-              Integrations
+              インテグレーション
             </span>
             <span id={this.getTabId(PreferencesTab.Git)}>
               <Octicon className="icon" symbol={octicons.gitCommit} />
@@ -304,26 +304,31 @@ export class Preferences extends React.Component<
             </span>
             <span id={this.getTabId(PreferencesTab.Appearance)}>
               <Octicon className="icon" symbol={octicons.paintbrush} />
-              Appearance
+              アピアランス
             </span>
             <span id={this.getTabId(PreferencesTab.Notifications)}>
               <Octicon className="icon" symbol={octicons.bell} />
-              Notifications
+              通知
             </span>
             <span id={this.getTabId(PreferencesTab.Prompts)}>
               <Octicon className="icon" symbol={octicons.question} />
-              Prompts
+              プロンプト
             </span>
             <span id={this.getTabId(PreferencesTab.Advanced)}>
               <Octicon className="icon" symbol={octicons.gear} />
-              Advanced
+              アドバンス
             </span>
             {enableLinkUnderlines() && (
               <span id={this.getTabId(PreferencesTab.Accessibility)}>
                 <Octicon className="icon" symbol={octicons.accessibility} />
-                Accessibility
+                アクセシビリティ
               </span>
             )}
+            <span id={this.getTabId(PreferencesTab.Language)}>
+              <Octicon className="icon" symbol={octicons.gear} />
+              言語
+            </span>
+
           </TabBar>
 
           {this.renderActiveTab()}
@@ -359,6 +364,9 @@ export class Preferences extends React.Component<
         break
       case PreferencesTab.Accessibility:
         suffix = 'accessibility'
+        break
+      case PreferencesTab.Language:
+        suffix = 'language'
         break
       default:
         return assertNever(tab, `Unknown tab type: ${tab}`)
@@ -542,6 +550,16 @@ export class Preferences extends React.Component<
           />
         )
         break
+      case PreferencesTab.Language:
+        View = (
+          <Accessibility
+            underlineLinks={this.state.underlineLinks}
+            showDiffCheckMarks={this.state.showDiffCheckMarks}
+            onShowDiffCheckMarksChanged={this.onShowDiffCheckMarksChanged}
+            onUnderlineLinksChanged={this.onUnderlineLinksChanged}
+          />
+        )
+      break
       default:
         return assertNever(index, `Unknown tab index: ${index}`)
     }

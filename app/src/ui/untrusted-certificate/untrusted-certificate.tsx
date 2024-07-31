@@ -37,17 +37,17 @@ export class UntrustedCertificate extends React.Component<
 
     return (
       <Dialog
-        title={__DARWIN__ ? 'Untrusted Server' : 'Untrusted server'}
+        title="信頼されていないサーバー"
         onDismissed={this.props.onDismissed}
         onSubmit={this.onContinue}
         type={__DARWIN__ ? 'warning' : 'error'}
       >
         <DialogContent>
           <p>
-            GitHub Desktop cannot verify the identity of {host}. The certificate
-            ({this.props.certificate.subjectName}) is invalid or untrusted.{' '}
+            {host} のアイデンティティを検証できません。
+            署名 ({this.props.certificate.subjectName}) が無効か信頼できません。
             <strong>
-              This may indicate attackers are trying to steal your data.
+              これは、データが盗まれる可能性を示しています。
             </strong>
           </p>
           <p>In some cases, this may be expected. For example:</p>
@@ -59,14 +59,13 @@ export class UntrustedCertificate extends React.Component<
             </li>
           </ul>
           <p>
-            If you are unsure of what to do, cancel and contact your system
-            administrator.
+            何をすべきか不明な場合は、キャンセルした上でシステム管理者に連絡してください。
           </p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText={__DARWIN__ ? 'View Certificate' : 'Add certificate'}
+            okButtonText="署名を表示"
           />
         </DialogFooter>
       </Dialog>

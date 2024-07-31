@@ -155,11 +155,11 @@ function renderLastFetched(lastFetched: Date | null): JSX.Element | string {
   if (lastFetched) {
     return (
       <span>
-        Last fetched <RelativeTime date={lastFetched} />
+        最後のフェッチ : <RelativeTime date={lastFetched} />
       </span>
     )
   } else {
-    return 'Never fetched'
+    return '未フェッチ'
   }
 }
 

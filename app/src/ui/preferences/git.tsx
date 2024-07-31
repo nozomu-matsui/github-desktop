@@ -64,20 +64,20 @@ export class Git extends React.Component<IGitProps> {
         />
 
         <p id="default-branch-description" className="git-settings-description">
-          GitHub's default branch name is <Ref>main</Ref>. You may want to
-          change it due to different workflows, or because your integrations
-          still require the historical default branch name of <Ref>master</Ref>.
+          GitHub のデフォルトブランチ名は <Ref>main</Ref> です。
+          デフォルトブランチ名は変更できます。
+          従来の <Ref>master</Ref> にも変更できます。
         </p>
 
         <p className="git-settings-description">
-          These preferences will{' '}
+          この設定は{' '}
           {this.props.selectedExternalEditor &&
           this.props.globalGitConfigPath ? (
             <LinkButton onClick={this.openGlobalGitConfigInEditor}>
-              edit your global Git config file
+              グローバル Git 設定ファイルを変更します。
             </LinkButton>
           ) : (
-            'edit your global Git config file'
+            'グローバル Git 設定ファイルを変更します。'
           )}
           .
         </p>

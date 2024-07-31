@@ -4042,7 +4042,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
   ) {
     this.updateCheckoutProgress(repository, {
       kind: 'checkout',
-      title: `Refreshing ${__DARWIN__ ? 'Repository' : 'repository'}`,
+      title: `レポジトリをリフレッシュ`,
       description: 'Checking out',
       value: 1,
       target: commitish,

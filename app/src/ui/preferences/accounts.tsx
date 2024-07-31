@@ -74,7 +74,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
           </div>
         </div>
         <Button onClick={this.logout(account)} className={className}>
-          {__DARWIN__ ? 'Sign Out of' : 'Sign out of'} {accountTypeLabel}
+           {accountTypeLabel} {'をサインアウト'}
         </Button>
       </Row>
     )
@@ -89,19 +89,19 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
   }
 
   private renderSignIn(type: SignInType) {
-    const signInTitle = __DARWIN__ ? 'Sign Into' : 'Sign into'
+    const signInTitle = 'にサインイン'
     switch (type) {
       case SignInType.DotCom: {
         return (
           <CallToAction
-            actionTitle={signInTitle + ' GitHub.com'}
+            actionTitle={'GitHub.com ' + signInTitle}
             onAction={this.onDotComSignIn}
             // The DotCom account is shown first, so its sign in/out button should be
             // focused initially when the dialog is opened.
             buttonClassName={DialogPreferredFocusClassName}
           >
             <div>
-              Sign in to your GitHub.com account to access your repositories.
+              GitHub.com アカウントにサインインすると、レポジトリにアクセスできます。
             </div>
           </CallToAction>
         )
@@ -109,12 +109,11 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
       case SignInType.Enterprise:
         return (
           <CallToAction
-            actionTitle={signInTitle + ' GitHub Enterprise'}
+            actionTitle={'GitHub Enterprise ' + signInTitle}
             onAction={this.onEnterpriseSignIn}
           >
             <div>
-              If you have a GitHub Enterprise or AE account at work, sign in to
-              it to get access to your repositories.
+              GitHub Enterprise もしくは AE アカウントにサインインすると、レポジトリへアクセスできます。
             </div>
           </CallToAction>
         )

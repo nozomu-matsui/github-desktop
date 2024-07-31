@@ -128,7 +128,7 @@ export class BranchDropdown extends React.Component<IBranchDropdownProps> {
     let icon: OcticonSymbol = octicons.gitBranch
     let iconClassName: string | undefined = undefined
     let title: string
-    let description = __DARWIN__ ? 'Current Branch' : 'Current branch'
+    let description = '選択中のブランチ'
     let canOpen = true
     let disabled = false
     let tooltip: string

@@ -149,7 +149,7 @@ export class Integrations extends React.Component<
   private renderExternalEditor() {
     const options = this.props.availableEditors
     const { selectedExternalEditor, useCustomEditor } = this.state
-    const label = __DARWIN__ ? 'External Editor' : 'External editor'
+    const label = '外部エディター'
 
     if (!enableCustomIntegration() && options.length === 0) {
       // this is emulating the <Select/> component's UI so the styles are
@@ -161,7 +161,7 @@ export class Integrations extends React.Component<
         <div className="select-component no-options-found">
           <label>{label}</label>
           <span>
-            No editors found.{' '}
+            外部エディターが見つかりません。{' '}
             <LinkButton uri={suggestedExternalEditor.url}>
               Install {suggestedExternalEditor.name}?
             </LinkButton>
@@ -188,9 +188,7 @@ export class Integrations extends React.Component<
         ))}
         {enableCustomIntegration() && (
           <option key={CustomIntegrationValue} value={CustomIntegrationValue}>
-            {__DARWIN__
-              ? 'Configure Custom Editor…'
-              : 'Configure custom editor…'}
+            カスタムエディターを設定する
           </option>
         )}
       </Select>
@@ -207,9 +205,9 @@ export class Integrations extends React.Component<
       <Row>
         <div className="no-options-found">
           <span>
-            No editors found.{' '}
+            外部エディターが見つかりません。{' '}
             <LinkButton uri={suggestedExternalEditor.url}>
-              Install {suggestedExternalEditor.name}?
+              {suggestedExternalEditor.name}? をインストールする
             </LinkButton>
           </span>
         </div>
@@ -320,7 +318,7 @@ export class Integrations extends React.Component<
     if (!enableCustomIntegration()) {
       return (
         <DialogContent>
-          <h2>Applications</h2>
+          <h2>アプリケーション</h2>
           <Row>{this.renderExternalEditor()}</Row>
           <Row>{this.renderSelectedShell()}</Row>
         </DialogContent>
@@ -331,7 +329,7 @@ export class Integrations extends React.Component<
       <DialogContent>
         <fieldset>
           <legend>
-            <h2>{__DARWIN__ ? 'External Editor' : 'External editor'}</h2>
+            <h2>外部エディター</h2>
           </legend>
           <Row>{this.renderExternalEditor()}</Row>
           {this.renderNoExternalEditorHint()}
@@ -339,7 +337,7 @@ export class Integrations extends React.Component<
         </fieldset>
         <fieldset>
           <legend>
-            <h2>Shell</h2>
+            <h2>シェル</h2>
           </legend>
           <Row>{this.renderSelectedShell()}</Row>
           {this.state.useCustomShell && this.renderCustomShell()}

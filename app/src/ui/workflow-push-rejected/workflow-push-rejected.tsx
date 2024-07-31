@@ -34,7 +34,7 @@ export class WorkflowPushRejectedDialog extends React.Component<
     return (
       <Dialog
         id="workflow-push-rejected"
-        title={__DARWIN__ ? 'Push Rejected' : 'Push rejected'}
+        title="プッシュがリジェクトされました"
         loading={this.state.loading}
         onDismissed={this.props.onDismissed}
         onSubmit={this.onSignIn}
@@ -42,14 +42,13 @@ export class WorkflowPushRejectedDialog extends React.Component<
       >
         <DialogContent>
           <p>
-            The push was rejected by the server for containing a modification to
-            the workflow file <Ref>{this.props.rejectedPath}</Ref>. In order to
-            be able to push to workflow files GitHub Desktop needs to request
-            additional permissions.
+            このプッシュはサーバーに
+            <Ref>{this.props.rejectedPath}</Ref> に変更を含んでいるため、
+            リジェクトされました。
+            プッシュするには、パーミッションの追加が必要です。
           </p>
           <p>
-            Would you like to open a browser to grant GitHub Desktop permission
-            to update workflow files?
+            ワークフローファイルを更新するために、GitHub Desktop の権限を許可しますか？
           </p>
         </DialogContent>
         <DialogFooter>

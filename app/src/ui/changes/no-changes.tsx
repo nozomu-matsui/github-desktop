@@ -209,11 +209,11 @@ export class NoChanges extends React.Component<
 
   private getPlatformFileManagerName() {
     if (__DARWIN__) {
-      return 'Finder'
+      return 'ファインダー'
     } else if (__WIN32__) {
-      return 'Explorer'
+      return 'エクスプローラー'
     }
-    return 'your File Manager'
+    return 'ファイルマネージャー'
   }
 
   private renderDiscoverabilityElements(menuItem: IMenuItemInfo) {
@@ -221,7 +221,7 @@ export class NoChanges extends React.Component<
 
     return (
       <>
-        {parentMenusText} menu or{' '}
+        {parentMenusText} メニューもしくは{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
@@ -267,7 +267,7 @@ export class NoChanges extends React.Component<
 
     return this.renderMenuBackedAction(
       'open-working-directory',
-      `View the files of your repository in ${fileManager}`,
+      `${fileManager} でレポジトリのファイルを開く`,
       undefined,
       this.onShowInFileManagerClicked
     )
@@ -285,7 +285,7 @@ export class NoChanges extends React.Component<
 
     return this.renderMenuBackedAction(
       'view-repository-on-github',
-      `Open the repository page on GitHub in your browser`,
+      `ブラウザーでレポジトリを開く`,
       undefined,
       this.onViewOnGitHubClicked
     )
@@ -321,14 +321,15 @@ export class NoChanges extends React.Component<
       return null
     }
 
-    const title = `Open the repository in your external editor`
+    const title = `レポジトリを外部エディターで開く`
 
     const description = (
       <>
-        Select your editor in{' '}
+        外部エディターは{' '}
         <LinkButton onClick={this.openIntegrationPreferences}>
-          {__DARWIN__ ? 'Settings' : 'Options'}
+          設定
         </LinkButton>
+        {' '}から変更できます。
       </>
     )
 
@@ -414,14 +415,12 @@ export class NoChanges extends React.Component<
     const numChanges = stashEntry.files.files.length
     const description = (
       <>
-        You have {numChanges} {numChanges === 1 ? 'change' : 'changes'} in
-        progress that you have not yet committed.
+        未コミットの変更が {numChanges} あります。
       </>
     )
     const discoverabilityContent = (
       <>
-        When a stash exists, access it at the bottom of the Changes tab to the
-        left.
+        スタッシュしている場合、変更タブの下部の左からアクセスできます。
       </>
     )
     const itemId: MenuIDs = 'toggle-stashed-changes'
@@ -434,11 +433,11 @@ export class NoChanges extends React.Component<
     return (
       <MenuBackedSuggestedAction
         key="view-stash-action"
-        title="View your stashed changes"
+        title="スタッシュを表示"
         menuItemId={itemId}
         description={description}
         discoverabilityContent={discoverabilityContent}
-        buttonText="View stash"
+        buttonText="スタッシュを表示"
         type="primary"
         disabled={menuItem !== null && !menuItem.enabled}
         onClick={this.onViewStashClicked}
@@ -464,7 +463,7 @@ export class NoChanges extends React.Component<
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar for local repositories or{' '}
+        ローカルレポジトリにおいて、ツールバーから利用可能です。
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
@@ -472,8 +471,8 @@ export class NoChanges extends React.Component<
     return (
       <MenuBackedSuggestedAction
         key="publish-repository-action"
-        title="Publish your repository to GitHub"
-        description="This repository is currently only available on your local machine. By publishing it on GitHub you can share it, and collaborate with others."
+        title="レポジトリを GitHub にパブリッシュ"
+        description="このレポジトリは現在、ローカルマシンでのみ利用可能です。パブリッシュすることで、GitHub を通じてコラボレーションできるようになります。"
         discoverabilityContent={discoverabilityContent}
         buttonText="Publish repository"
         menuItemId={itemId}
@@ -504,16 +503,16 @@ export class NoChanges extends React.Component<
 
     const description = (
       <>
-        The current branch (<Ref>{tip.branch.name}</Ref>) hasn't been published
-        to the remote yet. By publishing it {isGitHub ? 'to GitHub' : ''} you
-        can share it, {isGitHub ? 'open a pull request, ' : ''}
-        and collaborate with others.
+        選択中のブランチ (<Ref>{tip.branch.name}</Ref>) はリモートにパブリッシュされていません。
+        {isGitHub ? 'GitHubへ' : ''}パブリッシュすることで共有でき、
+        {isGitHub ? 'プルリクエストを作成することで、, ' : ''}
+        共同作業できます。
       </>
     )
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar or{' '}
+        ツールバー、もしくは{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
@@ -553,24 +552,20 @@ export class NoChanges extends React.Component<
 
     const description = (
       <>
-        The current branch (<Ref>{tip.branch.name}</Ref>) has{' '}
-        {aheadBehind.behind === 1 ? 'a commit' : 'commits'} on{' '}
-        {isGitHub ? 'GitHub' : 'the remote'} that{' '}
-        {aheadBehind.behind === 1 ? 'does not' : 'do not'} exist on your
-        machine.
+        選択中のブランチ (<Ref>{tip.branch.name}</Ref>) は、
+        {isGitHub ? 'GitHub' : 'リモート'} からビハインドしています。
       </>
     )
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar when there are remote changes or{' '}
+        リモートに変更がある場合は、ツールバーもしくは{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
+        {' '}から利用可能です。
       </>
     )
 
-    const title = `Pull ${aheadBehind.behind} ${
-      aheadBehind.behind === 1 ? 'commit' : 'commits'
-    } from the ${remote.name} remote`
+    const title = `${aheadBehind.behind} コミットをリモート ${remote.name} からプルする`
 
     const buttonText = `Pull ${remote.name}`
 
@@ -609,34 +604,27 @@ export class NoChanges extends React.Component<
 
     if (aheadBehind.ahead > 0) {
       itemsToPushTypes.push('commits')
-      itemsToPushDescriptions.push(
-        aheadBehind.ahead === 1
-          ? '1 local commit'
-          : `${aheadBehind.ahead} local commits`
-      )
+      itemsToPushDescriptions.push(`${aheadBehind.ahead} ローカルコミット`)
     }
 
     if (tagsToPush !== null && tagsToPush.length > 0) {
       itemsToPushTypes.push('tags')
-      itemsToPushDescriptions.push(
-        tagsToPush.length === 1 ? '1 tag' : `${tagsToPush.length} tags`
-      )
+      itemsToPushDescriptions.push(`${tagsToPush.length} タグ`)
     }
 
-    const description = `You have ${itemsToPushDescriptions.join(
-      ' and '
-    )} waiting to be pushed to ${isGitHub ? 'GitHub' : 'the remote'}.`
+    const description = `${isGitHub ? 'GitHub' : 'リモート'} へプッシュ待ちのコミットがあります。(${itemsToPushDescriptions.join(', ')})`
 
     const discoverabilityContent = (
       <>
-        Always available in the toolbar when there are local commits waiting to
-        be pushed or {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
+        プッシュ待ちのコミットがある場合、ツールバーもしくは{' '}
+        {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
+        {' '}から利用可能です。
       </>
     )
 
-    const title = `Push ${itemsToPushTypes.join(' and ')} to the ${
+    const title = `${itemsToPushTypes.join(', ')} をリモート ${
       remote.name
-    } remote`
+    } へプッシュ`
 
     const buttonText = `Push ${remote.name}`
 
@@ -669,9 +657,8 @@ export class NoChanges extends React.Component<
 
     const description = (
       <>
-        The current branch (<Ref>{tip.branch.name}</Ref>) is already published
-        to GitHub. Create a pull request to propose and collaborate on your
-        changes.
+      選択中のブランチ (<Ref>{tip.branch.name}</Ref>) は、GitHub へパブリッシュ済みです。
+      プルリクエストを作成して、共同作業しましょう。
       </>
     )
 
@@ -702,9 +689,8 @@ export class NoChanges extends React.Component<
       label: 'Preview Pull Request',
       description: (
         <>
-          The current branch (<Ref>{tip.branch.name}</Ref>) is already published
-          to GitHub. Preview the changes this pull request will have before
-          proposing your changes.
+          選択中のブランチ (<Ref>{tip.branch.name}</Ref>) は、GitHub へパブリッシュ済みです。
+          プルリクエストに含める変更を、事前にプレビューしましょう。
         </>
       ),
       id: PullRequestSuggestedNextAction.PreviewPullRequest,
@@ -766,11 +752,9 @@ export class NoChanges extends React.Component<
         <div className="content">
           <div className="interstitial-header">
             <div className="text">
-              <h1>No local changes</h1>
-              <p>
-                There are no uncommitted changes in this repository. Here are
-                some friendly suggestions for what to do next.
-              </p>
+              <h1>ローカルに変更なし</h1>
+              <p>未コミットの変更は選択中のレポジトリにありません。</p>
+              <p>次のアクション候補は：</p>
             </div>
             <img src={PaperStackImage} className="blankslate-image" alt="" />
           </div>

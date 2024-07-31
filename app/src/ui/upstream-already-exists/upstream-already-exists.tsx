@@ -40,28 +40,25 @@ export class UpstreamAlreadyExists extends React.Component<IUpstreamAlreadyExist
     const replacementURL = parent.cloneURL
     return (
       <Dialog
-        title={
-          __DARWIN__ ? 'Upstream Already Exists' : 'Upstream already exists'
-        }
+        title="すでにアップストリームが存在しています。"
         onDismissed={this.props.onDismissed}
         onSubmit={this.onUpdate}
         type="warning"
       >
         <DialogContent>
           <p>
-            The repository <Ref>{name}</Ref> is a fork of{' '}
-            <Ref>{parentName}</Ref>, but its <Ref>{UpstreamRemoteName}</Ref>{' '}
-            remote points elsewhere.
+            このレポジトリ <Ref>{name}</Ref> は <Ref>{parentName}</Ref> のフォークですが、
+            リモート <Ref>{UpstreamRemoteName}</Ref> は、他のレポジトリを指しています。
           </p>
           <ul>
             <li>
-              Current: <Ref>{existingURL}</Ref>
+              現在のURL   : <Ref>{existingURL}</Ref>
             </li>
             <li>
-              Expected: <Ref>{replacementURL}</Ref>
+              期待されるURL: <Ref>{replacementURL}</Ref>
             </li>
           </ul>
-          <p>Would you like to update the remote to use the expected URL?</p>
+          <p>期待された URL を使うために、リモートを更新しますか？</p>
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
