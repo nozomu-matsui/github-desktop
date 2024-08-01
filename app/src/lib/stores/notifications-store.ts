@@ -396,7 +396,7 @@ export class NotificationsStore {
       numberOfFailedChecks === 1 ? 'check was' : 'checks were'
 
     const shortSHA = shortenSHA(commitSHA)
-    const title = 'Pull Request checks failed'
+    const title = 'プルリクエストのチェックが失敗しました'
     const body = `${pullRequest.title} #${pullRequest.pullRequestNumber} (${shortSHA})\n${numberOfFailedChecks} ${pluralChecks} not successful.`
     const onClick = () => {
       this.statsStore.increment('checksFailedNotificationClicked')

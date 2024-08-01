@@ -148,7 +148,7 @@ export async function checkoutCommit(
   currentRemote: IRemote | null,
   progressCallback?: ProgressCallback
 ): Promise<true> {
-  const title = `コミットをチェックアウト中`
+  const title = `コミットをチェックアウトしています`
   const opts = await getCheckoutOpts(
     repository,
     title,

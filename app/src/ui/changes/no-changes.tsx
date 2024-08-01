@@ -326,10 +326,8 @@ export class NoChanges extends React.Component<
     const description = (
       <>
         外部エディターは{' '}
-        <LinkButton onClick={this.openIntegrationPreferences}>
-          設定
-        </LinkButton>
-        {' '}から変更できます。
+        <LinkButton onClick={this.openIntegrationPreferences}>設定</LinkButton>{' '}
+        から変更できます。
       </>
     )
 
@@ -413,15 +411,9 @@ export class NoChanges extends React.Component<
     }
 
     const numChanges = stashEntry.files.files.length
-    const description = (
-      <>
-        未コミットの変更が {numChanges} あります。
-      </>
-    )
+    const description = <>未コミットの変更が {numChanges} あります。</>
     const discoverabilityContent = (
-      <>
-        スタッシュしている場合、変更タブの下部の左からアクセスできます。
-      </>
+      <>スタッシュしている場合、変更タブの下部の左からアクセスできます。</>
     )
     const itemId: MenuIDs = 'toggle-stashed-changes'
     const menuItem = this.getMenuItemInfo(itemId)
@@ -503,7 +495,8 @@ export class NoChanges extends React.Component<
 
     const description = (
       <>
-        選択中のブランチ (<Ref>{tip.branch.name}</Ref>) はリモートにパブリッシュされていません。
+        選択中のブランチ (<Ref>{tip.branch.name}</Ref>)
+        はリモートにパブリッシュされていません。
         {isGitHub ? 'GitHubへ' : ''}パブリッシュすることで共有でき、
         {isGitHub ? 'プルリクエストを作成することで、, ' : ''}
         共同作業できます。
@@ -560,14 +553,14 @@ export class NoChanges extends React.Component<
     const discoverabilityContent = (
       <>
         リモートに変更がある場合は、ツールバーもしくは{' '}
-        {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
-        {' '}から利用可能です。
+        {this.renderDiscoverabilityKeyboardShortcut(menuItem)}{' '}
+        から利用可能です。
       </>
     )
 
     const title = `${aheadBehind.behind} コミットをリモート ${remote.name} からプルする`
 
-    const buttonText = `Pull ${remote.name}`
+    const buttonText = `${remote.name} をプルする`
 
     return (
       <MenuBackedSuggestedAction
@@ -612,13 +605,17 @@ export class NoChanges extends React.Component<
       itemsToPushDescriptions.push(`${tagsToPush.length} タグ`)
     }
 
-    const description = `${isGitHub ? 'GitHub' : 'リモート'} へプッシュ待ちのコミットがあります。(${itemsToPushDescriptions.join(', ')})`
+    const description = `${
+      isGitHub ? 'GitHub' : 'リモート'
+    } へプッシュ待ちのコミットがあります。(${itemsToPushDescriptions.join(
+      ', '
+    )})`
 
     const discoverabilityContent = (
       <>
         プッシュ待ちのコミットがある場合、ツールバーもしくは{' '}
-        {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
-        {' '}から利用可能です。
+        {this.renderDiscoverabilityKeyboardShortcut(menuItem)}{' '}
+        から利用可能です。
       </>
     )
 
@@ -657,13 +654,13 @@ export class NoChanges extends React.Component<
 
     const description = (
       <>
-      選択中のブランチ (<Ref>{tip.branch.name}</Ref>) は、GitHub へパブリッシュ済みです。
-      プルリクエストを作成して、共同作業しましょう。
+        選択中のブランチ (<Ref>{tip.branch.name}</Ref>) は、GitHub
+        へパブリッシュ済みです。 プルリクエストを作成して、共同作業しましょう。
       </>
     )
 
-    const title = `Create a Pull Request from your current branch`
-    const buttonText = `Create Pull Request`
+    const title = `選択中のブランチからプルリクエストを作成`
+    const buttonText = `プルリクエストを作成する`
 
     const previewPullMenuItem = this.getMenuItemInfo('preview-pull-request')
 
@@ -685,11 +682,12 @@ export class NoChanges extends React.Component<
     }
 
     const previewPullRequestAction: IDropdownSuggestedActionOption = {
-      title: `Preview the Pull Request from your current branch`,
-      label: 'Preview Pull Request',
+      title: `選択中のブランチからプルリクエストをプレビュー`,
+      label: 'プルリクエストをプレビュー',
       description: (
         <>
-          選択中のブランチ (<Ref>{tip.branch.name}</Ref>) は、GitHub へパブリッシュ済みです。
+          選択中のブランチ (<Ref>{tip.branch.name}</Ref>) は、GitHub
+          へパブリッシュ済みです。
           プルリクエストに含める変更を、事前にプレビューしましょう。
         </>
       ),
