@@ -470,7 +470,7 @@ export class PushPullButton extends React.Component<
       <ToolbarButton
         {...this.defaultButtonProps()}
         title={progress.title}
-        description={progress.description || 'Hang on…'}
+        description={progress.description || 'しばらくお待ちください...'}
         progressValue={progress.value}
         icon={syncClockwise}
         iconClassName={networkActionInProgress ? 'spin' : ''}
@@ -484,8 +484,8 @@ export class PushPullButton extends React.Component<
     return (
       <ToolbarButton
         {...this.defaultButtonProps()}
-        title="Publish repository"
-        description="Publish this repository to GitHub"
+        title="レポジトリをパブリッシュ"
+        description="このレポジトリを GitHub にパブリッシュ"
         className="push-pull-button"
         icon={octicons.upload}
         style={ToolbarButtonStyle.Subtitle}
@@ -498,8 +498,8 @@ export class PushPullButton extends React.Component<
     return (
       <ToolbarButton
         {...this.defaultButtonProps()}
-        title="Publish branch"
-        description="Cannot publish unborn HEAD"
+        title="ブランチをパブリッシュ"
+        description="アンボーン HEAD はパブリッシュできません"
         icon={octicons.upload}
         disabled={true}
       />
@@ -508,13 +508,13 @@ export class PushPullButton extends React.Component<
 
   private detachedHeadButton(rebaseInProgress: boolean) {
     const description = rebaseInProgress
-      ? 'Rebase in progress'
-      : 'Cannot publish detached HEAD'
+      ? 'リベースが進行中'
+      : 'デタッチされた HEAD はパブリッシュできません'
 
     return (
       <ToolbarButton
         {...this.defaultButtonProps()}
-        title="Publish branch"
+        title="ブランチをパブリッシュ"
         description={description}
         icon={octicons.upload}
         disabled={true}
@@ -528,8 +528,8 @@ export class PushPullButton extends React.Component<
     shouldNudge: boolean
   ) {
     const description = isGitHub
-      ? 'Publish this branch to GitHub'
-      : 'Publish this branch to the remote'
+      ? 'このブランチを GitHub にパブリッシュ'
+      : 'このブランチをリモートにパブリッシュ'
 
     const className = classNames(
       this.defaultDropdownProps().className,
@@ -542,7 +542,7 @@ export class PushPullButton extends React.Component<
     return (
       <ToolbarDropdown
         {...this.defaultDropdownProps()}
-        title="Publish branch"
+        title="ブランチをパブリッシュ"
         description={description}
         icon={octicons.upload}
         onClick={onClick}
@@ -559,7 +559,7 @@ export class PushPullButton extends React.Component<
     lastFetched: Date | null,
     onClick: () => void
   ) {
-    const title = `Fetch ${remoteName}`
+    const title = `${remoteName} をフェッチ`
     return (
       <ToolbarButton
         {...this.defaultButtonProps()}
@@ -581,8 +581,8 @@ export class PushPullButton extends React.Component<
     onClick: () => void
   ) {
     const title = pullWithRebase
-      ? `Pull ${remoteName} with rebase`
-      : `Pull ${remoteName}`
+      ? `リベースして ${remoteName} をプル`
+      : `${remoteName} をプル`
 
     const dropdownItemTypes = [DropdownItemType.Fetch]
 
@@ -618,7 +618,7 @@ export class PushPullButton extends React.Component<
     return (
       <ToolbarDropdown
         {...this.defaultDropdownProps()}
-        title={`Push ${remoteName}`}
+        title={`${remoteName} をプッシュ`}
         description={renderLastFetched(lastFetched)}
         icon={octicons.arrowUp}
         onClick={onClick}
@@ -641,7 +641,7 @@ export class PushPullButton extends React.Component<
     return (
       <ToolbarDropdown
         {...this.defaultDropdownProps()}
-        title={`Force push ${remoteName}`}
+        title={`${remoteName} を強制プッシュ`}
         description={renderLastFetched(lastFetched)}
         icon={forcePushIcon}
         onClick={onClick}

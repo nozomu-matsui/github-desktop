@@ -4449,7 +4449,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
 
         const remoteName = branch.upstreamRemoteName || remote.name
 
-        const pushTitle = `Pushing to ${remoteName}`
+        const pushTitle = `${remoteName} にプッシュ中`
 
         // Emit an initial progress even before our push begins
         // since we're doing some work to get remotes up front.
