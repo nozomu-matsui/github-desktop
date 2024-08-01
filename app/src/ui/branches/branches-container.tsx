@@ -202,7 +202,7 @@ export class BranchesContainer extends React.Component<
       >
         <span id="branches-tab">Branches</span>
         <span id="pull-requests-tab" className="pull-request-tab">
-          {__DARWIN__ ? 'Pull Requests' : 'Pull requests'}
+          プルリクエスト
           {this.renderOpenPullRequestsBubble()}
         </span>
       </TabBar>

@@ -33,16 +33,15 @@ export class ChangeRepositoryAlias extends React.Component<
     return (
       <Dialog
         id="change-repository-alias"
-        title={
-          __DARWIN__ ? `${verb} Repository Alias` : `${verb} repository alias`
-        }
+        title={`${verb} レポジトリエイリアス`}
         ariaDescribedBy="change-repository-alias-description"
         onDismissed={this.props.onDismissed}
         onSubmit={this.changeAlias}
       >
         <DialogContent>
           <p id="change-repository-alias-description">
-            Choose a new alias for the repository "{nameOf(repository)}".{' '}
+            レポジトリ "{nameOf(repository)}"
+            のための、新しいエイリアスを選んでください。{' '}
           </p>
           <p>
             <TextBox
@@ -53,14 +52,14 @@ export class ChangeRepositoryAlias extends React.Component<
           </p>
           {repository.gitHubRepository !== null && (
             <p className="description">
-              This will not affect the original repository name on GitHub.
+              この操作は、GitHub 上のオリジナルレポジトリには影響しません。
             </p>
           )}
         </DialogContent>
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? `${verb} Alias` : `${verb} alias`}
+            okButtonText={`${verb} alias`}
             okButtonDisabled={this.state.newAlias.length === 0}
           />
         </DialogFooter>

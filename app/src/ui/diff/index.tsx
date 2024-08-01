@@ -179,11 +179,11 @@ export class Diff extends React.Component<IDiffProps, IDiffState> {
         <img src={NoDiffImage} className="blankslate-image" alt="" />
         <div className="description">
           <p>デフォルトで表示するには、差分が大きすぎます。</p>
-          <p>表示を試みることはできますが、パフォーマンスに影響が出る場合があります。</p>
+          <p>
+            表示を試みることはできますが、パフォーマンスに影響が出る場合があります。
+          </p>
         </div>
-        <Button onClick={this.showLargeDiff}>
-          {__DARWIN__ ? 'Show Diff' : 'Show diff'}
-        </Button>
+        <Button onClick={this.showLargeDiff}>差分を表示する</Button>
       </div>
     )
   }

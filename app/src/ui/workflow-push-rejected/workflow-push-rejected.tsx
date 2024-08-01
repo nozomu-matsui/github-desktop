@@ -6,7 +6,7 @@ import { RepositoryWithGitHubRepository } from '../../models/repository'
 import { OkCancelButtonGroup } from '../dialog/ok-cancel-button-group'
 import { SignInResult } from '../../lib/stores'
 
-const okButtonText = __DARWIN__ ? 'Continue in Browser' : 'Continue in browser'
+const okButtonText = 'ブラウザーで続ける'
 
 interface IWorkflowPushRejectedDialogProps {
   readonly rejectedPath: string
@@ -48,7 +48,8 @@ export class WorkflowPushRejectedDialog extends React.Component<
             プッシュするには、パーミッションの追加が必要です。
           </p>
           <p>
-            ワークフローファイルを更新するために、GitHub Desktop の権限を許可しますか？
+            ワークフローファイルを更新するために、GitHub Desktop
+            の権限を許可しますか？
           </p>
         </DialogContent>
         <DialogFooter>

@@ -37,11 +37,9 @@ interface ISignInState {
   readonly otpToken: string
 }
 
-const SignInWithBrowserTitle = __DARWIN__
-  ? 'Sign in Using Your Browser'
-  : 'Sign in using your browser'
+const SignInWithBrowserTitle = 'ブラウザーを使ってサインイン'
 
-const DefaultTitle = 'Sign in'
+const DefaultTitle = 'サインイン'
 
 export class SignIn extends React.Component<ISignInProps, ISignInState> {
   private readonly dialogRef = React.createRef<Dialog>()
@@ -149,24 +147,22 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     switch (state.kind) {
       case SignInStep.EndpointEntry:
         disableSubmit = this.state.endpoint.length === 0
-        primaryButtonText = 'Continue'
+        primaryButtonText = 'コンティニュー'
         break
       case SignInStep.TwoFactorAuthentication:
         // ensure user has entered non-whitespace characters
         const codeProvided = /\S+/.test(this.state.otpToken)
         disableSubmit = !codeProvided
-        primaryButtonText = 'Sign in'
+        primaryButtonText = 'サインイン'
         break
       case SignInStep.Authentication:
         if (!state.supportsBasicAuth) {
-          primaryButtonText = __DARWIN__
-            ? 'Continue With Browser'
-            : 'Continue with browser'
+          primaryButtonText = 'ブラウザーで続ける'
         } else {
           const validUserName = this.state.username.length > 0
           const validPassword = this.state.password.length > 0
           disableSubmit = !validUserName || !validPassword
-          primaryButtonText = 'Sign in'
+          primaryButtonText = 'サインイン'
         }
         break
       default:
@@ -203,7 +199,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     const credentialHelperInfo =
       this.props.isCredentialHelperSignIn && this.props.credentialHelperUrl ? (
         <p>
-          Git requesting credentials to access{' '}
+          Git が署名へのアクセスを要求しています。{' '}
           <Ref>{this.props.credentialHelperUrl}</Ref>.
         </p>
       ) : undefined
@@ -213,9 +209,9 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
         <DialogContent>
           {credentialHelperInfo}
           <p>
-            Your browser will redirect you back to GitHub Desktop once you've
-            signed in. If your browser asks for your permission to launch GitHub
-            Desktop please allow it to.
+            サインインを完了したら、ブラウザーは GitHub Desktop
+            にリダイレクトします。 ブラウザーが GitHub Desktop
+            の起動を求めたら、許可してください。
           </p>
         </DialogContent>
       )
@@ -234,7 +230,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
             disabled={disableSubmit}
             role="link"
           >
-            Sign in using your browser
+            ブラウザーを使ってサインイン
             <Octicon symbol={octicons.linkExternal} />
           </Button>
         </Row>
@@ -260,7 +256,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
             className="forgot-password-link-sign-in"
             uri={state.forgotPasswordUrl}
           >
-            Forgot password?
+            パスワードを忘れましたか？
           </LinkButton>
         </Row>
       </DialogContent>

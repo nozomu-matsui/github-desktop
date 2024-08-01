@@ -413,16 +413,12 @@ export class ChangesList extends React.Component<
       this.props.conflictState !== null ||
       hasConflictedFiles(this.props.workingDirectory)
 
-    const stashAllChangesLabel = __DARWIN__
-      ? 'Stash All Changes'
-      : 'Stash all changes'
-    const confirmStashAllChangesLabel = __DARWIN__
-      ? 'Stash All Changes…'
-      : 'Stash all changes…'
+    const stashAllChangesLabel = 'すべての変更をスタッシュ'
+    const confirmStashAllChangesLabel = 'すべての変更をスタッシュ...'
 
     const items: IMenuItem[] = [
       {
-        label: __DARWIN__ ? 'Discard All Changes…' : 'Discard all changes…',
+        label: 'すべての変更を破棄...',
         action: this.onDiscardAllChanges,
         enabled: hasLocalChanges,
       },
@@ -592,7 +588,7 @@ export class ChangesList extends React.Component<
       }
     } else if (paths.length > 1) {
       items.push({
-        label: `選択したファイル ${paths.length} の変更を無視 (.gitignore に追加)`,          
+        label: `選択したファイル ${paths.length} の変更を無視 (.gitignore に追加)`,
         action: () => {
           // Filter out any .gitignores that happens to be selected, ignoring
           // those doesn't make sense.

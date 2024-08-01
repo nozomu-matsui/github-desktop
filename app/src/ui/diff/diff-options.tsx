@@ -167,14 +167,11 @@ export class DiffOptions extends React.Component<
               : CheckboxValue.Off
           }
           onChange={this.onHideWhitespaceChangesChanged}
-          label={
-            __DARWIN__ ? 'Hide Whitespace Changes' : 'Hide whitespace changes'
-          }
+          label="ホワイトスペースの変更を表示しない"
         />
         {this.props.isInteractiveDiff && (
           <p className="secondary-text">
-            Interacting with individual lines or hunks will be disabled while
-            hiding whitespace.
+            個別の行やハンクのやりとりの際には、ホワイトスペースの変更は表示されます。
           </p>
         )}
       </fieldset>

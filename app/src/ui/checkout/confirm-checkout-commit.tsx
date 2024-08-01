@@ -36,7 +36,7 @@ export class ConfirmCheckoutCommitDialog extends React.Component<
   }
 
   public render() {
-    const title = __DARWIN__ ? 'Checkout Commit?' : 'Checkout commit?'
+    const title = 'コミットをチェックアウト'
 
     return (
       <Dialog

@@ -31,7 +31,7 @@ export class OverwriteStash extends React.Component<
   }
 
   public render() {
-    const title = __DARWIN__ ? 'Overwrite Stash?' : 'Overwrite stash?'
+    const title = 'スタッシュを上書きしますか？'
 
     return (
       <Dialog
@@ -47,8 +47,8 @@ export class OverwriteStash extends React.Component<
       >
         <DialogContent>
           <Row id="overwrite-stash-warning-message">
-            Are you sure you want to proceed? This will overwrite your existing
-            stash with your current changes.
+            すでにスタッシュしている変更を、今の変更で上書きします。
+            本当に上書きしますか？
           </Row>
         </DialogContent>
         <DialogFooter>

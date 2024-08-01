@@ -97,13 +97,9 @@ export class PullRequestComment extends React.Component<
     let okButtonTitle: undefined | string = undefined
 
     if (shouldChangeRepository) {
-      okButtonTitle = __DARWIN__
-        ? 'Switch to Repository and Pull Request'
-        : 'Switch to repository and pull request'
+      okButtonTitle = 'レポジトリを切り替えて、プルリクエスト'
     } else if (shouldCheckoutBranch) {
-      okButtonTitle = __DARWIN__
-        ? 'Switch to Pull Request'
-        : 'Switch to pull request'
+      okButtonTitle = 'プルリクエストへ切り替え'
     }
 
     const okCancelButtonGroup = (
@@ -119,7 +115,7 @@ export class PullRequestComment extends React.Component<
       />
     )
 
-    const openInBrowserText = __DARWIN__ ? 'Open in Browser' : 'Open in browser'
+    const openInBrowserText = 'ブラウザーで開く'
 
     return (
       <Row>

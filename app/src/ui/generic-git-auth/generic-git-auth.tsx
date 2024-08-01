@@ -46,7 +46,7 @@ export class GenericGitAuthentication extends React.Component<
     return (
       <Dialog
         id="generic-git-auth"
-        title={__DARWIN__ ? `Authentication Failed` : `Authentication failed`}
+        title="認証に失敗しました"
         onDismissed={this.props.onDismiss}
         onSubmit={this.save}
         role="alertdialog"
@@ -54,16 +54,16 @@ export class GenericGitAuthentication extends React.Component<
       >
         <DialogContent>
           <p id="generic-git-auth-error">
-            We were unable to authenticate with{' '}
-            <Ref>{this.props.remoteUrl}</Ref>. Please enter{' '}
+            <Ref>{this.props.remoteUrl}</Ref>
+            が認証に失敗しました。{' '}
             {this.props.username ? (
               <>
-                the password for the user <Ref>{this.props.username}</Ref>
+                ユーザ <Ref>{this.props.username}</Ref> のパスワード
               </>
             ) : (
-              'your username and password'
+              'あなたのユーザ名 ＆ パスワード'
             )}{' '}
-            to try again.
+            を再度入力してください。
           </p>
 
           {this.props.username === undefined && (
@@ -88,13 +88,12 @@ export class GenericGitAuthentication extends React.Component<
 
           <Row>
             <div id="generic-git-auth-password-description">
-              Depending on your repository's hosting service, you might need to
-              use a Personal Access Token (PAT) as your password. Learn more
-              about creating a PAT in our{' '}
+              レポジトリのホスティングサービスによっては、パーソナルアクセストークンをパスワードとして使う必要があるかも知れません。
+              パーソナルアクセストークンの生成方法については{' '}
               <LinkButton uri="https://github.com/desktop/desktop/tree/development/docs/integrations">
-                integration docs
+                インテグレーションドキュメント
               </LinkButton>
-              .
+              をご覧ください。
             </div>
           </Row>
         </DialogContent>

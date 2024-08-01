@@ -34,7 +34,7 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
     return (
       <Dialog
         id="initialize-lfs"
-        title="Initialize Git LFS"
+        title="Git LFS を初期化する"
         backdropDismissable={false}
         onSubmit={this.onInitialize}
         onDismissed={this.props.onDismissed}
@@ -43,8 +43,8 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Initialize Git LFS"
-            cancelButtonText={__DARWIN__ ? 'Not Now' : 'Not now'}
+            okButtonText="Git LFS を初期化する"
+            cancelButtonText="今はしない"
             onCancelButtonClick={this.props.onDismissed}
           />
         </DialogFooter>
@@ -61,24 +61,18 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
     if (this.props.repositories.length > MaxRepositoriesToList) {
       return (
         <p>
-          {this.props.repositories.length} repositories use{' '}
-          <LinkButton uri={LFSURL}>Git LFS</LinkButton>. To contribute to them,
-          Git LFS must first be initialized. Would you like to do so now?
+          レポジトリ {this.props.repositories.length} は{' '}
+          <LinkButton uri={LFSURL}>Git LFS</LinkButton> を使います。
+          そのため、Git LFS は初回のみ初期化が必要です。 今、初期化しますか？
         </p>
       )
     } else {
-      const plural = this.props.repositories.length !== 1
-      const pluralizedRepositories = plural
-        ? 'The repositories use'
-        : 'This repository uses'
-      const pluralizedUse = plural ? 'them' : 'it'
       return (
         <div>
           <p>
-            {pluralizedRepositories}{' '}
-            <LinkButton uri={LFSURL}>Git LFS</LinkButton>. To contribute to{' '}
-            {pluralizedUse}, Git LFS must first be initialized. Would you like
-            to do so now?
+            レポジトリは <LinkButton uri={LFSURL}>Git LFS</LinkButton>{' '}
+            を使います。 そのため、Git LFS
+            は初回のみ初期化が必要です。今、初期化しますか？
           </p>
           <ul>
             {this.props.repositories.map(r => (

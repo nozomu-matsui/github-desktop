@@ -612,9 +612,7 @@ export class CreateRepository extends React.Component<
     return (
       <Dialog
         id="create-repository"
-        title={
-          __DARWIN__ ? 'Create a New Repository' : 'Create a new repository'
-        }
+        title="新しいレポジトリを作成"
         loading={this.state.creating}
         onSubmit={this.createRepository}
         onDismissed={this.props.onDismissed}

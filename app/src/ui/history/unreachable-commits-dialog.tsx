@@ -130,23 +130,19 @@ export class UnreachableCommitsDialog extends React.Component<
   }
 
   private renderUnreachableCommitsMessage = () => {
-    const count = this.getShasToDisplay().length
-    const commitsPluralized = count > 1 ? 'commits' : 'commit'
-    const pronounPluralized = count > 1 ? `they're` : `it's`
     return (
       <div className="message">
-        You will{' '}
+        コミットからの変更が
         {this.state.selectedTab === UnreachableCommitsTab.Unreachable
-          ? 'not'
-          : ''}{' '}
-        see changes from the following {commitsPluralized} because{' '}
-        {pronounPluralized}{' '}
+          ? 'ありません'
+          : 'あります'}{' '}
+        これは、最新コミットの祖先パスが選択に
         {this.state.selectedTab === UnreachableCommitsTab.Unreachable
-          ? 'not'
-          : ''}{' '}
-        in the ancestry path of the most recent commit in your selection.{' '}
+          ? 'ない'
+          : 'ある'}{' '}
+        からです。
         <LinkButton uri="https://github.com/desktop/desktop/blob/development/docs/learn-more/unreachable-commits.md">
-          Learn more about unreachable commits.
+          さらに詳しく
         </LinkButton>
       </div>
     )
@@ -156,7 +152,7 @@ export class UnreachableCommitsDialog extends React.Component<
     return (
       <Dialog
         className="unreachable-commits"
-        title={__DARWIN__ ? 'Commit Reachability' : 'Commit reachability'}
+        title="コミット リーチャビリティ"
         onSubmit={this.props.onDismissed}
         onDismissed={this.props.onDismissed}
       >

@@ -37,7 +37,7 @@ export class RepoRulesMetadataFailureList extends React.Component<IRepoRulesMeta
       endText = '.'
     }
 
-    const rulesText = __DARWIN__ ? 'Rules' : 'rules'
+    const rulesText = 'ルール'
 
     return (
       <div className="repo-rules-failure-list-component">

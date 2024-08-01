@@ -5,7 +5,7 @@ import { OkCancelButtonGroup } from '../dialog/ok-cancel-button-group'
 import { RetryAction } from '../../models/retry-actions'
 import { SignInResult } from '../../lib/stores'
 
-const okButtonText = __DARWIN__ ? 'Continue in Browser' : 'Continue in browser'
+const okButtonText = 'ブラウザーで続ける'
 
 interface ISAMLReauthRequiredDialogProps {
   readonly dispatcher: Dispatcher
@@ -37,9 +37,7 @@ export class SAMLReauthRequiredDialog extends React.Component<
   public render() {
     return (
       <Dialog
-        title={
-          __DARWIN__ ? 'Re-authorization Required' : 'Re-authorization required'
-        }
+        title="再度認証が必要です"
         loading={this.state.loading}
         onDismissed={this.props.onDismissed}
         onSubmit={this.onSignIn}

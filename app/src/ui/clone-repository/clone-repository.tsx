@@ -249,7 +249,7 @@ export class CloneRepository extends React.Component<
     return (
       <Dialog
         className="clone-repository"
-        title={__DARWIN__ ? 'Clone a Repository' : 'Clone a repository'}
+        title="レポジトリをクローン"
         onSubmit={this.clone}
         onDismissed={this.props.onDismissed}
         loading={this.state.loading}
@@ -486,13 +486,14 @@ export class CloneRepository extends React.Component<
   }
 
   private renderSignIn(tab: CloneRepositoryTab) {
-    const signInTitle = __DARWIN__ ? 'Sign In' : 'Sign in'
+    const signInTitle = 'サインイン'
     switch (tab) {
       case CloneRepositoryTab.DotCom:
         return (
           <CallToAction actionTitle={signInTitle} onAction={this.signInDotCom}>
             <div>
-              Sign in to your GitHub.com account to access your repositories.
+              GitHub.com
+              アカウントにサインインして、レポジトリにアクセスしましょう。
             </div>
           </CallToAction>
         )
@@ -503,8 +504,8 @@ export class CloneRepository extends React.Component<
             onAction={this.signInEnterprise}
           >
             <div>
-              If you have a GitHub Enterprise or AE account at work, sign in to
-              it to get access to your repositories.
+              GitHub Enterprise もしくは AE アカウントにサインインして、
+              レポジトリにアクセスしましょう。
             </div>
           </CallToAction>
         )
@@ -597,8 +598,8 @@ export class CloneRepository extends React.Component<
     const tabState = this.getSelectedTabState()
 
     const path = await showSaveDialog({
-      buttonLabel: 'Select',
-      nameFieldLabel: 'Clone As:',
+      buttonLabel: '選択',
+      nameFieldLabel: 'クローンする:',
       showsTagField: false,
       defaultPath: tabState.path ?? '',
       properties: ['createDirectory'],

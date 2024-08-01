@@ -725,10 +725,10 @@ function getPlaceholderText(state: ICompareState) {
   const { branches, formState } = state
 
   if (!branches.some(b => !b.isDesktopForkRemoteBranch)) {
-    return __DARWIN__ ? 'No Branches to Compare' : 'No branches to compare'
+    return '比較するブランチがありません'
   } else if (formState.kind === HistoryTabMode.History) {
     return '比較するブランチを選択'
- } else {
+  } else {
     return undefined
   }
 }

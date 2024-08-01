@@ -4545,9 +4545,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
               })
             })
 
-            const refreshTitle = __DARWIN__
-              ? 'Refreshing Repository'
-              : 'Refreshing repository'
+            const refreshTitle = 'レポジトリをリフレッシュ'
             const refreshStartProgress = pushWeight + fetchWeight
 
             this.updatePushPullFetchProgress(repository, {

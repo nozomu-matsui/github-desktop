@@ -232,7 +232,7 @@ export class CommitMessageAvatar extends React.Component<
 
     const location = isGitConfigLocal ? 'local' : 'global'
     const locationDesc = isGitConfigLocal ? 'for your repository' : ''
-    const settingsName = __DARWIN__ ? 'settings' : 'options'
+    const settingsName = '設定'
     const settings = isGitConfigLocal ? 'レポジトリ設定' : `git ${settingsName}`
     const buttonText = 'Git 設定を開く'
 
@@ -241,8 +241,8 @@ export class CommitMessageAvatar extends React.Component<
         <p>{user && user.name && `Email: ${user.email}`}</p>
 
         <p>
-          You can update your {location} git configuration {locationDesc} in
-          your {settings}.
+          {location} は、設定 {settings} の Git 設定 {locationDesc}{' '}
+          で変更できます。
         </p>
 
         {!isGitConfigLocal && (

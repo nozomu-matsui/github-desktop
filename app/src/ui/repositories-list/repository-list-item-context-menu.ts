@@ -89,7 +89,7 @@ const buildAliasMenuItems = (
   const verb = repository.alias == null ? '作成' : '変更'
   const items: Array<IMenuItem> = [
     {
-      label: __DARWIN__ ? `${verb} エイリアス` : `${verb} エイリアス`,
+      label: `${verb} エイリアス`,
       action: () => config.onChangeRepositoryAlias(repository),
     },
   ]

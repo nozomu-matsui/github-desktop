@@ -59,10 +59,10 @@ export class WarnForcePushDialog extends React.Component<
             Are you sure you want to {operation.toLowerCase()}?
           </p>
           <p id="warn-force-push-confirmation-message">
-            At the end of the {operation.toLowerCase()} flow, GitHub Desktop
-            will enable you to force push the branch to update the upstream
-            branch. Force pushing will alter the history on the remote and
-            potentially cause problems for others collaborating on this branch.
+            アップストリームのブランチの更新をするため、
+            {operation} フローの終わりでは、GitHub Desktop
+            はブランチへの強制プッシュを可能にします。
+            強制プッシュはリモートのコミット履歴を改変するため、他のコラボレーションに影響を及ぼす可能性があります。
           </p>
           <div>
             <Checkbox
@@ -78,9 +78,7 @@ export class WarnForcePushDialog extends React.Component<
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={`Begin ${
-              __DARWIN__ ? operation : operation.toLowerCase()
-            }`}
+            okButtonText={`${operation} を開始する`}
             onCancelButtonClick={this.props.onDismissed}
           />
         </DialogFooter>

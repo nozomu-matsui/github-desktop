@@ -23,7 +23,7 @@ export function generateBranchContextMenuItems(
   }
 
   items.push({
-    label: __DARWIN__ ? 'Copy Branch Name' : 'Copy branch name',
+    label: 'ブランチ名をコピー',
     action: () => clipboard.writeText(name),
   })
 
@@ -31,7 +31,7 @@ export function generateBranchContextMenuItems(
 
   if (onDeleteBranch !== undefined) {
     items.push({
-      label: 'Delete…',
+      label: '削除...',
       action: () => onDeleteBranch(name),
     })
   }

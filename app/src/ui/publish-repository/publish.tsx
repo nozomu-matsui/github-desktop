@@ -129,7 +129,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
     return (
       <Dialog
         id="publish-repository"
-        title={__DARWIN__ ? 'Publish Repository' : 'Publish repository'}
+        title="レポジトリをパブリッシュ"
         onDismissed={this.props.onDismissed}
         onSubmit={this.publishRepository}
         disabled={this.state.publishing}
@@ -225,7 +225,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
   }
 
   private renderSignInTab(tab: PublishTab) {
-    const signInTitle = __DARWIN__ ? 'Sign In' : 'Sign in'
+    const signInTitle = 'サインイン'
     switch (tab) {
       case PublishTab.DotCom:
         return (
@@ -261,9 +261,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
       return (
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? 'Publish Repository' : 'Publish repository'
-            }
+            okButtonText="レポジトリをパブリッシュ"
             okButtonDisabled={disabled}
           />
         </DialogFooter>

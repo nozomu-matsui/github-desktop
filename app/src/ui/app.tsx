@@ -3000,10 +3000,10 @@ export class App extends React.Component<IAppProps, IAppState> {
       title = alias ?? repository.name
     } else if (this.state.repositories.length > 0) {
       icon = octicons.repo
-      title = __DARWIN__ ? 'Select a Repository' : 'Select a repository'
+      title = 'レポジトリを選択'
     } else {
       icon = octicons.repo
-      title = __DARWIN__ ? 'No Repositories' : 'No repositories'
+      title = 'レポジトリがありません'
     }
 
     const isOpen =

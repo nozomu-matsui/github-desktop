@@ -1404,7 +1404,7 @@ export class SideBySideDiff extends React.Component<
         enabled: selectionLength > 0,
       },
       {
-        label: __DARWIN__ ? 'Select All' : 'Select all',
+        label: 'すべて選択',
         action: () => this.onSelectAll(),
       },
     ]
@@ -1459,7 +1459,7 @@ export class SideBySideDiff extends React.Component<
 
     return this.diffToRestore === null
       ? {
-          label: __DARWIN__ ? 'Expand Whole File' : 'Expand whole file',
+          label: 'ファイル全体を開く',
           action: this.onExpandWholeFile,
           // If there is only one hunk that can't be expanded, disable this item
           enabled:
@@ -1467,9 +1467,7 @@ export class SideBySideDiff extends React.Component<
             diff.hunks[0].expansionType !== DiffHunkExpansionType.None,
         }
       : {
-          label: __DARWIN__
-            ? 'Collapse Expanded Lines'
-            : 'Collapse expanded lines',
+          label: '開いた行を閉じる',
           action: this.onCollapseExpandedLines,
         }
   }

@@ -124,27 +124,21 @@ export class PushBranchCommits extends React.Component<
 
   private renderDialogTitle() {
     if (renderPublishView(this.props.unPushedCommits)) {
-      return __DARWIN__ ? 'Publish Branch?' : 'Publish branch?'
+      return 'ブランチをパブリッシュしますか？'
     }
 
-    return __DARWIN__ ? `Push Local Changes?` : `Push local changes?`
+    return `ローカルの変更をプッシュしますか？`
   }
 
   private renderButtonGroup() {
     if (renderPublishView(this.props.unPushedCommits)) {
-      return (
-        <OkCancelButtonGroup
-          okButtonText={__DARWIN__ ? 'Publish Branch' : 'Publish branch'}
-        />
-      )
+      return <OkCancelButtonGroup okButtonText="ブランチをパブリッシュする" />
     }
 
     return (
       <OkCancelButtonGroup
-        okButtonText={__DARWIN__ ? 'Push Commits' : 'Push commits'}
-        cancelButtonText={
-          __DARWIN__ ? 'Create Without Pushing' : 'Create without pushing'
-        }
+        okButtonText="コミットをプッシュする"
+        cancelButtonText="プッシュしないで作成する"
         onCancelButtonClick={this.onCreateWithoutPushButtonClick}
       />
     )

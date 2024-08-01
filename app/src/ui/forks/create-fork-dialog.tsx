@@ -77,7 +77,7 @@ export class CreateForkDialog extends React.Component<
   public render() {
     return (
       <Dialog
-        title="Do you want to fork this repository?"
+        title="このレポジトリをフォークしますか？"
         onDismissed={this.props.onDismissed}
         onSubmit={this.state.error ? undefined : this.onSubmit}
         dismissDisabled={this.state.loading}
@@ -112,24 +112,20 @@ function renderCreateForkDialogContent(
     <>
       <DialogContent>
         <p>
-          {`It looks like you don’t have write access to `}
           <strong>{repository.gitHubRepository.fullName}</strong>
-          {`. If you should, please check with a repository administrator.`}
+          {` レポジトリのアクセス権限がないようです。必要な場合は、システム管理者に問い合わせてください。 `}
         </p>
         <p>
-          {` Do you want to create a fork of this repository at `}
           <strong>
             {`${account.login}/${repository.gitHubRepository.name}`}
           </strong>
-          {` to continue?`}
+          {` をフォークして続けますか？`}
         </p>
       </DialogContent>
       <DialogFooter>
         <OkCancelButtonGroup
           destructive={true}
-          okButtonText={
-            __DARWIN__ ? 'Fork This Repository' : 'Fork this repository'
-          }
+          okButtonText="このレポジトリをフォークする"
           okButtonDisabled={loading}
           cancelButtonDisabled={loading}
         />
@@ -147,26 +143,24 @@ function renderCreateForkDialogError(
   const suggestion =
     repository.gitHubRepository.htmlURL !== null ? (
       <>
-        {`You can try `}
         <LinkButton uri={repository.gitHubRepository.htmlURL}>
-          creating the fork manually on GitHub
+          GitHub上で 手動フォーク
         </LinkButton>
-        .
+        できます。
       </>
     ) : undefined
   return (
     <>
       <DialogContent>
         <div>
-          {`Creating your fork `}
           <strong>
             {`${account.login}/${repository.gitHubRepository.name}`}
           </strong>
-          {` failed. `}
+          {` フォークが失敗しました。 `}
           {suggestion}
         </div>
         <details>
-          <summary>Error details</summary>
+          <summary>エラー詳細</summary>
           <pre className="error">{error.message}</pre>
         </details>
       </DialogContent>

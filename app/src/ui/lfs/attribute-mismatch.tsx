@@ -59,11 +59,7 @@ export class AttributeMismatch extends React.Component<
     return (
       <Dialog
         id="lfs-attribute-mismatch"
-        title={
-          __DARWIN__
-            ? 'Update Existing Git LFS Filters?'
-            : 'Update existing Git LFS filters?'
-        }
+        title="既存の Git LFS フィルターを更新する"
         onDismissed={this.props.onDismissed}
         onSubmit={this.onSubmit}
       >
@@ -77,10 +73,8 @@ export class AttributeMismatch extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? 'Update Existing Filters' : 'Update existing filters'
-            }
-            cancelButtonText={__DARWIN__ ? 'Not Now' : 'Not now'}
+            okButtonText="既存のフィルターを更新する"
+            cancelButtonText="今はしない"
           />
         </DialogFooter>
       </Dialog>

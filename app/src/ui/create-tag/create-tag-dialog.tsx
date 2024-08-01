@@ -56,7 +56,7 @@ export class CreateTag extends React.Component<
     return (
       <Dialog
         id="create-tag"
-        title={__DARWIN__ ? 'Create a Tag' : 'Create a tag'}
+        title="タグを作成"
         onSubmit={this.createTag}
         onDismissed={this.props.onDismissed}
         loading={this.state.isCreatingTag}
@@ -76,7 +76,7 @@ export class CreateTag extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? 'Create Tag' : 'Create tag'}
+            okButtonText="タグを作成"
             okButtonDisabled={disabled}
           />
         </DialogFooter>
@@ -96,14 +96,14 @@ export class CreateTag extends React.Component<
       return null
     }
 
-    const title = __DARWIN__ ? 'Previous Tags' : 'Previous tags'
+    const title = '前のタグ'
     const lastThreeTags = previousTags.slice(-3)
 
     return (
       <>
         <p>{title}</p>
         {lastThreeTags.length === 0 ? (
-          <p>{`No matches found for '${tagName}'`}</p>
+          <p>{`'${tagName}' に一致するタグはありません。`}</p>
         ) : (
           lastThreeTags.map((item: string, index: number) => (
             <Ref key={index}>{item}</Ref>
@@ -115,9 +115,7 @@ export class CreateTag extends React.Component<
 
   private getCurrentError(): JSX.Element | null {
     if (this.state.tagName.length > MaxTagNameLength) {
-      return (
-        <>The tag name cannot be longer than {MaxTagNameLength} characters</>
-      )
+      return <>タグ名は {MaxTagNameLength} 文字より長くなってはいけません。</>
     }
 
     const alreadyExists =
@@ -125,7 +123,7 @@ export class CreateTag extends React.Component<
     if (alreadyExists) {
       return (
         <>
-          A tag named <Ref>{this.state.tagName}</Ref> already exists
+          <Ref>{this.state.tagName}</Ref> は、すでに存在するタグ名です。
         </>
       )
     }
