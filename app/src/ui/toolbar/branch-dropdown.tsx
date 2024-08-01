@@ -142,15 +142,15 @@ export class BranchDropdown extends React.Component<IBranchDropdownProps> {
       return null
     } else if (tip.kind === TipState.Unborn) {
       title = tip.ref
-      tooltip = `Current branch is ${tip.ref}`
+      tooltip = `選択中のブランチは ${tip.ref} です`
       canOpen = branchesState.allBranches.some(
         b => !b.isDesktopForkRemoteBranch
       )
     } else if (tip.kind === TipState.Detached) {
-      title = `On ${tip.currentSha.substring(0, 7)}`
-      tooltip = 'Currently on a detached HEAD'
+      title = `${tip.currentSha.substring(0, 7)}`
+      tooltip = 'デタッチされた HEAD を選択しています'
       icon = octicons.gitCommit
-      description = 'Detached HEAD'
+      description = 'デタッチされた HEAD'
     } else if (tip.kind === TipState.Valid) {
       title = tooltip = tip.branch.name
     } else {

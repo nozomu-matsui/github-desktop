@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === 'production') {
   const compiler = webpack(rendererConfig)
   const port = getPortOrDefault()
 
-  const message = 'Could not find public path from configuration'
+  const message = '設定パブリックパスがありません'
   server.use(
     devMiddleware(compiler, {
       publicPath: u(

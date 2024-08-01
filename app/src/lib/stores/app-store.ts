@@ -4683,7 +4683,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
           }
         }
 
-        const title = `Pulling ${remote.name}`
+        const title = `${remote.name} をプルしています`
         const kind = 'pull'
         this.updatePushPullFetchProgress(repository, {
           kind,

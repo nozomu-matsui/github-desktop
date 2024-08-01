@@ -195,20 +195,20 @@ export class OpenPullRequestDialog extends React.Component<IOpenPullRequestDialo
     const hasMergeBase = mergeStatus?.kind !== ComputedAction.Invalid
     const message = hasMergeBase ? (
       <>
-        <Ref>{baseBranch.name}</Ref> is up to date with all commits from{' '}
-        <Ref>{currentBranch.name}</Ref>.
+        <Ref>{baseBranch.name}</Ref> は <Ref>{currentBranch.name}</Ref>{' '}
+        の最新と同じ状態です。
       </>
     ) : (
       <>
-        <Ref>{baseBranch.name}</Ref> and <Ref>{currentBranch.name}</Ref> are
-        entirely different commit histories.
+        <Ref>{baseBranch.name}</Ref> と <Ref>{currentBranch.name}</Ref> は
+        コミット履歴がまったく異なります。
       </>
     )
     return (
       <div className="open-pull-request-message">
         <div>
           <Octicon symbol={octicons.gitPullRequest} />
-          <h3>There are no changes.</h3>
+          <h3>変更がありません。</h3>
           {message}
         </div>
       </div>

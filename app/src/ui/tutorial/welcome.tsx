@@ -17,17 +17,17 @@ export class TutorialWelcome extends React.Component {
     return (
       <div id="tutorial-welcome">
         <div className="header">
-          <h1>Welcome to GitHub Desktop</h1>
+          <h1>GitHub Desktop へようこそ！</h1>
           <p>
-            Use this tutorial to get comfortable with Git, GitHub, and GitHub
-            Desktop.
+            Git や GitHub、GitHub Desktop
+            に不慣れな方は、チュートリアルを使ってください。
           </p>
         </div>
         <ul className="definitions">
           <li>
             <img src={CodeImage} alt="Html syntax icon" />
             <p>
-              <strong>Git</strong> is the version control system.
+              <strong>Git</strong> はバージョン管理システムです。
             </p>
           </li>
           <li>
@@ -36,15 +36,15 @@ export class TutorialWelcome extends React.Component {
               alt="People with discussion bubbles overhead"
             />
             <p>
-              <strong>GitHub</strong> is where you store your code and
-              collaborate with others.
+              <strong>GitHub</strong>{' '}
+              は、コードを格納して、他社とコラボレーションするための環境です。
             </p>
           </li>
           <li>
             <img src={CloudServerImage} alt="Server stack with cloud" />
             <p>
-              <strong>GitHub Desktop</strong> helps you work with GitHub
-              locally.
+              <strong>GitHub Desktop</strong> は、GitHub
+              でのローカル作業を支援します。
             </p>
           </li>
         </ul>
