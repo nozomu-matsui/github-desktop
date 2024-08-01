@@ -216,7 +216,7 @@ export class PullRequestFilesChanged extends React.Component<
       gitHubRepository && gitHubRepository.endpoint !== getDotComAPIEndpoint()
 
     items.push({
-      label: `View on GitHub${isEnterprise ? ' Enterprise' : ''}`,
+      label: `GitHub${isEnterprise ? ' Enterprise' : ''} で開く`,
       action: () => this.onViewOnGitHub(file),
       enabled: nonLocalCommitSHA !== null && gitHubRepository !== null,
     })

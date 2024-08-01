@@ -39,16 +39,16 @@ export const generateRepositoryListContextMenu = (
   const items: ReadonlyArray<IMenuItem> = [
     ...buildAliasMenuItems(config),
     {
-      label: __DARWIN__ ? 'Copy Repo Name' : 'Copy repo name',
+      label: 'レポジトリ名をコピー',
       action: () => clipboard.writeText(repository.name),
     },
     {
-      label: __DARWIN__ ? 'Copy Repo Path' : 'Copy repo path',
+      label: 'レポジトリパスをコピー',
       action: () => clipboard.writeText(repository.path),
     },
     { type: 'separator' },
     {
-      label: 'View on GitHub',
+      label: 'GitHub で開く',
       action: () => config.onViewOnGitHub(repository),
       enabled: github,
     },
@@ -69,7 +69,7 @@ export const generateRepositoryListContextMenu = (
     },
     { type: 'separator' },
     {
-      label: config.askForConfirmationOnRemoveRepository ? 'Remove…' : 'Remove',
+      label: config.askForConfirmationOnRemoveRepository ? '削除...' : '削除',
       action: () => config.onRemoveRepository(repository),
     },
   ]
@@ -86,17 +86,17 @@ const buildAliasMenuItems = (
     return []
   }
 
-  const verb = repository.alias == null ? 'Create' : 'Change'
+  const verb = repository.alias == null ? '作成' : '変更'
   const items: Array<IMenuItem> = [
     {
-      label: __DARWIN__ ? `${verb} Alias` : `${verb} alias`,
+      label: __DARWIN__ ? `${verb} エイリアス` : `${verb} エイリアス`,
       action: () => config.onChangeRepositoryAlias(repository),
     },
   ]
 
   if (repository.alias !== null) {
     items.push({
-      label: __DARWIN__ ? 'Remove Alias' : 'Remove alias',
+      label: 'エイリアスを削除',
       action: () => config.onRemoveRepositoryAlias(repository),
     })
   }

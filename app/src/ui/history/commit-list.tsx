@@ -539,9 +539,7 @@ export class CommitList extends React.Component<
     }
 
     const containerWidth = this.containerRef.current?.clientWidth ?? 0
-    const reorderCommitsHintTitle = __DARWIN__
-      ? 'Reorder Commits'
-      : 'Reorder commits'
+    const reorderCommitsHintTitle = 'コミットをリオーダー'
 
     return (
       <Popover
@@ -644,28 +642,28 @@ export class CommitList extends React.Component<
       this.props.canResetToCommits === true && isResettableCommit
     const canBeCheckedOut = row > 0 //Cannot checkout the current commit
 
-    let viewOnGitHubLabel = 'View on GitHub'
+    let viewOnGitHubLabel = 'GitHub で開く'
     const gitHubRepository = this.props.gitHubRepository
 
     if (
       gitHubRepository &&
       gitHubRepository.endpoint !== getDotComAPIEndpoint()
     ) {
-      viewOnGitHubLabel = 'View on GitHub Enterprise'
+      viewOnGitHubLabel = 'GitHub Enterprise で開く'
     }
 
     const items: IMenuItem[] = []
 
     if (canBeAmended) {
       items.push({
-        label: __DARWIN__ ? 'Amend Commit…' : 'Amend commit…',
+        label: 'コミットをアメンド...',
         action: () => this.props.onAmendCommit?.(commit, isLocal),
       })
     }
 
     if (canBeUndone) {
       items.push({
-        label: __DARWIN__ ? 'Undo Commit…' : 'Undo commit…',
+        label: 'コミットをUndo...',
         action: () => {
           if (this.props.onUndoCommit) {
             this.props.onUndoCommit(commit)
@@ -677,7 +675,7 @@ export class CommitList extends React.Component<
 
     if (enableResetToCommit()) {
       items.push({
-        label: __DARWIN__ ? 'Reset to Commit…' : 'Reset to commit…',
+        label: 'コミットへリセット...',
         action: () => {
           if (this.props.onResetToCommit) {
             this.props.onResetToCommit(commit)
@@ -689,7 +687,7 @@ export class CommitList extends React.Component<
 
     if (enableCheckoutCommit()) {
       items.push({
-        label: __DARWIN__ ? 'Checkout Commit' : 'Checkout commit',
+        label: 'コミットをチェックアウト',
         action: () => {
           this.props.onCheckoutCommit?.(commit)
         },
@@ -698,7 +696,7 @@ export class CommitList extends React.Component<
     }
 
     items.push({
-      label: __DARWIN__ ? 'Reorder Commit' : 'Reorder commit',
+      label: 'コミットをリオーダー',
       action: () => {
         this.props.onKeyboardReorder?.([commit])
       },
@@ -707,9 +705,7 @@ export class CommitList extends React.Component<
 
     items.push(
       {
-        label: __DARWIN__
-          ? 'Revert Changes in Commit'
-          : 'Revert changes in commit',
+        label: 'コミットの変更をリバート',
         action: () => {
           if (this.props.onRevertCommit) {
             this.props.onRevertCommit(commit)
@@ -719,9 +715,7 @@ export class CommitList extends React.Component<
       },
       { type: 'separator' },
       {
-        label: __DARWIN__
-          ? 'Create Branch from Commit'
-          : 'Create branch from commit',
+        label: 'コミットからブランチを作成',
         action: () => {
           if (this.props.onCreateBranch) {
             this.props.onCreateBranch(commit)
@@ -729,7 +723,7 @@ export class CommitList extends React.Component<
         },
       },
       {
-        label: 'Create Tag…',
+        label: 'タグを作成...',
         action: () => this.props.onCreateTag?.(commit.sha),
         enabled: this.props.onCreateTag !== undefined,
       }
@@ -745,17 +739,17 @@ export class CommitList extends React.Component<
         deleteTagsMenuItem
       )
     }
-    const darwinTagsLabel = commit.tags.length > 1 ? 'Copy Tags' : 'Copy Tag'
-    const windowTagsLabel = commit.tags.length > 1 ? 'Copy tags' : 'Copy tag'
+    const darwinTagsLabel = 'タグをコピー'
+    const windowTagsLabel = 'タグをコピー'
     items.push(
       {
-        label: __DARWIN__ ? 'Cherry-pick Commit…' : 'Cherry-pick commit…',
+        label: 'コミットをチェリーピック...',
         action: () => this.props.onCherryPick?.(this.selectedCommits),
         enabled: this.canCherryPick(),
       },
       { type: 'separator' },
       {
-        label: 'Copy SHA',
+        label: 'SHA をコピー',
         action: () => clipboard.writeText(commit.sha),
       },
       {
