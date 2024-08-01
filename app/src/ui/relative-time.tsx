@@ -69,7 +69,7 @@ export function getRelativeTimeInfoFromDate(
   } else if (duration < MINUTE) {
     return {
       absoluteText,
-      relativeText: 'just now',
+      relativeText: 'たった今',
       duration: MINUTE - duration,
     }
   } else if (duration < HOUR) {
