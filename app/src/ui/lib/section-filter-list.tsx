@@ -249,7 +249,7 @@ export class SectionFilterList<
         ref={this.onTextBoxRef}
         displayClearButton={true}
         autoFocus={true}
-        placeholder={this.props.placeholderText || 'Filter'}
+        placeholder={this.props.placeholderText || 'フィルター'}
         className="filter-list-filter-field"
         onValueChanged={this.onFilterValueChanged}
         onEnterPressed={this.onEnterPressed}

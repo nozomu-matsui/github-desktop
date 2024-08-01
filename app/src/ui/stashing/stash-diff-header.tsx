@@ -40,21 +40,21 @@ export class StashDiffHeader extends React.Component<
 
     return (
       <div className="header">
-        <h3>Stashed changes</h3>
+        <h3>スタッシュした変更</h3>
         <div className="row">
           <OkCancelButtonGroup
-            okButtonText="Restore"
+            okButtonText="リストア"
             okButtonDisabled={isRestoring || isDiscarding}
             onOkButtonClick={this.onRestoreClick}
-            cancelButtonText="Discard"
+            cancelButtonText="破棄"
             cancelButtonDisabled={isRestoring || isDiscarding}
             onCancelButtonClick={this.onDiscardClick}
             okButtonAriaDescribedBy="restore-description"
           />
           <div className="explanatory-text" id="restore-description">
             <span className="text">
-              <strong>Restore</strong> will move your stashed files to the
-              Changes list.
+              <strong>リストア</strong>{' '}
+              することで、スタッシュしたファイルが変更ファイル一覧に移動します。
             </span>
           </div>
         </div>

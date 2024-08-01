@@ -343,7 +343,7 @@ export class ConfigureGitUser extends React.Component<
         <div className="sign-in-form-inputs">
           <TextBox
             label="Name"
-            placeholder="Your Name"
+            placeholder="あなたの名前"
             onValueChanged={this.onNameChange}
             value={
               this.state.useGitHubAuthorInfo

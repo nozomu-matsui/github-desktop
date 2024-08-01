@@ -1547,11 +1547,11 @@ export class SideBySideDiff extends React.Component<
     let type = ''
 
     if (rangeType === DiffRangeType.Additions) {
-      type = __DARWIN__ ? 'Added' : 'added'
+      type = '追加'
     } else if (rangeType === DiffRangeType.Deletions) {
-      type = __DARWIN__ ? 'Removed' : 'removed'
+      type = '削除'
     } else if (rangeType === DiffRangeType.Mixed) {
-      type = __DARWIN__ ? 'Modified' : 'modified'
+      type = '変更'
     } else {
       assertNever(rangeType, `Invalid range type: ${rangeType}`)
     }

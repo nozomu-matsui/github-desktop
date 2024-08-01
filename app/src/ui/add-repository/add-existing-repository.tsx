@@ -168,12 +168,13 @@ export class AddExistingRepository extends React.Component<
             <>
               <Ref>{repositoryUnsafePath}</Ref>
             </>
-          )}{' '} にあるレポジトリは、他のユーザがオーナーのようです。
+          )}{' '}
+          にあるレポジトリは、他のユーザがオーナーのようです。
           信頼できないレポジトリを追加すると、レポジトリ中のファイルが実行される場合があります。
         </p>
         <p>
           フォルダのオーナーが信頼できる場合は、{' '}
-          <LinkButton onClick={this.onTrustDirectory}>            
+          <LinkButton onClick={this.onTrustDirectory}>
             このフォルダにエクセプションを追加
           </LinkButton>{' '}
           することで、使用できます。
@@ -207,7 +208,7 @@ export class AddExistingRepository extends React.Component<
     )
 
     const screenReaderMessage =
-      'This directory does not appear to be a Git repository. Would you like to create a repository here instead?'
+      'このフォルダは Git レポジトリではないようです。このフォルダにレポジトリを新規作成しますか？'
 
     return { screenReaderMessage, displayedMessage }
   }
@@ -254,7 +255,7 @@ export class AddExistingRepository extends React.Component<
             <TextBox
               value={this.state.path}
               label="ローカルパス"
-              placeholder="repository path"
+              placeholder="レポジトリパス"
               onValueChanged={this.onPathChanged}
               ariaDescribedBy="add-existing-repository-path-error"
             />

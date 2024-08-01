@@ -645,8 +645,8 @@ export class CreateRepository extends React.Component<
           <Row>
             <TextBox
               value={this.state.path ?? ''}
-              label={__DARWIN__ ? 'Local Path' : 'Local path'}
-              placeholder="repository path"
+              label="ローカルパス"
+              placeholder="レポジトリパス"
               onValueChanged={this.onPathChanged}
               disabled={readOnlyPath || loadingDefaultDir}
               ariaDescribedBy="existing-repository-path-error"
@@ -663,7 +663,7 @@ export class CreateRepository extends React.Component<
 
           <Row>
             <Checkbox
-              label="Initialize this repository with a README"
+              label="このレポジトリをREADME付きで初期化する"
               value={
                 this.state.createWithReadme
                   ? CheckboxValue.On
@@ -681,9 +681,7 @@ export class CreateRepository extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? 'Create Repository' : 'Create repository'
-            }
+            okButtonText="レポジトリを新規作成"
             okButtonDisabled={disabled || loadingDefaultDir}
           />
         </DialogFooter>
