@@ -231,7 +231,8 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
         return (
           <CallToAction actionTitle={signInTitle} onAction={this.signInDotCom}>
             <div>
-              Sign in to your GitHub.com account to access your repositories.
+              GitHub.com
+              アカウントにサインインすると、レポジトリにアクセスできます。
             </div>
           </CallToAction>
         )
@@ -242,8 +243,8 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
             onAction={this.signInEnterprise}
           >
             <div>
-              If you have a GitHub Enterprise or AE account at work, sign in to
-              it to get access to your repositories.
+              GitHub Enterprise もしくは AE
+              アカウントにサインインすると、レポジトリへアクセスできます。
             </div>
           </CallToAction>
         )
