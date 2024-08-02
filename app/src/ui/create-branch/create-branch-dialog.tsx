@@ -611,13 +611,13 @@ export class CreateBranch extends React.Component<
         {
           title: upstreamDefaultBranch.name,
           description:
-            "The default branch of the upstream repository. Pick this to start on something new that's not dependent on your current branch.",
+            'アップストリームレポジトリのデフォルトブランチです。選択中のブランチに無関係な、新しい作業を開始する場合は、こちらを選択してください。',
           key: StartPoint.UpstreamDefaultBranch,
         },
         {
           title: currentBranchName,
           description:
-            'The currently checked out branch. Pick this if you need to build on work done on this branch.',
+            '選択中のチェックアウトされたブランチです。選択中のブランチ作業を完了させたい場合は、こちらを選択してください。',
           key: StartPoint.CurrentBranch,
         },
       ]
@@ -673,7 +673,7 @@ export class CreateBranch extends React.Component<
   ) => (
     <Row>
       <VerticalSegmentedControl
-        label="Create branch based on…"
+        label="新しいブランチを選択したブランチをペースにして作成..."
         items={items}
         selectedKey={selectedValue}
         onSelectionChanged={this.onBaseBranchChanged}

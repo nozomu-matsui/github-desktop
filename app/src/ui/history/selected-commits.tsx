@@ -321,10 +321,9 @@ export class SelectedCommits extends React.Component<
     }
 
     const fileCount = this.props.changesetData.files.length
-    const filesPlural = fileCount === 1 ? 'file' : 'files'
     return (
       <div className="file-list-header">
-        {fileCount} changed {filesPlural}
+        {fileCount} ファイルが更新されました
       </div>
     )
   }

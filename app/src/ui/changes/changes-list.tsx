@@ -961,14 +961,12 @@ export class ChangesList extends React.Component<
     const { workingDirectory, rebaseConflictState, isCommitting } = this.props
     const { files } = workingDirectory
 
-    const filesPlural = files.length === 1 ? 'file' : 'files'
-    const filesDescription = `${files.length} changed ${filesPlural}`
+    const filesDescription = `${files.length} ファイルの変更`
 
     const selectedChangeCount = files.filter(
       file => file.selection.getSelectionType() !== DiffSelectionType.None
     ).length
-    const totalFilesPlural = files.length === 1 ? 'file' : 'files'
-    const selectedChangesDescription = `${selectedChangeCount}/${files.length} changed ${totalFilesPlural} included`
+    const selectedChangesDescription = `選択 ${selectedChangeCount} ファイル / 更新 ${files.length} ファイル`
 
     const includeAllValue = getIncludeAllValue(
       workingDirectory,

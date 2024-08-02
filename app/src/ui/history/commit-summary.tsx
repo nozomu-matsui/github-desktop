@@ -529,8 +529,7 @@ export class CommitSummary extends React.Component<
 
   private renderChangedFilesDescription = () => {
     const fileCount = this.props.changesetData.files.length
-    const filesPlural = fileCount === 1 ? 'file' : 'files'
-    const filesShortDescription = `${fileCount} changed ${filesPlural}`
+    const filesShortDescription = `${fileCount} ファイルの更新`
 
     let filesAdded = 0
     let filesModified = 0

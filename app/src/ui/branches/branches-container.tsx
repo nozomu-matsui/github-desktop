@@ -200,7 +200,7 @@ export class BranchesContainer extends React.Component<
         selectedIndex={this.props.selectedTab}
         allowDragOverSwitching={true}
       >
-        <span id="branches-tab">Branches</span>
+        <span id="branches-tab">ブランチ</span>
         <span id="pull-requests-tab" className="pull-request-tab">
           プルリクエスト
           {this.renderOpenPullRequestsBubble()}

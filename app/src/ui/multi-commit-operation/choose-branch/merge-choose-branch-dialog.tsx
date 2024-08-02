@@ -210,11 +210,10 @@ export class MergeChooseBranchDialog extends React.Component<
     currentBranch: Branch,
     count: number
   ) {
-    const pluralized = count === 1 ? 'file' : 'files'
     return (
       <React.Fragment>
         There will be
-        <strong>{` ${count} ファイルがコンフリクトconflicted ${pluralized}`}</strong>
+        <strong>{` ${count} ファイルがコンフリクトしました`}</strong>
         {` when merging `}
         <strong>{branch.name}</strong>
         {` into `}

@@ -16,7 +16,7 @@ export function generateBranchContextMenuItems(
 
   if (onRenameBranch !== undefined) {
     items.push({
-      label: 'Rename…',
+      label: 'リネーム...',
       action: () => onRenameBranch(name),
       enabled: isLocal,
     })

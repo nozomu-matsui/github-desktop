@@ -30,7 +30,9 @@ function readPackedRefsFile(gitDir: string, ref: string) {
   const packedRefMatch = refRe.exec(packedRefsContents)
 
   if (!packedRefMatch) {
-    throw new Error(`Could not find ref entry in .git/packed-refs file: ${ref}`)
+    throw new Error(
+      `.git/packed-refs file: ${ref} に ref エントリーが見つかりません`
+    )
   }
   return packedRefMatch[1]
 }

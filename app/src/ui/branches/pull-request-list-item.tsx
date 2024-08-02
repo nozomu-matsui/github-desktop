@@ -78,7 +78,7 @@ export class PullRequestListItem extends React.Component<
     }
 
     const timeAgo = formatRelative(this.props.created.getTime() - Date.now())
-    const subtitle = `#${this.props.number} が ${timeAgo} に ${this.props.author} によってオープンされました`
+    const subtitle = `#${this.props.number} ${this.props.author} が ${timeAgo} にオープン`
 
     return this.props.draft ? `${subtitle} • ドラフト` : subtitle
   }
