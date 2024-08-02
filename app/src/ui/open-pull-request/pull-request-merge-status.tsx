@@ -24,14 +24,14 @@ export class PullRequestMergeStatus extends React.Component<IPullRequestMergeSta
       case ComputedAction.Loading:
         return (
           <span className="pr-merge-status-loading">
-            <strong>Checking mergeability&hellip;</strong> Don’t worry, you can
-            still create the pull request.
+            <strong>マージ可能かチェックしています&hellip;</strong>
+            心配ありません。それでも、プルリクエストは作成できます。
           </span>
         )
       case ComputedAction.Invalid:
         return (
           <span className="pr-merge-status-invalid">
-            <strong>Error checking merge status.</strong> Unable to merge
+            <strong>マージ可能チェックエラー</strong> マージできません。
             unrelated histories in this repository
           </span>
         )
@@ -39,18 +39,18 @@ export class PullRequestMergeStatus extends React.Component<IPullRequestMergeSta
         return (
           <span className="pr-merge-status-clean">
             <strong>
-              <Octicon symbol={octicons.check} /> Able to merge.
+              <Octicon symbol={octicons.check} /> マージできます。
             </strong>{' '}
-            These branches can be automatically merged.
+            これらのブランチは自動的にマージできます。
           </span>
         )
       case ComputedAction.Conflicts:
         return (
           <span className="pr-merge-status-conflicts">
             <strong>
-              <Octicon symbol={octicons.x} /> Can't automatically merge.
+              <Octicon symbol={octicons.x} /> 自動的にマージできません。
             </strong>{' '}
-            Don’t worry, you can still create the pull request.
+            心配ありません。それでも、プルリクエストは作成できます。
           </span>
         )
       default:

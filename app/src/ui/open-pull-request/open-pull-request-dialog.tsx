@@ -251,7 +251,7 @@ export class OpenPullRequestDialog extends React.Component<IOpenPullRequestDialo
         {currentBranchHasPullRequest && (
           <Octicon symbol={octicons.linkExternal} />
         )}
-        {`プルリクエスト`}
+        {`プルリクエストを作成する`}
       </>
     )
 
@@ -262,7 +262,7 @@ export class OpenPullRequestDialog extends React.Component<IOpenPullRequestDialo
         <OkCancelButtonGroup
           okButtonText={okButton}
           okButtonTitle={buttonTitle}
-          cancelButtonText="Cancel"
+          cancelButtonText="キャンセル"
           okButtonDisabled={commitSHAs === null || commitSHAs.length === 0}
         />
       </DialogFooter>

@@ -85,7 +85,6 @@ export class OpenPullRequestDialogHeader extends React.Component<
       onBranchChange,
       onDismissed,
     } = this.props
-    const commits = `${commitCount} commit${commitCount > 1 ? 's' : ''}`
 
     return (
       <DialogHeader
@@ -95,7 +94,7 @@ export class OpenPullRequestDialogHeader extends React.Component<
       >
         <div className="break"></div>
         <div className="base-branch-details">
-          コミット {commits} を{' '}
+          ${commitCount} コミットを{' '}
           <BranchSelect
             branch={baseBranch}
             defaultBranch={defaultBranch}

@@ -109,7 +109,7 @@ export class DiffOptions extends React.Component<
   }
 
   private renderPopover() {
-    const header = `Diff 設定`
+    const header = `差分表示設定`
     return (
       <Popover
         ariaLabelledby="diff-options-popover-header"
@@ -135,21 +135,17 @@ export class DiffOptions extends React.Component<
   private renderShowSideBySide() {
     return (
       <fieldset role="radiogroup">
-        <legend>Diff display</legend>
+        <legend>差分表示</legend>
         <RadioButton
           value="Unified"
           checked={!this.props.showSideBySideDiff}
-          label="Unified"
+          label="ユニファイド"
           onSelected={this.onUnifiedSelected}
         />
         <RadioButton
           value="Split"
           checked={this.props.showSideBySideDiff}
-          label={
-            <>
-              <div>Split</div>
-            </>
-          }
+          label="スプリット"
           onSelected={this.onSideBySideSelected}
         />
       </fieldset>
@@ -159,7 +155,7 @@ export class DiffOptions extends React.Component<
   private renderHideWhitespaceChanges() {
     return (
       <fieldset>
-        <legend>Whitespace</legend>
+        <legend>ホワイトスペース</legend>
         <Checkbox
           value={
             this.props.hideWhitespaceChanges

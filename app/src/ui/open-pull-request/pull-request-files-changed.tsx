@@ -164,9 +164,7 @@ export class PullRequestFilesChanged extends React.Component<
     if (!fileExistsOnDisk) {
       showContextualMenu([
         {
-          label: __DARWIN__
-            ? 'File Does Not Exist on Disk'
-            : 'File does not exist on disk',
+          label: 'ファイルが存在しません',
           enabled: false,
         },
       ])
@@ -244,7 +242,7 @@ export class PullRequestFilesChanged extends React.Component<
     return (
       <div className="files-changed-header">
         <div className="commits-displayed">
-          Showing changes from all commits
+          すべてのコミットの変更を表示しています
         </div>
         <DiffOptions
           isInteractiveDiff={false}
