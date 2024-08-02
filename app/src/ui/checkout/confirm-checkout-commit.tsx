@@ -52,13 +52,13 @@ export class ConfirmCheckoutCommitDialog extends React.Component<
       >
         <DialogContent>
           <Row id="checking-out-commit-confirmation">
-            Checking out a commit will create a detached HEAD, and you will no
-            longer be on any branch. Are you sure you want to checkout this
-            commit?
+            コミットをチェックアウトすることで、デタッチされた HEAD
+            ができ、どのブランチにも属さなくなります。
+            本当にこのコミットをチェックアウトしますか？
           </Row>
           <Row>
             <Checkbox
-              label="Do not show this message again"
+              label="このメッセージを次から表示しない"
               value={
                 this.state.confirmCheckoutCommit
                   ? CheckboxValue.Off

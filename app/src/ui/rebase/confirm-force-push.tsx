@@ -36,7 +36,7 @@ export class ConfirmForcePush extends React.Component<
   public render() {
     return (
       <Dialog
-        title="Are you sure you want to force push?"
+        title="本当に強制プッシュしますか？"
         dismissDisabled={this.state.isLoading}
         onDismissed={this.props.onDismissed}
         onSubmit={this.onForcePush}

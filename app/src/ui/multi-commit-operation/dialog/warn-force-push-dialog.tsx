@@ -54,17 +54,17 @@ export class WarnForcePushDialog extends React.Component<
       >
         <DialogContent>
           <p id="warn-force-push-confirmation-title">
-            Are you sure you want to {operation.toLowerCase()}?
+            本当に{operation.toLowerCase()}しますか？
           </p>
           <p id="warn-force-push-confirmation-message">
             アップストリームのブランチの更新をするため、
             {operation} フローの終わりでは、GitHub Desktop
-            はブランチへの強制プッシュを可能にします。
+            はブランチへの強制プッシュします。
             強制プッシュはリモートのコミット履歴を改変するため、他のコラボレーションに影響を及ぼす可能性があります。
           </p>
           <div>
             <Checkbox
-              label="Do not show this message again"
+              label="このメッセージを次から表示しない"
               value={
                 this.state.askForConfirmationOnForcePush
                   ? CheckboxValue.Off

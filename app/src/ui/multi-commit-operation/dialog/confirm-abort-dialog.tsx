@@ -66,12 +66,10 @@ export class ConfirmAbortDialog extends React.Component<
       >
         <DialogContent>
           <div className="column-left" id="abort-operation-confirmation">
+            <p>本当に {operation.toLowerCase()} を中断しますか？</p>
             <p>
-              Are you sure you want to abort this {operation.toLowerCase()}?
-            </p>
-            <p>
-              This will take you back to the original branch state and the
-              conflicts you have already resolved will be discarded.
+              この操作によって、オリジナルのブランチ状態に戻ります。
+              また、解消したコンフリクトは破棄されます。
             </p>
           </div>
         </DialogContent>

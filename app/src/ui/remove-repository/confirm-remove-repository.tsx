@@ -66,11 +66,11 @@ export class ConfirmRemoveRepository extends React.Component<
       >
         <DialogContent>
           <p>
-            Are you sure you want to remove the repository "
-            {this.props.repository.name}" from GitHub Desktop?
+            本当にレポジトリ "{this.props.repository.name}" を GitHub Desktop
+            から削除しますか？
           </p>
           <div className="description">
-            <p>The repository will be removed from GitHub Desktop:</p>
+            <p>GitHub Desktopから、次のレポジトリが削除されます：</p>
             <p>
               <Ref>{this.props.repository.path}</Ref>
             </p>
@@ -78,7 +78,9 @@ export class ConfirmRemoveRepository extends React.Component<
 
           <div>
             <Checkbox
-              label={'Also move this repository to ' + TrashNameLabel}
+              label={
+                'また、このレポジトリを ' + TrashNameLabel + ' へ移動します。'
+              }
               value={
                 this.state.deleteRepoFromDisk
                   ? CheckboxValue.On
