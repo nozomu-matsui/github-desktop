@@ -45,18 +45,18 @@ export class RepoRulesMetadataFailureList extends React.Component<IRepoRulesMeta
           {leadingText} fails {totalFails} rule{totalFails > 1 ? 's' : ''}
           {endText}{' '}
           <RepoRulesetsForBranchLink repository={repository} branch={branch}>
-            View all rulesets for this branch.
+            このブランチ向けのすべてのルールセットを表示する
           </RepoRulesetsForBranchLink>
         </p>
         {failures.failed.length > 0 && (
           <div className="repo-rule-list">
-            <strong>Failed {rulesText}:</strong>
+            <strong>失敗 {rulesText}:</strong>
             {this.renderRuleFailureList(failures.failed)}
           </div>
         )}
         {failures.bypassed.length > 0 && (
           <div className="repo-rule-list">
-            <strong>Bypassed {rulesText}:</strong>
+            <strong>バイパス {rulesText}:</strong>
             {this.renderRuleFailureList(failures.bypassed)}
           </div>
         )}

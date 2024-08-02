@@ -57,7 +57,7 @@ export async function merge(
     : MergeResult.Success
 }
 
-const noopMergeMessage = 'Already up to date.\n'
+const noopMergeMessage = 'すでに最新です。\n'
 
 /**
  * Find the base commit between two commit-ish identifiers

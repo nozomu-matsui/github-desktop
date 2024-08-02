@@ -623,7 +623,7 @@ export class NoChanges extends React.Component<
       remote.name
     } へプッシュ`
 
-    const buttonText = `Push ${remote.name}`
+    const buttonText = `${remote.name} をプッシュする`
 
     return (
       <MenuBackedSuggestedAction

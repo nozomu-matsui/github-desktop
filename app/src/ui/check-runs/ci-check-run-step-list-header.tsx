@@ -50,7 +50,7 @@ export class CICheckRunStepListHeader extends React.PureComponent<ICICheckRunSte
       return null
     }
 
-    const label = `View ${checkRun.name} on GitHub`
+    const label = `GitHub で ${checkRun.name} を表示`
     return (
       <Button
         role="link"
