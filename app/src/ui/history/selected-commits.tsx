@@ -321,11 +321,7 @@ export class SelectedCommits extends React.Component<
     }
 
     const fileCount = this.props.changesetData.files.length
-    return (
-      <div className="file-list-header">
-        {fileCount} ファイルが更新されました
-      </div>
-    )
+    return <div className="file-list-header">{fileCount} 更新ファイル</div>
   }
 
   /**

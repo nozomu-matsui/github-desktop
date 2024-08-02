@@ -759,13 +759,7 @@ export class CommitMessage extends React.Component<
   }
 
   private get toggleCoAuthorsText(): string {
-    return this.props.showCoAuthoredBy
-      ? __DARWIN__
-        ? 'Remove Co-Authors'
-        : 'Remove co-authors'
-      : __DARWIN__
-      ? 'Add Co-Authors'
-      : 'Add co-authors'
+    return this.props.showCoAuthoredBy ? '共著者を削除' : '共著者を追加'
   }
 
   private getAddRemoveCoAuthorsMenuItem(): IMenuItem {
