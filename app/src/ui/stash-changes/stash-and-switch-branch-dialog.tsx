@@ -96,14 +96,13 @@ export class StashAndSwitchBranch extends React.Component<
     const { branchToCheckout } = this.props
     const items = [
       {
-        title: `Leave my changes on ${this.state.currentBranchName}`,
-        description:
-          'Your in-progress work will be stashed on this branch for you to return to later',
+        title: `変更を ${this.state.currentBranchName} に残す`,
+        description: '作業中の変更は、このブランチにスタッシュされます。',
         key: StashAction.StashOnCurrentBranch,
       },
       {
-        title: `Bring my changes to ${branchToCheckout.name}`,
-        description: 'Your in-progress work will follow you to the new branch',
+        title: `変更を ${branchToCheckout.name} へ移動する`,
+        description: '作業中の変更は、新しいブランチについてきます。',
         key: StashAction.MoveToNewBranch,
       },
     ]
@@ -111,7 +110,7 @@ export class StashAndSwitchBranch extends React.Component<
     return (
       <Row>
         <VerticalSegmentedControl
-          label="You have changes on this branch. What would you like to do with them?"
+          label="このブランチに変更があります。どうしますか？"
           items={items}
           selectedKey={this.state.selectedStashAction}
           onSelectionChanged={this.onSelectionChanged}
@@ -143,7 +142,7 @@ export class StashAndSwitchBranch extends React.Component<
 
     this.setState({ isStashingChanges: true })
 
-    const timer = startTimer('stash and checkout', repository)
+    const timer = startTimer('スタッシュしてチェックアウト', repository)
     try {
       if (selectedStashAction === StashAction.StashOnCurrentBranch) {
         await dispatcher.checkoutBranch(

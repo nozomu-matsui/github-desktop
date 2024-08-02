@@ -333,7 +333,7 @@ export class CommitMessage extends React.Component<
       this.props.mostRecentLocalCommit !== null
     ) {
       this.setState({
-        isCommittingStatusMessage: `Committed Just now - ${this.props.mostRecentLocalCommit.summary} (Sha: ${this.props.mostRecentLocalCommit.shortSha})`,
+        isCommittingStatusMessage: `たった今コミットされました - ${this.props.mostRecentLocalCommit.summary} (Sha: ${this.props.mostRecentLocalCommit.shortSha})`,
       })
     }
 

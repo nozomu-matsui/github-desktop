@@ -513,11 +513,11 @@ export class NoChanges extends React.Component<
     return (
       <MenuBackedSuggestedAction
         key="publish-branch-action"
-        title="Publish your branch"
+        title="ブランチをパブリッシュ"
         menuItemId={itemId}
         description={description}
         discoverabilityContent={discoverabilityContent}
-        buttonText="Publish branch"
+        buttonText="ブランチをパブリッシュする"
         type="primary"
         disabled={!menuItem.enabled}
         onClick={this.onPublishBranchClicked}

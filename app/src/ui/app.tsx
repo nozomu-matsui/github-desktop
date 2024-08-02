@@ -614,7 +614,7 @@ export class App extends React.Component<IAppProps, IAppState> {
         userContributions: [
           {
             kind: 'new',
-            message: '[New] Added fake thank you dialog',
+            message: '[New] 偽 サンキューダイアログが追加されました',
           },
         ],
         friendlyName: 'kind contributor',

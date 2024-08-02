@@ -226,7 +226,7 @@ export class CICheckRunPopover extends React.PureComponent<
     return (
       <div className="loading-check-runs">
         <img src={BlankSlateImage} className="blankslate-image" alt="" />
-        <div className="title">Stand By</div>
+        <div className="title">スタンバイ</div>
         <div className="call-to-action">Check runs incoming!</div>
       </div>
     )
@@ -282,15 +282,15 @@ export class CICheckRunPopover extends React.PureComponent<
         return <>Checks Summary</>
       case somePendingNoFailures:
         return (
-          <span className="pending">Some checks haven't completed yet</span>
+          <span className="pending">いくつかのチェックが完了していません</span>
         )
       case allFailure:
-        return <span className="failure">All checks have failed</span>
+        return <span className="failure">すべてのチェックが失敗しました</span>
       case allSuccess:
-        return <>All checks have passed</>
+        return <>すべてのチェックが成功しました</>
     }
 
-    return <span className="failure">Some checks were not successful</span>
+    return <span className="failure">いくつかのチェックが失敗しました</span>
   }
 
   private renderHeader = (): JSX.Element => {

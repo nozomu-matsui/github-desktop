@@ -5,10 +5,10 @@ import { GitProgressParser } from './git'
  * of the individual progress reporting steps in a clone operation
  */
 const steps = [
-  { title: 'remote: Compressing objects', weight: 0.1 },
-  { title: 'Receiving objects', weight: 0.6 },
-  { title: 'Resolving deltas', weight: 0.1 },
-  { title: 'Checking out files', weight: 0.2 },
+  { title: 'リモート: オブジェクトを圧縮しています', weight: 0.1 },
+  { title: 'オブジェクトを受信しています', weight: 0.6 },
+  { title: 'デルタを解決しています', weight: 0.1 },
+  { title: 'ファイルをチェックアウトしています', weight: 0.2 },
 ]
 
 /**

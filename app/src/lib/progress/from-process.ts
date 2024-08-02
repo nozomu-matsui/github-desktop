@@ -105,7 +105,7 @@ function createProgressProcessCallback(
           // filter is done but until then we don't want to display
           // it for the same reason that we don't want to display
           // the context above.
-          if (title === 'Filtering content') {
+          if (title === 'コンテンツをフィルターしています') {
             if (done) {
               lfsProgressActive = false
             }

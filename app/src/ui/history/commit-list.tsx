@@ -212,24 +212,22 @@ export class CommitList extends React.Component<
         return
       }
 
-      const plural = keyboardReorderData.commits.length === 1 ? '' : 's'
-
       if (insertionIndexPath !== null) {
         const { row } = insertionIndexPath
 
         const insertionPoint =
           row < this.props.commitSHAs.length
-            ? `before commit ${row + 1}`
-            : `after commit ${row}`
+            ? ` ${row + 1} コミット前`
+            : ` ${row} コミット後`
 
         this.setState({
-          reorderingMessage: `Press Enter to insert the selected commit${plural} ${insertionPoint} or Escape to cancel.`,
+          reorderingMessage: `エンターキーを押して、選択したコミットを${insertionPoint}に挿入するか、ESCキーでキャンセルしてください。`,
         })
         return
       }
 
       this.setState({
-        reorderingMessage: `Use the Up and Down arrow keys to choose a new location for the selected commit${plural}, then press Enter to confirm or Escape to cancel.`,
+        reorderingMessage: `上もしくか下矢印キーで選択したコミットの位置を選んで、エンターキーで確認するか、ESCキーでキャンセルしてください。`,
       })
     },
     500
@@ -346,13 +344,11 @@ export class CommitList extends React.Component<
     numUnpushedTags: number
   ) {
     if (isLocalCommit) {
-      return 'This commit has not been pushed to the remote repository'
+      return 'このコミットは、リモートレポジトリにプッシュされていません'
     }
 
     if (numUnpushedTags > 0) {
-      return `This commit has ${numUnpushedTags} tag${
-        numUnpushedTags > 1 ? 's' : ''
-      } to push`
+      return `このコミットは、未プッシュのタグ ${numUnpushedTags} があります`
     }
 
     return undefined
@@ -476,7 +472,7 @@ export class CommitList extends React.Component<
     if (commitSHAs.length === 0) {
       return (
         <div className="panel blankslate">
-          {emptyListMessage ?? 'No commits to list'}
+          {emptyListMessage ?? '一覧にコミットがありません'}
         </div>
       )
     }
@@ -555,12 +551,13 @@ export class CommitList extends React.Component<
       >
         <h4>{reorderCommitsHintTitle}</h4>
         <p>
-          Use <KeyboardShortcut darwinKeys={['↑']} keys={['↑']} />
-          <KeyboardShortcut darwinKeys={['↓']} keys={['↓']} /> to choose a new
-          location.
+          <KeyboardShortcut darwinKeys={['↑']} keys={['↑']} />
+          <KeyboardShortcut darwinKeys={['↓']} keys={['↓']} />
+          キーで位置を変更できます。
         </p>
         <p>
-          Press <KeyboardShortcut darwinKeys={['⏎']} keys={['⏎']} /> to confirm.
+          <KeyboardShortcut darwinKeys={['⏎']} keys={['⏎']} />
+          キーでリオーダーの確認できます。
         </p>
       </Popover>
     )

@@ -90,7 +90,7 @@ export class TutorialDone extends React.Component<ITutorialDoneProps, {}> {
               image={PlusOcticon}
             />
             <SuggestedAction
-              title="ローカルレポジトリを追加"
+              title="ローカルレポジトリを追加する"
               description="既存のプロジェクトを使う"
               buttonText="レポジトリを追加"
               onClick={this.onAddExistingRepository}

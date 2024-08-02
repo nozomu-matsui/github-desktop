@@ -55,7 +55,7 @@ export class LocalChangesOverwrittenDialog extends React.Component<
 
     return (
       <Dialog
-        title="Error"
+        title="エラー"
         id="local-changes-overwritten"
         loading={this.state.stashing}
         disabled={this.state.stashing}

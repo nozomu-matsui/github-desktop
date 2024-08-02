@@ -290,21 +290,21 @@ export class RepositoriesList extends React.Component<
     return (
       <div className="no-items no-results-found">
         <img src={BlankSlateImage} className="blankslate-image" alt="" />
-        <div className="title">Sorry, I can't find that repository</div>
+        <div className="title">そのレポジトリは見つかりません</div>
 
         <div className="protip">
-          ProTip! Press{' '}
+          ヒント{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut darwinKeys={['⌘', 'O']} keys={['Ctrl', 'O']} />
           </div>{' '}
-          to quickly add a local repository, and{' '}
+          キーを押すと、ローカルレポジトリをすばやく追加できます。{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut
               darwinKeys={['⇧', '⌘', 'O']}
               keys={['Ctrl', 'Shift', 'O']}
             />
           </div>{' '}
-          to clone from anywhere within the app
+          キーを押すと、アプリケーションのどこでもクローンできます
         </div>
       </div>
     )

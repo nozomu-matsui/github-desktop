@@ -209,7 +209,7 @@ export class PushPullButton extends React.Component<
     if (progressComplete) {
       this.setState({
         screenReaderStateMessage: `${
-          this.state.actionInProgress ?? 'Pull, push, or fetch'
+          this.state.actionInProgress ?? 'プル、プッシュもしくはフェッチ'
         } complete`,
         actionInProgress: null,
       })
@@ -228,7 +228,9 @@ export class PushPullButton extends React.Component<
     }
 
     const { description, title, kind } = progress
-    const screenReaderStateMessage = `${title} ${description ?? 'Hang on…'}`
+    const screenReaderStateMessage = `${title} ${
+      description ?? 'しばらくお待ちください...'
+    }`
     const actionInProgress: ActionInProgress | null =
       this.state.actionInProgress === null && this.isPullPushFetchProgress(kind)
         ? kind

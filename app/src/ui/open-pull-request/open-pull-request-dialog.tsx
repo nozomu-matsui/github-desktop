@@ -242,18 +242,16 @@ export class OpenPullRequestDialog extends React.Component<IOpenPullRequestDialo
       gitHubRepository && gitHubRepository.endpoint !== getDotComAPIEndpoint()
 
     const viewCreate = currentBranchHasPullRequest ? 'View' : ' Create'
-    const buttonTitle = `${viewCreate} pull request on GitHub${
+    const buttonTitle = `プルリクエスト ${viewCreate} を GitHub${
       isEnterprise ? ' Enterprise' : ''
-    }.`
+    }　で開く。`
 
     const okButton = (
       <>
         {currentBranchHasPullRequest && (
           <Octicon symbol={octicons.linkExternal} />
         )}
-        {__DARWIN__
-          ? `${viewCreate} Pull Request`
-          : `${viewCreate} pull request`}
+        {`プルリクエスト`}
       </>
     )
 

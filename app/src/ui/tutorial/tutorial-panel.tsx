@@ -109,7 +109,7 @@ export class TutorialPanel extends React.Component<
     return (
       <div className="tutorial-panel-component panel">
         <div className="titleArea">
-          <h3>Get started</h3>
+          <h3>さぁ、はじめましょう！</h3>
           <img src={TutorialPanelImage} alt="Partially checked check list" />
         </div>
         <ol>

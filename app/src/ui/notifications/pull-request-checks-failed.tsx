@@ -82,14 +82,10 @@ export class PullRequestChecksFailed extends React.Component<
   }
 
   public render() {
-    let okButtonTitle = __DARWIN__
-      ? 'Switch to Pull Request'
-      : 'Switch to pull request'
+    let okButtonTitle = 'プルリクエストを切り替え'
 
     if (this.props.shouldChangeRepository) {
-      okButtonTitle = __DARWIN__
-        ? 'Switch to Repository and Pull Request'
-        : 'Switch to repository and pull request'
+      okButtonTitle = 'レポジトリとプルリクエストを切り替え'
     }
 
     const { pullRequest } = this.props
@@ -97,14 +93,13 @@ export class PullRequestChecksFailed extends React.Component<
     const loadingChecksInfo = this.loadingChecksInfo
 
     const failedChecks = this.state.checks.filter(isFailure)
-    const pluralChecks = failedChecks.length > 1 ? 'checks' : 'check'
 
     const header = (
       <div className="ci-check-run-dialog-header">
         <Octicon symbol={octicons.xCircleFill} />
         <div className="title-container">
           <div className="summary">
-            {failedChecks.length} {pluralChecks} failed in your pull request
+            プルリクエスト中で、{failedChecks.length} チェックが失敗しました
           </div>
           <span className="pr-title">
             {pullRequest.title}{' '}
@@ -152,14 +147,9 @@ export class PullRequestChecksFailed extends React.Component<
   }
 
   private renderSummary() {
-    const failedChecks = this.state.checks.filter(isFailure)
-    const pluralThem = failedChecks.length > 1 ? 'them' : 'it'
     return (
       <div className="footer-question">
-        <span>
-          Do you want to switch to that Pull Request now and start fixing{' '}
-          {pluralThem}?
-        </span>
+        <span>そのプリクエストに切り替えて、修正を開始しますか？</span>
       </div>
     )
   }
@@ -241,7 +231,7 @@ export class PullRequestChecksFailed extends React.Component<
     return (
       <div className="loading-check-runs">
         <img src={BlankSlateImage} className="blankslate-image" alt="" />
-        <div className="title">Stand By</div>
+        <div className="title">スタンバイ</div>
         <div className="call-to-action">Check run steps incoming!</div>
       </div>
     )

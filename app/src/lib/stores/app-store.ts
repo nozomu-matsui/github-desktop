@@ -4746,9 +4746,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
           }
 
           const refreshStartProgress = pullWeight + fetchWeight
-          const refreshTitle = __DARWIN__
-            ? 'Refreshing Repository'
-            : 'Refreshing repository'
+          const refreshTitle = 'レポジトリをリフレッシュ'
 
           this.updatePushPullFetchProgress(repository, {
             kind: 'generic',
@@ -5112,9 +5110,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
           )
         }
 
-        const refreshTitle = __DARWIN__
-          ? 'Refreshing Repository'
-          : 'Refreshing repository'
+        const refreshTitle = 'レポジトリをリフレッシュ'
 
         this.updatePushPullFetchProgress(repository, {
           kind: 'generic',

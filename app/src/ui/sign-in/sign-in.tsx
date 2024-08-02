@@ -235,18 +235,18 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
           </Button>
         </Row>
 
-        <HorizontalRule title="or" />
+        <HorizontalRule title="または" />
 
         <Row>
           <TextBox
-            label="Username or email address"
+            label="ユーザー名 もしくは メールアドレス"
             value={this.state.username}
             onValueChanged={this.onUsernameChanged}
           />
         </Row>
         <Row>
           <PasswordTextBox
-            label="Password"
+            label="パスワード"
             value={this.state.password}
             onValueChanged={this.onPasswordChanged}
           />
