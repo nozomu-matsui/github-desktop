@@ -110,7 +110,7 @@ export class PullRequestReview extends React.Component<
     const okCancelButtonGroup = (
       <OkCancelButtonGroup
         onCancelButtonClick={this.props.onDismissed}
-        cancelButtonText="Dismiss"
+        cancelButtonText="閉じる"
         // If there is nothing special about the OK button, just hide the cancel
         // button, since they will both just dismiss the dialog.
         cancelButtonVisible={okButtonTitle !== undefined}

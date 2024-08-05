@@ -57,7 +57,7 @@ export class DeleteRemoteBranch extends React.Component<
           </div>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Delete" />
+          <OkCancelButtonGroup destructive={true} okButtonText="削除する" />
         </DialogFooter>
       </Dialog>
     )

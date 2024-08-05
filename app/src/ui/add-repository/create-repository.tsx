@@ -623,8 +623,8 @@ export class CreateRepository extends React.Component<
           <Row>
             <TextBox
               value={this.state.name}
-              label="Name"
-              placeholder="repository name"
+              label="レポジトリ名"
+              placeholder="レポジトリ名"
               onValueChanged={this.onNameChanged}
               ariaDescribedBy="existing-repository-path-error repo-sanitized-name-warning"
             />
@@ -635,7 +635,7 @@ export class CreateRepository extends React.Component<
           <Row>
             <TextBox
               value={this.state.description}
-              label="Description"
+              label="説明"
               onValueChanged={this.onDescriptionChanged}
             />
           </Row>

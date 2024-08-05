@@ -25,7 +25,7 @@ export class GitIgnore extends React.Component<IGitIgnoreProps, {}> {
         </p>
 
         <TextArea
-          placeholder="Ignored files"
+          placeholder="無視するファイル"
           value={this.props.text || ''}
           onValueChanged={this.props.onIgnoreTextChanged}
           textareaClassName="gitignore"

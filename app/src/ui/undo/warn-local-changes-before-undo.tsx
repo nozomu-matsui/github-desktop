@@ -38,7 +38,7 @@ export class WarnLocalChangesBeforeUndo extends React.Component<
   }
 
   public render() {
-    const title = "コミットを Undo"
+    const title = 'コミットを Undo'
 
     return (
       <Dialog
@@ -54,7 +54,7 @@ export class WarnLocalChangesBeforeUndo extends React.Component<
       >
         {this.getWarningDialog()}
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Continue" />
+          <OkCancelButtonGroup destructive={true} okButtonText="続ける" />
         </DialogFooter>
       </Dialog>
     )
@@ -67,7 +67,9 @@ export class WarnLocalChangesBeforeUndo extends React.Component<
     return (
       <DialogContent>
         <Row id="undo-warning-message">
-          進行中の変更があります。コミットの Undo によって、進行中の変更の一部を失う場合があります。構わず Undo しますか？
+          進行中の変更があります。コミットの Undo
+          によって、進行中の変更の一部を失う場合があります。構わず Undo
+          しますか？
         </Row>
         <Row>
           <Checkbox
@@ -96,7 +98,8 @@ export class WarnLocalChangesBeforeUndo extends React.Component<
     return (
       <DialogContent>
         <p>
-          進行中の変更があります。マージコミットを Undo することで、変更の一部を失う場合があります。
+          進行中の変更があります。マージコミットを Undo
+          することで、変更の一部を失う場合があります。
         </p>
         <p>{this.getMergeCommitUndoWarningText()}</p>
         <p>構わずコンティニューしますか？</p>
