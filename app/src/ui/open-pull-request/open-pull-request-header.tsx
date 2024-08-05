@@ -94,7 +94,7 @@ export class OpenPullRequestDialogHeader extends React.Component<
       >
         <div className="break"></div>
         <div className="base-branch-details">
-          ${commitCount} コミットを{' '}
+          {commitCount} コミットを{' '}
           <BranchSelect
             branch={baseBranch}
             defaultBranch={defaultBranch}

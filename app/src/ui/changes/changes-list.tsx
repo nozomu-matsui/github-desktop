@@ -322,9 +322,9 @@ export class ChangesList extends React.Component<
       isCommitting || rebaseConflictState !== null || isUncommittableSubmodule
 
     const checkboxTooltip = isUncommittableSubmodule
-      ? 'This submodule change cannot be added to a commit in this repository because it contains changes that have not been committed.'
+      ? 'このサブモジュール変更はコミットされていない変更を含んでいるため、このレポジトリのコミットに追加されません。'
       : isPartiallyCommittableSubmodule
-      ? 'Only changes that have been committed within the submodule will be added to this repository. You need to commit any other modified or untracked changes in the submodule before including them in this repository.'
+      ? 'サブモジュール内でコミットされた変更だけが、このレポジトリに追加されます。レポジトリに含める場合は、事前にサブモジュールにコミットする必要があります。'
       : undefined
 
     return (
@@ -388,13 +388,7 @@ export class ChangesList extends React.Component<
 
   private getDiscardChangesMenuItemLabel = (files: ReadonlyArray<string>) => {
     const label =
-      files.length === 1
-        ? __DARWIN__
-          ? `Discard Changes`
-          : `Discard changes`
-        : __DARWIN__
-        ? `Discard ${files.length} Selected Changes`
-        : `Discard ${files.length} selected changes`
+      files.length === 1 ? `変更を破棄` : `選択した ${files.length} 変更を破棄`
 
     return this.props.askForConfirmationOnDiscardChanges ? `${label}…` : label
   }
