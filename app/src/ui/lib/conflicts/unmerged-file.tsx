@@ -462,7 +462,7 @@ function calculateConflicts(conflictMarkers: number) {
 
 function editorButtonString(editorName: string | null): string {
   const defaultEditorString = 'editor'
-  return `Open in ${editorName || defaultEditorString}`
+  return `${editorName || defaultEditorString} で開く`
 }
 
 function editorButtonTooltip(editorName: string | null): string | undefined {
@@ -471,11 +471,7 @@ function editorButtonTooltip(editorName: string | null): string | undefined {
     return
   }
 
-  if (__DARWIN__) {
-    return `No editor configured in Preferences > Advanced`
-  } else {
-    return `No editor configured in Options > Advanced`
-  }
+  return `外部エディターが 設定 > アドバンス にされていません。`
 }
 
 const manualConflictString = 'Manual conflict'

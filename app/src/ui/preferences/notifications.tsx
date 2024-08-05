@@ -53,7 +53,7 @@ export class Notifications extends React.Component<
         <div className="advanced-section">
           <h2>通知</h2>
           <Checkbox
-            label="通知を有効にする"
+            label="有効にする"
             value={
               this.props.notificationsEnabled
                 ? CheckboxValue.On

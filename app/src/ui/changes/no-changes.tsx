@@ -751,7 +751,7 @@ export class NoChanges extends React.Component<
           <div className="interstitial-header">
             <div className="text">
               <h1>ローカルに変更なし</h1>
-              <p>未コミットの変更は選択中のレポジトリにありません。</p>
+              <p>未コミットの変更はありません。</p>
               <p>次のアクション候補は：</p>
             </div>
             <img src={PaperStackImage} className="blankslate-image" alt="" />
