@@ -554,7 +554,6 @@ export class NoChanges extends React.Component<
       <>
         リモートに変更がある場合は、ツールバーもしくは{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}{' '}
-        から利用可能です。
       </>
     )
 
@@ -615,7 +614,6 @@ export class NoChanges extends React.Component<
       <>
         プッシュ待ちのコミットがある場合、ツールバーもしくは{' '}
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}{' '}
-        から利用可能です。
       </>
     )
 
