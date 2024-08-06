@@ -19,15 +19,14 @@ export function ForkSettingsDescription(props: IForkSettingsDescription) {
     <ul className="fork-settings-description">
       <li>
         <strong>{targetRepository.fullName}</strong>{' '}
-        をターゲットにしているプルリクエスは、
-        プルリクエスト一覧に表示されます。
+        をターゲットにしているプルリクエストが、 一覧に表示されます。
       </li>
       <li>
         課題は <strong>{targetRepository.fullName}</strong> に作成されます。
       </li>
       <li>
         "GitHub で開く" は <strong>{targetRepository.fullName}</strong>{' '}
-        を部落ざーで開きます。
+        をブラウザーで開きます。
       </li>
       <li>
         新規ブランチは <strong>{targetRepository.fullName}</strong>{' '}
