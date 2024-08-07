@@ -166,7 +166,7 @@ export class TutorialPanel extends React.Component<
             onSummaryClick={this.onStepSummaryClick}
           >
             <p className="description">
-              ブランチを使うことで、ひとつのレポジトリで複数バージョンの作業ができます。
+              ブランチを使うことで、ひとつのリポジトリで複数バージョンの作業ができます。
               トップバーのブランチメニューから
               {` `}"作成ブランチ..."{` `}をクリックすると、作成できます。
             </p>
@@ -186,7 +186,7 @@ export class TutorialPanel extends React.Component<
             onSummaryClick={this.onStepSummaryClick}
           >
             <p className="description">
-              お好みのテキストエディターを使って、このレポジトリを開いてください。
+              お好みのテキストエディターを使って、このリポジトリを開いてください。
               そうしたら、{` `}
               <Ref>README.md</Ref>
               {` `}を編集してみてください。 保存したら、戻ってきてください。
@@ -227,7 +227,7 @@ export class TutorialPanel extends React.Component<
           >
             <p className="description">
               パブリッシュは、GitHub
-              上のレポジトリのこのブランチに、あなたが作ったコミットを"プッシュ"
+              上のリポジトリのこのブランチに、あなたが作ったコミットを"プッシュ"
               もしくはアップロードします。
               パブリッシュはトップバーの3番目のボタンを使います。
             </p>
@@ -247,7 +247,7 @@ export class TutorialPanel extends React.Component<
             <p className="description">
               プルリクエストを使うことで、変更の提案ができます。
               プルリクエストを作ると、他の人にレビューやマージを依頼できます。
-              このレポジトリはデモンストレーションなので、プルリクエストはプライベートになります。
+              このリポジトリはデモンストレーションなので、プルリクエストはプライベートになります。
             </p>
             <div className="action">
               <Button onClick={this.openPullRequest} role="link">

@@ -486,8 +486,8 @@ export class PushPullButton extends React.Component<
     return (
       <ToolbarButton
         {...this.defaultButtonProps()}
-        title="レポジトリをパブリッシュ"
-        description="このレポジトリを GitHub にパブリッシュ"
+        title="リポジトリをパブリッシュ"
+        description="このリポジトリを GitHub にパブリッシュ"
         className="push-pull-button"
         icon={octicons.upload}
         style={ToolbarButtonStyle.Subtitle}

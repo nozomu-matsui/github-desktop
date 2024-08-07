@@ -322,9 +322,9 @@ export class ChangesList extends React.Component<
       isCommitting || rebaseConflictState !== null || isUncommittableSubmodule
 
     const checkboxTooltip = isUncommittableSubmodule
-      ? 'このサブモジュール変更はコミットされていない変更を含んでいるため、このレポジトリのコミットに追加されません。'
+      ? 'このサブモジュール変更はコミットされていない変更を含んでいるため、このリポジトリのコミットに追加されません。'
       : isPartiallyCommittableSubmodule
-      ? 'サブモジュール内でコミットされた変更だけが、このレポジトリに追加されます。レポジトリに含める場合は、事前にサブモジュールにコミットする必要があります。'
+      ? 'サブモジュール内でコミットされた変更だけが、このリポジトリに追加されます。リポジトリに含める場合は、事前にサブモジュールにコミットする必要があります。'
       : undefined
 
     return (

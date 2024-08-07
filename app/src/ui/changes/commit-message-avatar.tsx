@@ -233,7 +233,7 @@ export class CommitMessageAvatar extends React.Component<
     const location = isGitConfigLocal ? 'local' : 'global'
     const locationDesc = isGitConfigLocal ? 'for your repository' : ''
     const settingsName = '設定'
-    const settings = isGitConfigLocal ? 'レポジトリ設定' : `git ${settingsName}`
+    const settings = isGitConfigLocal ? 'リポジトリ設定' : `git ${settingsName}`
     const buttonText = 'Git 設定を開く'
 
     return (
@@ -247,9 +247,9 @@ export class CommitMessageAvatar extends React.Component<
 
         {!isGitConfigLocal && (
           <p className="secondary-text">
-            メールアドレス設定はレポジトリごとに{' '}
+            メールアドレス設定はリポジトリごとに{' '}
             <LinkButton onClick={this.onRepositorySettingsClick}>
-              レポジトリ設定
+              リポジトリ設定
             </LinkButton>
             で変更できます。
           </p>
@@ -294,9 +294,9 @@ export class CommitMessageAvatar extends React.Component<
         </Row>
         <Row>
           <div className="secondary-text">
-            メールアドレス設定はレポジトリごとに{' '}
+            メールアドレス設定はリポジトリごとに{' '}
             <LinkButton onClick={this.onRepositorySettingsClick}>
-              レポジトリ設定
+              リポジトリ設定
             </LinkButton>
             で変更できます。
           </div>

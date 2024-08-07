@@ -27,7 +27,7 @@ export class RepoRulesBypassConfirmation extends React.Component<
     return (
       <Dialog
         id="repo-rules-bypass-confirmation"
-        title="レポジトリルールをバイパス"
+        title="リポジトリルールをバイパス"
         onSubmit={this.submit}
         onDismissed={this.props.onDismissed}
         type="warning"
@@ -38,7 +38,7 @@ export class RepoRulesBypassConfirmation extends React.Component<
             repository={this.props.repository}
             branch={this.props.branch}
           >
-            レポジトリルール
+            リポジトリルール
           </RepoRulesetsForBranchLink>
           をバイパスします。 本当にバイパスしますか？
         </DialogContent>

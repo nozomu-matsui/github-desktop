@@ -90,20 +90,20 @@ export function buildDefaultMenu({
     label: 'ファイル',
     submenu: [
       {
-        label: 'レポジトリを新規作成...',
+        label: 'リポジトリを新規作成...',
         id: 'new-repository',
         click: emit('create-repository'),
         accelerator: 'CmdOrCtrl+N',
       },
       separator,
       {
-        label: 'ローカルレポジトリを追加...',
+        label: 'ローカルリポジトリを追加...',
         id: 'add-local-repository',
         accelerator: 'CmdOrCtrl+O',
         click: emit('add-local-repository'),
       },
       {
-        label: 'レポジトリをクローン',
+        label: 'リポジトリをクローン',
         id: 'clone-repository',
         accelerator: 'CmdOrCtrl+Shift+O',
         click: emit('clone-repository'),
@@ -173,7 +173,7 @@ export function buildDefaultMenu({
         click: emit('show-history'),
       },
       {
-        label: 'レポジトリ一覧を表示',
+        label: 'リポジトリ一覧を表示',
         id: 'show-repository-list',
         accelerator: 'CmdOrCtrl+T',
         click: emit('choose-repository'),
@@ -270,7 +270,7 @@ export function buildDefaultMenu({
   const pushEventType = isForcePushForCurrentRepository ? 'force-push' : 'push'
 
   template.push({
-    label: 'レポジトリ',
+    label: 'リポジトリ',
     id: 'repository',
     submenu: [
       {
@@ -335,7 +335,7 @@ export function buildDefaultMenu({
       },
       separator,
       {
-        label: 'レポジトリ設定...',
+        label: 'リポジトリ設定...',
         id: 'show-repository-settings',
         click: emit('show-repository-settings'),
       },

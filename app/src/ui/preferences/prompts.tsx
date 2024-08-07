@@ -183,7 +183,7 @@ export class Prompts extends React.Component<
           <h2 id="show-confirm-dialog-heading">確認ダイアログを表示する</h2>
           <div role="group" aria-labelledby="show-confirm-dialog-heading">
             <Checkbox
-              label="レポジトリの削除"
+              label="リポジトリの削除"
               value={
                 this.state.confirmRepositoryRemoval
                   ? CheckboxValue.On

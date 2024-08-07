@@ -169,8 +169,8 @@ export class AddExistingRepository extends React.Component<
               <Ref>{repositoryUnsafePath}</Ref>
             </>
           )}{' '}
-          にあるレポジトリは、他のユーザがオーナーのようです。
-          信頼できないレポジトリを追加すると、レポジトリ中のファイルが実行される場合があります。
+          にあるリポジトリは、他のユーザがオーナーのようです。
+          信頼できないリポジトリを追加すると、リポジトリ中のファイルが実行される場合があります。
         </p>
         <p>
           フォルダのオーナーが信頼できる場合は、{' '}
@@ -196,11 +196,11 @@ export class AddExistingRepository extends React.Component<
 
     const displayedMessage = (
       <>
-        <p>このフォルダは Git レポジトリではないようです。</p>
+        <p>このフォルダは Git リポジトリではないようです。</p>
         <p>
           このフォルダに{' '}
           <LinkButton onClick={this.onCreateRepositoryClicked}>
-            レポジトリを新規作成
+            リポジトリを新規作成
           </LinkButton>{' '}
           しますか？
         </p>
@@ -208,7 +208,7 @@ export class AddExistingRepository extends React.Component<
     )
 
     const screenReaderMessage =
-      'このフォルダは Git レポジトリではないようです。このフォルダにレポジトリを新規作成しますか？'
+      'このフォルダは Git リポジトリではないようです。このフォルダにリポジトリを新規作成しますか？'
 
     return { screenReaderMessage, displayedMessage }
   }
@@ -245,7 +245,7 @@ export class AddExistingRepository extends React.Component<
     return (
       <Dialog
         id="add-existing-repository"
-        title="既存のレポジトリを追加"
+        title="既存のリポジトリを追加"
         onSubmit={this.addRepository}
         onDismissed={this.props.onDismissed}
         loading={this.state.isTrustingRepository}
@@ -255,7 +255,7 @@ export class AddExistingRepository extends React.Component<
             <TextBox
               value={this.state.path}
               label="ローカルパス"
-              placeholder="レポジトリパス"
+              placeholder="リポジトリパス"
               onValueChanged={this.onPathChanged}
               ariaDescribedBy="add-existing-repository-path-error"
             />
@@ -266,7 +266,7 @@ export class AddExistingRepository extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="レポジトリを追加"
+            okButtonText="リポジトリを追加"
             okButtonDisabled={disabled}
           />
         </DialogFooter>

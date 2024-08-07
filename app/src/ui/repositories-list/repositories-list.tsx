@@ -290,14 +290,14 @@ export class RepositoriesList extends React.Component<
     return (
       <div className="no-items no-results-found">
         <img src={BlankSlateImage} className="blankslate-image" alt="" />
-        <div className="title">そのレポジトリは見つかりません</div>
+        <div className="title">そのリポジトリは見つかりません</div>
 
         <div className="protip">
           ヒント{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut darwinKeys={['⌘', 'O']} keys={['Ctrl', 'O']} />
           </div>{' '}
-          キーを押すと、ローカルレポジトリをすばやく追加できます。{' '}
+          キーを押すと、ローカルリポジトリをすばやく追加できます。{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut
               darwinKeys={['⇧', '⌘', 'O']}
@@ -313,15 +313,15 @@ export class RepositoriesList extends React.Component<
   private onNewRepositoryButtonClick = () => {
     const items: IMenuItem[] = [
       {
-        label: 'レポジトリをクローン...',
+        label: 'リポジトリをクローン...',
         action: this.onCloneRepository,
       },
       {
-        label: 'レポジトリを新規作成...',
+        label: 'リポジトリを新規作成...',
         action: this.onCreateNewRepository,
       },
       {
-        label: '既存のレポジトリを追加',
+        label: '既存のリポジトリを追加',
         action: this.onAddExistingRepository,
       },
     ]

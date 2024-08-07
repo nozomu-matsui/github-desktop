@@ -34,13 +34,13 @@ export class CloneGenericRepository extends React.Component<
       <DialogContent className="clone-generic-repository-content">
         <Row>
           <TextBox
-            placeholder="URL もしくは ユーザー名/レポジトリ"
+            placeholder="URL もしくは ユーザー名/リポジトリ"
             value={this.props.url}
             onValueChanged={this.onUrlChanged}
             autoFocus={true}
             label={
               <div className="clone-url-textbox-label">
-                <p>レポジトリ URL もしくは GitHub ユーザー名 ＆ レポジトリ</p>
+                <p>リポジトリ URL もしくは GitHub ユーザー名 ＆ リポジトリ</p>
                 <p>
                   (<Ref>hubot/cool-repo</Ref>)
                 </p>
@@ -53,7 +53,7 @@ export class CloneGenericRepository extends React.Component<
           <TextBox
             value={this.props.path}
             label="ローカルパス"
-            placeholder="レポジトリパス"
+            placeholder="リポジトリパス"
             onValueChanged={this.props.onPathChanged}
           />
           <Button onClick={this.props.onChooseDirectory}>Choose…</Button>

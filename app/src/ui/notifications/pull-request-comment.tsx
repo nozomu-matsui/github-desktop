@@ -97,7 +97,7 @@ export class PullRequestComment extends React.Component<
     let okButtonTitle: undefined | string = undefined
 
     if (shouldChangeRepository) {
-      okButtonTitle = 'レポジトリを切り替えて、プルリクエスト'
+      okButtonTitle = 'リポジトリを切り替えて、プルリクエスト'
     } else if (shouldCheckoutBranch) {
       okButtonTitle = 'プルリクエストへ切り替え'
     }

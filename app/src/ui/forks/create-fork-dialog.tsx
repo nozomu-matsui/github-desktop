@@ -77,7 +77,7 @@ export class CreateForkDialog extends React.Component<
   public render() {
     return (
       <Dialog
-        title="このレポジトリをフォークしますか？"
+        title="このリポジトリをフォークしますか？"
         onDismissed={this.props.onDismissed}
         onSubmit={this.state.error ? undefined : this.onSubmit}
         dismissDisabled={this.state.loading}
@@ -113,7 +113,7 @@ function renderCreateForkDialogContent(
       <DialogContent>
         <p>
           <strong>{repository.gitHubRepository.fullName}</strong>
-          {` レポジトリのアクセス権限がないようです。必要な場合は、システム管理者に問い合わせてください。 `}
+          {` リポジトリのアクセス権限がないようです。必要な場合は、システム管理者に問い合わせてください。 `}
         </p>
         <p>
           <strong>
@@ -125,7 +125,7 @@ function renderCreateForkDialogContent(
       <DialogFooter>
         <OkCancelButtonGroup
           destructive={true}
-          okButtonText="このレポジトリをフォークする"
+          okButtonText="このリポジトリをフォークする"
           okButtonDisabled={loading}
           cancelButtonDisabled={loading}
         />

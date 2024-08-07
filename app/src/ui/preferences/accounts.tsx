@@ -74,7 +74,7 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
           </div>
         </div>
         <Button onClick={this.logout(account)} className={className}>
-           {accountTypeLabel} {'をサインアウト'}
+          {accountTypeLabel} {'をサインアウト'}
         </Button>
       </Row>
     )
@@ -101,7 +101,8 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             buttonClassName={DialogPreferredFocusClassName}
           >
             <div>
-              GitHub.com アカウントにサインインすると、レポジトリにアクセスできます。
+              GitHub.com
+              アカウントにサインインすると、リポジトリにアクセスできます。
             </div>
           </CallToAction>
         )
@@ -113,7 +114,8 @@ export class Accounts extends React.Component<IAccountsProps, {}> {
             onAction={this.onEnterpriseSignIn}
           >
             <div>
-              GitHub Enterprise もしくは AE アカウントにサインインすると、レポジトリへアクセスできます。
+              GitHub Enterprise もしくは AE
+              アカウントにサインインすると、リポジトリへアクセスできます。
             </div>
           </CallToAction>
         )

@@ -144,7 +144,7 @@ export class PublishRepository extends React.Component<
       <DialogContent>
         <Row>
           <TextBox
-            label="レポジトリ名"
+            label="リポジトリ名"
             value={this.name}
             onValueChanged={this.onNameChange}
           />
@@ -167,7 +167,7 @@ export class PublishRepository extends React.Component<
               checked={this.props.settings.private}
               onChange={this.onPrivateChange}
             />
-            レポジトリをプライベートにする
+            リポジトリをプライベートにする
           </label>
         </Row>
 

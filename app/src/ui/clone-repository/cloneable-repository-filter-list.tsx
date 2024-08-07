@@ -219,7 +219,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
   }
 
   private getYourRepositoriesLabel = () => {
-    return 'あなたのレポジトリ'
+    return 'あなたのリポジトリ'
   }
 
   private renderGroupHeader = (identifier: string) => {
@@ -255,7 +255,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
   }
 
   private renderPostFilter = () => {
-    const tooltip = 'レポジトリ一覧をリフレッシュ'
+    const tooltip = 'リポジトリ一覧をリフレッシュ'
 
     return (
       <Button
@@ -281,7 +281,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
 
     if (loading && (repositories === null || repositories.length === 0)) {
       return (
-        <div className="no-items loading">{`レポジトリを ${endpointName} からロード中...`}</div>
+        <div className="no-items loading">{`リポジトリを ${endpointName} からロード中...`}</div>
       )
     }
 
@@ -289,7 +289,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
       return (
         <div className="no-items no-results-found">
           <div>
-            フィルターに一致するレポジトリがありません。{' '}
+            フィルターに一致するリポジトリがありません。{' '}
             <Ref>{this.props.filterText}</Ref>
           </div>
         </div>
@@ -300,7 +300,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
       <div className="no-items empty-repository-list">
         <div>
           <Ref>{this.props.account.login}</Ref> の {endpointName}{' '}
-          上にレポジトリがありません。 最近レポジトリを作成した場合は、{' '}
+          上にリポジトリがありません。 最近リポジトリを作成した場合は、{' '}
           <LinkButton onClick={this.refreshRepositories}>一覧を更新</LinkButton>{' '}
           してください。
         </div>

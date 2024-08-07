@@ -3000,10 +3000,10 @@ export class App extends React.Component<IAppProps, IAppState> {
       title = alias ?? repository.name
     } else if (this.state.repositories.length > 0) {
       icon = octicons.repo
-      title = 'レポジトリを選択'
+      title = 'リポジトリを選択'
     } else {
       icon = octicons.repo
-      title = 'レポジトリがありません'
+      title = 'リポジトリがありません'
     }
 
     const isOpen =
@@ -3034,7 +3034,7 @@ export class App extends React.Component<IAppProps, IAppState> {
       <ToolbarDropdown
         icon={icon}
         title={title}
-        description={'選択中のレポジトリ'}
+        description={'選択中のリポジトリ'}
         tooltip={tooltip}
         foldoutStyle={foldoutStyle}
         onContextMenu={this.onRepositoryToolbarButtonContextMenu}

@@ -296,7 +296,7 @@ export class MergeCallToActionWithConflicts extends React.Component<
 
     return (
       <div className="merge-message">
-        このレポジトリと関係のないコミット履歴は、マージできません。
+        このリポジトリと関係のないコミット履歴は、マージできません。
       </div>
     )
   }

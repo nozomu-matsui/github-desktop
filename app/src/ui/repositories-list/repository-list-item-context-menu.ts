@@ -39,11 +39,11 @@ export const generateRepositoryListContextMenu = (
   const items: ReadonlyArray<IMenuItem> = [
     ...buildAliasMenuItems(config),
     {
-      label: 'レポジトリ名をコピー',
+      label: 'リポジトリ名をコピー',
       action: () => clipboard.writeText(repository.name),
     },
     {
-      label: 'レポジトリパスをコピー',
+      label: 'リポジトリパスをコピー',
       action: () => clipboard.writeText(repository.path),
     },
     { type: 'separator' },

@@ -101,7 +101,7 @@ export class PullRequestReview extends React.Component<
 
     if (!isApprovedReview) {
       if (shouldChangeRepository) {
-        okButtonTitle = 'レポジトリとプルリクエストを切り替え'
+        okButtonTitle = 'リポジトリとプルリクエストを切り替え'
       } else if (shouldCheckoutBranch) {
         okButtonTitle = 'プルリクエストへ切り替え'
       }

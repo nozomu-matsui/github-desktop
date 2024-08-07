@@ -82,17 +82,17 @@ export class TutorialDone extends React.Component<ITutorialDoneProps, {}> {
               image={TelescopeOcticon}
             />
             <SuggestedAction
-              title="レポジトリを新規作成する"
+              title="リポジトリを新規作成する"
               description="新しいプロジェクトを始める"
-              buttonText="レポジトリを新規作成"
+              buttonText="リポジトリを新規作成"
               onClick={this.onCreateNewRepository}
               type="normal"
               image={PlusOcticon}
             />
             <SuggestedAction
-              title="ローカルレポジトリを追加する"
+              title="ローカルリポジトリを追加する"
               description="既存のプロジェクトを使う"
-              buttonText="レポジトリを追加"
+              buttonText="リポジトリを追加"
               onClick={this.onAddExistingRepository}
               type="normal"
               image={FileDirectoryOcticon}

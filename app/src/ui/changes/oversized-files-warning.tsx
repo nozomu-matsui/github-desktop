@@ -38,7 +38,7 @@ export class OversizedFiles extends React.Component<IOversizedFilesProps> {
           <p>
             ファイルサイズが 100MB を超えています。{' '}
             <strong>
-              これらのファイルをコミットすると、このレポジトリを GitHub.com に
+              これらのファイルをコミットすると、このリポジトリを GitHub.com に
               プッシュできなくなります。
             </strong>
           </p>

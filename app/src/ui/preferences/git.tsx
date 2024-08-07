@@ -52,7 +52,7 @@ export class Git extends React.Component<IGitProps> {
     return (
       <div className="default-branch-component">
         <h2 id="default-branch-heading">
-          新規レポジトリのデフォルトブランチ名
+          新規リポジトリのデフォルトブランチ名
         </h2>
 
         <RefNameTextBox

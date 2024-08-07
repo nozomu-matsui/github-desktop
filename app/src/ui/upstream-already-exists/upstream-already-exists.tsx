@@ -47,12 +47,13 @@ export class UpstreamAlreadyExists extends React.Component<IUpstreamAlreadyExist
       >
         <DialogContent>
           <p>
-            このレポジトリ <Ref>{name}</Ref> は <Ref>{parentName}</Ref> のフォークですが、
-            リモート <Ref>{UpstreamRemoteName}</Ref> は、他のレポジトリを指しています。
+            このリポジトリ <Ref>{name}</Ref> は <Ref>{parentName}</Ref>{' '}
+            のフォークですが、 リモート <Ref>{UpstreamRemoteName}</Ref>{' '}
+            は、他のリポジトリを指しています。
           </p>
           <ul>
             <li>
-              現在のURL   : <Ref>{existingURL}</Ref>
+              現在のURL : <Ref>{existingURL}</Ref>
             </li>
             <li>
               期待されるURL: <Ref>{replacementURL}</Ref>

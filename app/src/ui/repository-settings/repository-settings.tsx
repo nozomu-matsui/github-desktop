@@ -170,7 +170,7 @@ export class RepositorySettings extends React.Component<
     return (
       <Dialog
         id="repository-settings"
-        title="レポジトリ設定"
+        title="リポジトリ設定"
         onDismissed={this.props.onDismissed}
         onSubmit={this.onSubmit}
         disabled={this.state.disabled}

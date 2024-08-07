@@ -54,7 +54,7 @@ export class ChooseForkSettings extends React.Component<
             <strong>
               {this.props.repository.gitHubRepository.parent.fullName}
             </strong>{' '}
-            レポジトリを使います。
+            リポジトリを使います。
           </>
         ),
         key: ForkContributionTarget.Parent,
@@ -64,7 +64,7 @@ export class ChooseForkSettings extends React.Component<
         description: (
           <>
             <strong>{this.props.repository.gitHubRepository.fullName}</strong>{' '}
-            レポジトリを使います。
+            リポジトリを使います。
           </>
         ),
         key: ForkContributionTarget.Self,
@@ -74,7 +74,7 @@ export class ChooseForkSettings extends React.Component<
     return (
       <Dialog
         id="fork-settings"
-        title="フォークをしたレポジトリの使用目的はなんですか？"
+        title="フォークをしたリポジトリの使用目的はなんですか？"
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
       >

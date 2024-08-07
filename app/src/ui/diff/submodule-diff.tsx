@@ -102,7 +102,7 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
 
     const suffix = readOnly
       ? ''
-      : ' この変更は、親レポジトリにコミットできます。'
+      : ' この変更は、親リポジトリにコミットできます。'
 
     if (oldSHA !== null && newSHA !== null) {
       return this.renderSubmoduleDiffItem(
@@ -169,7 +169,7 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
       { octicon: octicons.fileDiff, className: 'untracked-icon' },
       <>
         このサブモジュールは {changes} コミットがあります。
-        これらの変更は、親レポジトリの一部になる前に、サブモジュール内部でコミットされるべきです。
+        これらの変更は、親リポジトリの一部になる前に、サブモジュール内部でコミットされるべきです。
       </>
     )
   }
@@ -198,8 +198,8 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
       <span>
         <SuggestedAction
           title="このサブモジュールを GitHub Desktop で開く"
-          description="このサブモジュールは、GitHub Desktop で、通常のレポジトリのようコミットや管理ができます。"
-          buttonText="レポジトリを開く"
+          description="このサブモジュールは、GitHub Desktop で、通常のリポジトリのようコミットや管理ができます。"
+          buttonText="リポジトリを開く"
           type="primary"
           onClick={this.onOpenSubmoduleClick}
         />

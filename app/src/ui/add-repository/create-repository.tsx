@@ -612,7 +612,7 @@ export class CreateRepository extends React.Component<
     return (
       <Dialog
         id="create-repository"
-        title="新しいレポジトリを作成"
+        title="新しいリポジトリを作成"
         loading={this.state.creating}
         onSubmit={this.createRepository}
         onDismissed={this.props.onDismissed}
@@ -623,8 +623,8 @@ export class CreateRepository extends React.Component<
           <Row>
             <TextBox
               value={this.state.name}
-              label="レポジトリ名"
-              placeholder="レポジトリ名"
+              label="リポジトリ名"
+              placeholder="リポジトリ名"
               onValueChanged={this.onNameChanged}
               ariaDescribedBy="existing-repository-path-error repo-sanitized-name-warning"
             />
@@ -644,7 +644,7 @@ export class CreateRepository extends React.Component<
             <TextBox
               value={this.state.path ?? ''}
               label="ローカルパス"
-              placeholder="レポジトリパス"
+              placeholder="リポジトリパス"
               onValueChanged={this.onPathChanged}
               disabled={readOnlyPath || loadingDefaultDir}
               ariaDescribedBy="existing-repository-path-error"
@@ -661,7 +661,7 @@ export class CreateRepository extends React.Component<
 
           <Row>
             <Checkbox
-              label="このレポジトリをREADME付きで初期化する"
+              label="このリポジトリをREADME付きで初期化する"
               value={
                 this.state.createWithReadme
                   ? CheckboxValue.On
@@ -679,7 +679,7 @@ export class CreateRepository extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="レポジトリを新規作成"
+            okButtonText="リポジトリを新規作成"
             okButtonDisabled={disabled || loadingDefaultDir}
           />
         </DialogFooter>

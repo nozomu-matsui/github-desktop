@@ -59,7 +59,7 @@ export class GitConfig extends React.Component<IGitConfigProps> {
     return (
       <DialogContent>
         <div className="advanced-section">
-          <h2 id="git-config-heading">このレポジトリでは</h2>
+          <h2 id="git-config-heading">このリポジトリでは</h2>
           <Row>
             <RadioGroup<GitConfigLocation>
               ariaLabelledBy="git-config-heading"

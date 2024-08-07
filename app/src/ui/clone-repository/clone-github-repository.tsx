@@ -102,7 +102,7 @@ export class CloneGithubRepository extends React.PureComponent<ICloneGithubRepos
           <TextBox
             value={this.props.path}
             label="ローカルパス"
-            placeholder="レポジトリパス"
+            placeholder="リポジトリパス"
             onValueChanged={this.props.onPathChanged}
           />
           <Button onClick={this.props.onChooseDirectory}>Choose…</Button>

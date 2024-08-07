@@ -85,7 +85,7 @@ export class PullRequestChecksFailed extends React.Component<
     let okButtonTitle = 'プルリクエストを切り替え'
 
     if (this.props.shouldChangeRepository) {
-      okButtonTitle = 'レポジトリとプルリクエストを切り替え'
+      okButtonTitle = 'リポジトリとプルリクエストを切り替え'
     }
 
     const { pullRequest } = this.props

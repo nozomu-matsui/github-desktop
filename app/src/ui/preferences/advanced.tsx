@@ -90,7 +90,7 @@ export class Advanced extends React.Component<
         <div className="advanced-section">
           <h2>バックグラウンドアップデート</h2>
           <Checkbox
-            label="ステータスアイコンをレポジトリ一覧に表示する"
+            label="ステータスアイコンをリポジトリ一覧に表示する"
             value={
               this.props.repositoryIndicatorsEnabled
                 ? CheckboxValue.On
@@ -104,12 +104,12 @@ export class Advanced extends React.Component<
             className="git-settings-description"
           >
             <p>
-              この設定は、どのレポジトリがローカルもしくはリモート変更があるかをアイコン表示します。
-              また、選択されていないレポジトリで、フェッチが必要なものをアイコン表示します。
+              この設定は、どのリポジトリがローカルもしくはリモート変更があるかをアイコン表示します。
+              また、選択されていないリポジトリで、フェッチが必要なものをアイコン表示します。
             </p>
             <p>
-              この設定を無効にしても、選択中のレポジトリに対する定期的なフェッチは継続されますが、
-              多くのユーザが使っているレポジトリにおいては、アプリケーション全体のパフォーマンスを改善します。
+              この設定を無効にしても、選択中のリポジトリに対する定期的なフェッチは継続されますが、
+              多くのユーザが使っているリポジトリにおいては、アプリケーション全体のパフォーマンスを改善します。
             </p>
           </div>
         </div>
@@ -149,7 +149,7 @@ export class Advanced extends React.Component<
                 <LinkButton uri="https://gh.io/gcm">
                   Git クレデンシャルマネージャー{' '}
                 </LinkButton>{' '}
-                を GitHub.com 以外のレポジトリに使用します。
+                を GitHub.com 以外のリポジトリに使用します。
                 この機能は試験運用のため、変更される可能性があります。
               </p>
             </div>

@@ -57,7 +57,7 @@ export class ConfirmRemoveRepository extends React.Component<
         id="confirm-remove-repository"
         key="remove-repository-confirmation"
         type="warning"
-        title="レポジトリを削除"
+        title="リポジトリを削除"
         dismissDisabled={isRemovingRepository}
         loading={isRemovingRepository}
         disabled={isRemovingRepository}
@@ -66,11 +66,11 @@ export class ConfirmRemoveRepository extends React.Component<
       >
         <DialogContent>
           <p>
-            本当にレポジトリ "{this.props.repository.name}" を GitHub Desktop
+            本当にリポジトリ "{this.props.repository.name}" を GitHub Desktop
             から削除しますか？
           </p>
           <div className="description">
-            <p>GitHub Desktopから、次のレポジトリが削除されます：</p>
+            <p>GitHub Desktopから、次のリポジトリが削除されます：</p>
             <p>
               <Ref>{this.props.repository.path}</Ref>
             </p>
@@ -79,7 +79,7 @@ export class ConfirmRemoveRepository extends React.Component<
           <div>
             <Checkbox
               label={
-                'また、このレポジトリを ' + TrashNameLabel + ' へ移動します。'
+                'また、このリポジトリを ' + TrashNameLabel + ' へ移動します。'
               }
               value={
                 this.state.deleteRepoFromDisk

@@ -4042,7 +4042,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
   ) {
     this.updateCheckoutProgress(repository, {
       kind: 'checkout',
-      title: `レポジトリをリフレッシュ`,
+      title: `リポジトリをリフレッシュ`,
       description: 'Checking out',
       value: 1,
       target: commitish,
@@ -4545,7 +4545,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
               })
             })
 
-            const refreshTitle = 'レポジトリをリフレッシュ'
+            const refreshTitle = 'リポジトリをリフレッシュ'
             const refreshStartProgress = pushWeight + fetchWeight
 
             this.updatePushPullFetchProgress(repository, {
@@ -4746,7 +4746,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
           }
 
           const refreshStartProgress = pullWeight + fetchWeight
-          const refreshTitle = 'レポジトリをリフレッシュ'
+          const refreshTitle = 'リポジトリをリフレッシュ'
 
           this.updatePushPullFetchProgress(repository, {
             kind: 'generic',
@@ -5110,7 +5110,7 @@ export class AppStore extends TypedBaseStore<IAppState> {
           )
         }
 
-        const refreshTitle = 'レポジトリをリフレッシュ'
+        const refreshTitle = 'リポジトリをリフレッシュ'
 
         this.updatePushPullFetchProgress(repository, {
           kind: 'generic',

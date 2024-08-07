@@ -68,7 +68,7 @@ export class CommitConflictsWarning extends React.Component<
       >
         <DialogContent>
           <p>
-            以下のコンフリクトしたファイルをレポジトリにコミットしようとしています。
+            以下のコンフリクトしたファイルをリポジトリにコミットしようとしています。
           </p>
           {this.renderFiles(this.props.files)}
           <p>本当に、これらのコンフリクトしたファイルをコミットしますか？</p>

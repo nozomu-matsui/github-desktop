@@ -33,14 +33,14 @@ export class ChangeRepositoryAlias extends React.Component<
     return (
       <Dialog
         id="change-repository-alias"
-        title={`${verb} レポジトリエイリアス`}
+        title={`${verb} リポジトリエイリアス`}
         ariaDescribedBy="change-repository-alias-description"
         onDismissed={this.props.onDismissed}
         onSubmit={this.changeAlias}
       >
         <DialogContent>
           <p id="change-repository-alias-description">
-            レポジトリ "{nameOf(repository)}"
+            リポジトリ "{nameOf(repository)}"
             のための、新しいエイリアスを選んでください。{' '}
           </p>
           <p>
@@ -52,7 +52,7 @@ export class ChangeRepositoryAlias extends React.Component<
           </p>
           {repository.gitHubRepository !== null && (
             <p className="description">
-              この操作は、GitHub 上のオリジナルレポジトリには影響しません。
+              この操作は、GitHub 上のオリジナルリポジトリには影響しません。
             </p>
           )}
         </DialogContent>

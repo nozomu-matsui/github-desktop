@@ -61,7 +61,7 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
     if (this.props.repositories.length > MaxRepositoriesToList) {
       return (
         <p>
-          レポジトリ {this.props.repositories.length} は{' '}
+          リポジトリ {this.props.repositories.length} は{' '}
           <LinkButton uri={LFSURL}>Git LFS</LinkButton> を使います。
           そのため、Git LFS は初回のみ初期化が必要です。 今、初期化しますか？
         </p>
@@ -70,7 +70,7 @@ export class InitializeLFS extends React.Component<IInitializeLFSProps, {}> {
       return (
         <div>
           <p>
-            レポジトリは <LinkButton uri={LFSURL}>Git LFS</LinkButton>{' '}
+            リポジトリは <LinkButton uri={LFSURL}>Git LFS</LinkButton>{' '}
             を使います。 そのため、Git LFS
             は初回のみ初期化が必要です。今、初期化しますか？
           </p>

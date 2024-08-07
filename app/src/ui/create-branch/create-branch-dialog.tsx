@@ -173,7 +173,7 @@ export class CreateBranch extends React.Component<
     if (targetCommit !== undefined) {
       return (
         <p>
-          新しいブランチは、レポジトリ上のコミット '{targetCommit.summary}' (
+          新しいブランチは、リポジトリ上のコミット '{targetCommit.summary}' (
           {targetCommit.sha.substring(0, 7)}) をベースにします。
         </p>
       )
@@ -548,7 +548,7 @@ export class CreateBranch extends React.Component<
           {this.renderForkLinkSuffix()}{' '}
           {defaultBranch?.name === currentBranchName && (
             <>
-              <Ref>{currentBranchName}</Ref> は、レポジトリの{' '}
+              <Ref>{currentBranchName}</Ref> は、リポジトリの{' '}
               {defaultBranchLink} です。
             </>
           )}
@@ -611,7 +611,7 @@ export class CreateBranch extends React.Component<
         {
           title: upstreamDefaultBranch.name,
           description:
-            'アップストリームレポジトリのデフォルトブランチです。選択中のブランチに無関係な、新しい作業を開始する場合は、こちらを選択してください。',
+            'アップストリームリポジトリのデフォルトブランチです。選択中のブランチに無関係な、新しい作業を開始する場合は、こちらを選択してください。',
           key: StartPoint.UpstreamDefaultBranch,
         },
         {

@@ -97,7 +97,7 @@ export class MissingRepository extends React.Component<
           disabled={this.state.isTrustingPath}
         >
           {this.state.isTrustingPath && <Loading />}
-          レポジトリを信頼する
+          リポジトリを信頼する
         </Button>
       )
     }
@@ -117,9 +117,9 @@ export class MissingRepository extends React.Component<
             </div>
             <div className="details">
               <p>
-                この Git レポジトリ <Ref>{unsafePath}</Ref>{' '}
+                この Git リポジトリ <Ref>{unsafePath}</Ref>{' '}
                 他のユーザがオーナーのようです。
-                信頼できないレポジトリの追加は、レポジトリ内のファイルが自動的に実行されるおそれがあります。
+                信頼できないリポジトリの追加は、リポジトリ内のファイルが自動的に実行されるおそれがあります。
               </p>
               <p>
                 フォルダのオーナーが信頼できる場合は、例外を追加することでコンティニューできます。

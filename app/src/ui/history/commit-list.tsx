@@ -344,7 +344,7 @@ export class CommitList extends React.Component<
     numUnpushedTags: number
   ) {
     if (isLocalCommit) {
-      return 'このコミットは、リモートレポジトリにプッシュされていません'
+      return 'このコミットは、リモートリポジトリにプッシュされていません'
     }
 
     if (numUnpushedTags > 0) {

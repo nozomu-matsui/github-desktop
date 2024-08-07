@@ -129,7 +129,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
     return (
       <Dialog
         id="publish-repository"
-        title="レポジトリをパブリッシュ"
+        title="リポジトリをパブリッシュ"
         onDismissed={this.props.onDismissed}
         onSubmit={this.publishRepository}
         disabled={this.state.publishing}
@@ -232,7 +232,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
           <CallToAction actionTitle={signInTitle} onAction={this.signInDotCom}>
             <div>
               GitHub.com
-              アカウントにサインインすると、レポジトリにアクセスできます。
+              アカウントにサインインすると、リポジトリにアクセスできます。
             </div>
           </CallToAction>
         )
@@ -244,7 +244,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
           >
             <div>
               GitHub Enterprise もしくは AE
-              アカウントにサインインすると、レポジトリへアクセスできます。
+              アカウントにサインインすると、リポジトリへアクセスできます。
             </div>
           </CallToAction>
         )
@@ -262,7 +262,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
       return (
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="レポジトリをパブリッシュ"
+            okButtonText="リポジトリをパブリッシュ"
             okButtonDisabled={disabled}
           />
         </DialogFooter>

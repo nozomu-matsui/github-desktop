@@ -249,7 +249,7 @@ export class CloneRepository extends React.Component<
     return (
       <Dialog
         className="clone-repository"
-        title="レポジトリをクローン"
+        title="リポジトリをクローン"
         onSubmit={this.clone}
         onDismissed={this.props.onDismissed}
         loading={this.state.loading}
@@ -493,7 +493,7 @@ export class CloneRepository extends React.Component<
           <CallToAction actionTitle={signInTitle} onAction={this.signInDotCom}>
             <div>
               GitHub.com
-              アカウントにサインインして、レポジトリにアクセスしましょう。
+              アカウントにサインインして、リポジトリにアクセスしましょう。
             </div>
           </CallToAction>
         )
@@ -505,7 +505,7 @@ export class CloneRepository extends React.Component<
           >
             <div>
               GitHub Enterprise もしくは AE アカウントにサインインして、
-              レポジトリにアクセスしましょう。
+              リポジトリにアクセスしましょう。
             </div>
           </CallToAction>
         )

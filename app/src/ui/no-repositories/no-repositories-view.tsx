@@ -134,7 +134,7 @@ export class NoRepositoriesView extends React.Component<
             <h1>さぁ、始めましょう！</h1>
             <p>
               GitHub Desktop
-              にレポジトリを追加して、コラボレーションを始めましょう。
+              にリポジトリを追加して、コラボレーションを始めましょう。
             </p>
           </header>
 
@@ -386,7 +386,7 @@ export class NoRepositoriesView extends React.Component<
     } else {
       return this.renderButtonGroupButton(
         octicons.mortarBoard,
-        'チュートリアルレポジトリを新規作成...',
+        'チュートリアルリポジトリを新規作成...',
         this.props.onCreateTutorialRepository,
         'submit'
       )
@@ -396,7 +396,7 @@ export class NoRepositoriesView extends React.Component<
   private renderCloneButton() {
     return this.renderButtonGroupButton(
       octicons.repoClone,
-      'レポジトリをインターネットからクローンする...',
+      'リポジトリをインターネットからクローンする...',
       this.onShowClone,
       undefined,
       !this.isUserSignedIn()
@@ -406,7 +406,7 @@ export class NoRepositoriesView extends React.Component<
   private renderCreateRepositoryButton() {
     return this.renderButtonGroupButton(
       octicons.plus,
-      'ローカルドライブに新規レポジトリを作成...',
+      'ローカルドライブに新規リポジトリを作成...',
       this.props.onCreate
     )
   }
@@ -414,7 +414,7 @@ export class NoRepositoriesView extends React.Component<
   private renderAddExistingRepositoryButton() {
     return this.renderButtonGroupButton(
       octicons.fileDirectory,
-      'ローカルドライブから既存のレポジトリを追加する...',
+      'ローカルドライブから既存のリポジトリを追加する...',
       this.props.onAdd
     )
   }
@@ -433,7 +433,7 @@ export class NoRepositoriesView extends React.Component<
           <Octicon symbol={octicons.lightBulb} />
           <div>
             <strong>ヒント！</strong>
-            既存のレポジトリフォルダを、ここにドラッグ ＆ ドロップできます。
+            既存のリポジトリフォルダを、ここにドラッグ ＆ ドロップできます。
           </div>
         </div>
       </div>

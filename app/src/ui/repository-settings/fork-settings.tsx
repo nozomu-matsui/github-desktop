@@ -19,7 +19,7 @@ export class ForkSettings extends React.Component<IForkSettingsProps, {}> {
   private renderForkOptionsLabel = (key: ForkContributionTarget) => {
     switch (key) {
       case ForkContributionTarget.Parent:
-        return '親レポジトリに貢献するために使います。'
+        return '親リポジトリに貢献するために使います。'
       case ForkContributionTarget.Self:
         return '自分のために使います。'
       default:

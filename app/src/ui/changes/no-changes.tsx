@@ -267,7 +267,7 @@ export class NoChanges extends React.Component<
 
     return this.renderMenuBackedAction(
       'open-working-directory',
-      `${fileManager} でレポジトリのファイルを開く`,
+      `${fileManager} でリポジトリのファイルを開く`,
       undefined,
       this.onShowInFileManagerClicked
     )
@@ -285,7 +285,7 @@ export class NoChanges extends React.Component<
 
     return this.renderMenuBackedAction(
       'view-repository-on-github',
-      `ブラウザーでレポジトリを開く`,
+      `ブラウザーでリポジトリを開く`,
       undefined,
       this.onViewOnGitHubClicked
     )
@@ -321,7 +321,7 @@ export class NoChanges extends React.Component<
       return null
     }
 
-    const title = `レポジトリを外部エディターで開く`
+    const title = `リポジトリを外部エディターで開く`
 
     const description = (
       <>
@@ -455,7 +455,7 @@ export class NoChanges extends React.Component<
 
     const discoverabilityContent = (
       <>
-        ローカルレポジトリにおいて、ツールバーから利用可能です。
+        ローカルリポジトリにおいて、ツールバーから利用可能です。
         {this.renderDiscoverabilityKeyboardShortcut(menuItem)}
       </>
     )
@@ -463,8 +463,8 @@ export class NoChanges extends React.Component<
     return (
       <MenuBackedSuggestedAction
         key="publish-repository-action"
-        title="レポジトリを GitHub にパブリッシュ"
-        description="このレポジトリは現在、ローカルマシンでのみ利用可能です。パブリッシュすることで、GitHub を通じてコラボレーションできるようになります。"
+        title="リポジトリを GitHub にパブリッシュ"
+        description="このリポジトリは現在、ローカルマシンでのみ利用可能です。パブリッシュすることで、GitHub を通じてコラボレーションできるようになります。"
         discoverabilityContent={discoverabilityContent}
         buttonText="Publish repository"
         menuItemId={itemId}
