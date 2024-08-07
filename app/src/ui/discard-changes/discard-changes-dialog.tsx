@@ -88,7 +88,7 @@ export class DiscardChanges extends React.Component<
         <DialogContent>
           {this.renderFileList()}
           <p id="discard-changes-confirmation-message">
-            {TrashNameLabel} から破棄した変更は元に戻せます。
+            破棄した変更は{TrashNameLabel}から元に戻せます。
           </p>
           {this.renderConfirmDiscardChanges()}
         </DialogContent>
