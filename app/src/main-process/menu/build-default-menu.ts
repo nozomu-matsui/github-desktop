@@ -113,6 +113,7 @@ export function buildDefaultMenu({
 
   if (!__DARWIN__) {
     const fileItems = fileMenu.submenu as Electron.MenuItemConstructorOptions[]
+    const exitAccelerator = __WIN32__ ? 'Alt+F4' : 'CmdOrCtrl+Q'
 
     fileItems.push(
       separator,
@@ -126,7 +127,7 @@ export function buildDefaultMenu({
       {
         role: 'quit',
         label: '終了',
-        accelerator: 'Alt+F4',
+        accelerator: exitAccelerator,
       }
     )
   }
