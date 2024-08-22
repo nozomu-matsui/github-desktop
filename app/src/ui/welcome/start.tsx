@@ -38,8 +38,9 @@ export class Start extends React.Component<IStartProps, {}> {
           {!this.props.loadingBrowserAuth ? (
             <>
               <p id="start-description" className="welcome-text">
-               GitHub Desktop は GitHub や GitHub Enterprise 上のプロジェクトにシームレスに貢献するアプリケーションです。
-               サインインしてプロジェクトへの貢献を開始しましよう。
+                GitHub Desktop は GitHub や GitHub Enterprise
+                上のプロジェクトにシームレスに貢献するアプリケーションです。
+                サインインしてプロジェクトへの貢献を開始しましよう。
               </p>
             </>
           ) : (
@@ -60,7 +61,7 @@ export class Start extends React.Component<IStartProps, {}> {
               <Octicon symbol={octicons.linkExternal} />
             </Button>
             {this.props.loadingBrowserAuth ? (
-              <Button onClick={this.cancelBrowserAuth}>Cancel</Button>
+              <Button onClick={this.cancelBrowserAuth}>キャンセル</Button>
             ) : (
               <Button onClick={this.signInToEnterprise}>
                 GitHub Enterprise へサインイン
@@ -88,17 +89,16 @@ export class Start extends React.Component<IStartProps, {}> {
             アカウントを作成することで、{' '}
             <LinkButton uri={'https://github.com/site/terms'}>
               Terms of Service
-            </LinkButton>{' '}に同意したことになります。
-            さらなる情報は、{' '}
+            </LinkButton>{' '}
+            に同意したことになります。 さらなる情報は、{' '}
             <LinkButton uri={'https://github.com/site/privacy'}>
               GitHub Privacy Statement
-            </LinkButton>{' '}をご覧ください。
+            </LinkButton>{' '}
+            をご覧ください。
           </p>
           <p>
-          GitHub Desktop は製品の改善のため、利用状況を送信します。{' '}
-            <LinkButton uri={SamplesURL}>
-              利用状況の使用について。
-            </LinkButton>
+            GitHub Desktop は製品の改善のため、利用状況を送信します。{' '}
+            <LinkButton uri={SamplesURL}>利用状況の使用について。</LinkButton>
           </p>
         </div>
       </section>

@@ -24,9 +24,9 @@ export class ConfigureGit extends React.Component<IConfigureGitProps, {}> {
         <ConfigureGitUser
           accounts={this.props.accounts}
           onSave={this.props.done}
-          saveLabel="Finish"
+          saveLabel="完了"
         >
-          <Button onClick={this.cancel}>Cancel</Button>
+          <Button onClick={this.cancel}>キャンセル</Button>
         </ConfigureGitUser>
       </section>
     )
