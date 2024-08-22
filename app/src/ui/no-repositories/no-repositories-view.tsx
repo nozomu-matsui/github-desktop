@@ -386,7 +386,7 @@ export class NoRepositoriesView extends React.Component<
     } else {
       return this.renderButtonGroupButton(
         octicons.mortarBoard,
-        'チュートリアルリポジトリを新規作成...',
+        'チュートリアルリポジトリを新規作成する...',
         this.props.onCreateTutorialRepository,
         'submit'
       )
@@ -406,7 +406,7 @@ export class NoRepositoriesView extends React.Component<
   private renderCreateRepositoryButton() {
     return this.renderButtonGroupButton(
       octicons.plus,
-      'ローカルドライブに新規リポジトリを作成...',
+      'ローカルドライブに新規リポジトリを作成する...',
       this.props.onCreate
     )
   }
