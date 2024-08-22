@@ -233,7 +233,7 @@ export class ConfigureGitUser extends React.Component<
     const dummyCommit = new Commit(
       name,
       name.slice(0, 7),
-      'Fix all the things',
+      'すべてを修正',
       '',
       author,
       author,
@@ -245,7 +245,7 @@ export class ConfigureGitUser extends React.Component<
 
     return (
       <div id="commit-list" className="commit-list-example">
-        <div className="header">Example commit</div>
+        <div className="header">コミット例</div>
 
         <CommitListItem
           commit={dummyCommit}
@@ -272,14 +272,14 @@ export class ConfigureGitUser extends React.Component<
     return (
       <div>
         <RadioButton
-          label={`Use my GitHub${accountTypeSuffix} account name and email address`}
+          label={`GitHub${accountTypeSuffix} アカウント名とメールアドレスを使う`}
           checked={this.state.useGitHubAuthorInfo}
           onSelected={this.onUseGitHubInfoSelected}
           value="github-account"
           autoFocus={true}
         />
         <RadioButton
-          label="Configure manually"
+          label="手動で設定する"
           checked={!this.state.useGitHubAuthorInfo}
           onSelected={this.onUseGitConfigInfoSelected}
           value="git-config"
@@ -296,7 +296,7 @@ export class ConfigureGitUser extends React.Component<
     return (
       <>
         <Select
-          label="Email"
+          label="メールアドレス"
           value={this.state.gitHubEmail}
           onChange={this.onSelectedGitHubEmailChange}
         >
@@ -315,7 +315,7 @@ export class ConfigureGitUser extends React.Component<
       <>
         <TextBox
           type="email"
-          label="Email"
+          label="メールアドレス"
           placeholder="your-email@example.com"
           value={this.state.manualEmail}
           onValueChanged={this.onEmailChange}
@@ -337,12 +337,12 @@ export class ConfigureGitUser extends React.Component<
       <Form className="sign-in-form" onSubmit={this.save}>
         {!this.state.useGitHubAuthorInfo && this.state.loadingGitConfig && (
           <div className="git-config-loading">
-            <Loading /> Checking for an existing git config…
+            <Loading /> 既存の git config を確認しています...
           </div>
         )}
         <div className="sign-in-form-inputs">
           <TextBox
-            label="Name"
+            label="名前"
             placeholder="あなたの名前"
             onValueChanged={this.onNameChange}
             value={
