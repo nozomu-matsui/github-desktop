@@ -33,14 +33,13 @@ export class Start extends React.Component<IStartProps, {}> {
       >
         <div className="start-content">
           <h1 className="welcome-title">
-            Welcome to <span>GitHub Desktop</span>
+            <span>GitHub Desktop</span> へようこそ
           </h1>
           {!this.props.loadingBrowserAuth ? (
             <>
               <p id="start-description" className="welcome-text">
-                GitHub Desktop is a seamless way to contribute to projects on
-                GitHub and GitHub Enterprise. Sign in below to get started with
-                your existing projects.
+               GitHub Desktop は GitHub や GitHub Enterprise 上のプロジェクトにシームレスに貢献するアプリケーションです。
+               サインインしてプロジェクトへの貢献を開始しましよう。
               </p>
             </>
           ) : (
@@ -57,49 +56,48 @@ export class Start extends React.Component<IStartProps, {}> {
               role="link"
             >
               {this.props.loadingBrowserAuth && <Loading />}
-              Sign in to GitHub.com
+              GitHub.com へサインイン
               <Octicon symbol={octicons.linkExternal} />
             </Button>
             {this.props.loadingBrowserAuth ? (
               <Button onClick={this.cancelBrowserAuth}>Cancel</Button>
             ) : (
               <Button onClick={this.signInToEnterprise}>
-                Sign in to GitHub Enterprise
+                GitHub Enterprise へサインイン
               </Button>
             )}
           </div>
           <div className="skip-action-container">
             <p className="welcome-text">
-              New to GitHub?{' '}
+              GitHub は初めてですか？{' '}
               <LinkButton
                 uri={CreateAccountURL}
                 className="create-account-link"
               >
-                Create your free account.
+                無料のアカウントを作成しましょう。
               </LinkButton>
             </p>
             <LinkButton className="skip-button" onClick={this.skip}>
-              Skip this step
+              この手順をスキップする
             </LinkButton>
           </div>
         </div>
 
         <div className="start-footer">
           <p>
-            By creating an account, you agree to the{' '}
+            アカウントを作成することで、{' '}
             <LinkButton uri={'https://github.com/site/terms'}>
               Terms of Service
-            </LinkButton>
-            . For more information about GitHub's privacy practices, see the{' '}
+            </LinkButton>{' '}に同意したことになります。
+            さらなる情報は、{' '}
             <LinkButton uri={'https://github.com/site/privacy'}>
-              GitHub Privacy Statement.
-            </LinkButton>
+              GitHub Privacy Statement
+            </LinkButton>{' '}をご覧ください。
           </p>
           <p>
-            GitHub Desktop sends usage metrics to improve the product and inform
-            feature decisions.{' '}
+          GitHub Desktop は製品の改善のため、利用状況を送信します。{' '}
             <LinkButton uri={SamplesURL}>
-              Learn more about user metrics.
+              利用状況の使用について。
             </LinkButton>
           </p>
         </div>
