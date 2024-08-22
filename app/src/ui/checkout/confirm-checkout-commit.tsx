@@ -69,7 +69,10 @@ export class ConfirmCheckoutCommitDialog extends React.Component<
           </Row>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Checkout" />
+          <OkCancelButtonGroup
+            destructive={true}
+            okButtonText="チェックアウト"
+          />
         </DialogFooter>
       </Dialog>
     )

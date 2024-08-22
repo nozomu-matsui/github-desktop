@@ -36,8 +36,8 @@ export class AddSSHHost extends React.Component<IAddSSHHostProps> {
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Yes"
-            cancelButtonText="No"
+            okButtonText="はい"
+            cancelButtonText="いいえ"
             onCancelButtonClick={this.onCancel}
           />
         </DialogFooter>

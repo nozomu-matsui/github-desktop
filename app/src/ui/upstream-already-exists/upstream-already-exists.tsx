@@ -64,8 +64,8 @@ export class UpstreamAlreadyExists extends React.Component<IUpstreamAlreadyExist
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText="Update"
-            cancelButtonText="Ignore"
+            okButtonText="更新する"
+            cancelButtonText="無視する"
             onCancelButtonClick={this.onIgnore}
           />
         </DialogFooter>

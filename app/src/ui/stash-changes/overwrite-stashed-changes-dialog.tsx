@@ -52,7 +52,7 @@ export class OverwriteStash extends React.Component<
           </Row>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Overwrite" />
+          <OkCancelButtonGroup destructive={true} okButtonText="上書きする" />
         </DialogFooter>
       </Dialog>
     )
