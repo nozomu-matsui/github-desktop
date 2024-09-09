@@ -145,23 +145,22 @@ export class AddExistingRepository extends React.Component<
     const displayedMessage = (
       <>
         <p>
-          The Git repository
           {repositoryUnsafePath !== convertedPath && (
             <>
               {' at '}
               <Ref>{repositoryUnsafePath}</Ref>
             </>
           )}{' '}
-          appears to be owned by another user on your machine. Adding untrusted
-          repositories may automatically execute files in the repository.
+          にあるリポジトリは、他のユーザがオーナーのようです。
+          信頼できないリポジトリを追加すると、リポジトリ中のファイルが実行される場合があります。
         </p>
         <p>
-          If you trust the owner of the directory you can
+        フォルダのオーナーが信頼できる場合は、{' '}
           <LinkButton onClick={this.onTrustDirectory}>
-            {' '}
-            add an exception for this directory
+            このフォルダにエクセプションを追加
+
           </LinkButton>{' '}
-          in order to continue.
+          することで、使用できます。
         </p>
       </>
     )
@@ -180,19 +179,19 @@ export class AddExistingRepository extends React.Component<
 
     const displayedMessage = (
       <>
-        <p>This directory does not appear to be a Git repository.</p>
+        <p>このフォルダは Git リポジトリではないようです。</p>
         <p>
-          Would you like to{' '}
+          このフォルダに{' '}
           <LinkButton onClick={this.onCreateRepositoryClicked}>
-            create a repository
+            リポジトリを新規作成
           </LinkButton>{' '}
-          here instead?
+          しますか？
         </p>
       </>
     )
 
     const screenReaderMessage =
-      'This directory does not appear to be a Git repository. Would you like to create a repository here instead?'
+      'このフォルダは Git リポジトリではないようです。このフォルダにリポジトリを新規作成しますか？'
 
     return { screenReaderMessage, displayedMessage }
   }
@@ -223,7 +222,7 @@ export class AddExistingRepository extends React.Component<
     return (
       <Dialog
         id="add-existing-repository"
-        title={__DARWIN__ ? 'Add Local Repository' : 'Add local repository'}
+        title="既存のリポジトリを追加"
         onSubmit={this.addRepository}
         onDismissed={this.props.onDismissed}
         loading={this.state.isTrustingRepository}
@@ -233,19 +232,19 @@ export class AddExistingRepository extends React.Component<
             <TextBox
               ref={this.pathTextBoxRef}
               value={this.state.path}
-              label={__DARWIN__ ? 'Local Path' : 'Local path'}
-              placeholder="repository path"
+              label="ローカルパス"
+              placeholder="リポジトリパス"
               onValueChanged={this.onPathChanged}
               ariaDescribedBy="add-existing-repository-path-error"
             />
-            <Button onClick={this.showFilePicker}>Choose…</Button>
+            <Button onClick={this.showFilePicker}>選択...</Button>
           </Row>
           {this.renderErrors()}
         </DialogContent>
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={__DARWIN__ ? 'Add Repository' : 'Add repository'}
+            okButtonText="リポジトリを追加"
           />
         </DialogFooter>
       </Dialog>
