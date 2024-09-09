@@ -88,6 +88,30 @@ export class Integrations extends React.Component<
     })
   }
 
+  public componentDidMount(): void {
+    if (enableCustomIntegration()) {
+      const {
+        availableEditors,
+        availableShells,
+        useCustomEditor,
+        useCustomShell,
+      } = this.props
+
+      // When there are no available editors or shells, the `Select` component
+      // will have the custom editor or shell already selected, but we need
+      // to handle that as initial value, otherwise the custom integration
+      // form won't be rendered.
+
+      if (availableEditors.length === 0 && !useCustomEditor) {
+        this.setSelectedEditor(CustomIntegrationValue)
+      }
+
+      if (availableShells.length === 0 && !useCustomShell) {
+        this.setSelectedShell(CustomIntegrationValue)
+      }
+    }
+  }
+
   public componentDidUpdate(
     prevProps: IIntegrationsPreferencesProps,
     prevState: IIntegrationsPreferencesState
@@ -111,16 +135,20 @@ export class Integrations extends React.Component<
       return
     }
 
-    if (value === CustomIntegrationValue) {
+    this.setSelectedEditor(value)
+  }
+
+  private setSelectedEditor = (editor: string) => {
+    if (editor === CustomIntegrationValue) {
       this.setState({ useCustomEditor: true })
       this.props.onUseCustomEditorChanged(true)
     } else {
       this.setState({
         useCustomEditor: false,
-        selectedExternalEditor: value,
+        selectedExternalEditor: editor,
       })
       this.props.onUseCustomEditorChanged(false)
-      this.props.onSelectedEditorChanged(value)
+      this.props.onSelectedEditorChanged(editor)
     }
   }
 
@@ -132,11 +160,15 @@ export class Integrations extends React.Component<
       return
     }
 
-    if (value === CustomIntegrationValue) {
+    this.setSelectedShell(value)
+  }
+
+  private setSelectedShell = (shell: string) => {
+    if (shell === CustomIntegrationValue) {
       this.setState({ useCustomShell: true })
       this.props.onUseCustomShellChanged(true)
     } else {
-      const parsedValue = parseShell(value)
+      const parsedValue = parseShell(shell)
       this.setState({
         useCustomShell: false,
         selectedShell: parsedValue,
@@ -149,7 +181,7 @@ export class Integrations extends React.Component<
   private renderExternalEditor() {
     const options = this.props.availableEditors
     const { selectedExternalEditor, useCustomEditor } = this.state
-    const label = '外部エディター'
+    const label = __DARWIN__ ? 'External Editor' : 'External editor'
 
     if (!enableCustomIntegration() && options.length === 0) {
       // this is emulating the <Select/> component's UI so the styles are
@@ -161,7 +193,7 @@ export class Integrations extends React.Component<
         <div className="select-component no-options-found">
           <label>{label}</label>
           <span>
-            外部エディターが見つかりません。{' '}
+            No editors found.{' '}
             <LinkButton uri={suggestedExternalEditor.url}>
               Install {suggestedExternalEditor.name}?
             </LinkButton>
@@ -188,7 +220,9 @@ export class Integrations extends React.Component<
         ))}
         {enableCustomIntegration() && (
           <option key={CustomIntegrationValue} value={CustomIntegrationValue}>
-            カスタムエディターを設定する
+            {__DARWIN__
+              ? 'Configure Custom Editor…'
+              : 'Configure custom editor…'}
           </option>
         )}
       </Select>
@@ -205,9 +239,9 @@ export class Integrations extends React.Component<
       <Row>
         <div className="no-options-found">
           <span>
-            外部エディターが見つかりません。{' '}
+            No other editors found.{' '}
             <LinkButton uri={suggestedExternalEditor.url}>
-              {suggestedExternalEditor.name}? をインストールする
+              Install {suggestedExternalEditor.name}?
             </LinkButton>
           </span>
         </div>
@@ -259,7 +293,7 @@ export class Integrations extends React.Component<
     return (
       <Select
         label={enableCustomIntegration() ? undefined : 'Shell'}
-        aria-label="シェル"
+        aria-label="Shell"
         value={useCustomShell ? CustomIntegrationValue : selectedShell}
         onChange={this.onSelectedShellChanged}
       >
@@ -270,7 +304,7 @@ export class Integrations extends React.Component<
         ))}
         {enableCustomIntegration() && (
           <option key={CustomIntegrationValue} value={CustomIntegrationValue}>
-            カスタムシェルを設定...
+            {__DARWIN__ ? 'Configure Custom Shell…' : 'Configure custom shell…'}
           </option>
         )}
       </Select>
@@ -318,7 +352,7 @@ export class Integrations extends React.Component<
     if (!enableCustomIntegration()) {
       return (
         <DialogContent>
-          <h2>アプリケーション</h2>
+          <h2>Applications</h2>
           <Row>{this.renderExternalEditor()}</Row>
           <Row>{this.renderSelectedShell()}</Row>
         </DialogContent>
@@ -329,15 +363,15 @@ export class Integrations extends React.Component<
       <DialogContent>
         <fieldset>
           <legend>
-            <h2>外部エディター</h2>
+            <h2>{__DARWIN__ ? 'External Editor' : 'External editor'}</h2>
           </legend>
           <Row>{this.renderExternalEditor()}</Row>
-          {this.renderNoExternalEditorHint()}
           {this.state.useCustomEditor && this.renderCustomExternalEditor()}
+          {this.renderNoExternalEditorHint()}
         </fieldset>
         <fieldset>
           <legend>
-            <h2>シェル</h2>
+            <h2>Shell</h2>
           </legend>
           <Row>{this.renderSelectedShell()}</Row>
           {this.state.useCustomShell && this.renderCustomShell()}
