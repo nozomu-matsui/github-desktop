@@ -711,6 +711,10 @@ export class CloneRepository extends React.Component<
       accounts.push(this.props.enterpriseAccount)
     }
 
+    if (url.endsWith('.wiki.git')) {
+      return { url }
+    }
+
     const account = await findAccountForRemoteURL(url, accounts)
     if (lastParsedIdentifier !== null && account !== null) {
       const api = API.fromAccount(account)

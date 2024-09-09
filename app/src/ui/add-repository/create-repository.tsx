@@ -38,6 +38,9 @@ import { isTopMostDialog } from '../dialog/is-top-most'
 import { InputError } from '../lib/input-description/input-error'
 import { InputWarning } from '../lib/input-description/input-warning'
 
+/** URL used to provide information about submodules to the user. */
+const submoduleDocsUrl = 'https://gh.io/git-submodules'
+
 /** The sentinel value used to indicate no gitignore should be used. */
 const NoGitIgnoreValue = 'None'
 
@@ -47,31 +50,6 @@ const NoLicenseValue: ILicense = {
   featured: false,
   body: '',
   hidden: false,
-}
-
-/** Is the path a git repository? */
-export const isGitRepository = async (path: string) => {
-  const type = await getRepositoryType(path).catch(e => {
-    log.error(`Unable to determine repository type`, e)
-    return { kind: 'missing' } as RepositoryType
-  })
-
-  if (type.kind === 'unsafe') {
-    // If the path is considered unsafe by Git we won't be able to
-    // verify that it's a repository (or worktree). So we'll fall back to this
-    // naive approximation.
-    return directoryExists(join(path, '.git'))
-  }
-
-  if (type.kind === 'regular') {
-    // If the path is a regular repository, we'll check if the top level. If it
-    // isn't than, the path is a subfolder of the repository and a user may want
-    // to make it into a repository.
-    // TODO: Opportunity to provide information about submodules?
-    return type.topLevelWorkingDirectory === path
-  }
-
-  return type.kind !== 'missing'
 }
 
 interface ICreateRepositoryProps {
@@ -95,6 +73,9 @@ interface ICreateRepositoryState {
 
   /** Is the given path already a repository? */
   readonly isRepository: boolean
+
+  /** Is the given path already a subfolder of a repository? */
+  readonly isSubFolderOfRepository: boolean
 
   /** Should the repository be created with a default README? */
   readonly createWithReadme: boolean
@@ -159,6 +140,7 @@ export class CreateRepository extends React.Component<
       isValidPath: null,
       isRepository: false,
       readMeExists: false,
+      isSubFolderOfRepository: false,
     }
 
     if (path === null) {
@@ -215,12 +197,35 @@ export class CreateRepository extends React.Component<
 
   private async updateIsRepository(path: string, name: string) {
     const fullPath = Path.join(path, sanitizedRepositoryName(name))
-    const isRepository = await isGitRepository(fullPath)
+
+    const type = await getRepositoryType(fullPath).catch(e => {
+      log.error(`Unable to determine repository type`, e)
+      return { kind: 'missing' } as RepositoryType
+    })
+
+    let isRepository: boolean = type.kind !== 'missing'
+    let isSubFolderOfRepository = false
+    if (type.kind === 'unsafe') {
+      // If the path is considered unsafe by Git we won't be able to
+      // verify that it's a repository (or worktree). So we'll fall back to this
+      // naive approximation.
+      isRepository = await directoryExists(join(path, '.git'))
+    }
+
+    if (type.kind === 'regular') {
+      // If the path is a regular repository, we'll check if the top level. If it
+      // isn't than, the path is a subfolder of the repository and a user may want
+      // to make it into a repository.
+      isRepository = type.topLevelWorkingDirectory === fullPath
+      isSubFolderOfRepository = !isRepository
+    }
 
     // Only update isRepository if the path is still the same one we were using
     // to check whether it looked like a repository.
     this.setState(state =>
-      state.path === path && state.name === name ? { isRepository } : null
+      state.path === path && state.name === name
+        ? { isRepository, isSubFolderOfRepository }
+        : null
     )
   }
 
@@ -453,10 +458,10 @@ export class CreateRepository extends React.Component<
         trackedUserInput={this.state.name}
         ariaLiveMessage={`Will be created as ${sanitizedName}. Spaces and invalid characters have been replaced by hyphens.`}
       >
-        <p>Will be created as {sanitizedName}</p>
         <span className="sr-only">
-          Spaces and invalid characters have been replaced by hyphens.
+          空白や無効な文字列がハイフンに変換され
         </span>
+        <p>{sanitizedName}</p> として作成されます。
       </InputWarning>
     )
   }
@@ -533,34 +538,60 @@ export class CreateRepository extends React.Component<
 
     return (
       <DialogError>
-        Directory could not be created at this path. You may not have
-        permissions to create a directory here.
+        このパスにディレクトリが作成できませんでした。
+        ディレクトリを作成する権限がない可能性があります。
       </DialogError>
     )
   }
 
   private renderGitRepositoryError() {
-    const isRepo = this.state.isRepository
+    const { isRepository, path, name } = this.state
 
-    if (!this.state.path || this.state.path.length === 0 || !isRepo) {
+    if (!path || path.length === 0 || !isRepository) {
       return null
     }
+
+    const fullPath = Path.join(path, sanitizedRepositoryName(name))
 
     return (
       <Row>
         <InputError
           id="existing-repository-path-error"
           trackedUserInput={this.state.path + this.state.name}
-          ariaLiveMessage={
-            'This directory appears to be a Git repository. Would you like to add this repository instead?'
-          }
+          ariaLiveMessage={`The directory ${fullPath} appears to be a Git repository. Would you like to add this repository instead?`}
         >
-          This directory appears to be a Git repository. Would you like to{' '}
+          <Ref>{fullPath}</Ref> ディレクトリは Git リポジトリのようです。
+          代わりに{' '}
           <LinkButton onClick={this.onAddRepositoryClicked}>
-            add this repository
+            このリポジトリを追加
           </LinkButton>{' '}
-          instead?
+          しますか？
         </InputError>
+      </Row>
+    )
+  }
+
+  private renderGitRepositorySubFolderMessage() {
+    const { isSubFolderOfRepository, path, name } = this.state
+
+    if (!path || path.length === 0 || !isSubFolderOfRepository) {
+      return null
+    }
+
+    const fullPath = Path.join(path, sanitizedRepositoryName(name))
+
+    return (
+      <Row>
+        <InputWarning
+          id="path-is-subfolder-of-repository"
+          trackedUserInput={this.state.path + this.state.name}
+          ariaLiveMessage={`The directory ${fullPath} appears to be a subfolder Git repository. Did you know about submodules?`}
+        >
+          <Ref>{fullPath}</Ref> ディレクトリは、Git リポジトリのサブフォルダのようです。
+          <LinkButton uri={submoduleDocsUrl}>
+            サブモジュールについて。
+          </LinkButton>
+        </InputWarning>
       </Row>
     )
   }
@@ -585,10 +616,26 @@ export class CreateRepository extends React.Component<
           ariaLiveMessage="This directory contains a README.md file already. Checking
           this box will result in the existing file being overwritten."
         >
-          This directory contains a <Ref>README.md</Ref> file already. Checking
-          this box will result in the existing file being overwritten.
+          このディレクトリにはすでに <Ref>README.md</Ref> ファイルが存在します。
+          チェックボックスを選択すると、既存のファイルに上書きします。
         </InputWarning>
       </Row>
+    )
+  }
+
+  private renderPathMessage = () => {
+    const { path, name, isRepository } = this.state
+
+    if (path === null || path === '' || name === '' || isRepository) {
+      return null
+    }
+
+    const fullPath = Path.join(path, sanitizedRepositoryName(name))
+
+    return (
+      <div id="create-repo-path-msg">
+        <Ref>{fullPath}</Ref> にリポジトリは作成されます。
+      </div>
     )
   }
 
@@ -655,7 +702,7 @@ export class CreateRepository extends React.Component<
               placeholder="リポジトリパス"
               onValueChanged={this.onPathChanged}
               disabled={readOnlyPath || loadingDefaultDir}
-              ariaDescribedBy="existing-repository-path-error"
+              ariaDescribedBy="existing-repository-path-error path-is-subfolder-of-repository"
             />
             <Button
               onClick={this.showFilePicker}
@@ -666,6 +713,7 @@ export class CreateRepository extends React.Component<
           </Row>
 
           {this.renderGitRepositoryError()}
+          {this.renderGitRepositorySubFolderMessage()}
 
           <Row>
             <Checkbox
@@ -686,9 +734,11 @@ export class CreateRepository extends React.Component<
         </DialogContent>
 
         <DialogFooter>
+          {this.renderPathMessage()}
           <OkCancelButtonGroup
             okButtonText="リポジトリを新規作成"
             okButtonDisabled={disabled || loadingDefaultDir}
+            okButtonAriaDescribedBy="create-repo-path-msg"
           />
         </DialogFooter>
       </Dialog>
