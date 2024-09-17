@@ -3094,7 +3094,13 @@ export class App extends React.Component<IAppProps, IAppState> {
     const state = selection.state
     const revertProgress = state.revertProgress
     if (revertProgress) {
-      return <RevertProgress progress={revertProgress} />
+      return (
+        <RevertProgress
+          progress={revertProgress}
+          width={this.state.pushPullButtonWidth}
+          dispatcher={this.props.dispatcher}
+        />
+      )
     }
 
     let remoteName = state.remote ? state.remote.name : null
@@ -3152,6 +3158,7 @@ export class App extends React.Component<IAppProps, IAppState> {
         askForConfirmationOnForcePush={this.state.askForConfirmationOnForcePush}
         onDropdownStateChanged={this.onPushPullDropdownStateChanged}
         enableFocusTrap={enableFocusTrap}
+        pushPullButtonWidth={this.state.pushPullButtonWidth}
       />
     )
   }
@@ -3255,6 +3262,7 @@ export class App extends React.Component<IAppProps, IAppState> {
       <BranchDropdown
         dispatcher={this.props.dispatcher}
         isOpen={isOpen}
+        branchDropdownWidth={this.state.branchDropdownWidth}
         onDropDownStateChanged={this.onBranchDropdownStateChanged}
         repository={repository}
         repositoryState={selection.state}
