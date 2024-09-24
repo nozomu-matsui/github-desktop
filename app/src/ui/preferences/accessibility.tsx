@@ -35,8 +35,8 @@ export class Accessibility extends React.Component<
             id="underline-setting-description"
             className="git-settings-description"
           >
-            この設定を有効にすると、コミットメッセージやコメント、その他のテキストフィールド中の
-            URL に下線が付きます。 URL が見つけやすくなります。
+            コミットメッセージやコメント、その他のテキストフィールド中の URL
+            に下線が付きます。 URL が見つけやすくなります。
             {this.renderExampleLink()}
           </p>
 
@@ -54,7 +54,7 @@ export class Accessibility extends React.Component<
             id="diff-checkmarks-setting-description"
             className="git-settings-description"
           >
-            この設定を有効にすると、コミットする際の変更箇所にチェックマーク（行番号の横）が表示されます。
+            Diff表示の行番号の横に、チェックマークを表示します。
           </p>
         </div>
       </DialogContent>
