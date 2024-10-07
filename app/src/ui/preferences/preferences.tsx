@@ -43,10 +43,7 @@ import { Prompts } from './prompts'
 import { Repository } from '../../models/repository'
 import { Notifications } from './notifications'
 import { Accessibility } from './accessibility'
-import {
-  enableExternalCredentialHelper,
-  enableLinkUnderlines,
-} from '../../lib/feature-flag'
+import { enableExternalCredentialHelper } from '../../lib/feature-flag'
 import {
   ICustomIntegration,
   TargetPathArgument,
@@ -318,12 +315,10 @@ export class Preferences extends React.Component<
               <Octicon className="icon" symbol={octicons.gear} />
               アドバンス
             </span>
-            {enableLinkUnderlines() && (
-              <span id={this.getTabId(PreferencesTab.Accessibility)}>
-                <Octicon className="icon" symbol={octicons.accessibility} />
-                アクセシビリティ
-              </span>
-            )}
+            <span id={this.getTabId(PreferencesTab.Accessibility)}>
+              <Octicon className="icon" symbol={octicons.accessibility} />
+              アクセシビリティ
+            </span>
           </TabBar>
 
           {this.renderActiveTab()}
