@@ -260,28 +260,26 @@ export class MergeCallToActionWithConflicts extends React.Component<
       return null
     }
 
-    const pluralized = this.commitCount === 1 ? 'commit' : 'commits'
-
     if (this.state.selectedOperation === MultiCommitOperationKind.Rebase) {
       return (
         <div className="merge-message">
-          This will update <strong>{currentBranch.name}</strong>
-          {` by applying its `}
-          <strong>{`${this.commitCount} ${pluralized}`}</strong>
-          {` on top of `}
+          この操作によって
+          <strong>{currentBranch.name}</strong>の
+          <strong>{`${this.commitCount} コミット`}</strong>が
           <strong>{branch.name}</strong>
+          の先頭に適用されます。
         </div>
       )
     }
 
     return (
       <div className="merge-message">
-        This will merge
-        <strong>{` ${this.commitCount} ${pluralized}`}</strong>
-        {` from `}
+        この操作によって
+        <strong>{` ${this.commitCount} コミット`}</strong>が
         <strong>{branch.name}</strong>
-        {` into `}
+        から
         <strong>{currentBranch.name}</strong>
+        へマージされます。
       </div>
     )
   }
@@ -290,14 +288,15 @@ export class MergeCallToActionWithConflicts extends React.Component<
     if (this.state.selectedOperation === MultiCommitOperationKind.Rebase) {
       return (
         <div className="merge-message">
-          Unable to start rebase. Check you have chosen a valid branch.
+          リベースを開始できません。
+          有効なブランチを選択しているか、確認してください。
         </div>
       )
     }
 
     return (
       <div className="merge-message">
-        Unable to merge unrelated histories in this repository
+        このリポジトリと関係のないコミット履歴は、マージできません。
       </div>
     )
   }
@@ -307,15 +306,13 @@ export class MergeCallToActionWithConflicts extends React.Component<
     branch: Branch,
     count: number
   ) {
-    const pluralized = count === 1 ? 'file' : 'files'
     return (
       <div className="merge-message">
-        There will be
-        <strong>{` ${count} conflicted ${pluralized}`}</strong>
-        {` when merging `}
         <strong>{branch.name}</strong>
-        {` into `}
+        {` を `}
         <strong>{currentBranch.name}</strong>
+        {` へマージする際、 `}
+        <strong>{` ${count} のコンフリクトしたファイルがあります。`}</strong>
       </div>
     )
   }

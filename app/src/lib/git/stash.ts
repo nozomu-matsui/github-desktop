@@ -96,7 +96,7 @@ export async function moveStashEntry(
   { stashSha, parents, tree }: IStashEntry,
   branchName: string
 ) {
-  const message = `On ${branchName}: ${createDesktopStashMessage(branchName)}`
+  const message = `${branchName}: ${createDesktopStashMessage(branchName)}`
   const parentArgs = parents.flatMap(p => ['-p', p])
 
   const { stdout: commitId } = await git(

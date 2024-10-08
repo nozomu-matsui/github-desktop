@@ -78,7 +78,7 @@ export class Advanced extends React.Component<
   private reportDesktopUsageLabel() {
     return (
       <span>
-        Help GitHub Desktop improve by submitting{' '}
+        GitHub Desktop の改善に協力する{' '}
         <LinkButton uri={SamplesURL}>usage stats</LinkButton>
       </span>
     )
@@ -88,9 +88,9 @@ export class Advanced extends React.Component<
     return (
       <DialogContent>
         <div className="advanced-section">
-          <h2>Background updates</h2>
+          <h2>バックグラウンドアップデート</h2>
           <Checkbox
-            label="Show status icons in the repository list"
+            label="ステータスアイコンをリポジトリ一覧に表示する"
             value={
               this.props.repositoryIndicatorsEnabled
                 ? CheckboxValue.On
@@ -104,14 +104,12 @@ export class Advanced extends React.Component<
             className="git-settings-description"
           >
             <p>
-              These icons indicate which repositories have local or remote
-              changes, and require the periodic fetching of repositories that
-              are not currently selected.
+              どのリポジトリにローカルもしくはリモートの変更があるかアイコン表示します。
+              また、選択中のリポジトリ以外にフェッチが必要な場合もアイコン表示します。
             </p>
             <p>
-              Turning this off will not stop the periodic fetching of your
-              currently selected repository, but may improve overall app
-              performance for users with many repositories.
+              この設定を無効にしても、選択中のリポジトリに対する定期的なフェッチは継続されますが、
+              多くのユーザが使っているリポジトリにおいては、アプリケーション全体のパフォーマンスが改善します。
             </p>
           </div>
         </div>
@@ -128,13 +126,13 @@ export class Advanced extends React.Component<
           />
         </div>
         {(this.state.canUseWindowsSSH || enableExternalCredentialHelper()) && (
-          <h2>Network and credentials</h2>
+          <h2>ネットワーク & クレデンシャル</h2>
         )}
         {this.renderSSHSettings()}
         {enableExternalCredentialHelper() && (
           <div className="advanced-section">
             <Checkbox
-              label={'Use Git Credential Manager'}
+              label={'Git クレデンシャルマネージャーを使う'}
               value={
                 this.state.useExternalCredentialHelper
                   ? CheckboxValue.On
@@ -148,12 +146,11 @@ export class Advanced extends React.Component<
               className="git-settings-description"
             >
               <p>
-                Use{' '}
                 <LinkButton uri="https://gh.io/gcm">
-                  Git Credential Manager{' '}
+                  Git クレデンシャルマネージャー{' '}
                 </LinkButton>{' '}
-                for private repositories outside of GitHub.com. This feature is
-                experimental and subject to change.
+                を GitHub.com 以外のリポジトリに使用します。
+                この機能は試験運用のため、変更される可能性があります。
               </p>
             </div>
           </div>
@@ -170,7 +167,7 @@ export class Advanced extends React.Component<
     return (
       <div className="advanced-section">
         <Checkbox
-          label="Use system OpenSSH (recommended)"
+          label="システム OpenSSH を使う (推奨)"
           value={
             this.props.useWindowsOpenSSH ? CheckboxValue.On : CheckboxValue.Off
           }

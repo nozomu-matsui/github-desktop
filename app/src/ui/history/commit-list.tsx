@@ -216,24 +216,22 @@ export class CommitList extends React.Component<
         return
       }
 
-      const plural = keyboardReorderData.commits.length === 1 ? '' : 's'
-
       if (insertionIndexPath !== null) {
         const { row } = insertionIndexPath
 
         const insertionPoint =
           row < this.props.commitSHAs.length
-            ? `before commit ${row + 1}`
-            : `after commit ${row}`
+            ? ` ${row + 1} コミット前`
+            : ` ${row} コミット後`
 
         this.setState({
-          reorderingMessage: `Press Enter to insert the selected commit${plural} ${insertionPoint} or Escape to cancel.`,
+          reorderingMessage: `エンターキーを押して、選択したコミットを${insertionPoint}に挿入するか、ESCキーでキャンセルしてください。`,
         })
         return
       }
 
       this.setState({
-        reorderingMessage: `Use the Up and Down arrow keys to choose a new location for the selected commit${plural}, then press Enter to confirm or Escape to cancel.`,
+        reorderingMessage: `上もしくか下矢印キーで選択したコミットの位置を選んで、エンターキーで確認するか、ESCキーでキャンセルしてください。`,
       })
     },
     500
@@ -350,13 +348,11 @@ export class CommitList extends React.Component<
     numUnpushedTags: number
   ) {
     if (isLocalCommit) {
-      return 'This commit has not been pushed to the remote repository'
+      return 'このコミットは、リモートリポジトリにプッシュされていません'
     }
 
     if (numUnpushedTags > 0) {
-      return `This commit has ${numUnpushedTags} tag${
-        numUnpushedTags > 1 ? 's' : ''
-      } to push`
+      return `このコミットは、未プッシュのタグ ${numUnpushedTags} があります`
     }
 
     return undefined
@@ -480,7 +476,7 @@ export class CommitList extends React.Component<
     if (commitSHAs.length === 0) {
       return (
         <div className="panel blankslate">
-          {emptyListMessage ?? 'No commits to list'}
+          {emptyListMessage ?? '一覧にコミットがありません'}
         </div>
       )
     }
@@ -545,9 +541,7 @@ export class CommitList extends React.Component<
     }
 
     const containerWidth = this.containerRef.current?.clientWidth ?? 0
-    const reorderCommitsHintTitle = __DARWIN__
-      ? 'Reorder Commits'
-      : 'Reorder commits'
+    const reorderCommitsHintTitle = 'コミットをリオーダー'
 
     return (
       <Popover
@@ -563,12 +557,13 @@ export class CommitList extends React.Component<
       >
         <h4>{reorderCommitsHintTitle}</h4>
         <p>
-          Use <KeyboardShortcut darwinKeys={['↑']} keys={['↑']} />
-          <KeyboardShortcut darwinKeys={['↓']} keys={['↓']} /> to choose a new
-          location.
+          <KeyboardShortcut darwinKeys={['↑']} keys={['↑']} />
+          <KeyboardShortcut darwinKeys={['↓']} keys={['↓']} />
+          キーで位置を変更できます。
         </p>
         <p>
-          Press <KeyboardShortcut darwinKeys={['⏎']} keys={['⏎']} /> to confirm.
+          <KeyboardShortcut darwinKeys={['⏎']} keys={['⏎']} />
+          キーでリオーダーの確認できます。
         </p>
       </Popover>
     )
@@ -650,28 +645,28 @@ export class CommitList extends React.Component<
       this.props.canResetToCommits === true && isResettableCommit
     const canBeCheckedOut = row > 0 //Cannot checkout the current commit
 
-    let viewOnGitHubLabel = 'View on GitHub'
+    let viewOnGitHubLabel = 'GitHub で開く'
     const gitHubRepository = this.props.gitHubRepository
 
     if (
       gitHubRepository &&
       gitHubRepository.endpoint !== getDotComAPIEndpoint()
     ) {
-      viewOnGitHubLabel = 'View on GitHub Enterprise'
+      viewOnGitHubLabel = 'GitHub Enterprise で開く'
     }
 
     const items: IMenuItem[] = []
 
     if (canBeAmended) {
       items.push({
-        label: __DARWIN__ ? 'Amend Commit…' : 'Amend commit…',
+        label: 'コミットをアメンド...',
         action: () => this.props.onAmendCommit?.(commit, isLocal),
       })
     }
 
     if (canBeUndone) {
       items.push({
-        label: __DARWIN__ ? 'Undo Commit…' : 'Undo commit…',
+        label: 'コミットをUndo...',
         action: () => {
           if (this.props.onUndoCommit) {
             this.props.onUndoCommit(commit)
@@ -683,7 +678,7 @@ export class CommitList extends React.Component<
 
     if (enableResetToCommit()) {
       items.push({
-        label: __DARWIN__ ? 'Reset to Commit…' : 'Reset to commit…',
+        label: 'コミットへリセット...',
         action: () => {
           if (this.props.onResetToCommit) {
             this.props.onResetToCommit(commit)
@@ -695,7 +690,7 @@ export class CommitList extends React.Component<
 
     if (enableCheckoutCommit()) {
       items.push({
-        label: __DARWIN__ ? 'Checkout Commit' : 'Checkout commit',
+        label: 'コミットをチェックアウト',
         action: () => {
           this.props.onCheckoutCommit?.(commit)
         },
@@ -704,7 +699,7 @@ export class CommitList extends React.Component<
     }
 
     items.push({
-      label: __DARWIN__ ? 'Reorder Commit' : 'Reorder commit',
+      label: 'コミットをリオーダー',
       action: () => {
         this.props.onKeyboardReorder?.([commit])
       },
@@ -713,9 +708,7 @@ export class CommitList extends React.Component<
 
     items.push(
       {
-        label: __DARWIN__
-          ? 'Revert Changes in Commit'
-          : 'Revert changes in commit',
+        label: 'コミットの変更をリバート',
         action: () => {
           if (this.props.onRevertCommit) {
             this.props.onRevertCommit(commit)
@@ -725,9 +718,7 @@ export class CommitList extends React.Component<
       },
       { type: 'separator' },
       {
-        label: __DARWIN__
-          ? 'Create Branch from Commit'
-          : 'Create branch from commit',
+        label: 'コミットからブランチを作成',
         action: () => {
           if (this.props.onCreateBranch) {
             this.props.onCreateBranch(commit)
@@ -735,7 +726,7 @@ export class CommitList extends React.Component<
         },
       },
       {
-        label: 'Create Tag…',
+        label: 'タグを作成...',
         action: () => this.props.onCreateTag?.(commit.sha),
         enabled: this.props.onCreateTag !== undefined,
       }
@@ -751,17 +742,17 @@ export class CommitList extends React.Component<
         deleteTagsMenuItem
       )
     }
-    const darwinTagsLabel = commit.tags.length > 1 ? 'Copy Tags' : 'Copy Tag'
-    const windowTagsLabel = commit.tags.length > 1 ? 'Copy tags' : 'Copy tag'
+    const darwinTagsLabel = 'タグをコピー'
+    const windowTagsLabel = 'タグをコピー'
     items.push(
       {
-        label: __DARWIN__ ? 'Cherry-pick Commit…' : 'Cherry-pick commit…',
+        label: 'コミットをチェリーピック...',
         action: () => this.props.onCherryPick?.(this.selectedCommits),
         enabled: this.canCherryPick(),
       },
       { type: 'separator' },
       {
-        label: 'Copy SHA',
+        label: 'SHA をコピー',
         action: () => clipboard.writeText(commit.sha),
       },
       {

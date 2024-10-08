@@ -170,7 +170,7 @@ export class RepositorySettings extends React.Component<
     return (
       <Dialog
         id="repository-settings"
-        title={__DARWIN__ ? 'Repository Settings' : 'Repository settings'}
+        title="リポジトリ設定"
         onDismissed={this.props.onDismissed}
         onSubmit={this.onSubmit}
         disabled={this.state.disabled}
@@ -185,20 +185,20 @@ export class RepositorySettings extends React.Component<
           >
             <span>
               <Octicon className="icon" symbol={octicons.server} />
-              Remote
+              リモート
             </span>
             <span>
               <Octicon className="icon" symbol={octicons.file} />
-              {__DARWIN__ ? 'Ignored Files' : 'Ignored files'}
+              無視するファイル
             </span>
             <span>
               <Octicon className="icon" symbol={octicons.gitCommit} />
-              {__DARWIN__ ? 'Git Config' : 'Git config'}
+              Git 設定
             </span>
             {showForkSettings && (
               <span>
                 <Octicon className="icon" symbol={octicons.repoForked} />
-                {__DARWIN__ ? 'Fork Behavior' : 'Fork behavior'}
+                Fork の振る舞い
               </span>
             )}
           </TabBar>
@@ -207,7 +207,7 @@ export class RepositorySettings extends React.Component<
         </div>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Save"
+            okButtonText="保存"
             okButtonDisabled={this.state.saveDisabled}
           />
         </DialogFooter>

@@ -52,7 +52,7 @@ export async function fetch(
   }
 
   if (progressCallback) {
-    const title = `Fetching ${remote.name}`
+    const title = `${remote.name} をフェッチしています`
     const kind = 'fetch'
 
     opts = await executionOptionsWithProgress(

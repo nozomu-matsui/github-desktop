@@ -336,7 +336,7 @@ export class CommitMessage extends React.Component<
       this.props.mostRecentLocalCommit !== null
     ) {
       this.setState({
-        isCommittingStatusMessage: `Committed Just now - ${this.props.mostRecentLocalCommit.summary} (Sha: ${this.props.mostRecentLocalCommit.shortSha})`,
+        isCommittingStatusMessage: `たった今コミットされました - ${this.props.mostRecentLocalCommit.summary} (Sha: ${this.props.mostRecentLocalCommit.shortSha})`,
       })
     }
 
@@ -712,13 +712,7 @@ export class CommitMessage extends React.Component<
   }
 
   private get toggleCoAuthorsText(): string {
-    return this.props.showCoAuthoredBy
-      ? __DARWIN__
-        ? 'Remove Co-Authors'
-        : 'Remove co-authors'
-      : __DARWIN__
-      ? 'Add Co-Authors'
-      : 'Add co-authors'
+    return this.props.showCoAuthoredBy ? '共著者を削除' : '共著者を追加'
   }
 
   private getAddRemoveCoAuthorsMenuItem(): IMenuItem {
@@ -1355,10 +1349,10 @@ export class CommitMessage extends React.Component<
             className={descriptionClassName}
             screenReaderLabel={
               this.props.showInputLabels !== true
-                ? 'Commit description'
+                ? '説明'
                 : undefined
             }
-            placeholder="Description"
+            placeholder="説明"
             value={this.state.description || ''}
             onValueChanged={this.onDescriptionChanged}
             autocompletionProviders={

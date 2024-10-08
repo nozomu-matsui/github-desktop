@@ -455,7 +455,7 @@ export class SideBySideDiffRow extends React.Component<
           {data.noNewLineIndicator && (
             <Octicon
               symbol={narrowNoNewlineSymbol}
-              title="No newline at end of file"
+              title="ファイル終端に改行なし"
             />
           )}
         </div>

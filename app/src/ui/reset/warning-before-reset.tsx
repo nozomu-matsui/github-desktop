@@ -31,7 +31,7 @@ export class WarningBeforeReset extends React.Component<
   }
 
   public render() {
-    const title = __DARWIN__ ? 'Reset to Commit' : 'Reset to commit'
+    const title = 'コミットへリセット'
 
     return (
       <Dialog
@@ -53,7 +53,7 @@ export class WarningBeforeReset extends React.Component<
           </Row>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Continue" />
+          <OkCancelButtonGroup destructive={true} okButtonText="続ける" />
         </DialogFooter>
       </Dialog>
     )

@@ -54,7 +54,7 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
         <div className="content">
           <div className="interstitial-header">
             <div className="text">
-              <h1>Submodule changes</h1>
+              <h1>サブモジュールの変更</h1>
             </div>
           </div>
           {this.renderSubmoduleInfo()}
@@ -100,34 +100,36 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
     const { diff, readOnly } = this.props
     const { oldSHA, newSHA } = diff
 
-    const verb = readOnly ? 'was' : 'has been'
     const suffix = readOnly
       ? ''
-      : ' This change can be committed to the parent repository.'
+      : ' この変更は、親リポジトリにコミットできます。'
 
     if (oldSHA !== null && newSHA !== null) {
       return this.renderSubmoduleDiffItem(
         { octicon: octicons.diffModified, className: 'modified-icon' },
         <>
-          This submodule changed its commit from{' '}
-          {this.renderCommitSHA(oldSHA, 'previous')} to{' '}
-          {this.renderCommitSHA(newSHA, 'new')}.{suffix}
+          このサブモジュールは、コミット{' '}
+          {this.renderCommitSHA(oldSHA, 'previous')} から{' '}
+          {this.renderCommitSHA(newSHA, 'new')} へ変更されています。
+          {suffix}
         </>
       )
     } else if (oldSHA === null && newSHA !== null) {
       return this.renderSubmoduleDiffItem(
         { octicon: octicons.diffAdded, className: 'added-icon' },
         <>
-          This submodule {verb} added pointing at commit{' '}
-          {this.renderCommitSHA(newSHA)}.{suffix}
+          このサブモジュールは、コミット {this.renderCommitSHA(newSHA)}{' '}
+          が指している点に追加されました。
+          {suffix}
         </>
       )
     } else if (oldSHA !== null && newSHA === null) {
       return this.renderSubmoduleDiffItem(
         { octicon: octicons.diffRemoved, className: 'removed-icon' },
         <>
-          This submodule {verb} removed while it was pointing at commit{' '}
-          {this.renderCommitSHA(oldSHA)}.{suffix}
+          このサブモジュールは コミット {this.renderCommitSHA(oldSHA)}{' '}
+          を指している間に削除されました。
+          {suffix}{' '}
         </>
       )
     }
@@ -158,17 +160,16 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
 
     const changes =
       diff.status.untrackedChanges && diff.status.modifiedChanges
-        ? 'modified and untracked'
+        ? '変更を含み、追跡されていない'
         : diff.status.untrackedChanges
-        ? 'untracked'
-        : 'modified'
+        ? '追跡されていない'
+        : '変更を含む'
 
     return this.renderSubmoduleDiffItem(
       { octicon: octicons.fileDiff, className: 'untracked-icon' },
       <>
-        This submodule has {changes} changes. Those changes must be committed
-        inside of the submodule before they can be part of the parent
-        repository.
+        このサブモジュールは {changes} コミットがあります。
+        これらの変更は、親リポジトリの一部になる前に、サブモジュール内部でコミットされるべきです。
       </>
     )
   }
@@ -196,9 +197,9 @@ export class SubmoduleDiff extends React.Component<ISubmoduleDiffProps> {
     return (
       <span>
         <SuggestedAction
-          title="Open this submodule on GitHub Desktop"
-          description="You can open this submodule on GitHub Desktop as a normal repository to manage and commit any changes in it."
-          buttonText={__DARWIN__ ? 'Open Repository' : 'Open repository'}
+          title="このサブモジュールを GitHub Desktop で開く"
+          description="このサブモジュールは、GitHub Desktop で、通常のリポジトリのようコミットや管理ができます。"
+          buttonText="リポジトリを開く"
           type="primary"
           onClick={this.onOpenSubmoduleClick}
         />

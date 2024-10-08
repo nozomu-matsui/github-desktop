@@ -38,14 +38,14 @@ These are defined in an enum at the top of the file:
 
 ```ts
 export enum Shell {
-  Cmd = 'Command Prompt',
+  Cmd = 'コマンドプロンプト',
   PowerShell = 'PowerShell',
   PowerShellCore = 'PowerShell Core',
   Hyper = 'Hyper',
   GitBash = 'Git Bash',
   Cygwin = 'Cygwin',
   WSL = 'WSL',
-  WindowTerminal = 'Windows Terminal',
+  WindowTerminal = 'Windows ターミナル',
   Alacritty = 'Alacritty',
 }
 ```

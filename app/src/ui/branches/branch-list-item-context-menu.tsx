@@ -16,14 +16,14 @@ export function generateBranchContextMenuItems(
 
   if (onRenameBranch !== undefined) {
     items.push({
-      label: 'Rename…',
+      label: 'リネーム...',
       action: () => onRenameBranch(name),
       enabled: isLocal,
     })
   }
 
   items.push({
-    label: __DARWIN__ ? 'Copy Branch Name' : 'Copy branch name',
+    label: 'ブランチ名をコピー',
     action: () => clipboard.writeText(name),
   })
 
@@ -31,7 +31,7 @@ export function generateBranchContextMenuItems(
 
   if (onDeleteBranch !== undefined) {
     items.push({
-      label: 'Delete…',
+      label: '削除...',
       action: () => onDeleteBranch(name),
     })
   }

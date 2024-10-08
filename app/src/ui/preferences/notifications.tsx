@@ -51,9 +51,9 @@ export class Notifications extends React.Component<
     return (
       <DialogContent>
         <div className="advanced-section">
-          <h2>Notifications</h2>
+          <h2>通知</h2>
           <Checkbox
-            label="Enable notifications"
+            label="有効にする"
             value={
               this.props.notificationsEnabled
                 ? CheckboxValue.On
@@ -62,8 +62,8 @@ export class Notifications extends React.Component<
             onChange={this.onNotificationsEnabledChanged}
           />
           <p className="git-settings-description">
-            Allows the display of notifications when high-signal events take
-            place in the current repository.{this.renderNotificationHint()}
+            選択中のリポジトリにおいて重要なイベントが発生した際に、通知の表示を許可します。
+            {this.renderNotificationHint()}
           </p>
         </div>
       </DialogContent>
@@ -103,11 +103,11 @@ export class Notifications extends React.Component<
       return (
         <>
           {' '}
-          You need to{' '}
+          GitHub Desktop からの通知を表示するには、{' '}
           <LinkButton onClick={this.onGrantNotificationPermission}>
-            grant permission
+            権限を付与する
           </LinkButton>{' '}
-          to display these notifications from GitHub Desktop.
+          必要があります。
         </>
       )
     }
@@ -121,28 +121,26 @@ export class Notifications extends React.Component<
     if (warnNotificationsDenied) {
       return (
         <div className="setting-hint-warning">
-          <span className="warning-icon">⚠️</span> GitHub Desktop has no
-          permission to display notifications. Please, enable them in the{' '}
+          <span className="warning-icon">⚠️</span>
+          GitHub Desktop は、通知を表示できません。{' '}
           <LinkButton uri={notificationSettingsURL}>
-            Notifications Settings
-          </LinkButton>
-          .
+            通知とアクション
+          </LinkButton>{' '}
+          にて通知をオンにしてください。
         </div>
       )
     }
 
     const verb = suggestConfigureNotifications
-      ? 'properly configured'
-      : 'enabled'
+      ? '正しく設定されている'
+      : '有効化されている'
 
     return (
       <>
         {' '}
-        Make sure notifications are {verb} for GitHub Desktop in the{' '}
-        <LinkButton uri={notificationSettingsURL}>
-          Notifications Settings
-        </LinkButton>
-        .
+        GitHub Desktopからの通知が{verb}か{' '}
+        <LinkButton uri={notificationSettingsURL}>通知設定</LinkButton>{' '}
+        を確認してください。
       </>
     )
   }

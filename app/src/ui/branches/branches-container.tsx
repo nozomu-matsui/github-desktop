@@ -181,7 +181,7 @@ export class BranchesContainer extends React.Component<
           tooltip={`Choose a branch to merge into ${currentBranch.name}`}
         >
           <Octicon className="icon" symbol={octicons.gitMerge} />
-          Choose a branch to merge into <strong>{currentBranch.name}</strong>
+          <strong>{currentBranch.name}</strong> にマージするブランチを選択
         </Button>
       </Row>
     )
@@ -208,9 +208,9 @@ export class BranchesContainer extends React.Component<
         selectedIndex={this.props.selectedTab}
         allowDragOverSwitching={true}
       >
-        <span id="branches-tab">Branches</span>
+        <span id="branches-tab">ブランチ</span>
         <span id="pull-requests-tab" className="pull-request-tab">
-          {__DARWIN__ ? 'Pull Requests' : 'Pull requests'}
+          プルリクエスト
           {this.renderOpenPullRequestsBubble()}
         </span>
       </TabBar>
@@ -295,7 +295,7 @@ export class BranchesContainer extends React.Component<
       return null
     }
 
-    const label = __DARWIN__ ? 'New Branch' : 'New branch'
+    const label = '新規ブランチ'
 
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions

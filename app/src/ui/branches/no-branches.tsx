@@ -27,7 +27,7 @@ export class NoBranches extends React.Component<INoBranchesProps> {
           <div className="title">Sorry, I can't find that branch</div>
 
           <div className="subtitle">
-            Do you want to create a new branch instead?
+            代わりに、新しいブランチを生成しますか？
           </div>
 
           <Button
@@ -35,16 +35,16 @@ export class NoBranches extends React.Component<INoBranchesProps> {
             onClick={this.props.onCreateNewBranch}
             type="submit"
           >
-            {__DARWIN__ ? 'Create New Branch' : 'Create new branch'}
+            新しいブランチを作成する
           </Button>
 
           <div className="protip">
-            ProTip! Press{' '}
+            ヒント{' '}
             <KeyboardShortcut
               darwinKeys={['⌘', '⇧', 'N']}
               keys={['Ctrl', 'Shift', 'N']}
             />{' '}
-            to quickly create a new branch from anywhere within the app
+            を押すと、すばやく新しいブランチを作成できます。
           </div>
         </div>
       )

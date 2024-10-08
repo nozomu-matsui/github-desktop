@@ -26,7 +26,7 @@ export class UnknownAuthors extends React.Component<IUnknownAuthorsProps> {
     return (
       <Dialog
         id="unknown-authors"
-        title={__DARWIN__ ? 'Unknown Co-Authors' : 'Unknown co-authors'}
+        title={'未知の共同オーサー'}
         onDismissed={this.props.onDismissed}
         onSubmit={this.commit}
         type="warning"
@@ -36,7 +36,7 @@ export class UnknownAuthors extends React.Component<IUnknownAuthorsProps> {
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText={__DARWIN__ ? 'Commit Anyway' : 'Commit anyway'}
+            okButtonText="構わずコミットする"
           />
         </DialogFooter>
       </Dialog>
@@ -47,16 +47,17 @@ export class UnknownAuthors extends React.Component<IUnknownAuthorsProps> {
     if (this.props.authors.length > MaxAuthorsToList) {
       return (
         <p>
-          {this.props.authors.length} users weren't found and won't be added as
-          co-authors of this commit. Are you sure you want to commit?
+          {this.props.authors.length}{' '}
+          ユーザーが見つからなかったため、このコミットの共同オーサーには追加されません。
+          本当にコミットしますか？
         </p>
       )
     } else {
       return (
         <div>
           <p>
-            These users weren't found and won't be added as co-authors of this
-            commit. Are you sure you want to commit?
+            これらのユーザーは見つからなかったため、このコミットの共同オーサーには追加されません。
+            本当にコミットしますか？
           </p>
           <div className="author-list">
             <ul>

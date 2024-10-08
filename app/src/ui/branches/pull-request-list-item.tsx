@@ -78,9 +78,9 @@ export class PullRequestListItem extends React.Component<
     }
 
     const timeAgo = formatRelative(this.props.created.getTime() - Date.now())
-    const subtitle = `#${this.props.number} opened ${timeAgo} by ${this.props.author}`
+    const subtitle = `#${this.props.number} ${this.props.author} が ${timeAgo} にオープン`
 
-    return this.props.draft ? `${subtitle} • Draft` : subtitle
+    return this.props.draft ? `${subtitle} • ドラフト` : subtitle
   }
 
   private onMouseEnter = (e: React.MouseEvent) => {

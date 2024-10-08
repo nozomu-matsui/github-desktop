@@ -458,10 +458,10 @@ export class CreateRepository extends React.Component<
         trackedUserInput={this.state.name}
         ariaLiveMessage={`Will be created as ${sanitizedName}. Spaces and invalid characters have been replaced by hyphens.`}
       >
-        <p>Will be created as {sanitizedName}</p>
         <span className="sr-only">
-          Spaces and invalid characters have been replaced by hyphens.
+          空白や無効な文字列がハイフンに変換され
         </span>
+        <p>{sanitizedName}</p> として作成されます。
       </InputWarning>
     )
   }
@@ -538,8 +538,8 @@ export class CreateRepository extends React.Component<
 
     return (
       <DialogError>
-        Directory could not be created at this path. You may not have
-        permissions to create a directory here.
+        このパスにディレクトリが作成できませんでした。
+        ディレクトリを作成する権限がない可能性があります。
       </DialogError>
     )
   }
@@ -560,12 +560,12 @@ export class CreateRepository extends React.Component<
           trackedUserInput={this.state.path + this.state.name}
           ariaLiveMessage={`The directory ${fullPath} appears to be a Git repository. Would you like to add this repository instead?`}
         >
-          The directory <Ref>{fullPath}</Ref>appears to be a Git repository.
-          Would you like to{' '}
+          <Ref>{fullPath}</Ref> ディレクトリは Git リポジトリのようです。
+          代わりに{' '}
           <LinkButton onClick={this.onAddRepositoryClicked}>
-            add this repository
+            このリポジトリを追加
           </LinkButton>{' '}
-          instead?
+          しますか？
         </InputError>
       </Row>
     )
@@ -587,10 +587,9 @@ export class CreateRepository extends React.Component<
           trackedUserInput={this.state.path + this.state.name}
           ariaLiveMessage={`The directory ${fullPath} appears to be a subfolder Git repository. Did you know about submodules?`}
         >
-          The directory <Ref>{fullPath}</Ref>appears to be a subfolder of Git
-          repository.
+          <Ref>{fullPath}</Ref> ディレクトリは、Git リポジトリのサブフォルダのようです。
           <LinkButton uri={submoduleDocsUrl}>
-            Learn about submodules.
+            サブモジュールについて。
           </LinkButton>
         </InputWarning>
       </Row>
@@ -617,8 +616,8 @@ export class CreateRepository extends React.Component<
           ariaLiveMessage="This directory contains a README.md file already. Checking
           this box will result in the existing file being overwritten."
         >
-          This directory contains a <Ref>README.md</Ref> file already. Checking
-          this box will result in the existing file being overwritten.
+          このディレクトリにはすでに <Ref>README.md</Ref> ファイルが存在します。
+          チェックボックスを選択すると、既存のファイルに上書きします。
         </InputWarning>
       </Row>
     )
@@ -635,7 +634,7 @@ export class CreateRepository extends React.Component<
 
     return (
       <div id="create-repo-path-msg">
-        The repository will be created at <Ref>{fullPath}</Ref>.
+        <Ref>{fullPath}</Ref> にリポジトリは作成されます。
       </div>
     )
   }
@@ -668,9 +667,7 @@ export class CreateRepository extends React.Component<
     return (
       <Dialog
         id="create-repository"
-        title={
-          __DARWIN__ ? 'Create a New Repository' : 'Create a new repository'
-        }
+        title="新しいリポジトリを作成"
         loading={this.state.creating}
         onSubmit={this.createRepository}
         onDismissed={this.props.onDismissed}
@@ -681,8 +678,8 @@ export class CreateRepository extends React.Component<
           <Row>
             <TextBox
               value={this.state.name}
-              label="Name"
-              placeholder="repository name"
+              label="リポジトリ名"
+              placeholder="リポジトリ名"
               onValueChanged={this.onNameChanged}
               ariaDescribedBy="existing-repository-path-error repo-sanitized-name-warning"
             />
@@ -693,7 +690,7 @@ export class CreateRepository extends React.Component<
           <Row>
             <TextBox
               value={this.state.description}
-              label="Description"
+              label="説明"
               onValueChanged={this.onDescriptionChanged}
             />
           </Row>
@@ -701,8 +698,8 @@ export class CreateRepository extends React.Component<
           <Row>
             <TextBox
               value={this.state.path ?? ''}
-              label={__DARWIN__ ? 'Local Path' : 'Local path'}
-              placeholder="repository path"
+              label="ローカルパス"
+              placeholder="リポジトリパス"
               onValueChanged={this.onPathChanged}
               disabled={readOnlyPath || loadingDefaultDir}
               ariaDescribedBy="existing-repository-path-error path-is-subfolder-of-repository"
@@ -720,7 +717,7 @@ export class CreateRepository extends React.Component<
 
           <Row>
             <Checkbox
-              label="Initialize this repository with a README"
+              label="このリポジトリをREADME付きで初期化する"
               value={
                 this.state.createWithReadme
                   ? CheckboxValue.On
@@ -739,9 +736,7 @@ export class CreateRepository extends React.Component<
         <DialogFooter>
           {this.renderPathMessage()}
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? 'Create Repository' : 'Create repository'
-            }
+            okButtonText="リポジトリを新規作成"
             okButtonDisabled={disabled || loadingDefaultDir}
             okButtonAriaDescribedBy="create-repo-path-msg"
           />

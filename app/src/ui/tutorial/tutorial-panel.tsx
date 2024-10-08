@@ -109,7 +109,7 @@ export class TutorialPanel extends React.Component<
     return (
       <div className="tutorial-panel-component panel">
         <div className="titleArea">
-          <h3>Get started</h3>
+          <h3>さぁ、はじめましょう！</h3>
           <img src={TutorialPanelImage} alt="Partially checked check list" />
         </div>
         <ol>
@@ -125,42 +125,40 @@ export class TutorialPanel extends React.Component<
             {!this.isStepComplete(TutorialStep.PickEditor) ? (
               <>
                 <p className="description">
-                  It doesn’t look like you have a text editor installed. We can
-                  recommend{' '}
+                  テキストエディターがインストールされいないようです。
+                  お奨めとしては、{' '}
                   <LinkButton
                     uri={suggestedExternalEditor.url}
-                    title={`Open the ${suggestedExternalEditor.name} website`}
+                    title={`${suggestedExternalEditor.name} のサイトを開く`}
                   >
                     {suggestedExternalEditor.name}
                   </LinkButton>
-                  {` or `}
-                  <LinkButton
-                    uri="https://atom.io"
-                    title="Open the Atom website"
-                  >
+                  {` もしくは `}
+                  <LinkButton uri="https://atom.io" title="Atom のサイトを開く">
                     Atom
                   </LinkButton>
-                  , but feel free to use any.
+                  などがありますが、お好みのテキストエディターをお使いいただけます。
                 </p>
                 <div className="action">
                   <LinkButton onClick={this.skipEditorInstall}>
-                    I have an editor
+                    テキストエディターを持っているのでスキップする
                   </LinkButton>
                 </div>
               </>
             ) : (
               <p className="description">
-                Your default editor is{' '}
-                <strong>{this.props.resolvedExternalEditor}</strong>. You can
-                change your preferred editor in{' '}
+                デフォルトエディターは{' '}
+                <strong>{this.props.resolvedExternalEditor}</strong>
+                に設定されています。{' '}
                 <LinkButton onClick={this.onPreferencesClick}>
-                  {__DARWIN__ ? 'Settings' : 'options'}
-                </LinkButton>
+                  設定
+                </LinkButton>{' '}
+                から変更できます。
               </p>
             )}
           </TutorialStepInstructions>
           <TutorialStepInstructions
-            summaryText="Create a branch"
+            summaryText="ブランチを作成する"
             isComplete={this.isStepComplete}
             isNextStepTodo={this.isStepNextTodo}
             sectionId={TutorialStep.CreateBranch}
@@ -168,9 +166,9 @@ export class TutorialPanel extends React.Component<
             onSummaryClick={this.onStepSummaryClick}
           >
             <p className="description">
-              {`A branch allows you to work on different versions of a repository at one time. Create a
-                branch by going into the branch menu in the top bar and
-              clicking "${__DARWIN__ ? 'New Branch' : 'New branch'}".`}
+              ブランチを使うことで、ひとつのリポジトリで複数バージョンの作業ができます。
+              トップバーのブランチメニューから
+              {` `}"作成ブランチ..."{` `}をクリックすると、作成できます。
             </p>
             <div className="action">
               <KeyboardShortcut
@@ -188,16 +186,15 @@ export class TutorialPanel extends React.Component<
             onSummaryClick={this.onStepSummaryClick}
           >
             <p className="description">
-              Open this repository in your preferred text editor. Edit the
-              {` `}
+              お好みのテキストエディターを使って、このリポジトリを開いてください。
+              そうしたら、{` `}
               <Ref>README.md</Ref>
-              {` `}
-              file, save it, and come back.
+              {` `}を編集してみてください。 保存したら、戻ってきてください。
             </p>
             {this.props.resolvedExternalEditor && (
               <div className="action">
                 <Button onClick={this.openTutorialFileInEditor}>
-                  {__DARWIN__ ? 'Open Editor' : 'Open editor'}
+                  エディターを開く
                 </Button>
                 <KeyboardShortcut
                   darwinKeys={['⌘', '⇧', 'A']}
@@ -207,7 +204,7 @@ export class TutorialPanel extends React.Component<
             )}
           </TutorialStepInstructions>
           <TutorialStepInstructions
-            summaryText="Make a commit"
+            summaryText="コミットを作る"
             isComplete={this.isStepComplete}
             isNextStepTodo={this.isStepNextTodo}
             sectionId={TutorialStep.MakeCommit}
@@ -215,14 +212,13 @@ export class TutorialPanel extends React.Component<
             onSummaryClick={this.onStepSummaryClick}
           >
             <p className="description">
-              A commit allows you to save sets of changes. In the “summary“
-              field in the bottom left, write a short message that describes the
-              changes you made. When you’re done, click the blue Commit button
-              to finish.
+              コミットは、変更を保存することができます。 左下にある "サマリー"
+              フィールドに、変更について簡潔な説明を書いてください。
+              描き終わったら、青いコミットボタンを押したら完了です。
             </p>
           </TutorialStepInstructions>
           <TutorialStepInstructions
-            summaryText="Publish to GitHub"
+            summaryText="GitHub にパブリッシュする"
             isComplete={this.isStepComplete}
             isNextStepTodo={this.isStepNextTodo}
             sectionId={TutorialStep.PushBranch}
@@ -230,16 +226,17 @@ export class TutorialPanel extends React.Component<
             onSummaryClick={this.onStepSummaryClick}
           >
             <p className="description">
-              Publishing will “push”, or upload, your commits to this branch of
-              your repository on GitHub. Publish using the third button in the
-              top bar.
+              パブリッシュは、GitHub
+              上のリポジトリのこのブランチに、あなたが作ったコミットを"プッシュ"
+              もしくはアップロードします。
+              パブリッシュはトップバーの3番目のボタンを使います。
             </p>
             <div className="action">
               <KeyboardShortcut darwinKeys={['⌘', 'P']} keys={['Ctrl', 'P']} />
             </div>
           </TutorialStepInstructions>
           <TutorialStepInstructions
-            summaryText="Open a pull request"
+            summaryText="プルリクエストを開く"
             isComplete={this.isStepComplete}
             isNextStepTodo={this.isStepNextTodo}
             sectionId={TutorialStep.OpenPullRequest}
@@ -248,14 +245,13 @@ export class TutorialPanel extends React.Component<
             onSummaryClick={this.onStepSummaryClick}
           >
             <p className="description">
-              A pull request allows you to propose changes to the code. By
-              opening one, you’re requesting that someone review and merge them.
-              Since this is a demo repository, this pull request will be
-              private.
+              プルリクエストを使うことで、変更の提案ができます。
+              プルリクエストを作ると、他の人にレビューやマージを依頼できます。
+              このリポジトリはデモンストレーションなので、プルリクエストはプライベートになります。
             </p>
             <div className="action">
               <Button onClick={this.openPullRequest} role="link">
-                {__DARWIN__ ? 'Open Pull Request' : 'Open pull request'}
+                プルリクエストを開く
                 <Octicon symbol={octicons.linkExternal} />
               </Button>
               <KeyboardShortcut darwinKeys={['⌘', 'R']} keys={['Ctrl', 'R']} />
@@ -264,7 +260,7 @@ export class TutorialPanel extends React.Component<
         </ol>
         <div className="footer">
           <Button onClick={this.props.onExitTutorial}>
-            {__DARWIN__ ? 'Exit Tutorial' : 'Exit tutorial'}
+            チュートリアルを終了する
           </Button>
         </div>
       </div>

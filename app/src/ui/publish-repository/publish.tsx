@@ -129,7 +129,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
     return (
       <Dialog
         id="publish-repository"
-        title={__DARWIN__ ? 'Publish Repository' : 'Publish repository'}
+        title="リポジトリをパブリッシュ"
         onDismissed={this.props.onDismissed}
         onSubmit={this.publishRepository}
         disabled={this.state.publishing}
@@ -225,13 +225,14 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
   }
 
   private renderSignInTab(tab: PublishTab) {
-    const signInTitle = __DARWIN__ ? 'Sign In' : 'Sign in'
+    const signInTitle = 'サインイン'
     switch (tab) {
       case PublishTab.DotCom:
         return (
           <CallToAction actionTitle={signInTitle} onAction={this.signInDotCom}>
             <div>
-              Sign in to your GitHub.com account to access your repositories.
+              GitHub.com
+              アカウントにサインインすると、リポジトリにアクセスできます。
             </div>
           </CallToAction>
         )
@@ -242,8 +243,8 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
             onAction={this.signInEnterprise}
           >
             <div>
-              If you have a GitHub Enterprise or AE account at work, sign in to
-              it to get access to your repositories.
+              GitHub Enterprise もしくは AE
+              アカウントにサインインすると、リポジトリへアクセスできます。
             </div>
           </CallToAction>
         )
@@ -261,9 +262,7 @@ export class Publish extends React.Component<IPublishProps, IPublishState> {
       return (
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={
-              __DARWIN__ ? 'Publish Repository' : 'Publish repository'
-            }
+            okButtonText="リポジトリをパブリッシュ"
             okButtonDisabled={disabled}
           />
         </DialogFooter>

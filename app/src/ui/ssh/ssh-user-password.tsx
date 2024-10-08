@@ -36,7 +36,7 @@ export class SSHUserPassword extends React.Component<
       <Dialog
         id="ssh-user-password"
         type="normal"
-        title="SSH User Password"
+        title="SSH ユーザーパスワード"
         backdropDismissable={false}
         onSubmit={this.onSubmit}
         onDismissed={this.onCancel}
@@ -44,14 +44,14 @@ export class SSHUserPassword extends React.Component<
         <DialogContent>
           <Row>
             <PasswordTextBox
-              label={`Enter password for '${this.props.username}':`}
+              label={`'${this.props.username}' のパスワードを入力してください:`}
               value={this.state.password}
               onValueChanged={this.onValueChanged}
             />
           </Row>
           <Row>
             <Checkbox
-              label="Remember password"
+              label="パスワードを思い出す"
               value={
                 this.state.rememberPassword
                   ? CheckboxValue.On

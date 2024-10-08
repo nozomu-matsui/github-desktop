@@ -41,17 +41,15 @@ export class DiscardChangesRetryDialog extends React.Component<
         type="error"
       >
         <DialogContent>
-          <p>Failed to discard changes to {TrashNameLabel}.</p>
+          <p>変更を {TrashNameLabel} に破棄できませんでした。</p>
           <div>
-            Common reasons are:
+            よくある理由は：
             <ul>
-              <li>
-                The {TrashNameLabel} is configured to delete items immediately.
-              </li>
-              <li>Restricted access to move the file(s).</li>
+              <li>{TrashNameLabel} は、即座に削除する設定になっている。</li>
+              <li>ファイルの移動が制限されている。</li>
             </ul>
           </div>
-          <p>These changes will be unrecoverable from the {TrashNameLabel}.</p>
+          <p>この操作によって破棄した変更は、元に戻せません。</p>
           {this.renderConfirmDiscardChanges()}
         </DialogContent>
         {this.renderFooter()}
@@ -62,7 +60,7 @@ export class DiscardChangesRetryDialog extends React.Component<
   private renderConfirmDiscardChanges() {
     return (
       <Checkbox
-        label="Do not show this message again"
+        label="このメッセージを次から表示しない"
         value={
           this.state.confirmDiscardChanges
             ? CheckboxValue.Off
@@ -77,13 +75,9 @@ export class DiscardChangesRetryDialog extends React.Component<
     return (
       <DialogFooter>
         <OkCancelButtonGroup
-          okButtonText={
-            __DARWIN__
-              ? 'Permanently Discard Changes'
-              : 'Permanently discard changes'
-          }
-          okButtonTitle={`This will discard changes and they will be unrecoverable.`}
-          cancelButtonText="Cancel"
+          okButtonText="永久に変更を破棄"
+          okButtonTitle={`この操作によって破棄した変更は、元に戻せません。`}
+          cancelButtonText="キャンセル"
           destructive={true}
         />
       </DialogFooter>

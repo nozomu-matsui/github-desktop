@@ -50,7 +50,7 @@ export async function clone(
   if (progressCallback) {
     args.push('--progress')
 
-    const title = `Cloning into ${path}`
+    const title = `${path} にクローンしています`
     const kind = 'clone'
 
     opts = await executionOptionsWithProgress(

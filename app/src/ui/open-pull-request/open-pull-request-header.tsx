@@ -57,7 +57,7 @@ export class OpenPullRequestDialogHeader extends React.Component<IOpenPullReques
   }
 
   public render() {
-    const title = __DARWIN__ ? 'Open a Pull Request' : 'Open a pull request'
+    const title = 'プルリクエストを開く'
     const {
       baseBranch,
       currentBranch,
@@ -68,7 +68,6 @@ export class OpenPullRequestDialogHeader extends React.Component<IOpenPullReques
       onBranchChange,
       onDismissed,
     } = this.props
-    const commits = `${commitCount} commit${commitCount > 1 ? 's' : ''}`
 
     return (
       <DialogHeader
@@ -78,7 +77,7 @@ export class OpenPullRequestDialogHeader extends React.Component<IOpenPullReques
       >
         <div className="break"></div>
         <div className="base-branch-details">
-          Merge {commits} into{' '}
+          {commitCount} コミットを{' '}
           <BranchSelect
             branch={baseBranch}
             defaultBranch={defaultBranch}
@@ -88,12 +87,14 @@ export class OpenPullRequestDialogHeader extends React.Component<IOpenPullReques
             onChange={onBranchChange}
             noBranchesMessage={
               <>
-                <p>Sorry, I can't find that remote branch.</p>
-                <p>You can only open pull requests against remote branches.</p>
+                <p>リモートブランチが見つかりません。</p>
+                <p>
+                  プルリクエストはリモートブランチに対してのみ作成できます。
+                </p>
               </>
             }
           />{' '}
-          from <Ref>{currentBranch.name}</Ref>.
+          から <Ref>{currentBranch.name}</Ref> へマージ
         </div>
       </DialogHeader>
     )

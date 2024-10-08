@@ -42,13 +42,13 @@ export class NoPullRequests extends React.Component<INoPullRequestsProps, {}> {
 
   private renderTitle() {
     if (this.props.isSearch) {
-      return <div className="title">Sorry, I can't find that pull request!</div>
+      return <div className="title">そのプルリクエストは見つかりません！</div>
     } else if (this.props.isLoadingPullRequests) {
-      return <div className="title">Hang tight</div>
+      return <div className="title">しばらくお待ちください</div>
     } else {
       return (
         <div>
-          <div className="title">You're all set!</div>
+          <div className="title">準備完了です！</div>
           <div className="no-prs">
             No open pull requests in <Ref>{this.props.repositoryName}</Ref>
           </div>
@@ -61,7 +61,7 @@ export class NoPullRequests extends React.Component<INoPullRequestsProps, {}> {
     if (this.props.isLoadingPullRequests) {
       return (
         <div className="call-to-action">
-          Loading pull requests as fast as I can!
+          プルリクエストを最速で読み込み中です！
         </div>
       )
     }
@@ -79,11 +79,11 @@ export class NoPullRequests extends React.Component<INoPullRequestsProps, {}> {
     } else {
       return (
         <div className="call-to-action">
-          Would you like to{' '}
+          選択中のブランチから{' '}
           <LinkButton onClick={this.props.onCreatePullRequest}>
-            create a pull request
+            プルリクエストを作成
           </LinkButton>{' '}
-          from the current branch?
+          しますか？
         </div>
       )
     }

@@ -300,11 +300,11 @@ export class BranchList extends React.Component<
 
   private getGroupLabel(identifier: BranchGroupIdentifier) {
     if (identifier === 'default') {
-      return __DARWIN__ ? 'Default Branch' : 'Default branch'
+      return 'デフォルトブランチ'
     } else if (identifier === 'recent') {
-      return __DARWIN__ ? 'Recent Branches' : 'Recent branches'
+      return '最近使ったブランチ'
     } else if (identifier === 'other') {
-      return __DARWIN__ ? 'Other Branches' : 'Other branches'
+      return 'その他のブランチ'
     } else {
       return assertNever(identifier, `Unknown identifier: ${identifier}`)
     }
@@ -323,7 +323,7 @@ export class BranchList extends React.Component<
   private onRenderNewButton = () => {
     return this.props.canCreateNewBranch ? (
       <Button className="new-branch-button" onClick={this.onCreateNewBranch}>
-        {__DARWIN__ ? 'New Branch' : 'New branch'}
+        新しいブランチ
       </Button>
     ) : null
   }

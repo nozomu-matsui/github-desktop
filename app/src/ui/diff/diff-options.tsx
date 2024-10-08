@@ -82,7 +82,7 @@ export class DiffOptions extends React.Component<
   }
 
   public render() {
-    const buttonLabel = `Diff ${__DARWIN__ ? 'Settings' : 'Options'}`
+    const buttonLabel = `Diff 設定`
     return (
       <div className="diff-options-component" ref={this.diffOptionsRef}>
         <button
@@ -109,7 +109,7 @@ export class DiffOptions extends React.Component<
   }
 
   private renderPopover() {
-    const header = `Diff ${__DARWIN__ ? 'Settings' : 'Options'}`
+    const header = `差分表示設定`
     return (
       <Popover
         ariaLabelledby="diff-options-popover-header"
@@ -135,21 +135,17 @@ export class DiffOptions extends React.Component<
   private renderShowSideBySide() {
     return (
       <fieldset role="radiogroup">
-        <legend>Diff display</legend>
+        <legend>差分表示</legend>
         <RadioButton
           value="Unified"
           checked={!this.props.showSideBySideDiff}
-          label="Unified"
+          label="ユニファイド"
           onSelected={this.onUnifiedSelected}
         />
         <RadioButton
           value="Split"
           checked={this.props.showSideBySideDiff}
-          label={
-            <>
-              <div>Split</div>
-            </>
-          }
+          label="スプリット"
           onSelected={this.onSideBySideSelected}
         />
       </fieldset>
@@ -159,7 +155,7 @@ export class DiffOptions extends React.Component<
   private renderHideWhitespaceChanges() {
     return (
       <fieldset>
-        <legend>Whitespace</legend>
+        <legend>ホワイトスペース</legend>
         <Checkbox
           value={
             this.props.hideWhitespaceChanges
@@ -167,14 +163,11 @@ export class DiffOptions extends React.Component<
               : CheckboxValue.Off
           }
           onChange={this.onHideWhitespaceChangesChanged}
-          label={
-            __DARWIN__ ? 'Hide Whitespace Changes' : 'Hide whitespace changes'
-          }
+          label="ホワイトスペースの変更を表示しない"
         />
         {this.props.isInteractiveDiff && (
           <p className="secondary-text">
-            Interacting with individual lines or hunks will be disabled while
-            hiding whitespace.
+            個別の行やハンクのやりとりの際には、ホワイトスペースの変更は表示されます。
           </p>
         )}
       </fieldset>

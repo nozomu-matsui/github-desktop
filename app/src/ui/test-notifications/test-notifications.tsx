@@ -744,11 +744,11 @@ export class TestNotifications extends React.Component<
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Close"
+            okButtonText="閉じる"
             okButtonDisabled={false}
             cancelButtonDisabled={false}
             cancelButtonVisible={this.state.selectedFlow !== null}
-            cancelButtonText="Back"
+            cancelButtonText="戻る"
             onCancelButtonClick={this.onBack}
           />
         </DialogFooter>

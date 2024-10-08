@@ -188,9 +188,9 @@ export class CrashApp extends React.Component<ICrashAppProps, ICrashAppState> {
     // We don't support restarting in dev mode since we can't
     // control the life time of the dev server.
     if (__DEV__) {
-      quitText = __DARWIN__ ? 'Quit' : 'Exit'
+      quitText = '終了'
     } else {
-      quitText = __DARWIN__ ? 'Quit and Restart' : 'Exit and restart'
+      quitText = '終了して再起動'
     }
 
     return (

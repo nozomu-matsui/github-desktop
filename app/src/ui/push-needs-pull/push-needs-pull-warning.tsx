@@ -30,9 +30,7 @@ export class PushNeedsPullWarning extends React.Component<
   public render() {
     return (
       <Dialog
-        title={
-          __DARWIN__ ? 'Newer Commits on Remote' : 'Newer commits on remote'
-        }
+        title="リモートの新しいコミット"
         dismissDisabled={this.state.isLoading}
         disabled={this.state.isLoading}
         onDismissed={this.props.onDismissed}
@@ -50,7 +48,7 @@ export class PushNeedsPullWarning extends React.Component<
         </DialogContent>
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText="Fetch"
+            okButtonText="フェッチ"
             okButtonDisabled={this.state.isLoading}
           />
         </DialogFooter>

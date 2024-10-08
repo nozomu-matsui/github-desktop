@@ -290,21 +290,21 @@ export class RepositoriesList extends React.Component<
     return (
       <div className="no-items no-results-found">
         <img src={BlankSlateImage} className="blankslate-image" alt="" />
-        <div className="title">Sorry, I can't find that repository</div>
+        <div className="title">そのリポジトリは見つかりません</div>
 
         <div className="protip">
-          ProTip! Press{' '}
+          ヒント{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut darwinKeys={['⌘', 'O']} keys={['Ctrl', 'O']} />
           </div>{' '}
-          to quickly add a local repository, and{' '}
+          キーを押すと、ローカルリポジトリをすばやく追加できます。{' '}
           <div className="kbd-shortcut">
             <KeyboardShortcut
               darwinKeys={['⇧', '⌘', 'O']}
               keys={['Ctrl', 'Shift', 'O']}
             />
           </div>{' '}
-          to clone from anywhere within the app
+          キーを押すと、アプリケーションのどこでもクローンできます
         </div>
       </div>
     )
@@ -313,17 +313,15 @@ export class RepositoriesList extends React.Component<
   private onNewRepositoryButtonClick = () => {
     const items: IMenuItem[] = [
       {
-        label: __DARWIN__ ? 'Clone Repository…' : 'Clone repository…',
+        label: 'リポジトリをクローン...',
         action: this.onCloneRepository,
       },
       {
-        label: __DARWIN__ ? 'Create New Repository…' : 'Create new repository…',
+        label: 'リポジトリを新規作成...',
         action: this.onCreateNewRepository,
       },
       {
-        label: __DARWIN__
-          ? 'Add Existing Repository…'
-          : 'Add existing repository…',
+        label: '既存のリポジトリを追加',
         action: this.onAddExistingRepository,
       },
     ]

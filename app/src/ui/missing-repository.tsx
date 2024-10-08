@@ -77,14 +77,14 @@ export class MissingRepository extends React.Component<
     if (!isPathUnsafe) {
       buttons.push(
         <Button key="locate" onClick={this.locate} type="submit">
-          Locate…
+          フォルダを選択...
         </Button>
       )
 
       if (this.canCloneAgain()) {
         buttons.push(
           <Button key="clone-again" onClick={this.cloneAgain}>
-            Clone Again
+            再度クローンする
           </Button>
         )
       }
@@ -97,14 +97,14 @@ export class MissingRepository extends React.Component<
           disabled={this.state.isTrustingPath}
         >
           {this.state.isTrustingPath && <Loading />}
-          {__DARWIN__ ? 'Trust Repository' : 'Trust repository'}
+          リポジトリを信頼する
         </Button>
       )
     }
 
     buttons.push(
       <Button key="remove" onClick={this.remove}>
-        Remove
+        削除する
       </Button>
     )
 
@@ -117,13 +117,12 @@ export class MissingRepository extends React.Component<
             </div>
             <div className="details">
               <p>
-                The Git repository at <Ref>{unsafePath}</Ref> appears to be
-                owned by another user on your machine. Adding untrusted
-                repositories may automatically execute files in the repository.
+                この Git リポジトリ <Ref>{unsafePath}</Ref>{' '}
+                他のユーザがオーナーのようです。
+                信頼できないリポジトリの追加は、リポジトリ内のファイルが自動的に実行されるおそれがあります。
               </p>
               <p>
-                If you trust the owner of the directory you can add an exception
-                for this directory in order to continue.
+                フォルダのオーナーが信頼できる場合は、例外を追加することでコンティニューできます。
               </p>
             </div>
           </div>
@@ -136,14 +135,16 @@ export class MissingRepository extends React.Component<
     return (
       <UiView id="missing-repository-view">
         <div className="title-container">
-          <div className="title">Can't find "{this.props.repository.name}"</div>
+          <div className="title">
+            "{this.props.repository.name}" が見つかりません。
+          </div>
           <div className="details">
-            It was last seen at{' '}
-            <span className="path">{this.props.repository.path}</span>.{' '}
-            <LinkButton onClick={this.checkAgain}>Check&nbsp;again.</LinkButton>
+            最後に使った時は{' '}
+            <span className="path">{this.props.repository.path}</span>{' '}
+            に存在しました。{' '}
+            <LinkButton onClick={this.checkAgain}>再度チェックする</LinkButton>
           </div>
         </div>
-
         <Row>{buttons}</Row>
       </UiView>
     )

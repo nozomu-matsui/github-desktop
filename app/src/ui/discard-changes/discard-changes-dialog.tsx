@@ -57,18 +57,16 @@ export class DiscardChanges extends React.Component<
 
   private getOkButtonLabel() {
     if (this.props.discardingAllChanges) {
-      return __DARWIN__ ? 'Discard All Changes' : 'Discard all changes'
+      return 'すべての変更を破棄'
     }
-    return __DARWIN__ ? 'Discard Changes' : 'Discard changes'
+    return '変更を破棄'
   }
 
   private getDialogTitle() {
     if (this.props.discardingAllChanges) {
-      return __DARWIN__
-        ? 'Confirm Discard All Changes'
-        : 'Confirm discard all changes'
+      return 'すべての変更を破棄...'
     }
-    return __DARWIN__ ? 'Confirm Discard Changes' : 'Confirm discard changes'
+    return '変更を破棄...'
   }
 
   public render() {
@@ -90,8 +88,7 @@ export class DiscardChanges extends React.Component<
         <DialogContent>
           {this.renderFileList()}
           <p id="discard-changes-confirmation-message">
-            Changes can be restored by retrieving them from the {TrashNameLabel}
-            .
+            破棄した変更は{TrashNameLabel}から元に戻せます。
           </p>
           {this.renderConfirmDiscardChanges()}
         </DialogContent>
@@ -112,7 +109,7 @@ export class DiscardChanges extends React.Component<
     if (this.props.showDiscardChangesSetting) {
       return (
         <Checkbox
-          label="Do not show this message again"
+          label="このメッセージを次から表示しない"
           value={
             this.state.confirmDiscardChanges
               ? CheckboxValue.Off
@@ -133,14 +130,13 @@ export class DiscardChanges extends React.Component<
     if (this.props.files.length > MaxFilesToList) {
       return (
         <p id="discard-changes-confirmation-file-list">
-          Are you sure you want to discard all {this.props.files.length} changed
-          files?
+          すべての変更したファイル ({this.props.files.length}) を破棄しますか？
         </p>
       )
     } else {
       return (
         <div id="discard-changes-confirmation-file-list">
-          <p>Are you sure you want to discard all changes to:</p>
+          <p>すべての変更したファイルを破棄しますか？</p>
           <div className="file-list">
             <ul>
               {this.props.files.map(p => (

@@ -219,7 +219,7 @@ export class CompareSidebar extends React.Component<
 
     let emptyListMessage: string | JSX.Element
     if (formState.kind === HistoryTabMode.History) {
-      emptyListMessage = 'No history'
+      emptyListMessage = '履歴がありません'
     } else {
       const currentlyComparedBranchName = formState.comparisonBranch.name
 
@@ -726,11 +726,9 @@ function getPlaceholderText(state: ICompareState) {
   const { branches, formState } = state
 
   if (!branches.some(b => !b.isDesktopForkRemoteBranch)) {
-    return __DARWIN__ ? 'No Branches to Compare' : 'No branches to compare'
+    return '比較するブランチがありません'
   } else if (formState.kind === HistoryTabMode.History) {
-    return __DARWIN__
-      ? 'Select Branch to Compare…'
-      : 'Select branch to compare…'
+    return '比較するブランチを選択'
   } else {
     return undefined
   }

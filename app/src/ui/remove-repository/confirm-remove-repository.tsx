@@ -57,7 +57,7 @@ export class ConfirmRemoveRepository extends React.Component<
         id="confirm-remove-repository"
         key="remove-repository-confirmation"
         type="warning"
-        title={__DARWIN__ ? 'Remove Repository' : 'Remove repository'}
+        title="リポジトリを削除"
         dismissDisabled={isRemovingRepository}
         loading={isRemovingRepository}
         disabled={isRemovingRepository}
@@ -66,11 +66,11 @@ export class ConfirmRemoveRepository extends React.Component<
       >
         <DialogContent>
           <p>
-            Are you sure you want to remove the repository "
-            {this.props.repository.name}" from GitHub Desktop?
+            本当にリポジトリ "{this.props.repository.name}" を GitHub Desktop
+            から削除しますか？
           </p>
           <div className="description">
-            <p>The repository will be removed from GitHub Desktop:</p>
+            <p>GitHub Desktopから、次のリポジトリが削除されます：</p>
             <p>
               <Ref>{this.props.repository.path}</Ref>
             </p>
@@ -78,7 +78,9 @@ export class ConfirmRemoveRepository extends React.Component<
 
           <div>
             <Checkbox
-              label={'Also move this repository to ' + TrashNameLabel}
+              label={
+                'また、このリポジトリを ' + TrashNameLabel + ' へ移動します。'
+              }
               value={
                 this.state.deleteRepoFromDisk
                   ? CheckboxValue.On
@@ -89,7 +91,7 @@ export class ConfirmRemoveRepository extends React.Component<
           </div>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup destructive={true} okButtonText="Remove" />
+          <OkCancelButtonGroup destructive={true} okButtonText="削除" />
         </DialogFooter>
       </Dialog>
     )

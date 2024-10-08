@@ -276,12 +276,7 @@ export class SelectedCommits extends React.Component<
 
   private renderFileHeader() {
     const fileCount = this.props.changesetData.files.length
-    const filesPlural = fileCount === 1 ? 'file' : 'files'
-    return (
-      <div className="file-list-header">
-        {fileCount} changed {filesPlural}
-      </div>
-    )
+    return <div className="file-list-header">{fileCount} 更新ファイル</div>
   }
 
   /**
@@ -398,7 +393,7 @@ export class SelectedCommits extends React.Component<
 
     const isSafeExtension = isSafeFileExtension(extension)
     const openInExternalEditor = externalEditorLabel
-      ? `Open in ${externalEditorLabel}`
+      ? `${externalEditorLabel} で開く`
       : DefaultEditorLabel
 
     const items: IMenuItem[] = [
@@ -429,14 +424,14 @@ export class SelectedCommits extends React.Component<
       { type: 'separator' },
     ]
 
-    let viewOnGitHubLabel = 'View on GitHub'
+    let viewOnGitHubLabel = 'GitHub で開く'
     const gitHubRepository = repository.gitHubRepository
 
     if (
       gitHubRepository &&
       gitHubRepository.endpoint !== getDotComAPIEndpoint()
     ) {
-      viewOnGitHubLabel = 'View on GitHub Enterprise'
+      viewOnGitHubLabel = 'GitHub Enterprise で開く'
     }
 
     items.push({

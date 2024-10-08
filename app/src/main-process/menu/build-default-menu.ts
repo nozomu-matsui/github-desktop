@@ -8,21 +8,13 @@ import { MenuLabelsEvent } from '../../models/menu-labels'
 import * as ipcWebContents from '../ipc-webcontents'
 import { mkdir } from 'fs/promises'
 
-const createPullRequestLabel = __DARWIN__
-  ? 'Create Pull Request'
-  : 'Create &pull request'
-const showPullRequestLabel = __DARWIN__
-  ? 'View Pull Request on GitHub'
-  : 'View &pull request on GitHub'
-const defaultBranchNameValue = __DARWIN__ ? 'Default Branch' : 'default branch'
-const confirmRepositoryRemovalLabel = __DARWIN__ ? 'Remove…' : '&Remove…'
-const repositoryRemovalLabel = __DARWIN__ ? 'Remove' : '&Remove'
-const confirmStashAllChangesLabel = __DARWIN__
-  ? 'Stash All Changes…'
-  : '&Stash all changes…'
-const stashAllChangesLabel = __DARWIN__
-  ? 'Stash All Changes'
-  : '&Stash all changes'
+const createPullRequestLabel = 'プルリクエストを作成'
+const showPullRequestLabel = 'プルリクエストを GitHub で表示'
+const defaultBranchNameValue = 'デフォルトブランチ'
+const confirmRepositoryRemovalLabel = '削除...'
+const repositoryRemovalLabel = '削除'
+const confirmStashAllChangesLabel = 'すべての変更をスタッシュ...'
+const stashAllChangesLabel = 'すべての変更をスタッシュ'
 
 enum ZoomDirection {
   Reset,
@@ -62,20 +54,20 @@ export function buildDefaultMenu({
       label: 'GitHub Desktop',
       submenu: [
         {
-          label: 'About GitHub Desktop',
+          label: 'GitHub Desktop について',
           click: emit('show-about'),
           id: 'about',
         },
         separator,
         {
-          label: 'Settings…',
+          label: '設定...',
           id: 'preferences',
           accelerator: 'CmdOrCtrl+,',
           click: emit('show-preferences'),
         },
         separator,
         {
-          label: 'Install Command Line Tool…',
+          label: 'コマンドラインツールをインストール...',
           id: 'install-cli',
           click: emit('install-darwin-cli'),
         },
@@ -95,23 +87,23 @@ export function buildDefaultMenu({
   }
 
   const fileMenu: Electron.MenuItemConstructorOptions = {
-    label: __DARWIN__ ? 'File' : '&File',
+    label: 'ファイル',
     submenu: [
       {
-        label: __DARWIN__ ? 'New Repository…' : 'New &repository…',
+        label: 'リポジトリを新規作成...',
         id: 'new-repository',
         click: emit('create-repository'),
         accelerator: 'CmdOrCtrl+N',
       },
       separator,
       {
-        label: __DARWIN__ ? 'Add Local Repository…' : 'Add &local repository…',
+        label: 'ローカルリポジトリを追加...',
         id: 'add-local-repository',
         accelerator: 'CmdOrCtrl+O',
         click: emit('add-local-repository'),
       },
       {
-        label: __DARWIN__ ? 'Clone Repository…' : 'Clo&ne repository…',
+        label: 'リポジトリをクローン',
         id: 'clone-repository',
         accelerator: 'CmdOrCtrl+Shift+O',
         click: emit('clone-repository'),
@@ -126,7 +118,7 @@ export function buildDefaultMenu({
     fileItems.push(
       separator,
       {
-        label: '&Options…',
+        label: '設定...',
         id: 'preferences',
         accelerator: 'CmdOrCtrl+,',
         click: emit('show-preferences'),
@@ -134,7 +126,7 @@ export function buildDefaultMenu({
       separator,
       {
         role: 'quit',
-        label: 'E&xit',
+        label: '終了',
         accelerator: exitAccelerator,
       }
     )
@@ -143,23 +135,23 @@ export function buildDefaultMenu({
   template.push(fileMenu)
 
   template.push({
-    label: __DARWIN__ ? 'Edit' : '&Edit',
+    label: '編集',
     submenu: [
-      { role: 'undo', label: __DARWIN__ ? 'Undo' : '&Undo' },
-      { role: 'redo', label: __DARWIN__ ? 'Redo' : '&Redo' },
+      { role: 'undo', label: 'Undo' },
+      { role: 'redo', label: 'Redo' },
       separator,
-      { role: 'cut', label: __DARWIN__ ? 'Cut' : 'Cu&t' },
-      { role: 'copy', label: __DARWIN__ ? 'Copy' : '&Copy' },
-      { role: 'paste', label: __DARWIN__ ? 'Paste' : '&Paste' },
+      { role: 'cut', label: 'カット' },
+      { role: 'copy', label: 'コピー' },
+      { role: 'paste', label: 'ペースト' },
       {
-        label: __DARWIN__ ? 'Select All' : 'Select &all',
+        label: 'すべてを選択',
         accelerator: 'CmdOrCtrl+A',
         click: emit('select-all'),
       },
       separator,
       {
         id: 'find',
-        label: __DARWIN__ ? 'Find' : '&Find',
+        label: '検索',
         accelerator: 'CmdOrCtrl+F',
         click: emit('find-text'),
       },
@@ -167,35 +159,35 @@ export function buildDefaultMenu({
   })
 
   template.push({
-    label: __DARWIN__ ? 'View' : '&View',
+    label: 'ビュー',
     submenu: [
       {
-        label: __DARWIN__ ? 'Show Changes' : '&Changes',
+        label: '変更ファイルを表示',
         id: 'show-changes',
         accelerator: 'CmdOrCtrl+1',
         click: emit('show-changes'),
       },
       {
-        label: __DARWIN__ ? 'Show History' : '&History',
+        label: 'コミット履歴を表示',
         id: 'show-history',
         accelerator: 'CmdOrCtrl+2',
         click: emit('show-history'),
       },
       {
-        label: __DARWIN__ ? 'Show Repository List' : 'Repository &list',
+        label: 'リポジトリ一覧を表示',
         id: 'show-repository-list',
         accelerator: 'CmdOrCtrl+T',
         click: emit('choose-repository'),
       },
       {
-        label: __DARWIN__ ? 'Show Branches List' : '&Branches list',
+        label: 'ブランチ一覧を表示',
         id: 'show-branches-list',
         accelerator: 'CmdOrCtrl+B',
         click: emit('show-branches'),
       },
       separator,
       {
-        label: __DARWIN__ ? 'Go to Summary' : 'Go to &Summary',
+        label: 'サマリーを表示',
         id: 'go-to-commit-message',
         accelerator: 'CmdOrCtrl+G',
         click: emit('go-to-commit-message'),
@@ -209,44 +201,40 @@ export function buildDefaultMenu({
           : emit('show-stashed-changes'),
       },
       {
-        label: __DARWIN__ ? 'Toggle Full Screen' : 'Toggle &full screen',
+        label: '全画面表示',
         role: 'togglefullscreen',
       },
       separator,
       {
-        label: __DARWIN__ ? 'Reset Zoom' : 'Reset zoom',
+        label: '拡大表示をリセット',
         accelerator: 'CmdOrCtrl+0',
         click: zoom(ZoomDirection.Reset),
       },
       {
-        label: __DARWIN__ ? 'Zoom In' : 'Zoom in',
+        label: '拡大',
         accelerator: 'CmdOrCtrl+=',
         click: zoom(ZoomDirection.In),
       },
       {
-        label: __DARWIN__ ? 'Zoom Out' : 'Zoom out',
+        label: '縮小',
         accelerator: 'CmdOrCtrl+-',
         click: zoom(ZoomDirection.Out),
       },
       {
-        label: __DARWIN__
-          ? 'Expand Active Resizable'
-          : 'Expand active resizable',
+        label: 'アクティブな領域をエクスパンド',
         id: 'increase-active-resizable-width',
         accelerator: 'CmdOrCtrl+9',
         click: emit('increase-active-resizable-width'),
       },
       {
-        label: __DARWIN__
-          ? 'Contract Active Resizable'
-          : 'Contract active resizable',
+        label: 'アクティブな領域をコントラクト',
         id: 'decrease-active-resizable-width',
         accelerator: 'CmdOrCtrl+8',
         click: emit('decrease-active-resizable-width'),
       },
       separator,
       {
-        label: '&Reload',
+        label: 'リロード',
         id: 'reload-window',
         // Ctrl+Alt is interpreted as AltGr on international keyboards and this
         // can clash with other shortcuts. We should always use Ctrl+Shift for
@@ -262,9 +250,7 @@ export function buildDefaultMenu({
       },
       {
         id: 'show-devtools',
-        label: __DARWIN__
-          ? 'Toggle Developer Tools'
-          : '&Toggle developer tools',
+        label: '開発ツール',
         accelerator: (() => {
           return __DARWIN__ ? 'Alt+Command+I' : 'Ctrl+Shift+I'
         })(),
@@ -285,7 +271,7 @@ export function buildDefaultMenu({
   const pushEventType = isForcePushForCurrentRepository ? 'force-push' : 'push'
 
   template.push({
-    label: __DARWIN__ ? 'Repository' : '&Repository',
+    label: 'リポジトリ',
     id: 'repository',
     submenu: [
       {
@@ -296,13 +282,13 @@ export function buildDefaultMenu({
       },
       {
         id: 'pull',
-        label: __DARWIN__ ? 'Pull' : 'Pu&ll',
+        label: 'プル',
         accelerator: 'CmdOrCtrl+Shift+P',
         click: emit('pull'),
       },
       {
         id: 'fetch',
-        label: __DARWIN__ ? 'Fetch' : '&Fetch',
+        label: 'フェッチ',
         accelerator: 'CmdOrCtrl+Shift+T',
         click: emit('fetch'),
       },
@@ -315,32 +301,28 @@ export function buildDefaultMenu({
       separator,
       {
         id: 'view-repository-on-github',
-        label: __DARWIN__ ? 'View on GitHub' : '&View on GitHub',
+        label: 'GitHub で表示',
         accelerator: 'CmdOrCtrl+Shift+G',
         click: emit('view-repository-on-github'),
       },
       {
-        label: __DARWIN__
-          ? `Open in ${selectedShell ?? 'Shell'}`
-          : `O&pen in ${selectedShell ?? 'shell'}`,
+        label: `${selectedShell ?? 'シェル'} で開く`,
         id: 'open-in-shell',
         accelerator: 'Ctrl+`',
         click: emit('open-in-shell'),
       },
       {
         label: __DARWIN__
-          ? 'Show in Finder'
+          ? 'ファインダーで開く'
           : __WIN32__
-          ? 'Show in E&xplorer'
-          : 'Show in your File Manager',
+          ? 'エクスプローラーで開く'
+          : 'ファイルマネージャーで開く',
         id: 'open-working-directory',
         accelerator: 'CmdOrCtrl+Shift+F',
         click: emit('open-working-directory'),
       },
       {
-        label: __DARWIN__
-          ? `Open in ${selectedExternalEditor ?? 'External Editor'}`
-          : `&Open in ${selectedExternalEditor ?? 'external editor'}`,
+        label: `${selectedExternalEditor ?? ' 外部エディターで開く'}`,
         id: 'open-external-editor',
         accelerator: 'CmdOrCtrl+Shift+A',
         click: emit('open-external-editor'),
@@ -348,15 +330,13 @@ export function buildDefaultMenu({
       separator,
       {
         id: 'create-issue-in-repository-on-github',
-        label: __DARWIN__
-          ? 'Create Issue on GitHub'
-          : 'Create &issue on GitHub',
+        label: '課題を GitHub に作成する',
         accelerator: 'CmdOrCtrl+I',
         click: emit('create-issue-in-repository-on-github'),
       },
       separator,
       {
-        label: __DARWIN__ ? 'Repository Settings…' : 'Repository &settings…',
+        label: 'リポジトリ設定...',
         id: 'show-repository-settings',
         click: emit('show-repository-settings'),
       },
@@ -365,26 +345,26 @@ export function buildDefaultMenu({
 
   const branchSubmenu = [
     {
-      label: __DARWIN__ ? 'New Branch…' : 'New &branch…',
+      label: '新規ブランチ...',
       id: 'create-branch',
       accelerator: 'CmdOrCtrl+Shift+N',
       click: emit('create-branch'),
     },
     {
-      label: __DARWIN__ ? 'Rename…' : '&Rename…',
+      label: '名前を変更...',
       id: 'rename-branch',
       accelerator: 'CmdOrCtrl+Shift+R',
       click: emit('rename-branch'),
     },
     {
-      label: __DARWIN__ ? 'Delete…' : '&Delete…',
+      label: '削除...',
       id: 'delete-branch',
       accelerator: 'CmdOrCtrl+Shift+D',
       click: emit('delete-branch'),
     },
     separator,
     {
-      label: __DARWIN__ ? 'Discard All Changes…' : 'Discard all changes…',
+      label: 'すべての変更を破棄...',
       id: 'discard-all-changes',
       accelerator: 'CmdOrCtrl+Shift+Backspace',
       click: emit('discard-all-changes'),
@@ -399,50 +379,44 @@ export function buildDefaultMenu({
     },
     separator,
     {
-      label: __DARWIN__
-        ? `Update from ${contributionTargetDefaultBranch}`
-        : `&Update from ${contributionTargetDefaultBranch}`,
+      label: `${contributionTargetDefaultBranch} から更新`,
       id: 'update-branch-with-contribution-target-branch',
       accelerator: 'CmdOrCtrl+Shift+U',
       click: emit('update-branch-with-contribution-target-branch'),
     },
     {
-      label: __DARWIN__ ? 'Compare to Branch' : '&Compare to branch',
+      label: 'ブランチと比較',
       id: 'compare-to-branch',
       accelerator: 'CmdOrCtrl+Shift+B',
       click: emit('compare-to-branch'),
     },
     {
-      label: __DARWIN__
-        ? 'Merge into Current Branch…'
-        : '&Merge into current branch…',
+      label: '選択中のブランチにマージ...',
       id: 'merge-branch',
       accelerator: 'CmdOrCtrl+Shift+M',
       click: emit('merge-branch'),
     },
     {
-      label: __DARWIN__
-        ? 'Squash and Merge into Current Branch…'
-        : 'Squas&h and merge into current branch…',
+      label: '選択中のブランチにスクワッシュ & マージ...',
       id: 'squash-and-merge-branch',
       accelerator: 'CmdOrCtrl+Shift+H',
       click: emit('squash-and-merge-branch'),
     },
     {
-      label: __DARWIN__ ? 'Rebase Current Branch…' : 'R&ebase current branch…',
+      label: '選択中のブランチをリベース',
       id: 'rebase-branch',
       accelerator: 'CmdOrCtrl+Shift+E',
       click: emit('rebase-branch'),
     },
     separator,
     {
-      label: __DARWIN__ ? 'Compare on GitHub' : 'Compare on &GitHub',
+      label: 'GitHub で比較',
       id: 'compare-on-github',
       accelerator: 'CmdOrCtrl+Shift+C',
       click: emit('compare-on-github'),
     },
     {
-      label: __DARWIN__ ? 'View Branch on GitHub' : 'View branch on GitHub',
+      label: 'ブランチを GitHub で表示',
       id: 'branch-on-github',
       accelerator: 'CmdOrCtrl+Alt+B',
       click: emit('branch-on-github'),
@@ -450,7 +424,7 @@ export function buildDefaultMenu({
   ]
 
   branchSubmenu.push({
-    label: __DARWIN__ ? 'Preview Pull Request' : 'Preview pull request',
+    label: 'プルリクエストをプレビュー',
     id: 'preview-pull-request',
     accelerator: 'CmdOrCtrl+Alt+P',
     click: emit('preview-pull-request'),
@@ -464,7 +438,7 @@ export function buildDefaultMenu({
   })
 
   template.push({
-    label: __DARWIN__ ? 'Branch' : '&Branch',
+    label: 'ブランチ',
     id: 'branch',
     submenu: branchSubmenu,
   })
@@ -483,7 +457,7 @@ export function buildDefaultMenu({
   }
 
   const submitIssueItem: Electron.MenuItemConstructorOptions = {
-    label: __DARWIN__ ? 'Report Issue…' : 'Report issue…',
+    label: '課題を報告...',
     click() {
       shell
         .openExternal('https://github.com/desktop/desktop/issues/new/choose')
@@ -492,7 +466,7 @@ export function buildDefaultMenu({
   }
 
   const contactSupportItem: Electron.MenuItemConstructorOptions = {
-    label: __DARWIN__ ? 'Contact GitHub Support…' : '&Contact GitHub support…',
+    label: 'GitHub サポートに連絡...',
     click() {
       shell
         .openExternal(
@@ -503,7 +477,7 @@ export function buildDefaultMenu({
   }
 
   const showUserGuides: Electron.MenuItemConstructorOptions = {
-    label: 'Show User Guides',
+    label: 'ユーザーガイドを表示',
     click() {
       shell
         .openExternal('https://docs.github.com/en/desktop')
@@ -512,7 +486,7 @@ export function buildDefaultMenu({
   }
 
   const showKeyboardShortcuts: Electron.MenuItemConstructorOptions = {
-    label: __DARWIN__ ? 'Show Keyboard Shortcuts' : 'Show keyboard shortcuts',
+    label: 'キーボードショートカットを表示',
     click() {
       shell
         .openExternal(
@@ -523,10 +497,10 @@ export function buildDefaultMenu({
   }
 
   const showLogsLabel = __DARWIN__
-    ? 'Show Logs in Finder'
+    ? 'ファインダーでログを表示'
     : __WIN32__
-    ? 'S&how logs in Explorer'
-    : 'S&how logs in your File Manager'
+    ? 'エクスプローラーでログを表示'
+    : 'ファイルマネージャーでログを表示'
 
   const showLogsItem: Electron.MenuItemConstructorOptions = {
     label: showLogsLabel,
@@ -590,14 +564,14 @@ export function buildDefaultMenu({
   if (__RELEASE_CHANNEL__ === 'development' || __RELEASE_CHANNEL__ === 'test') {
     if (__WIN32__) {
       helpItems.push(separator, {
-        label: 'Command Line Tool',
+        label: 'コマンドラインツール',
         submenu: [
           {
-            label: 'Install',
+            label: 'インストール',
             click: emit('install-windows-cli'),
           },
           {
-            label: 'Uninstall',
+            label: 'アンインストール',
             click: emit('uninstall-windows-cli'),
           },
         ],
@@ -606,11 +580,11 @@ export function buildDefaultMenu({
 
     helpItems.push(
       {
-        label: 'Show notification',
+        label: '通知を表示',
         click: emit('test-show-notification'),
       },
       {
-        label: 'Show banner',
+        label: 'バナーを表示',
         submenu: [
           {
             label: 'Update banner',
@@ -637,11 +611,11 @@ export function buildDefaultMenu({
             click: emit('show-test-undone-banner'),
           },
           {
-            label: 'Cherry Pick Conflicts',
+            label: 'コンフリクトしたチェリーピック',
             click: emit('show-test-cherry-pick-conflicts-banner'),
           },
           {
-            label: 'Merge Successful',
+            label: '成功したマージ',
             click: emit('show-test-merge-successful-banner'),
           },
         ],
@@ -656,12 +630,12 @@ export function buildDefaultMenu({
     })
   } else {
     template.push({
-      label: '&Help',
+      label: 'ヘルプ',
       submenu: [
         ...helpItems,
         separator,
         {
-          label: '&About GitHub Desktop',
+          label: 'GitHub Desktop について',
           click: emit('show-about'),
           id: 'about',
         },
@@ -679,22 +653,22 @@ function getPushLabel(
   askForConfirmationOnForcePush: boolean
 ): string {
   if (!isForcePushForCurrentRepository) {
-    return __DARWIN__ ? 'Push' : 'P&ush'
+    return 'プッシュ'
   }
 
   if (askForConfirmationOnForcePush) {
-    return __DARWIN__ ? 'Force Push…' : 'Force P&ush…'
+    return '強制プッシュ...'
   }
 
-  return __DARWIN__ ? 'Force Push' : 'Force P&ush'
+  return '強制プッシュ...'
 }
 
 function getStashedChangesLabel(isStashedChangesVisible: boolean): string {
   if (isStashedChangesVisible) {
-    return __DARWIN__ ? 'Hide Stashed Changes' : 'H&ide stashed changes'
+    return 'スタッシュした変更を非表示'
   }
 
-  return __DARWIN__ ? 'Show Stashed Changes' : 'Sho&w stashed changes'
+  return 'スタッシュした変更を表示'
 }
 
 type ClickHandler = (

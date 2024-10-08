@@ -29,31 +29,31 @@ export class OversizedFiles extends React.Component<IOversizedFilesProps> {
     return (
       <Dialog
         id="oversized-files"
-        title={__DARWIN__ ? 'Files Too Large' : 'Files too large'}
+        title="ファイルサイズが大きすぎます"
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
         type="warning"
       >
         <DialogContent>
           <p>
-            The following files are over 100MB.{' '}
+            ファイルサイズが 100MB を超えています。{' '}
             <strong>
-              If you commit these files, you will no longer be able to push this
-              repository to GitHub.com.
+              これらのファイルをコミットすると、このリポジトリを GitHub.com に
+              プッシュできなくなります。
             </strong>
           </p>
           {this.renderFileList()}
           <p className="recommendation">
-            We recommend you avoid committing these files or use{' '}
-            <LinkButton uri={GitLFSWebsiteURL}>Git LFS</LinkButton> to store
-            large files on GitHub.
+            これらのファイルのコミットを回避するか、{' '}
+            <LinkButton uri={GitLFSWebsiteURL}>Git LFS</LinkButton>{' '}
+            を使ってください。
           </p>
         </DialogContent>
 
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText={__DARWIN__ ? 'Commit Anyway' : 'Commit anyway'}
+            okButtonText="構わずコミット"
           />
         </DialogFooter>
       </Dialog>

@@ -49,13 +49,11 @@ export class LocalChangesOverwrittenDialog extends React.Component<
 
   public render() {
     const overwrittenText =
-      this.props.files.length > 0
-        ? ' The following files would be overwritten:'
-        : null
+      this.props.files.length > 0 ? ' 次のファイルは上書きされます:' : null
 
     return (
       <Dialog
-        title="Error"
+        title="エラー"
         id="local-changes-overwritten"
         loading={this.state.stashing}
         disabled={this.state.stashing}
@@ -68,8 +66,9 @@ export class LocalChangesOverwrittenDialog extends React.Component<
         <DialogContent>
           <div id="local-changes-error-description">
             <p>
-              Unable to {this.getRetryActionName()} when changes are present on
-              your branch.{overwrittenText}
+              選択中のブランチに変更があると、{this.getRetryActionName()}{' '}
+              できません。
+              {overwrittenText}
             </p>
             {this.renderFiles()}
             {this.renderStashText()}
@@ -104,7 +103,7 @@ export class LocalChangesOverwrittenDialog extends React.Component<
       return null
     }
 
-    return <p>You can stash your changes now and recover them afterwards.</p>
+    return <p>変更はスタッシュして、後で元に戻せます。</p>
   }
 
   private renderFooter() {
@@ -115,13 +114,9 @@ export class LocalChangesOverwrittenDialog extends React.Component<
     return (
       <DialogFooter>
         <OkCancelButtonGroup
-          okButtonText={
-            __DARWIN__
-              ? 'Stash Changes and Continue'
-              : 'Stash changes and continue'
-          }
-          okButtonTitle="This will create a stash with your current changes. You can recover them by restoring the stash afterwards."
-          cancelButtonText="Close"
+          okButtonText="変更をスタッシュして続ける"
+          okButtonTitle="この操作によって現在の変更がスタッシュに移動します。スタッシュは後で元に戻せます。"
+          cancelButtonText="閉じる"
         />
       </DialogFooter>
     )

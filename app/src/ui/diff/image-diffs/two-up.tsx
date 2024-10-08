@@ -50,7 +50,7 @@ export class TwoUp extends React.Component<ITwoUpProps, {}> {
           </div>
 
           <div className="image-diff-current" style={style}>
-            <div className="image-diff-header">Added</div>
+            <div className="image-diff-header">追加</div>
             <ImageContainer
               image={current}
               onElementLoad={this.props.onCurrentImageLoad}

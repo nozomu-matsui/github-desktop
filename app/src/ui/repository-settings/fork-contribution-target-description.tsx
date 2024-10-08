@@ -18,23 +18,23 @@ export function ForkSettingsDescription(props: IForkSettingsDescription) {
   return (
     <ul className="fork-settings-description">
       <li>
-        Pull requests targeting <strong>{targetRepository.fullName}</strong>{' '}
-        will be shown in the pull request list.
+        <strong>{targetRepository.fullName}</strong>{' '}
+        をターゲットにしているプルリクエストが、 一覧に表示されます。
       </li>
       <li>
-        Issues will be created in <strong>{targetRepository.fullName}</strong>.
+        課題は <strong>{targetRepository.fullName}</strong> に作成されます。
       </li>
       <li>
-        "View on GitHub" will open <strong>{targetRepository.fullName}</strong>{' '}
-        in the browser.
+        "GitHub で開く" は <strong>{targetRepository.fullName}</strong>{' '}
+        をブラウザーで開きます。
       </li>
       <li>
-        New branches will be based on{' '}
-        <strong>{targetRepository.fullName}</strong>'s default branch.
+        新規ブランチは <strong>{targetRepository.fullName}</strong>{' '}
+        のデフォルトブランチをベースにします。
       </li>
       <li>
-        Autocompletion of user and issues will be based on{' '}
-        <strong>{targetRepository.fullName}</strong>.
+        ユーザや課題の自動補完は <strong>{targetRepository.fullName}</strong>{' '}
+        をベースにします。
       </li>
     </ul>
   )

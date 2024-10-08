@@ -73,7 +73,7 @@ export class CreateTutorialRepositoryDialog extends React.Component<ICreateTutor
     return (
       <Dialog
         id="create-tutorial-repository-dialog"
-        title="Start tutorial"
+        title="チュートリアルを開始"
         onDismissed={this.props.onDismissed}
         onSubmit={this.onSubmit}
         dismissDisabled={loading}
@@ -93,7 +93,7 @@ export class CreateTutorialRepositoryDialog extends React.Component<ICreateTutor
           {this.renderProgress()}
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup okButtonText="Continue" />
+          <OkCancelButtonGroup okButtonText="続ける" />
         </DialogFooter>
       </Dialog>
     )

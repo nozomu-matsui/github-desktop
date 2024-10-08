@@ -102,7 +102,7 @@ export class TermsAndConditions extends React.Component<
             <LinkButton uri={logos}>logos</LinkButton>.
           </p>
 
-          <h2>Privacy</h2>
+          <h2>プライバシー</h2>
 
           <p>
             The Software may collect personal information. You may control what
@@ -166,7 +166,7 @@ export class TermsAndConditions extends React.Component<
             discontinuance of the Service.
           </p>
 
-          <h2>Miscellanea</h2>
+          <h2>その他</h2>
 
           <ol>
             <li>

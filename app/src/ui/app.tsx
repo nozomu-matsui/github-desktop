@@ -614,7 +614,7 @@ export class App extends React.Component<IAppProps, IAppState> {
         userContributions: [
           {
             kind: 'new',
-            message: '[New] Added fake thank you dialog',
+            message: '[New] 偽 サンキューダイアログが追加されました',
           },
         ],
         friendlyName: 'kind contributor',
@@ -2980,10 +2980,10 @@ export class App extends React.Component<IAppProps, IAppState> {
       title = alias ?? repository.name
     } else if (this.state.repositories.length > 0) {
       icon = octicons.repo
-      title = __DARWIN__ ? 'Select a Repository' : 'Select a repository'
+      title = 'リポジトリを選択'
     } else {
       icon = octicons.repo
-      title = __DARWIN__ ? 'No Repositories' : 'No repositories'
+      title = 'リポジトリがありません'
     }
 
     const isOpen =
@@ -3014,7 +3014,7 @@ export class App extends React.Component<IAppProps, IAppState> {
       <ToolbarDropdown
         icon={icon}
         title={title}
-        description={__DARWIN__ ? 'Current Repository' : 'Current repository'}
+        description={'選択中のリポジトリ'}
         tooltip={tooltip}
         foldoutStyle={foldoutStyle}
         onContextMenu={this.onRepositoryToolbarButtonContextMenu}

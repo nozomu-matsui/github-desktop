@@ -36,9 +36,9 @@ export class GitConfig extends React.Component<IGitConfigProps> {
   private renderConfigOptionLabel = (key: GitConfigLocation) => {
     switch (key) {
       case GitConfigLocation.Global:
-        return 'Use my global Git config'
+        return 'グローバル Git 設定を使う'
       case GitConfigLocation.Local:
-        return 'Use a local Git config'
+        return 'ローカル Git 設定を使う'
       default:
         return assertNever(key, `Unknown git config location: ${key}`)
     }
@@ -59,7 +59,7 @@ export class GitConfig extends React.Component<IGitConfigProps> {
     return (
       <DialogContent>
         <div className="advanced-section">
-          <h2 id="git-config-heading">For this repository I wish to</h2>
+          <h2 id="git-config-heading">このリポジトリでは</h2>
           <Row>
             <RadioGroup<GitConfigLocation>
               ariaLabelledBy="git-config-heading"

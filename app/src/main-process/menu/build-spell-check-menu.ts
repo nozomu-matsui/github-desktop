@@ -61,7 +61,7 @@ function getSpellCheckMenuItems(
   if (misspelledWord) {
     items.push(
       new MenuItem({
-        label: __DARWIN__ ? 'Add to Dictionary' : 'Add to dictionary',
+        label: 'フォルダに追加する',
         click: () =>
           webContents.session.addWordToSpellCheckerDictionary(misspelledWord),
       })

@@ -185,7 +185,7 @@ export class NotificationsStore {
       return
     }
 
-    const title = `@${comment.user.login} commented on your pull request`
+    const title = `@${comment.user.login} が、プルリクエストにコメントしました`
     const body = `${pullRequest.title} #${
       pullRequest.pullRequestNumber
     }\n${truncateWithEllipsis(comment.body, 50)}`
@@ -265,7 +265,7 @@ export class NotificationsStore {
     }
 
     const reviewVerb = getVerbForPullRequestReview(review)
-    const title = `@${review.user.login} ${reviewVerb} your pull request`
+    const title = `@${review.user.login} プルリクエストを ${reviewVerb} しました。`
     const body = `${pullRequest.title} #${
       pullRequest.pullRequestNumber
     }\n${truncateWithEllipsis(review.body, 50)}`
@@ -396,7 +396,7 @@ export class NotificationsStore {
       numberOfFailedChecks === 1 ? 'check was' : 'checks were'
 
     const shortSHA = shortenSHA(commitSHA)
-    const title = 'Pull Request checks failed'
+    const title = 'プルリクエストのチェックが失敗しました'
     const body = `${pullRequest.title} #${pullRequest.pullRequestNumber} (${shortSHA})\n${numberOfFailedChecks} ${pluralChecks} not successful.`
     const onClick = () => {
       this.statsStore.increment('checksFailedNotificationClicked')

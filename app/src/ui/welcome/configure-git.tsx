@@ -15,18 +15,18 @@ export class ConfigureGit extends React.Component<IConfigureGitProps, {}> {
   public render() {
     return (
       <section id="configure-git" aria-label="Configure Git">
-        <h1 className="welcome-title">Configure Git</h1>
+        <h1 className="welcome-title">Git を設定</h1>
         <p className="welcome-text">
-          This is used to identify the commits you create. Anyone will be able
-          to see this information if you publish commits.
+          この情報は、あなたが作成したコミットを識別するために使います。
+          コミットをパブリッシュしたら、誰でも見ることができます。
         </p>
 
         <ConfigureGitUser
           accounts={this.props.accounts}
           onSave={this.props.done}
-          saveLabel="Finish"
+          saveLabel="完了"
         >
-          <Button onClick={this.cancel}>Cancel</Button>
+          <Button onClick={this.cancel}>キャンセル</Button>
         </ConfigureGitUser>
       </section>
     )
