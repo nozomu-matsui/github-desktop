@@ -5,22 +5,16 @@ import {
   SignInStep,
   IEndpointEntryState,
   IAuthenticationState,
-  ITwoFactorAuthenticationState,
+  IExistingAccountWarning,
 } from '../../lib/stores'
 import { assertNever } from '../../lib/fatal-error'
-import { LinkButton } from '../lib/link-button'
-import { Octicon } from '../octicons'
-import * as octicons from '../octicons/octicons.generated'
 import { Row } from '../lib/row'
 import { TextBox } from '../lib/text-box'
 import { Dialog, DialogError, DialogContent, DialogFooter } from '../dialog'
 
-import { getWelcomeMessage } from '../../lib/2fa'
 import { OkCancelButtonGroup } from '../dialog/ok-cancel-button-group'
-import { Button } from '../lib/button'
-import { HorizontalRule } from '../lib/horizontal-rule'
-import { PasswordTextBox } from '../lib/password-text-box'
 import { Ref } from '../lib/ref'
+import { getHTMLURL } from '../../lib/api'
 
 interface ISignInProps {
   readonly dispatcher: Dispatcher
@@ -32,14 +26,19 @@ interface ISignInProps {
 
 interface ISignInState {
   readonly endpoint: string
-  readonly username: string
-  readonly password: string
-  readonly otpToken: string
 }
 
 const SignInWithBrowserTitle = 'ブラウザーを使ってサインイン'
 
 const DefaultTitle = 'サインイン'
+
+const browserSignInInfoContent = (
+  <p>
+    Your browser will redirect you back to GitHub Desktop once you've signed in.
+    If your browser asks for your permission to launch GitHub Desktop, please
+    allow it.
+  </p>
+)
 
 export class SignIn extends React.Component<ISignInProps, ISignInState> {
   private readonly dialogRef = React.createRef<Dialog>()
@@ -49,9 +48,6 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
 
     this.state = {
       endpoint: '',
-      username: '',
-      password: '',
-      otpToken: '',
     }
   }
 
@@ -91,18 +87,13 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
       case SignInStep.EndpointEntry:
         this.props.dispatcher.setSignInEndpoint(this.state.endpoint)
         break
-      case SignInStep.Authentication:
-        if (!state.supportsBasicAuth) {
-          this.props.dispatcher.requestBrowserAuthentication()
-        } else {
-          this.props.dispatcher.setSignInCredentials(
-            this.state.username,
-            this.state.password
-          )
-        }
+      case SignInStep.ExistingAccountWarning:
+        this.props.dispatcher
+          .removeAccount(state.existingAccount)
+          .then(() => this.props.dispatcher.setSignInEndpoint(state.endpoint))
         break
-      case SignInStep.TwoFactorAuthentication:
-        this.props.dispatcher.setSignInOTP(this.state.otpToken)
+      case SignInStep.Authentication:
+        this.props.dispatcher.requestBrowserAuthentication()
         break
       case SignInStep.Success:
         this.onDismissed()
@@ -116,22 +107,6 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     this.setState({ endpoint })
   }
 
-  private onUsernameChanged = (username: string) => {
-    this.setState({ username })
-  }
-
-  private onPasswordChanged = (password: string) => {
-    this.setState({ password })
-  }
-
-  private onOTPTokenChanged = (otpToken: string) => {
-    this.setState({ otpToken })
-  }
-
-  private onSignInWithBrowser = () => {
-    this.props.dispatcher.requestBrowserAuthentication()
-  }
-
   private renderFooter(): JSX.Element | null {
     const state = this.props.signInState
 
@@ -143,27 +118,20 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
 
     let primaryButtonText: string
     const stepKind = state.kind
+    const continueWithBrowserLabel = __DARWIN__
+      ? 'Continue With Browser'
+      : 'Continue with browser'
 
     switch (state.kind) {
       case SignInStep.EndpointEntry:
         disableSubmit = this.state.endpoint.length === 0
         primaryButtonText = 'コンティニュー'
         break
-      case SignInStep.TwoFactorAuthentication:
-        // ensure user has entered non-whitespace characters
-        const codeProvided = /\S+/.test(this.state.otpToken)
-        disableSubmit = !codeProvided
-        primaryButtonText = 'サインイン'
+      case SignInStep.ExistingAccountWarning:
+        primaryButtonText = continueWithBrowserLabel
         break
       case SignInStep.Authentication:
-        if (!state.supportsBasicAuth) {
-          primaryButtonText = 'ブラウザーで続ける'
-        } else {
-          const validUserName = this.state.username.length > 0
-          const validPassword = this.state.password.length > 0
-          disableSubmit = !validUserName || !validPassword
-          primaryButtonText = 'サインイン'
-        }
+        primaryButtonText = continueWithBrowserLabel
         break
       default:
         return assertNever(state, `Unknown sign in step ${stepKind}`)
@@ -177,6 +145,20 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
           onCancelButtonClick={this.onDismissed}
         />
       </DialogFooter>
+    )
+  }
+
+  private renderExistingAccountWarningStep(state: IExistingAccountWarning) {
+    return (
+      <DialogContent>
+        <p className="existing-account-warning">
+          You're already signed in to{' '}
+          <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref> with the account{' '}
+          <Ref>{state.existingAccount.login}</Ref>. If you continue, you will
+          first be signed out.
+        </p>
+        {browserSignInInfoContent}
+      </DialogContent>
     )
   }
 
@@ -204,79 +186,10 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
         </p>
       ) : undefined
 
-    if (!state.supportsBasicAuth) {
-      return (
-        <DialogContent>
-          {credentialHelperInfo}
-          <p>
-            サインインを完了したら、ブラウザーは GitHub Desktop
-            にリダイレクトします。 ブラウザーが GitHub Desktop
-            の起動を求めたら、許可してください。
-          </p>
-        </DialogContent>
-      )
-    }
-
-    const disableSubmit = state.loading
-
     return (
       <DialogContent>
         {credentialHelperInfo}
-
-        <Row className="sign-in-with-browser">
-          <Button
-            className="button-with-icon button-component-primary"
-            onClick={this.onSignInWithBrowser}
-            disabled={disableSubmit}
-            role="link"
-          >
-            ブラウザーを使ってサインイン
-            <Octicon symbol={octicons.linkExternal} />
-          </Button>
-        </Row>
-
-        <HorizontalRule title="または" />
-
-        <Row>
-          <TextBox
-            label="ユーザー名 もしくは メールアドレス"
-            value={this.state.username}
-            onValueChanged={this.onUsernameChanged}
-          />
-        </Row>
-        <Row>
-          <PasswordTextBox
-            label="パスワード"
-            value={this.state.password}
-            onValueChanged={this.onPasswordChanged}
-          />
-        </Row>
-        <Row>
-          <LinkButton
-            className="forgot-password-link-sign-in"
-            uri={state.forgotPasswordUrl}
-          >
-            パスワードを忘れましたか？
-          </LinkButton>
-        </Row>
-      </DialogContent>
-    )
-  }
-
-  private renderTwoFactorAuthenticationStep(
-    state: ITwoFactorAuthenticationState
-  ) {
-    return (
-      <DialogContent>
-        <p>{getWelcomeMessage(state.type)}</p>
-        <Row>
-          <TextBox
-            label="Authentication code"
-            value={this.state.otpToken}
-            onValueChanged={this.onOTPTokenChanged}
-            autoFocus={true}
-          />
-        </Row>
+        {browserSignInInfoContent}
       </DialogContent>
     )
   }
@@ -293,10 +206,10 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     switch (state.kind) {
       case SignInStep.EndpointEntry:
         return this.renderEndpointEntryStep(state)
+      case SignInStep.ExistingAccountWarning:
+        return this.renderExistingAccountWarningStep(state)
       case SignInStep.Authentication:
         return this.renderAuthenticationStep(state)
-      case SignInStep.TwoFactorAuthentication:
-        return this.renderTwoFactorAuthenticationStep(state)
       case SignInStep.Success:
         return null
       default:
@@ -318,9 +231,7 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     ) : null
 
     const title =
-      this.props.signInState &&
-      this.props.signInState.kind === SignInStep.Authentication &&
-      !this.props.signInState.supportsBasicAuth
+      this.props.signInState.kind === SignInStep.Authentication
         ? SignInWithBrowserTitle
         : DefaultTitle
 
