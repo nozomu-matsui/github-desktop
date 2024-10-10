@@ -342,18 +342,19 @@ export class SelectedCommits extends React.Component<
         <div className="panel blankslate">
           <img src={BlankSlateImage} className="blankslate-image" alt="" />
           <div>
-            <p>
-              Unable to display diff when multiple non-consecutive selected.
-            </p>
-            <div>You can:</div>
+            <p>連続しない複数選択は、差分を表示できません。</p>
+            <div>以下の操作が可能です：</div>
             <ul>
               <li>
-                Select a single commit or a range of consecutive commits to view
-                a diff.
+                差分を表示するには、単一のコミットまたは連続するコミットを範囲選択する。
               </li>
-              <li>Drag the commits to the branch menu to cherry-pick them.</li>
-              <li>Drag the commits to squash or reorder them.</li>
-              <li>Right click on multiple commits to see options.</li>
+              <li>
+                チェリーピックしたいコミット（複数選択可能）をブランチメニューにドラッグする。
+              </li>
+              <li>スカッシュやリオーダーしたいコミットをドラッグする。</li>
+              <li>
+                オプションを表示するには複数選択したコミットを右クリックする。
+              </li>
             </ul>
           </div>
         </div>
@@ -380,9 +381,7 @@ export class SelectedCommits extends React.Component<
     if (!fileExistsOnDisk) {
       showContextualMenu([
         {
-          label: __DARWIN__
-            ? 'File Does Not Exist on Disk'
-            : 'File does not exist on disk',
+          label: 'ファイルがディスク上にありません',
           enabled: false,
         },
       ])
