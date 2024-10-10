@@ -834,23 +834,17 @@ export class CommitList extends React.Component<
 
     return [
       {
-        label: __DARWIN__
-          ? `Cherry-pick ${count} Commits…`
-          : `Cherry-pick ${count} commits…`,
+        label: `${count} コミットをチェリーピック...`,
         action: () => this.props.onCherryPick?.(this.selectedCommits),
         enabled: this.canCherryPick(),
       },
       {
-        label: __DARWIN__
-          ? `Squash ${count} Commits…`
-          : `Squash ${count} commits…`,
+        label: `${count} コミットをスカッシュ...`,
         action: () => this.onSquash(this.selectedCommits, commit, true),
         enabled: this.canSquash(),
       },
       {
-        label: __DARWIN__
-          ? `Reorder ${count} Commits…`
-          : `Reorder ${count} commits…`,
+        label: `${count} コミットをリオーダー...`,
         action: () => this.props.onKeyboardReorder?.(this.selectedCommits),
         enabled: this.canReorder(),
       },
