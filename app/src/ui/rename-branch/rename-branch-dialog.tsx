@@ -41,7 +41,7 @@ export class RenameBranch extends React.Component<
         <DialogContent>
           {renderBranchHasRemoteWarning(this.props.branch)}
           <RefNameTextBox
-            label="Name"
+            label="ブランチ名"
             initialValue={this.props.branch.name}
             onValueChange={this.onNameChange}
           />
@@ -49,7 +49,7 @@ export class RenameBranch extends React.Component<
 
         <DialogFooter>
           <OkCancelButtonGroup
-            okButtonText={`Rename ${this.props.branch.name}`}
+            okButtonText={`${this.props.branch.name} をリネーム`}
             okButtonDisabled={this.state.newName.length === 0}
           />
         </DialogFooter>
