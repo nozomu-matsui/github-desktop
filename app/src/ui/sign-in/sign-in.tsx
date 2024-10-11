@@ -34,9 +34,8 @@ const DefaultTitle = 'サインイン'
 
 const browserSignInInfoContent = (
   <p>
-    Your browser will redirect you back to GitHub Desktop once you've signed in.
-    If your browser asks for your permission to launch GitHub Desktop, please
-    allow it.
+    ブラウザーでサインインが完了したら、GitHub Desktop にリダイレクトされます。
+    もしブラウザーが GitHub Desktop を起動するか確認したら、許可してください。
   </p>
 )
 
