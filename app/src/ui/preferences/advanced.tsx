@@ -4,7 +4,6 @@ import { Checkbox, CheckboxValue } from '../lib/checkbox'
 import { LinkButton } from '../lib/link-button'
 import { SamplesURL } from '../../lib/stats'
 import { isWindowsOpenSSHAvailable } from '../../lib/ssh/ssh'
-import { enableExternalCredentialHelper } from '../../lib/feature-flag'
 
 interface IAdvancedPreferencesProps {
   readonly useWindowsOpenSSH: boolean
@@ -125,36 +124,33 @@ export class Advanced extends React.Component<
             onChange={this.onReportingOptOutChanged}
           />
         </div>
-        {(this.state.canUseWindowsSSH || enableExternalCredentialHelper()) && (
-          <h2>ネットワーク & クレデンシャル</h2>
-        )}
+        <h2>Network and credentials</h2>
         {this.renderSSHSettings()}
-        {enableExternalCredentialHelper() && (
-          <div className="advanced-section">
-            <Checkbox
-              label={'Git クレデンシャルマネージャーを使う'}
-              value={
-                this.state.useExternalCredentialHelper
-                  ? CheckboxValue.On
-                  : CheckboxValue.Off
-              }
-              onChange={this.onUseExternalCredentialHelperChanged}
-              ariaDescribedBy="use-external-credential-helper-description"
-            />
-            <div
-              id="use-external-credential-helper-description"
-              className="git-settings-description"
-            >
-              <p>
-                <LinkButton uri="https://gh.io/gcm">
-                  Git クレデンシャルマネージャー{' '}
-                </LinkButton>{' '}
-                を GitHub.com 以外のリポジトリに使用します。
-                この機能は試験運用のため、変更される可能性があります。
-              </p>
-            </div>
+        <div className="advanced-section">
+          <Checkbox
+            label={'Git クレデンシャルマネージャーを使う'}
+            value={
+              this.state.useExternalCredentialHelper
+                ? CheckboxValue.On
+                : CheckboxValue.Off
+            }
+            onChange={this.onUseExternalCredentialHelperChanged}
+            ariaDescribedBy="use-external-credential-helper-description"
+          />
+          <div
+            id="use-external-credential-helper-description"
+            className="git-settings-description"
+          >
+            <p>
+              Use{' '}
+              <LinkButton uri="https://gh.io/gcm">
+                Git クレデンシャルマネージャー{' '}
+              </LinkButton>{' '}
+              を GitHub.com 以外のリポジトリに使用します。
+              この機能は試験運用のため、変更される可能性があります。
+            </p>
           </div>
-        )}
+        </div>
       </DialogContent>
     )
   }
