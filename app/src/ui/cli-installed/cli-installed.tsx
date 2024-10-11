@@ -12,18 +12,14 @@ export class CLIInstalled extends React.Component<ICLIInstalledProps, {}> {
   public render() {
     return (
       <Dialog
-        title={
-          __DARWIN__
-            ? 'Command Line Tool Installed'
-            : 'Command line tool installed'
-        }
+        title={'コマンドラインツールがインストールされました'}
         onDismissed={this.props.onDismissed}
         onSubmit={this.props.onDismissed}
       >
         <DialogContent>
           <div>
-            The command line tool has been installed at{' '}
-            <strong>{InstalledCLIPath}</strong>.
+            コマンドラインツールが <strong>{InstalledCLIPath}</strong>
+            にインストールされました。
           </div>
         </DialogContent>
         <DefaultDialogFooter buttonText="Ok" />
