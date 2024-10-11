@@ -86,8 +86,8 @@ export class StashAndSwitchBranch extends React.Component<
 
     return (
       <Row>
-        <Octicon symbol={octicons.alert} /> Your current stash will be
-        overwritten by creating a new stash
+        <Octicon symbol={octicons.alert} />{' '}
+        現在のスタッシュは、新しく作成したスタッシュで上書きされます。
       </Row>
     )
   }
