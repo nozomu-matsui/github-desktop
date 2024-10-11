@@ -47,9 +47,7 @@ export class WarningBeforeReset extends React.Component<
       >
         <DialogContent>
           <Row id="reset-warning-message">
-            You have changes in progress. Resetting to a previous commit might
-            result in some of these changes being lost. Do you want to continue
-            anyway?
+            進行中の更新があります。前のコミットにリセットすると、これらの更新が失われる可能性があります。続けますか？
           </Row>
         </DialogContent>
         <DialogFooter>
