@@ -397,7 +397,7 @@ export function buildDefaultMenu({
       click: emit('merge-branch'),
     },
     {
-      label: '選択中のブランチにスクワッシュ & マージ...',
+      label: '選択中のブランチにスカッシュ & マージ...',
       id: 'squash-and-merge-branch',
       accelerator: 'CmdOrCtrl+Shift+H',
       click: emit('squash-and-merge-branch'),
