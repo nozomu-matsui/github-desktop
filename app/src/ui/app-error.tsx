@@ -103,10 +103,10 @@ export class AppError extends React.Component<IAppErrorProps, IAppErrorState> {
 
   private getTitle(error: Error) {
     if (isCloneError(error)) {
-      return 'Clone failed'
+      return 'クローンに失敗しました'
     }
 
-    return 'Error'
+    return 'エラー'
   }
 
   private renderContentAfterErrorMessage(error: Error) {
@@ -119,7 +119,7 @@ export class AppError extends React.Component<IAppErrorProps, IAppErrorState> {
     if (retryAction && retryAction.type === RetryActionType.Clone) {
       return (
         <p>
-          Would you like to retry cloning <Ref>{retryAction.name}</Ref>?
+          もう一度 <Ref>{retryAction.name}</Ref> をクローンしますか？
         </p>
       )
     }
