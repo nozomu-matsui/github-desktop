@@ -50,7 +50,8 @@ export class NoPullRequests extends React.Component<INoPullRequestsProps, {}> {
         <div>
           <div className="title">準備完了です！</div>
           <div className="no-prs">
-            No open pull requests in <Ref>{this.props.repositoryName}</Ref>
+            <Ref>{this.props.repositoryName}</Ref>{' '}
+            には、オープンなプルリクエストはありません
           </div>
         </div>
       )
