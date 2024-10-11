@@ -52,7 +52,7 @@ export class ConfirmDiscardStashDialog extends React.Component<
       >
         <DialogContent>
           <Row id="discard-stash-warning-message">
-            本当にこれらのスタッシュ変更を破棄しますか？
+            本当にスタッシュした変更を破棄しますか？
           </Row>
           <Row>
             <Checkbox
