@@ -61,10 +61,7 @@ export class TutorialDone extends React.Component<ITutorialDoneProps, {}> {
           <div className="header">
             <div className="text">
               <h1 ref={this.header}>You're done!</h1>
-              <p>
-                You’ve learned the basics on how to use GitHub Desktop. Here are
-                some suggestions for what to do next.
-              </p>
+              <p>GitHub Desktop の基本について、学習が終わりました。 次は：</p>
             </div>
             <img
               src={ClappingHandsImage}
