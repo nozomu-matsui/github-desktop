@@ -23,22 +23,22 @@ export function mapStatus(status: AppFileStatus): string {
   switch (status.kind) {
     case AppFileStatusKind.New:
     case AppFileStatusKind.Untracked:
-      return 'New'
+      return '新規'
     case AppFileStatusKind.Modified:
-      return 'Modified'
+      return '更新'
     case AppFileStatusKind.Deleted:
-      return 'Deleted'
+      return '削除'
     case AppFileStatusKind.Renamed:
-      return 'Renamed'
+      return '改名'
     case AppFileStatusKind.Conflicted:
       if (isConflictWithMarkers(status)) {
         const conflictsCount = status.conflictMarkerCount
-        return conflictsCount > 0 ? 'Conflicted' : 'Resolved'
+        return conflictsCount > 0 ? '競合' : '解決'
       }
 
-      return 'Conflicted'
+      return '競合'
     case AppFileStatusKind.Copied:
-      return 'Copied'
+      return '複製'
     default:
       return assertNever(status, `Unknown file status ${status}`)
   }
