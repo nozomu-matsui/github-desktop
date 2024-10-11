@@ -270,7 +270,7 @@ export class CreateBranch extends React.Component<
       >
         <DialogContent>
           <RefNameTextBox
-            label="Name"
+            label="ブランチ名"
             ariaDescribedBy={hasError ? this.ERRORS_ID : undefined}
             initialValue={this.props.initialName}
             onValueChange={this.onBranchNameChange}
