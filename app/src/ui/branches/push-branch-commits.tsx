@@ -101,11 +101,11 @@ export class PushBranchCommits extends React.Component<
       return (
         <DialogContent>
           <p id="push-branch-commits-title">
-            Your branch must be published before opening a pull request.
+            プルリクエストを生成するには、ブランチをパブリッシュする必要があります。
           </p>
           <p id="push-branch-commits-message">
-            Would you like to publish <Ref>{this.props.branch.name}</Ref> now
-            and open a pull request?
+            <Ref>{this.props.branch.name}</Ref> をパブリッシュして、
+            プルリクエストを作成しますか？
           </p>
         </DialogContent>
       )
@@ -116,11 +116,11 @@ export class PushBranchCommits extends React.Component<
     return (
       <DialogContent>
         <p id="push-branch-commits-title">
-          You have {localCommits} that haven't been pushed to the remote yet.
+          リモートにプッシュしていないコミットが {localCommits} あります。
         </p>
         <p id="push-branch-commits-message">
-          Would you like to push your changes to{' '}
-          <Ref>{this.props.branch.name}</Ref> before creating your pull request?
+          プルリクエストを作成する前に、変更を{' '}
+          <Ref>{this.props.branch.name}</Ref> にプッシュしますか？
         </p>
       </DialogContent>
     )
