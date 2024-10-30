@@ -107,7 +107,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
         return (
           <Row>
             <Button onClick={this.onQuitAndInstall}>
-              Quit and Install Update
+              終了してアップデートをインストール
             </Button>
           </Row>
         )
@@ -121,7 +121,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
             UpdateStatus.UpdateNotAvailable,
           ].includes(updateStatus) || isOSNoLongerSupportedByElectron()
 
-        const buttonTitle = 'Check for Updates'
+        const buttonTitle = 'アップデートを確認'
 
         return (
           <Row>
@@ -145,7 +145,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
     return (
       <Row className="update-status">
         <Loading />
-        <span>Checking for updates…</span>
+        <span>アップデートをチェック中...</span>
       </Row>
     )
   }
@@ -154,7 +154,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
     return (
       <Row className="update-status">
         <Loading />
-        <span>Downloading update…</span>
+        <span>アップデートをダウンロード中...</span>
       </Row>
     )
   }
@@ -169,7 +169,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
 
     return (
       <p className="update-status">
-        You have the latest version (last checked{' '}
+        最新版をご利用中です。(最終確認日時：{' '}
         <RelativeTime date={lastCheckedDate} />)
       </p>
     )
@@ -178,7 +178,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
   private renderUpdateReady() {
     return (
       <p className="update-status">
-        An update has been downloaded and is ready to be installed.
+        アップデートのダウンロードが完了しました。インストールが可能です。
       </p>
     )
   }
@@ -191,8 +191,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
     if (__RELEASE_CHANNEL__ === 'development') {
       return (
         <p>
-          The application is currently running in development and will not
-          receive any updates.
+          このアプリケーションは開発モードで実行中のため、アップデートはありません。
         </p>
       )
     }
@@ -230,10 +229,10 @@ export class About extends React.Component<IAboutProps, IAboutState> {
     if (isOSNoLongerSupportedByElectron()) {
       return (
         <DialogError>
-          This operating system is no longer supported. Software updates have
-          been disabled.{' '}
+          お使いのオペレーティングシステムのサポートは終了しています。
+          ソフトウェアアップデートはありません。{' '}
           <LinkButton uri="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/supported-operating-systems">
-            Supported operating systems
+            サポートしているオペレーティングシステム
           </LinkButton>
         </DialogError>
       )
@@ -259,12 +258,12 @@ export class About extends React.Component<IAboutProps, IAboutState> {
 
     return (
       <div>
-        <p className="no-padding">Looking for the latest features?</p>
+        <p className="no-padding">最新機能をお探しですか？</p>
         <p className="no-padding">
-          Check out the{' '}
           <LinkButton uri="https://desktop.github.com/beta">
-            Beta Channel
-          </LinkButton>
+            ベータチャンネル
+          </LinkButton>{' '}
+          をチェックしてみてください。
         </p>
       </div>
     )
@@ -274,7 +273,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
     const name = this.props.applicationName
     const version = this.props.applicationVersion
     const releaseNotesLink = (
-      <LinkButton uri={ReleaseNotesUri}>release notes</LinkButton>
+      <LinkButton uri={ReleaseNotesUri}>リリースノート</LinkButton>
     )
 
     const versionText = __DEV__ ? `Build ${version}` : `Version ${version}`
@@ -297,7 +296,7 @@ export class About extends React.Component<IAboutProps, IAboutState> {
               height="64"
             />
           </Row>
-          <h1 id={titleId}>About {name}</h1>
+          <h1 id={titleId}>{name} について</h1>
           <p className="no-padding">
             <span className="selectable-text">
               {versionText} ({this.props.applicationArchitecture})
