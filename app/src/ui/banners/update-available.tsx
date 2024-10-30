@@ -53,13 +53,13 @@ export class UpdateAvailable extends React.Component<
     if (this.props.isX64ToARM64ImmediateAutoUpdate) {
       return (
         <span onSubmit={this.updateNow}>
-          An optimized version of GitHub Desktop is available for your{' '}
-          {__DARWIN__ ? 'Apple silicon' : 'Arm64'} machine and will be installed
-          at the next launch or{' '}
+          次回の起動、もしくは
           <LinkButton onClick={this.updateNow}>
-            restart GitHub Desktop
+            GitHub Desktop を再起動
           </LinkButton>{' '}
-          now.
+          すると、ご利用中の
+          {__DARWIN__ ? 'Apple silicon' : 'Arm64'} に最適化された GitHub Desktop
+          が利用できます。
         </span>
       )
     }
@@ -77,23 +77,27 @@ export class UpdateAvailable extends React.Component<
             text={':tada:'}
             emoji={this.props.emoji}
           />
-          Exciting new features have been added{version}. See{' '}
-          <LinkButton onClick={this.showReleaseNotes}>what's new</LinkButton> or{' '}
+          新機能が追加されました{version}。{' '}
+          <LinkButton onClick={this.showReleaseNotes}>詳細を見る</LinkButton>{' '}
+          もしくは{' '}
           <LinkButton onClick={this.dismissUpdateShowCaseVisibility}>
-            dismiss
+            閉じる
           </LinkButton>
-          .
+          。
         </span>
       )
     }
 
     return (
       <span onSubmit={this.updateNow}>
-        An updated version of GitHub Desktop is available and will be installed
-        at the next launch. See{' '}
-        <LinkButton onClick={this.showReleaseNotes}>what's new</LinkButton> or{' '}
-        <LinkButton onClick={this.updateNow}>restart GitHub Desktop</LinkButton>
-        .
+        次回の起動時にアップデートされたバージョンの GitHub Desktop
+        が利用可能です。
+        <LinkButton onClick={this.showReleaseNotes}>詳細を見る</LinkButton>{' '}
+        もしくは{' '}
+        <LinkButton onClick={this.updateNow}>
+          GitHub Desktop を再起動する
+        </LinkButton>
+        。
       </span>
     )
   }
