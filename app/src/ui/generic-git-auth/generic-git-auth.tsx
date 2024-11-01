@@ -90,7 +90,7 @@ export class GenericGitAuthentication extends React.Component<
             <div id="generic-git-auth-password-description">
               リポジトリのホスティングサービスによっては、パーソナルアクセストークンをパスワードとして使う必要があるかも知れません。
               パーソナルアクセストークンの生成方法については{' '}
-              <LinkButton uri="https://github.com/desktop/desktop/tree/development/docs/integrations">
+              <LinkButton uri="https://github.com/nozomu-matsui/github-desktop/tree/development/docs/integrations">
                 インテグレーションドキュメント
               </LinkButton>
               をご覧ください。

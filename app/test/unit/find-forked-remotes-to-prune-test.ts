@@ -57,7 +57,7 @@ describe('findForkedRemotesToPrune', () => {
   const remotes = [
     {
       name: OriginRemote,
-      url: 'https://github.com/desktop/desktop.git',
+      url: 'https://github.com/nozomu-matsui/github-desktop.git',
     },
     {
       name: NonGitHubDesktopRemote,

@@ -228,8 +228,8 @@ class UpdateStore {
       (await isRunningUnderARM64Translation()) === true
     ) {
       url.pathname = url.pathname.replace(
-        /\/desktop\/desktop\/(x64\/)?latest/,
-        '/desktop/desktop/arm64/latest'
+        /\/nozomu-matsui\/github-desktop\/(x64\/)?latest/,
+        '/nozomu-matsui/github-desktop/arm64/latest'
       )
 
       // If we want the app to force an auto-update from x64 to arm64 right

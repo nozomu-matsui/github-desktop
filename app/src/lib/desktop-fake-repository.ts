@@ -7,7 +7,7 @@ import { Owner } from '../models/owner'
 // repo to link issues against. Used when we can't rely on the repo info we keep
 // in state because we it need Desktop specific, so we've stubbed out this repo
 const desktopOwner = new Owner('desktop', getDotComAPIEndpoint(), -1)
-const desktopUrl = 'https://github.com/desktop/desktop'
+const desktopUrl = 'https://github.com/nozomu-matsui/github-desktop'
 export const DesktopFakeRepository = new Repository(
   '',
   -1,

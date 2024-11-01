@@ -155,10 +155,9 @@ export class AddExistingRepository extends React.Component<
           信頼できないリポジトリを追加すると、リポジトリ中のファイルが実行される場合があります。
         </p>
         <p>
-        フォルダのオーナーが信頼できる場合は、{' '}
+          フォルダのオーナーが信頼できる場合は、{' '}
           <LinkButton onClick={this.onTrustDirectory}>
             このフォルダにエクセプションを追加
-
           </LinkButton>{' '}
           することで、使用できます。
         </p>
@@ -243,9 +242,7 @@ export class AddExistingRepository extends React.Component<
         </DialogContent>
 
         <DialogFooter>
-          <OkCancelButtonGroup
-            okButtonText="リポジトリを追加"
-          />
+          <OkCancelButtonGroup okButtonText="リポジトリを追加" />
         </DialogFooter>
       </Dialog>
     )

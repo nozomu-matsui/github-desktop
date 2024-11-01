@@ -44,11 +44,9 @@ export class UntrustedCertificate extends React.Component<
       >
         <DialogContent>
           <p>
-            {host} のアイデンティティを検証できません。
-            署名 ({this.props.certificate.subjectName}) が無効か信頼できません。
-            <strong>
-              これは、データが盗まれる可能性を示しています。
-            </strong>
+            {host} のアイデンティティを検証できません。 署名 (
+            {this.props.certificate.subjectName}) が無効か信頼できません。
+            <strong>これは、データが盗まれる可能性を示しています。</strong>
           </p>
           <p>In some cases, this may be expected. For example:</p>
           <ul>
@@ -63,10 +61,7 @@ export class UntrustedCertificate extends React.Component<
           </p>
         </DialogContent>
         <DialogFooter>
-          <OkCancelButtonGroup
-            destructive={true}
-            okButtonText="署名を表示"
-          />
+          <OkCancelButtonGroup destructive={true} okButtonText="署名を表示" />
         </DialogFooter>
       </Dialog>
     )

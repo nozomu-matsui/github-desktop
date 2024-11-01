@@ -8,7 +8,7 @@ describe('octicon/iconForRepository', () => {
   it('shows download icon for cloning repository', () => {
     const repository = new CloningRepository(
       'C:/some/path/to/repo',
-      'https://github.com/desktop/desktop'
+      'https://github.com/nozomu-matsui/github-desktop'
     )
     const icon = iconForRepository(repository)
     expect(icon).toEqual(octicons.desktopDownload)

@@ -143,7 +143,7 @@ export class UnreachableCommitsDialog extends React.Component<
           ? 'ない'
           : 'ある'}{' '}
         からです。
-        <LinkButton uri="https://github.com/desktop/desktop/blob/development/docs/learn-more/unreachable-commits.md">
+        <LinkButton uri="https://github.com/nozomu-matsui/github-desktop/blob/development/docs/learn-more/unreachable-commits.md">
           さらに詳しく
         </LinkButton>
       </div>

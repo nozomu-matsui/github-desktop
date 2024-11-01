@@ -1349,9 +1349,7 @@ export class CommitMessage extends React.Component<
             inputId="commit-message-description"
             className={descriptionClassName}
             screenReaderLabel={
-              this.props.showInputLabels !== true
-                ? '説明'
-                : undefined
+              this.props.showInputLabels !== true ? '説明' : undefined
             }
             placeholder="説明"
             value={this.state.description || ''}

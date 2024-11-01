@@ -85,7 +85,7 @@ describe('Update remote url', () => {
   })
 
   it("doesn't update repository's remote url if protocols don't match", async () => {
-    const originalUrl = 'git@github.com:desktop/desktop.git'
+    const originalUrl = 'git@github.com:nozomu-matsui/github-desktop.git'
     const sshApiRepository = {
       ...apiRepository,
       clone_url: originalUrl,

@@ -460,7 +460,9 @@ export function buildDefaultMenu({
     label: '課題を報告...',
     click() {
       shell
-        .openExternal('https://github.com/desktop/desktop/issues/new/choose')
+        .openExternal(
+          'https://github.com/nozomu-matsui/github-desktop/issues/new/choose'
+        )
         .catch(err => log.error('Failed opening issue creation page', err))
     },
   }

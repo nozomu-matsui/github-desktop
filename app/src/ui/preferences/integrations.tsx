@@ -193,7 +193,7 @@ export class Integrations extends React.Component<
         <div className="select-component no-options-found">
           <label>{label}</label>
           <span>
-          外部エディターが見つかりません。{' '}
+            外部エディターが見つかりません。{' '}
             <LinkButton uri={suggestedExternalEditor.url}>
               {suggestedExternalEditor.name} をインストールしますか？
             </LinkButton>
@@ -237,7 +237,7 @@ export class Integrations extends React.Component<
       <Row>
         <div className="no-options-found">
           <span>
-          外部エディターが見つかりません。{' '}
+            外部エディターが見つかりません。{' '}
             <LinkButton uri={suggestedExternalEditor.url}>
               {suggestedExternalEditor.name}? をインストールしますか？
             </LinkButton>

@@ -42,7 +42,11 @@ describe('parseMergeResult', () => {
     expect((result as MergeTreeError).conflictedFiles).toBe(1)
   })
 
-  const repos = ['desktop/desktop', 'electron/electron', 'microsoft/vscode']
+  const repos = [
+    'nozomu-matsui/github-desktop/',
+    'electron/electron',
+    'microsoft/vscode',
+  ]
   for (const repo of repos) {
     describe(repo, () => {
       for (const f of loadMergeTreeOutputs(Path.basename(repo))) {

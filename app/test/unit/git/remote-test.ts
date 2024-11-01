@@ -145,7 +145,7 @@ describe('git/remote', () => {
       await addRemote(
         repository,
         'origin',
-        'https://github.com/desktop/desktop'
+        'https://github.com/nozomu-matsui/github-desktop'
       )
 
       const remotes = await getRemotes(repository)
@@ -166,7 +166,7 @@ describe('git/remote', () => {
     let repository: Repository
     const remoteName = 'origin'
     const remoteUrl = 'https://fakeweb.com/owner/name'
-    const newUrl = 'https://github.com/desktop/desktop'
+    const newUrl = 'https://github.com/nozomu-matsui/github-desktop'
 
     beforeEach(async () => {
       repository = await setupEmptyRepository()

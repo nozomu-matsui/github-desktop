@@ -25,12 +25,14 @@ describe('parseAppURL', () => {
   describe('openRepo via HTTPS', () => {
     it('returns right name', () => {
       const result = parseAppURL(
-        'github-mac://openRepo/https://github.com/desktop/desktop'
+        'github-mac://openRepo/https://github.com/nozomu-matsui/github-desktop'
       )
       expect(result.name).toBe('open-repository-from-url')
 
       const openRepo = result as IOpenRepositoryFromURLAction
-      expect(openRepo.url).toBe('https://github.com/desktop/desktop')
+      expect(openRepo.url).toBe(
+        'https://github.com/nozomu-matsui/github-desktop'
+      )
     })
 
     it('returns unknown when no remote defined', () => {
@@ -40,12 +42,14 @@ describe('parseAppURL', () => {
 
     it('adds branch name if set', () => {
       const result = parseAppURL(
-        'github-mac://openRepo/https://github.com/desktop/desktop?branch=cancel-2fa-flow'
+        'github-mac://openRepo/https://github.com/nozomu-matsui/github-desktop?branch=cancel-2fa-flow'
       )
       expect(result.name).toBe('open-repository-from-url')
 
       const openRepo = result as IOpenRepositoryFromURLAction
-      expect(openRepo.url).toBe('https://github.com/desktop/desktop')
+      expect(openRepo.url).toBe(
+        'https://github.com/nozomu-matsui/github-desktop'
+      )
       expect(openRepo.branch).toBe('cancel-2fa-flow')
     })
 
@@ -92,12 +96,12 @@ describe('parseAppURL', () => {
   describe('openRepo via SSH', () => {
     it('returns right name', () => {
       const result = parseAppURL(
-        'github-mac://openRepo/git@github.com/desktop/desktop'
+        'github-mac://openRepo/git@github.com:nozomu-matsui/github-desktop'
       )
       expect(result.name).toBe('open-repository-from-url')
 
       const openRepo = result as IOpenRepositoryFromURLAction
-      expect(openRepo.url).toBe('git@github.com/desktop/desktop')
+      expect(openRepo.url).toBe('git@github.com:nozomu-matsui/github-desktop')
     })
 
     it('returns unknown when no remote defined', () => {
@@ -107,12 +111,12 @@ describe('parseAppURL', () => {
 
     it('adds branch name if set', () => {
       const result = parseAppURL(
-        'github-mac://openRepo/git@github.com/desktop/desktop?branch=cancel-2fa-flow'
+        'github-mac://openRepo/git@github.com/nozomu-matsui/github-desktop?branch=cancel-2fa-flow'
       )
       expect(result.name).toBe('open-repository-from-url')
 
       const openRepo = result as IOpenRepositoryFromURLAction
-      expect(openRepo.url).toBe('git@github.com/desktop/desktop')
+      expect(openRepo.url).toBe('git@github.com/nozomu-matsui/github-desktop')
       expect(openRepo.branch).toBe('cancel-2fa-flow')
     })
 

@@ -458,9 +458,7 @@ export class CreateRepository extends React.Component<
         trackedUserInput={this.state.name}
         ariaLiveMessage={`Will be created as ${sanitizedName}. Spaces and invalid characters have been replaced by hyphens.`}
       >
-        <span className="sr-only">
-          空白や無効な文字列がハイフンに変換され
-        </span>
+        <span className="sr-only">空白や無効な文字列がハイフンに変換され</span>
         <p>{sanitizedName}</p> として作成されます。
       </InputWarning>
     )
@@ -587,7 +585,8 @@ export class CreateRepository extends React.Component<
           trackedUserInput={this.state.path + this.state.name}
           ariaLiveMessage={`The directory ${fullPath} appears to be a subfolder Git repository. Did you know about submodules?`}
         >
-          <Ref>{fullPath}</Ref> ディレクトリは、Git リポジトリのサブフォルダのようです。
+          <Ref>{fullPath}</Ref> ディレクトリは、Git
+          リポジトリのサブフォルダのようです。
           <LinkButton uri={submoduleDocsUrl}>
             サブモジュールについて。
           </LinkButton>
