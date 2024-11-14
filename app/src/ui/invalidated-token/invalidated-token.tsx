@@ -24,7 +24,7 @@ export class InvalidatedToken extends React.Component<IInvalidatedTokenProps> {
       <Dialog
         id="invalidated-token"
         type="warning"
-        title="警告"
+        title="無効化されたアカウントトークン"
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
       >

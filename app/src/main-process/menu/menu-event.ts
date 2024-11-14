@@ -50,20 +50,42 @@ export type MenuEvent =
  * This is an alphabetized list of menu event's that are only used for testing
  * UI.
  */
-export type TestMenuEvent =
-  | 'boomtown'
-  | 'test-app-error'
-  | 'test-arm64-banner'
-  | 'test-cherry-pick-conflicts-banner'
-  | 'test-icons'
-  | 'test-merge-successful-banner'
-  | 'test-no-external-editor'
-  | 'test-notification'
-  | 'test-prune-branches'
-  | 'test-release-notes-popup'
-  | 'test-reorder-banner'
-  | 'test-showcase-update-banner'
-  | 'test-thank-you-banner'
-  | 'test-thank-you-popup'
-  | 'test-undone-banner'
-  | 'test-update-banner'
+const TestMenuEvents = [
+  'boomtown',
+  'test-app-error',
+  'test-arm64-banner',
+  'test-confirm-committing-conflicted-files',
+  'test-cherry-pick-conflicts-banner',
+  'test-discarded-changes-will-be-unrecoverable',
+  `test-do-you-want-fork-this-repository`,
+  'test-files-too-large',
+  'test-generic-git-authentication',
+  'test-icons',
+  'test-invalidated-account-token',
+  'test-merge-successful-banner',
+  'test-move-to-application-folder',
+  'test-newer-commits-on-remote',
+  'test-no-external-editor',
+  'test-notification',
+  'test-prune-branches',
+  'test-push-rejected',
+  'test-re-authorization-required',
+  'test-release-notes-popup',
+  'test-reorder-banner',
+  'test-showcase-update-banner',
+  'test-thank-you-banner',
+  'test-thank-you-popup',
+  'test-unable-to-locate-git',
+  'test-unable-to-open-shell',
+  'test-undone-banner',
+  'test-untrusted-server',
+  'test-update-banner',
+  'test-update-existing-git-lfs-filters',
+  'test-upstream-already-exists',
+] as const
+
+export type TestMenuEvent = typeof TestMenuEvents[number]
+
+export function isTestMenuEvent(value: any): value is TestMenuEvent {
+  return TestMenuEvents.includes(value)
+}
