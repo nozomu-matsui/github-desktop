@@ -24,12 +24,11 @@ export class AttributeMismatch extends React.Component<IAttributeMismatchProps> 
       >
         <DialogContent>
           <p>
-            Git LFS filters are already configured in{' '}
+            すでに Git LFS フィルターが{' '}
             <LinkButton onClick={this.props.onEditGlobalGitConfig}>
-              your global git config
+              グローバル git 設定
             </LinkButton>{' '}
-            but are not the values it expects. Would you like to update them
-            now?
+            に登録されていますが、期待された値ではありません。更新しますか？
           </p>
         </DialogContent>
 
