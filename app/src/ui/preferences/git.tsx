@@ -68,11 +68,11 @@ export class Git extends React.Component<IGitProps> {
         </p>
 
         <p className="git-settings-description">
-          These preferences will{' '}
+          この設定変更は{' '}
           <LinkButton onClick={this.props.onEditGlobalGitConfig}>
-            edit your global Git config file
-          </LinkButton>
-          .
+            グローバル Git 設定ファイル
+          </LinkButton>{' '}
+          を更新します。
         </p>
       </div>
     )
