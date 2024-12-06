@@ -17,9 +17,9 @@ export class Remote extends React.Component<IRemoteProps, {}> {
     const remote = this.props.remote
     return (
       <DialogContent>
-        <p>プライマリ リモート リポジトリ ({remote.name})</p>
         <TextBox
           placeholder="リモート URL"
+          label={`プライマリ リモート リポジトリ ({remote.name}) URL`}
           value={remote.url}
           onValueChanged={this.props.onRemoteUrlChanged}
         />
