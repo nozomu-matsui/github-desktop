@@ -544,7 +544,7 @@ export class PushPullButton extends React.Component<
       <ToolbarButton
         {...this.defaultButtonProps()}
         title="ブランチをパブリッシュ"
-        description="アンボーン HEAD はパブリッシュできません"
+        description="コミットがないため、パブリッシュできません"
         icon={octicons.upload}
         disabled={true}
       />
