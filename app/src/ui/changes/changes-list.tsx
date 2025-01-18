@@ -499,7 +499,7 @@ export class ChangesList extends React.Component<
     const { externalEditorLabel } = this.props
 
     const openInExternalEditor = externalEditorLabel
-      ? `Open in ${externalEditorLabel}`
+      ? `${externalEditorLabel}で開く`
       : DefaultEditorLabel
 
     return {

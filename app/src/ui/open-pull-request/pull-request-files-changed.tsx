@@ -177,7 +177,7 @@ export class PullRequestFilesChanged extends React.Component<
     const isSafeExtension = isSafeFileExtension(extension)
     const openInExternalEditor =
       externalEditorLabel !== undefined
-        ? `Open in ${externalEditorLabel}`
+        ? `${externalEditorLabel}で開く`
         : DefaultEditorLabel
 
     const items: IMenuItem[] = [

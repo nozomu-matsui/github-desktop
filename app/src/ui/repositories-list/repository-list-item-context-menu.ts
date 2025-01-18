@@ -30,10 +30,10 @@ export const generateRepositoryListContextMenu = (
   const github =
     repository instanceof Repository && repository.gitHubRepository != null
   const openInExternalEditor = config.externalEditorLabel
-    ? `Open in ${config.externalEditorLabel}`
+    ? `${config.externalEditorLabel}で開く`
     : DefaultEditorLabel
   const openInShell = config.shellLabel
-    ? `Open in ${config.shellLabel}`
+    ? `${config.shellLabel}で開く`
     : DefaultShellLabel
 
   const items: ReadonlyArray<IMenuItem> = [
