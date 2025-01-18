@@ -220,11 +220,11 @@ export class ExpandableCommitSummary extends React.Component<
       <Button
         onClick={isExpanded ? this.onCollapse : this.onExpand}
         className="expander"
-        tooltip={isExpanded ? 'Collapse' : 'Expand'}
+        tooltip={isExpanded ? 'たたむ' : 'ひろげる'}
         applyTooltipAriaDescribedBy={false}
         ariaExpanded={isExpanded}
         ariaLabel={
-          isExpanded ? 'Collapse commit details' : 'Expand commit details'
+          isExpanded ? 'コミット詳細をたたむ' : 'コミット詳細をひろげる'
         }
         ariaControls="expandable-commit-summary"
       >
@@ -359,7 +359,7 @@ export class ExpandableCommitSummary extends React.Component<
       return
     }
 
-    const commitsPluralized = excludedCommitsCount > 1 ? 'commits' : 'commit'
+    const commitsPluralized = excludedCommitsCount > 1 ? 'コミット' : 'コミット'
 
     return (
       // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
