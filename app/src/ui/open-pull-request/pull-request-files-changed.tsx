@@ -242,7 +242,7 @@ export class PullRequestFilesChanged extends React.Component<
     return (
       <div className="files-changed-header">
         <div className="commits-displayed">
-          すべてのコミットの変更を表示しています
+          全コミットの変更を表示しています
         </div>
         <DiffOptions
           isInteractiveDiff={false}
