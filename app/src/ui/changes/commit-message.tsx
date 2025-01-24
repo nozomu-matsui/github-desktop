@@ -778,11 +778,11 @@ export class CommitMessage extends React.Component<
 
   private getCommitSpellcheckEnabilityMenuItem(isEnabled: boolean): IMenuItem {
     const enableLabel = __DARWIN__
-      ? 'Enable Commit Spellcheck'
-      : 'Enable commit spellcheck'
+      ? 'コミット時のスペルチェックを有効化'
+      : 'コミット時のスペルチェックを有効化'
     const disableLabel = __DARWIN__
-      ? 'Disable Commit Spellcheck'
-      : 'Disable commit spellcheck'
+      ? 'コミット時のスペルチェックを無効化'
+      : 'コミット時のスペルチェックを無効化'
     return {
       label: isEnabled ? disableLabel : enableLabel,
       action: () => this.props.onCommitSpellcheckEnabledChanged(!isEnabled),
@@ -1127,8 +1127,8 @@ export class CommitMessage extends React.Component<
   private getButtonVerb() {
     const { isCommitting, commitToAmend } = this.props
 
-    const amendVerb = isCommitting ? 'Amending' : 'Amend'
-    const commitVerb = isCommitting ? 'Committing' : 'Commit'
+    const amendVerb = isCommitting ? 'アメンド中' : 'アメンド'
+    const commitVerb = isCommitting ? 'コミット中' : 'コミット'
     const isAmending = commitToAmend !== null
 
     return isAmending ? amendVerb : commitVerb
@@ -1160,7 +1160,7 @@ export class CommitMessage extends React.Component<
       return ''
     }
 
-    const pluralizedFile = filesToBeCommittedCount > 1 ? 'files' : 'file'
+    const pluralizedFile = filesToBeCommittedCount > 1 ? 'ファイル' : 'ファイル'
 
     return `${filesToBeCommittedCount} ${pluralizedFile} `
   }
@@ -1207,11 +1207,11 @@ export class CommitMessage extends React.Component<
 
     const isSummaryBlank = isEmptyOrWhitespace(this.summaryOrPlaceholder)
     if (isSummaryBlank) {
-      return `A commit summary is required to commit`
+      return `コミットするには、サマリーが必要です`
     } else if (!this.props.anyFilesSelected && this.props.anyFilesAvailable) {
-      return `Select one or more files to commit`
+      return `コミットするファイルを選択してください`
     } else if (this.props.isCommitting) {
-      return `Committing changes…`
+      return `変更をコミット中...`
     }
 
     return undefined
@@ -1387,9 +1387,7 @@ export class CommitMessage extends React.Component<
             inputId="commit-message-description"
             className={descriptionClassName}
             screenReaderLabel={
-              this.props.showInputLabels !== true
-                ? '説明'
-                : undefined
+              this.props.showInputLabels !== true ? '説明' : undefined
             }
             placeholder="説明"
             value={this.state.description || ''}
