@@ -133,7 +133,7 @@ export class Advanced extends React.Component<
             onChange={this.onReportingOptOutChanged}
           />
         </div>
-        <h2>Network and credentials</h2>
+        <h2>ネットワークとクレデンシャル</h2>
         {this.renderSSHSettings()}
         <div className="advanced-section">
           <Checkbox
@@ -172,10 +172,10 @@ export class Advanced extends React.Component<
 
     return (
       <>
-        <h2>Filter Changes</h2>
+        <h2>変更フィルター</h2>
         <div className="advanced-section">
           <Checkbox
-            label={'Filter Changes'}
+            label={'変更フィルター'}
             value={
               this.props.canFilterChanges ? CheckboxValue.On : CheckboxValue.Off
             }
