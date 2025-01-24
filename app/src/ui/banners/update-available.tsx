@@ -99,8 +99,9 @@ export class UpdateAvailable extends React.Component<IUpdateAvailableProps> {
               emoji={this.props.emoji}
             />
           </span>
-          Exciting new features have been added{version}. See{' '}
-          <LinkButton onClick={this.showReleaseNotes}>what's new</LinkButton> or{' '}
+          エキサイティングな新機能が追加されました{version}。{' '}
+          <LinkButton onClick={this.showReleaseNotes}>what's new</LinkButton>{' '}
+          をご覧になるか
           <LinkButton onClick={this.dismissUpdateShowCaseVisibility}>
             閉じる
           </LinkButton>
@@ -112,19 +113,19 @@ export class UpdateAvailable extends React.Component<IUpdateAvailableProps> {
     if (this.props.prioritizeUpdate) {
       return (
         <span onSubmit={this.updateNow}>
-          This version of GitHub Desktop is missing{' '}
+          お使いのバージョンの GitHub Desktop は{' '}
           {this.props.prioritizeUpdateInfoUrl ? (
             <LinkButton uri={this.props.prioritizeUpdateInfoUrl}>
-              important updates
+              重要なアップデート
             </LinkButton>
           ) : (
-            'important updates'
-          )}
-          . Please{' '}
+            '重要なアップデート'
+          )}{' '}
+          が含まれていません。
           <LinkButton onClick={this.updateNow}>
-            restart GitHub Desktop
+            GitHub Desktop を再起動
           </LinkButton>{' '}
-          now to install pending updates.
+          してアップデートしてください。
         </span>
       )
     }
