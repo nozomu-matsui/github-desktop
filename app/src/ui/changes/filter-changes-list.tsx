@@ -493,11 +493,11 @@ export class FilterChangesList extends React.Component<
     const label =
       files.length === 1
         ? __DARWIN__
-          ? `Discard Changes`
-          : `Discard changes`
+          ? `変更を破棄`
+          : `変更を破棄`
         : __DARWIN__
-        ? `Discard ${files.length} Selected Changes`
-        : `Discard ${files.length} selected changes`
+        ? `選択された ${files.length} ファイルを破棄`
+        : `選択された ${files.length} ファイルを破棄`
 
     return this.props.askForConfirmationOnDiscardChanges ? `${label}…` : label
   }
@@ -669,8 +669,8 @@ export class FilterChangesList extends React.Component<
       const enabled = Path.basename(path) !== GitIgnoreFileName
       items.push({
         label: __DARWIN__
-          ? 'Ignore File (Add to .gitignore)'
-          : 'Ignore file (add to .gitignore)',
+          ? 'ファイルを無視 (.gitignore に追加)'
+          : 'ファイルを無視 (.gitignore に追加)',
         action: () => this.props.onIgnoreFile(path),
         enabled,
       })
@@ -691,8 +691,8 @@ export class FilterChangesList extends React.Component<
 
         items.push({
           label: __DARWIN__
-            ? 'Ignore Folder (Add to .gitignore)'
-            : 'Ignore folder (add to .gitignore)',
+            ? 'フォルダを無視 (.gitignore に追加)'
+            : 'フォルダを無視 (.gitignore に追加)',
           submenu,
           enabled,
         })
@@ -700,8 +700,8 @@ export class FilterChangesList extends React.Component<
     } else if (paths.length > 1) {
       items.push({
         label: __DARWIN__
-          ? `Ignore ${paths.length} Selected Files (Add to .gitignore)`
-          : `Ignore ${paths.length} selected files (add to .gitignore)`,
+          ? `選択された ${paths.length} ファイルを無視 (Add to .gitignore に追加)`
+          : `選択された ${paths.length} ファイルを無視 (Add to .gitignore に追加)`,
         action: () => {
           // Filter out any .gitignores that happens to be selected, ignoring
           // those doesn't make sense.
@@ -720,8 +720,8 @@ export class FilterChangesList extends React.Component<
       .forEach(extension => {
         items.push({
           label: __DARWIN__
-            ? `Ignore All ${extension} Files (Add to .gitignore)`
-            : `Ignore all ${extension} files (add to .gitignore)`,
+            ? `全 ${extension} ファイルを無視 (.gitignore に追加)`
+            : `全 ${extension} ファイルを無視 (.gitignore に追加)`,
           action: () => this.props.onIgnorePattern(`*${extension}`),
         })
       })
@@ -731,8 +731,8 @@ export class FilterChangesList extends React.Component<
         { type: 'separator' },
         {
           label: __DARWIN__
-            ? 'Include Selected Files'
-            : 'Include selected files',
+            ? '選択されたファイルをインクルード'
+            : '選択されたファイルをインクルード',
           action: () => {
             selectedFiles.map(file =>
               this.props.onIncludeChanged(file.path, true)
@@ -741,8 +741,8 @@ export class FilterChangesList extends React.Component<
         },
         {
           label: __DARWIN__
-            ? 'Exclude Selected Files'
-            : 'Exclude selected files',
+            ? '選択されたファイルをエクスクルード'
+            : '選択されたファイルをエクスクルード',
           action: () => {
             selectedFiles.map(file =>
               this.props.onIncludeChanged(file.path, false)
@@ -844,15 +844,15 @@ export class FilterChangesList extends React.Component<
     switch (firstFile.status.kind) {
       case AppFileStatusKind.New:
       case AppFileStatusKind.Untracked:
-        return `Create ${fileName}`
+        return `${fileName} を作成`
       case AppFileStatusKind.Deleted:
-        return `Delete ${fileName}`
+        return `${fileName} を削除`
       default:
         // TODO:
         // this doesn't feel like a great message for AppFileStatus.Copied or
         // AppFileStatus.Renamed but without more insight (and whether this
         // affects other parts of the flow) we can just default to this for now
-        return `Update ${fileName}`
+        return `${fileName} を更新`
     }
   }
 
@@ -1056,7 +1056,7 @@ export class FilterChangesList extends React.Component<
         }
       >
         <Octicon className="stack-icon" symbol={StashIcon} />
-        <div className="text">Stashed Changes</div>
+        <div className="text">スタッシュされた変更</div>
         <Octicon symbol={octicons.chevronRight} />
       </button>
     )
@@ -1137,8 +1137,8 @@ export class FilterChangesList extends React.Component<
     const { files } = workingDirectory
 
     const visibleFiles = this.state.filteredItems.size
-    const filesPlural = files.length === 1 ? 'file' : 'files'
-    const filesDescription = `${visibleFiles}/${files.length} changed ${filesPlural}`
+    const filesPlural = files.length === 1 ? 'ファイル' : 'ファイル'
+    const filesDescription = `${visibleFiles}/${files.length}の変更された${filesPlural}`
 
     const includeAllValue = this.getCheckAllValue(
       workingDirectory,
@@ -1150,8 +1150,8 @@ export class FilterChangesList extends React.Component<
       files.length === 0 || isCommitting || rebaseConflictState !== null
 
     const toBeCommittedFilterText = this.state.filterToIncludedCommit
-      ? 'Show files included and not included in the commit'
-      : 'Only show files to be included in the commit'
+      ? 'コミットに含むファイルも含まないファイルも表示'
+      : 'コミットに含むファイルのみ表示'
 
     return (
       <div
