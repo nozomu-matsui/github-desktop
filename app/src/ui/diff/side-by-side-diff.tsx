@@ -1409,7 +1409,7 @@ export class SideBySideDiff extends React.Component<
 
     const items: IMenuItem[] = [
       {
-        label: 'Copy',
+        label: 'コピー',
         // When using role="copy", the enabled attribute is not taken into account.
         role: selectionLength > 0 ? 'copy' : undefined,
         enabled: selectionLength > 0,
@@ -1571,8 +1571,8 @@ export class SideBySideDiff extends React.Component<
 
     const plural = numLines > 1 ? 's' : ''
     return __DARWIN__
-      ? `Discard ${type} Line${plural}${suffix}`
-      : `Discard ${type} line${plural}${suffix}`
+      ? `${type} 行${plural}${suffix} を破棄`
+      : `${type} 行${plural}${suffix}を破棄`
   }
 
   private onDiscardChanges(startLine: number, endLine: number = startLine) {
