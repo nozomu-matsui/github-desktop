@@ -26,7 +26,7 @@ export class CloningRepositoryView extends React.Component<
       <UiView id="cloning-repository-view">
         <div className="title-container">
           <Octicon symbol={octicons.desktopDownload} />
-          <div className="title">Cloning {this.props.repository.name}</div>
+          <div className="title">{this.props.repository.name} をクローン中</div>
         </div>
         <progress value={progressValue} />
         <TooltippedContent
