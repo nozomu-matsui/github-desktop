@@ -11,14 +11,14 @@ export function buildTestMenu() {
 
   if (__WIN32__) {
     testMenuItems.push(separator, {
-      label: 'Command Line Tool',
+      label: 'コマンドラインツール',
       submenu: [
         {
-          label: 'Install',
+          label: 'インストール',
           click: emit('install-windows-cli'),
         },
         {
-          label: 'Uninstall',
+          label: 'アンインストール',
           click: emit('uninstall-windows-cli'),
         },
       ],
@@ -101,21 +101,21 @@ export function buildTestMenu() {
   testMenuItems.push(
     separator,
     {
-      label: 'Crash main process…',
+      label: 'メインプロセスをクラッシュ...',
       click() {
         throw new Error('Boomtown!')
       },
     },
     {
-      label: 'Crash renderer process…',
+      label: 'レンダラープロセスをクラッシュ...',
       click: emit('boomtown'),
     },
     {
-      label: 'Prune branches',
+      label: 'ブランチをプルーン',
       click: emit('test-prune-branches'),
     },
     {
-      label: 'Show notification',
+      label: '通知を表示',
       click: emit('test-notification'),
     },
     {
@@ -185,7 +185,7 @@ export function buildTestMenu() {
       ],
     },
     {
-      label: 'Show Error Dialogs',
+      label: 'エラーダイアログを表示',
       submenu: errorDialogsSubmenu,
     }
   )
