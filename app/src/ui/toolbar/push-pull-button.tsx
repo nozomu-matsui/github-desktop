@@ -261,7 +261,7 @@ export class PushPullButton extends React.Component<
       buttonClassName: 'push-pull-button',
       style: ToolbarButtonStyle.Subtitle,
       dropdownStyle: ToolbarDropdownStyle.MultiOption,
-      ariaLabel: 'Push, pull, fetch options',
+      ariaLabel: 'プッシュ、プル、フェッチオプション',
       dropdownState: this.props.isDropdownOpen ? 'open' : 'closed',
       enableFocusTrap: this.props.enableFocusTrap,
       onDropdownStateChanged: this.props.onDropdownStateChanged,
@@ -349,7 +349,7 @@ export class PushPullButton extends React.Component<
     this.setScreenReaderStateMessageFocus()
     this.props.dispatcher.confirmOrForcePush(this.props.repository)
 
-    this.setState({ actionInProgress: 'force push' })
+    this.setState({ actionInProgress: '強制プッシュ' })
   }
 
   private pull = () => {
@@ -422,7 +422,7 @@ export class PushPullButton extends React.Component<
           onResize={this.onResize}
           maximumWidth={this.props.pushPullButtonWidth.max}
           minimumWidth={this.props.pushPullButtonWidth.min}
-          description="Push pull button"
+          description="プッシュ プル ボタン"
         >
           {this.renderButton()}
           <span id="push-pull-button-state">
