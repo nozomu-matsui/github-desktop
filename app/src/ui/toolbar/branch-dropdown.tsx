@@ -175,18 +175,18 @@ export class BranchDropdown extends React.Component<IBranchDropdownProps> {
         description = `${description} (${friendlyProgress}%)`
       }
 
-      tooltip = `Checking out ${checkoutProgress.target}`
+      tooltip = `${checkoutProgress.target} をチェックアウト中`
       progressValue = checkoutProgress.value
       icon = syncClockwise
       iconClassName = 'spin'
       canOpen = false
     } else if (conflictState !== null && isRebaseConflictState(conflictState)) {
       title = conflictState.targetBranch
-      description = 'Rebasing branch'
+      description = 'ブランチをリベース中'
       icon = octicons.gitBranch
       canOpen = false
       disabled = true
-      tooltip = `Rebasing ${conflictState.targetBranch}`
+      tooltip = `${conflictState.targetBranch} をリベース中`
     }
 
     const isOpen = this.props.isOpen
