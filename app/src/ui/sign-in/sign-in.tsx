@@ -118,8 +118,8 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     let primaryButtonText: string
     const stepKind = state.kind
     const continueWithBrowserLabel = __DARWIN__
-      ? 'Continue With Browser'
-      : 'Continue with browser'
+      ? 'ブラウザーで続ける'
+      : 'ブラウザーで続ける'
 
     switch (state.kind) {
       case SignInStep.EndpointEntry:
@@ -151,10 +151,10 @@ export class SignIn extends React.Component<ISignInProps, ISignInState> {
     return (
       <DialogContent>
         <p className="existing-account-warning">
-          You're already signed in to{' '}
-          <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref> with the account{' '}
-          <Ref>{state.existingAccount.login}</Ref>. If you continue, you will
-          first be signed out.
+          すでに <Ref>{new URL(getHTMLURL(state.endpoint)).host}</Ref>へ{' '}
+          <Ref>{state.existingAccount.login}</Ref>{' '}
+          アカウントでサインインしています。
+          続けるには、まずサインアウトしてください。
         </p>
         {browserSignInInfoContent}
       </DialogContent>
