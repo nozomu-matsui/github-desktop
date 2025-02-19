@@ -277,24 +277,29 @@ export class CommitMessageAvatar extends React.Component<
       </>
     )
 
+    const hasEmails = this.props.accountEmails.length > 0
+
     const sharedFooter = (
       <>
-        <Row>
-          <Select
-            label="Your Account Emails"
-            value={this.state.accountEmail}
-            onChange={this.onSelectedGitHubEmailChange}
-          >
-            {this.props.accountEmails.map(n => (
-              <option key={n} value={n}>
-                {n}
-              </option>
-            ))}
-          </Select>
-        </Row>
+        {hasEmails && (
+          <Row>
+            <Select
+              label="Your Account Emails"
+              value={this.state.accountEmail}
+              onChange={this.onSelectedGitHubEmailChange}
+            >
+              {this.props.accountEmails.map(n => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
+              ))}
+            </Select>
+          </Row>
+        )}
         <Row>
           <div className="secondary-text">
-            メールアドレス設定はリポジトリごとに{' '}
+            You can{hasEmails ? ' also' : ''} choose an email local to this
+            repository from the{' '}
             <LinkButton onClick={this.onRepositorySettingsClick}>
               リポジトリ設定
             </LinkButton>
@@ -305,9 +310,11 @@ export class CommitMessageAvatar extends React.Component<
           <Button onClick={this.onIgnoreClick} type="button">
             無視
           </Button>
-          <Button onClick={this.onUpdateEmailClick} type="submit">
-            {updateEmailTitle}
-          </Button>
+          {hasEmails && (
+            <Button onClick={this.onUpdateEmailClick} type="submit">
+              {updateEmailTitle}
+            </Button>
+          )}
         </Row>
       </>
     )
