@@ -65,35 +65,35 @@ export function buildTestMenu() {
 
   errorDialogsSubmenu.push(
     {
-      label: 'Push Rejected',
+      label: 'プッシュリジェクト',
       click: emit('test-push-rejected'),
     },
     {
-      label: 'Re-Authorization Required',
+      label: '再認証要求',
       click: emit('test-re-authorization-required'),
     },
     {
-      label: 'Unable to Locate Git',
+      label: 'Git所在確認失敗',
       click: emit('test-unable-to-locate-git'),
     },
     {
-      label: 'Unable to Open External Editor',
+      label: '外部エディター起動失敗',
       click: emit('test-no-external-editor'),
     },
     {
-      label: 'Unable to Open Shell',
+      label: 'シェル起動失敗',
       click: emit('test-unable-to-open-shell'),
     },
     {
-      label: 'Untrusted Server',
+      label: '信頼できないサーバー',
       click: emit('test-untrusted-server'),
     },
     {
-      label: 'Update Existing Git LFS Filters?',
+      label: '既存のGit LFS フィルターを更新しますか？',
       click: emit('test-update-existing-git-lfs-filters'),
     },
     {
-      label: 'Upstream Already Exists',
+      label: 'アップストリームがすでに存在します',
       click: emit('test-upstream-already-exists'),
     }
   )
@@ -119,18 +119,18 @@ export function buildTestMenu() {
       click: emit('test-notification'),
     },
     {
-      label: 'Show popup',
+      label: 'ポップアップを表示',
       submenu: [
         {
-          label: 'Release notes',
+          label: 'リリースノート',
           click: emit('test-release-notes-popup'),
         },
         {
-          label: 'Thank you',
+          label: '謝辞',
           click: emit('test-thank-you-popup'),
         },
         {
-          label: 'Show App Error',
+          label: 'アプリケーションエラーを表示',
           click: emit('test-app-error'),
         },
         {
@@ -138,24 +138,24 @@ export function buildTestMenu() {
           click: emit('test-icons'),
         },
         {
-          label: 'About dialog (test mode)',
+          label: 'About ダイアログ (テストモード)',
           click: emit('test-about-dialog'),
         },
       ],
     },
     {
-      label: 'Show banner',
+      label: 'バナーを表示',
       submenu: [
         {
-          label: 'Update banner',
+          label: 'バナーを更新',
           click: emit('test-update-banner'),
         },
         {
-          label: 'Update banner (priority)',
+          label: 'バナーを更新 (プライオリティ)',
           click: emit('test-prioritized-update-banner'),
         },
         {
-          label: `Showcase Update banner`,
+          label: `ショーケース バナー更新`,
           click: emit('test-showcase-update-banner'),
         },
         {
@@ -163,27 +163,27 @@ export function buildTestMenu() {
           click: emit('test-arm64-banner'),
         },
         {
-          label: 'Thank you',
+          label: '謝辞',
           click: emit('test-thank-you-banner'),
         },
         {
-          label: 'Reorder Successful',
+          label: 'リオーダー成功',
           click: emit('test-reorder-banner'),
         },
         {
-          label: 'Reorder Undone',
+          label: 'リオーダー Undone',
           click: emit('test-undone-banner'),
         },
         {
-          label: 'Cherry Pick Conflicts',
+          label: 'チェリーピック競合',
           click: emit('test-cherry-pick-conflicts-banner'),
         },
         {
-          label: 'Merge Successful',
+          label: 'マージ成功',
           click: emit('test-merge-successful-banner'),
         },
         {
-          label: 'OS Version No Longer Supported',
+          label: 'OS バージョン サポート終了',
           click: emit('test-os-version-no-longer-supported'),
         },
       ],
