@@ -349,7 +349,7 @@ export class PushPullButton extends React.Component<
     this.setScreenReaderStateMessageFocus()
     this.props.dispatcher.confirmOrForcePush(this.props.repository)
 
-    this.setState({ actionInProgress: '強制プッシュ' })
+    this.setState({ actionInProgress: 'force push' })
   }
 
   private pull = () => {
