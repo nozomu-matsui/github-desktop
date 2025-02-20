@@ -158,9 +158,9 @@ export class About extends React.Component<IAboutProps> {
 
     switch (status) {
       case UpdateStatus.CheckingForUpdates:
-        return <UpdateInfo message="Checking for updates…" loading={true} />
+        return <UpdateInfo message="更新を確認中..." loading={true} />
       case UpdateStatus.UpdateAvailable:
-        return <UpdateInfo message="Downloading update…" loading={true} />
+        return <UpdateInfo message="更新をダウンロード中..." loading={true} />
       case UpdateStatus.UpdateNotAvailable:
         if (!lastSuccessfulCheck) {
           return null
@@ -168,7 +168,7 @@ export class About extends React.Component<IAboutProps> {
 
         const richMessage = (
           <>
-            You have the latest version (last checked{' '}
+            最新バージョンをご利用中です (最終確認{' '}
             <RelativeTime date={lastSuccessfulCheck} />)
           </>
         )
@@ -180,13 +180,13 @@ export class About extends React.Component<IAboutProps> {
 
         return (
           <UpdateInfo
-            message={`You have the latest version (last checked ${absoluteDate})`}
+            message={`最新バージョンをご利用中です (最終確認 ${absoluteDate})`}
             richMessage={richMessage}
           />
         )
       case UpdateStatus.UpdateReady:
         return (
-          <UpdateInfo message="An update has been downloaded and is ready to be installed." />
+          <UpdateInfo message="更新バージョンのダウンロードが完了し、インストール準備が整いました。" />
         )
       case UpdateStatus.UpdateNotChecked:
         return null
@@ -219,9 +219,8 @@ export class About extends React.Component<IAboutProps> {
     if (!this.props.updateState.lastSuccessfulCheck) {
       return (
         <DialogError>
-          Couldn't determine the last time an update check was performed. You
-          may be running an old version. Please try manually checking for
-          updates and contact GitHub Support if the problem persists
+          最後の更新チェックがいつ実行されたのか確認できませんでした。現在お使いのバージョンは古い可能性があります。手動でアップデートをご確認ください。問題が継続する場合は
+          GitHub サポートにご連絡ください。
         </DialogError>
       )
     }
