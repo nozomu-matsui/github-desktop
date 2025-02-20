@@ -272,7 +272,7 @@ export class CommitMessageAvatar extends React.Component<
 
     const sharedHeader = (
       <>
-        The email in your global Git config (
+        グローバル Git 設定のメールアドレス (
         <span className="git-email">{this.props.email}</span>)
       </>
     )
@@ -284,7 +284,7 @@ export class CommitMessageAvatar extends React.Component<
         {hasEmails && (
           <Row>
             <Select
-              label="Your Account Emails"
+              label="あなたのメールアドレス"
               value={this.state.accountEmail}
               onChange={this.onSelectedGitHubEmailChange}
             >
@@ -298,8 +298,7 @@ export class CommitMessageAvatar extends React.Component<
         )}
         <Row>
           <div className="secondary-text">
-            You can{hasEmails ? ' also' : ''} choose an email local to this
-            repository from the{' '}
+            このレポジトリのメールアドレスは
             <LinkButton onClick={this.onRepositorySettingsClick}>
               リポジトリ設定
             </LinkButton>
@@ -381,12 +380,12 @@ export class CommitMessageAvatar extends React.Component<
     if (name) {
       return (
         <>
-          Committing as <strong>{name}</strong>
+          <strong>{name}</strong> としてコミット中
         </>
       )
     }
 
-    return <>Committing with {email}</>
+    return <>{email} でコミット中</>
   }
 
   private renderPopover() {
