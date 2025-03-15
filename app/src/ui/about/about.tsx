@@ -170,7 +170,7 @@ export class About extends React.Component<IAboutProps> {
           <>
             最新バージョンをご利用中です (最終確認{' '}
             <RelativeTime date={lastSuccessfulCheck} />)
-          </>
+          </p>
         )
 
         const absoluteDate = formatDate(lastSuccessfulCheck, {
