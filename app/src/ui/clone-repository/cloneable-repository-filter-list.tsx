@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Account, isDotComAccount } from '../../models/account'
+import { Account } from '../../models/account'
 import { IFilterListGroup } from '../lib/filter-list'
-import { IAPIRepository, getHTMLURL } from '../../lib/api'
+import { IAPIRepository } from '../../lib/api'
 import {
   ICloneableRepositoryListItem,
   groupRepositories,
@@ -76,6 +76,8 @@ interface ICloneableRepositoryFilterListProps {
     repository: IAPIRepository,
     source: ClickSource
   ) => void
+
+  readonly renderPreFilter?: () => JSX.Element | null
 }
 
 const RowHeight = 31
@@ -184,6 +186,7 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
         onFilterTextChanged={this.props.onFilterTextChanged}
         renderNoItems={this.renderNoItems}
         renderPostFilter={this.renderPostFilter}
+        renderPreFilter={this.props.renderPreFilter}
         onItemClick={this.props.onItemClicked ? this.onItemClick : undefined}
         placeholderText={'あなたのリポジトリをフィルター'}
         getGroupAriaLabel={this.getGroupAriaLabelGetter(groups)}
@@ -274,13 +277,10 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
 
   private renderNoItems = () => {
     const { loading, repositories, account } = this.props
-    const endpointName = isDotComAccount(account)
-      ? 'GitHub.com'
-      : getHTMLURL(this.props.account.endpoint)
 
     if (loading && (repositories === null || repositories.length === 0)) {
       return (
-        <div className="no-items loading">{`リポジトリを ${endpointName} からロード中...`}</div>
+        <div className="no-items loading">{`Loading repositories from ${account.friendlyEndpoint}…`}</div>
       )
     }
 
@@ -298,10 +298,12 @@ export class CloneableRepositoryFilterList extends React.PureComponent<ICloneabl
     return (
       <div className="no-items empty-repository-list">
         <div>
-          <Ref>{this.props.account.login}</Ref> の {endpointName}{' '}
-          上にリポジトリがありません。 最近リポジトリを作成した場合は、{' '}
-          <LinkButton onClick={this.refreshRepositories}>一覧を更新</LinkButton>{' '}
-          してください。
+          Looks like there are no repositories for{' '}
+          <Ref>{this.props.account.login}</Ref> on {account.friendlyEndpoint}.{' '}
+          <LinkButton onClick={this.refreshRepositories}>
+            Refresh this list
+          </LinkButton>{' '}
+          if you've created a repository recently.
         </div>
       </div>
     )

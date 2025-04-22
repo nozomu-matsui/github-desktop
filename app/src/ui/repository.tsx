@@ -109,8 +109,6 @@ interface IRepositoryViewProps {
 
   /** The user's preference of pull request suggested next action to use **/
   readonly pullRequestSuggestedNextAction?: PullRequestSuggestedNextAction
-
-  readonly canFilterChanges: boolean
 }
 
 interface IRepositoryViewState {
@@ -247,6 +245,7 @@ export class RepositoryView extends React.Component<
         availableWidth={availableWidth}
         gitHubUserStore={this.props.gitHubUserStore}
         isCommitting={this.props.state.isCommitting}
+        isGeneratingCommitMessage={this.props.state.isGeneratingCommitMessage}
         commitToAmend={this.props.state.commitToAmend}
         isPushPullFetchInProgress={this.props.state.isPushPullFetchInProgress}
         focusCommitMessage={this.props.focusCommitMessage}
@@ -268,7 +267,6 @@ export class RepositoryView extends React.Component<
         }
         commitSpellcheckEnabled={this.props.commitSpellcheckEnabled}
         showCommitLengthWarning={this.props.showCommitLengthWarning}
-        canFilterChanges={this.props.canFilterChanges}
       />
     )
   }
