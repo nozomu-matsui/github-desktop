@@ -875,9 +875,9 @@ export class CommitMessage extends React.Component<
     const noFilesSelected = this.props.filesSelected.length === 0
 
     const ariaLabel =
-      'Generate commit message with Copilot' +
+      'コミットメッセージをCopilotを使って生成' +
       (noFilesSelected
-        ? '. Files must be selected to generate a commit message.'
+        ? '。 コミットメッセージの生成には、ファイルの選択が。必要です'
         : '')
 
     return (
@@ -1002,11 +1002,11 @@ export class CommitMessage extends React.Component<
     if (commitToAmend !== null) {
       return (
         <CommitWarning icon={CommitWarningIcon.Information}>
-          Your changes will modify your <strong>most recent commit</strong>.{' '}
+          この操作は <strong>最新のコミット</strong> を変更します。
           <LinkButton onClick={this.props.onStopAmending}>
-            Stop amending
+            アメンドを停止
           </LinkButton>{' '}
-          to make these changes as a new commit.
+          することで、これらの変更を別のコミットにできます。
         </CommitWarning>
       )
     } else {
@@ -1082,12 +1082,11 @@ export class CommitMessage extends React.Component<
     if (showNoWriteAccess) {
       return (
         <CommitWarning icon={CommitWarningIcon.Warning}>
-          You don't have write access to <strong>{repository.name}</strong>.
-          Want to{' '}
+          <strong>{repository.name}</strong> に書き込み権限がありません。
           <LinkButton onClick={this.props.onShowCreateForkDialog}>
-            create a fork
-          </LinkButton>
-          ?
+            フォークを作成
+          </LinkButton>{' '}
+          しますか？
         </CommitWarning>
       )
     } else if (showBranchProtected) {
@@ -1101,9 +1100,11 @@ export class CommitMessage extends React.Component<
 
       return (
         <CommitWarning icon={CommitWarningIcon.Warning}>
-          <strong>{branch}</strong> is a protected branch. Want to{' '}
-          <LinkButton onClick={this.onSwitchBranch}>switch branches</LinkButton>
-          ?
+          <strong>{branch}</strong> はプロテクトされています。{' '}
+          <LinkButton onClick={this.onSwitchBranch}>
+            ブランチを切り替え
+          </LinkButton>{' '}
+          ますか？
         </CommitWarning>
       )
     } else if (repoRuleWarningToDisplay === 'publish') {
@@ -1113,22 +1114,23 @@ export class CommitMessage extends React.Component<
         <CommitWarning
           icon={canBypass ? CommitWarningIcon.Warning : CommitWarningIcon.Error}
         >
-          The branch name <strong>{branch}</strong> fails{' '}
+          <strong>{branch}</strong> ブランチは{' '}
           <RepoRulesetsForBranchLink
             repository={repository.gitHubRepository}
             branch={branch}
           >
-            one or more rules
+            ひとつ以上のルールに反しています。
           </RepoRulesetsForBranchLink>{' '}
-          that {canBypass ? 'would' : 'will'} prevent it from being published
-          {canBypass && ', but you can bypass them. Proceed with caution!'}
+          このルールは {canBypass ? '' : ''}{' '}
+          誤ってパブリッシュしないためのものです
+          {canBypass && 'がバイパスすることができます。注意して進めてください'}
           {!canBypass && (
             <>
-              . Want to{' '}
+              。
               <LinkButton onClick={this.onSwitchBranch}>
-                switch branches
-              </LinkButton>
-              ?
+                ブランチを切り替え
+              </LinkButton>{' '}
+              ますか？
             </>
           )}
         </CommitWarning>
@@ -1143,15 +1145,13 @@ export class CommitMessage extends React.Component<
           <RepoRulesetsForBranchLink
             repository={repository.gitHubRepository}
             branch={branch}
-          >
-            One or more rules
-          </RepoRulesetsForBranchLink>{' '}
-          apply to the branch <strong>{branch}</strong> that require signed
-          commits
-          {canBypass && ', but you can bypass them. Proceed with caution!'}
-          {!canBypass && '.'}{' '}
+          ></RepoRulesetsForBranchLink>{' '}
+          <strong>{branch}</strong>{' '}
+          ブランチに適用されている署名済みコミットに必要なひとつ以上のルールに反しています
+          {canBypass && 'がバイパスすることができます。注意して進めてください'}
+          {!canBypass && '。'}{' '}
           <LinkButton uri="https://docs.github.com/authentication/managing-commit-signature-verification/signing-commits">
-            Learn more about commit signing.
+            署名付きコミットについて
           </LinkButton>
         </CommitWarning>
       )
@@ -1165,19 +1165,19 @@ export class CommitMessage extends React.Component<
           <RepoRulesetsForBranchLink
             repository={repository.gitHubRepository}
             branch={branch}
-          >
-            One or more rules
-          </RepoRulesetsForBranchLink>{' '}
-          apply to the branch <strong>{branch}</strong> that{' '}
-          {canBypass ? 'would' : 'will'} prevent pushing
-          {canBypass && ', but you can bypass them. Proceed with caution!'}
+          ></RepoRulesetsForBranchLink>{' '}
+          <strong>{branch}</strong>{' '}
+          ブランチに適用されているひとつ以上のルールに反しています{' '}
+          {canBypass ? '' : ''} このルールはプッシュを避けるためのものです
+          {canBypass &&
+            'が、バイパスすることができます。注意して進めてください'}
           {!canBypass && (
             <>
-              . Want to{' '}
+              。{' '}
               <LinkButton onClick={this.onSwitchBranch}>
-                switch branches
-              </LinkButton>
-              ?
+                ブランチを切り替え
+              </LinkButton>{' '}
+              ますか？
             </>
           )}
         </CommitWarning>
@@ -1204,8 +1204,8 @@ export class CommitMessage extends React.Component<
     }
 
     const header = __DARWIN__
-      ? 'Commit Message Rule Failures'
-      : 'Commit message rule failures'
+      ? 'コミットメッセージルール違反'
+      : 'コミットメッセージルール違反'
     return (
       <Popover
         anchor={this.summaryTextInput}
@@ -1221,7 +1221,7 @@ export class CommitMessage extends React.Component<
           repository={repository.gitHubRepository}
           branch={branch}
           failures={this.state.repoRuleCommitMessageFailures}
-          leadingText="This commit message"
+          leadingText="コミットメッセージ"
         />
       </Popover>
     )
@@ -1384,20 +1384,20 @@ export class CommitMessage extends React.Component<
         tooltip={
           <>
             <div className="title">
-              Great commit summaries contain fewer than 50 characters
+              コミットサマリーは50文字未満が理想的です
             </div>
             <div className="description">
-              Place extra information in the description field.
+              追加情報は説明フィールドに移動してください。{' '}
             </div>
           </>
         }
         ariaLiveMessage={
-          'Great commit summaries contain fewer than 50 characters. Place extra information in the description field.'
+          'コミットサマリーは50文字未満が理想的です。追加情報は説明フィールドに移動してください。'
         }
         direction={TooltipDirection.NORTH}
         className="length-hint"
         tooltipClassName="length-hint-tooltip"
-        ariaLabel="Open Summary Length Info"
+        ariaLabel="サマリー長情報を開く"
       >
         <Octicon symbol={octicons.lightBulb} />
       </ToggledtippedContent>

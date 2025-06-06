@@ -34,7 +34,9 @@ export class ConfirmCommitFilteredChanges extends React.Component<
         id="hidden-changes"
         type="warning"
         title={
-          __DARWIN__ ? 'Commit Filtered Changes?' : 'Commit filtered changes?'
+          __DARWIN__
+            ? 'フィルター済みの更新をコミットしますか？'
+            : 'フィルター済みの更新をコミットしますか？'
         }
         onSubmit={this.onSubmit}
         onDismissed={this.props.onDismissed}
@@ -43,16 +45,16 @@ export class ConfirmCommitFilteredChanges extends React.Component<
       >
         <DialogContent>
           <p id="confirm-commit-filtered-changes-message">
-            You have a filter applied. There are{' '}
+            フィルターが適用されました。{' '}
             <LinkButton onClick={this.showFilesToBeCommitted}>
-              hidden changes
+              非表示の更新
             </LinkButton>{' '}
-            that will be committed. Are you sure you want to commit these
-            changes?
+            があり、それらもコミットされます。
+            本当にこれらの更新をコミットしますか？
           </p>
           <Row>
             <Checkbox
-              label="Do not show this message again"
+              label="次から表示しない"
               value={
                 this.state.askForConfirmationOnCommitFilteredChanges
                   ? CheckboxValue.Off
@@ -65,8 +67,8 @@ export class ConfirmCommitFilteredChanges extends React.Component<
         <DialogFooter>
           <OkCancelButtonGroup
             destructive={true}
-            okButtonText={__DARWIN__ ? 'Commit Anyway' : 'Commit anyway'}
-            cancelButtonText={'Cancel'}
+            okButtonText={__DARWIN__ ? 'とにかくコミット' : 'とにかくコミット'}
+            cancelButtonText={'キャンセル'}
             onCancelButtonClick={this.props.onDismissed}
           />
         </DialogFooter>

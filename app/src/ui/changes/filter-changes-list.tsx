@@ -1440,10 +1440,10 @@ export class FilterChangesList extends React.Component<
     return (
       <div className="hidden-changes-warning" id="hidden-changes-warning">
         <Octicon symbol={octicons.alert} />
-        <span className="sr-only">Warning:</span>
-        <span>Hidden changes will be committed. </span>
+        <span className="sr-only">警告:</span>
+        <span>非表示の更新をコミットしようとしています。</span>
         <LinkButton onClick={this.showFilesToBeCommitted}>
-          Adjust the filters to see all {filesSelected.length} changes
+          フィルターを変更して、すべての更新を表示する
         </LinkButton>
       </div>
     )
@@ -1467,7 +1467,7 @@ export class FilterChangesList extends React.Component<
 
     const conjunction = filterTextMessage && includedCommitText ? ' and ' : ''
 
-    return `Sorry, I can't find any changed files${filterTextMessage}${conjunction}
+    return `すみません。更新ファイルが見つかりません${filterTextMessage}${conjunction}
         ${includedCommitText}.`
   }
 
