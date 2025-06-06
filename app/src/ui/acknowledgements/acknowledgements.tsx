@@ -121,15 +121,15 @@ export class Acknowledgements extends React.Component<
       >
         <DialogContent>
           <p>
-            <LinkButton uri={WebsiteURL}>GitHub Desktop</LinkButton> is an open
-            source project published under the MIT License. You can view the
-            source code and contribute to this project on{' '}
-            <LinkButton uri={RepositoryURL}>GitHub</LinkButton>.
+            <LinkButton uri={WebsiteURL}>GitHub Desktop</LinkButton>{' '}
+            はMITライセンスのもとで公開されているオープンソースプロジェクトです。
+            <LinkButton uri={RepositoryURL}>GitHub</LinkButton>{' '}
+            にてソースコードを閲覧することができ、プロジェクトに貢献いただくこともできます。
           </p>
 
           {desktopLicense}
 
-          <p>GitHub Desktop also distributes these libraries:</p>
+          <p>GitHub Desktop はこれらのライブラリも配布しています:</p>
 
           {licenses ? this.renderLicenses(licenses) : <Loading />}
         </DialogContent>

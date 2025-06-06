@@ -117,9 +117,9 @@ export class AppError extends React.Component<IAppErrorProps, IAppErrorState> {
             </>
           )}
           <p>
-            See{' '}
+            GitHubでのラージファイルの管理については{' '}
             <LinkButton uri="https://gh.io/lfs">https://gh.io/lfs</LinkButton>{' '}
-            for more information on managing large files on GitHub
+            を参照してください。
           </p>
         </>
       )
@@ -132,7 +132,7 @@ export class AppError extends React.Component<IAppErrorProps, IAppErrorState> {
           <p>{e.message}</p>
           <p>
             <LinkButton uri={copilotPlansURL}>
-              Upgrade to increase your limit.
+              上限を増やすためにアップグレードする。
             </LinkButton>
           </p>
         </>
@@ -144,12 +144,12 @@ export class AppError extends React.Component<IAppErrorProps, IAppErrorState> {
 
   private getTitle(error: Error) {
     if (isCopilotExceededQuotaError(error)) {
-      return 'Quota exceeded'
+      return 'クオータが上限値を超えました'
     }
 
     switch (getDugiteError(error)) {
       case DugiteError.PushWithFileSizeExceedingLimit:
-        return 'File size limit exceeded'
+        return 'ファイルサイズが上限値を超えました'
     }
 
     switch (getRetryActionType(error)) {

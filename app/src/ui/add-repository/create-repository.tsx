@@ -463,11 +463,9 @@ export class CreateRepository extends React.Component<
       <InputWarning
         id="repo-sanitized-name-warning"
         trackedUserInput={this.state.name}
-        ariaLiveMessage={`Will be created as ${sanitizedName}. Spaces and invalid characters have been replaced by hyphens.`}
+        ariaLiveMessage={`空白や無効な文字列がハイフンに変換され ${sanitizedName} として作成されます。`}
       >
-        <span className="sr-only">
-          空白や無効な文字列がハイフンに変換され
-        </span>
+        <span className="sr-only">空白や無効な文字列がハイフンに変換され</span>
         <p>{sanitizedName}</p> として作成されます。
       </InputWarning>
     )
@@ -565,7 +563,7 @@ export class CreateRepository extends React.Component<
         <InputError
           id="existing-repository-path-error"
           trackedUserInput={this.state.path + this.state.name}
-          ariaLiveMessage={`The directory ${fullPath} appears to be a Git repository. Would you like to add this repository instead?`}
+          ariaLiveMessage={`${fullPath} ディレクトリは Git リポジトリのようです。代わりにこのリポジトリを追加しますか？`}
         >
           <Ref>{fullPath}</Ref> ディレクトリは Git リポジトリのようです。
           代わりに{' '}
@@ -592,9 +590,10 @@ export class CreateRepository extends React.Component<
         <InputWarning
           id="path-is-subfolder-of-repository"
           trackedUserInput={this.state.path + this.state.name}
-          ariaLiveMessage={`The directory ${fullPath} appears to be a subfolder Git repository. Did you know about submodules?`}
+          ariaLiveMessage={`${fullPath} ディレクトリは、Git リポジトリのサブフォルダのようです。サブモジュールについて知りたいですか？`}
         >
-          <Ref>{fullPath}</Ref> ディレクトリは、Git リポジトリのサブフォルダのようです。
+          <Ref>{fullPath}</Ref> ディレクトリは、Git
+          リポジトリのサブフォルダのようです。
           <LinkButton uri={submoduleDocsUrl}>
             サブモジュールについて。
           </LinkButton>
@@ -620,8 +619,8 @@ export class CreateRepository extends React.Component<
         <InputWarning
           id="readme-overwrite-warning"
           trackedUserInput={this.state.createWithReadme}
-          ariaLiveMessage="This directory contains a README.md file already. Checking
-          this box will result in the existing file being overwritten."
+          ariaLiveMessage="このディレクトリにはすでに README.md< ファイルが存在します。
+          チェックボックスを選択すると、既存のファイルに上書きします。"
         >
           このディレクトリにはすでに <Ref>README.md</Ref> ファイルが存在します。
           チェックボックスを選択すると、既存のファイルに上書きします。
