@@ -167,7 +167,7 @@ export class About extends React.Component<IAboutProps> {
         }
 
         const richMessage = (
-          <>
+          <p>
             最新バージョンをご利用中です (最終確認{' '}
             <RelativeTime date={lastSuccessfulCheck} />)
           </p>
